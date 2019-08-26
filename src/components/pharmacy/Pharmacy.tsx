@@ -165,7 +165,7 @@ class Pharmacy extends React.Component<Props, State> {
                         </Card>
                         <Card className={classNames(classes.boxItem)}>
                           <CardContent style={{ width: "25%", padding: "2px" }}>
-                            <Typography className={classes.numberOf}>4</Typography>
+                            <Typography className={classes.numberOf}>5</Typography>
                             <Typography className={classes.subTitle}>WEEKS</Typography>
                           </CardContent>
                         </Card>

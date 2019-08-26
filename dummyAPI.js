@@ -1,5 +1,5 @@
 const fakeDatabase = {
-    "qQlI3FWNbEyOSZMlML-tsA": {
+    "12": {
         isChronic: true,
         lastWhoVisited: {
                 name: "Ruesina",
@@ -10,12 +10,12 @@ const fakeDatabase = {
         },
         firstName: "Goteorond",
         secondName: "Iorgwend",
-        id: "qQlI3FWNbEyOSZMlML-tsA",
+        id: "12",
         age: 95,
         sex: "F",
         gender: "undefined",
         photo: null,
-        bloodType: "O-",
+        bloodType: "0-",
         nextKin: "Varnëenil Taryawë",
         notes: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         lastAdmission: "22.01.2019",
@@ -23,7 +23,7 @@ const fakeDatabase = {
         treatment: "Bloodletting",
         address: "Rua do Catete 90, Glória, Rio de Janeiro - RJ",
     },
-    "osSG41AO602JyE945dNGxQ": {
+    "11": {
         isChronic: false,
         lastWhoVisited: {
                 name: "Elros",
@@ -34,7 +34,7 @@ const fakeDatabase = {
         },
         firstName: "Ceuariel",
         secondName: "Galadhhoaien",
-        id: "osSG41AO602JyE945dNGxQ",
+        id: "11",
         age: 87,
         sex: "M",
         gender: "undefined",
@@ -47,7 +47,7 @@ const fakeDatabase = {
         treatment: "Bloodletting",
         address: "Rua do Catete 90, Glória, Rio de Janeiro - RJ",
     },
-    "i7xUa0_pjEedrnVZzvNgbQ": {
+    "141": {
         isChronic: true,
         lastWhoVisited: {
                 name: "Celior",
@@ -58,7 +58,7 @@ const fakeDatabase = {
         },
         firstName: "Manarnon",
         secondName: "Úvaneamo",
-        id: "i7xUa0_pjEedrnVZzvNgbQ",
+        id: "141",
         age: 87,
         sex: "M",
         gender: "undefined",
@@ -71,7 +71,7 @@ const fakeDatabase = {
         treatment: "Bloodletting",
         address: "Rua do Catete 90, Glória, Rio de Janeiro - RJ",
     },
-    "yYhyX1S-e0C9KnPs2HV1RA": {
+    "133": {
         isChronic: false,
         lastWhoVisited: {
                 name: "Lúrëamë",
@@ -82,7 +82,7 @@ const fakeDatabase = {
         },
         firstName: "Lanatwen",
         secondName: "Húnamë",
-        id: "yYhyX1S-e0C9KnPs2HV1RA",
+        id: "133",
         age: 87,
         sex: "M",
         gender: "undefined",
@@ -95,7 +95,7 @@ const fakeDatabase = {
         treatment: "Bloodletting",
         address: "Rua do Catete 90, Glória, Rio de Janeiro - RJ",
     },
-    "6hS9BPW8LEC4sxFaJfN6xA": {
+    "177": {
         isChronic: true,
         lastWhoVisited: {
                 name: "Nercanis",
@@ -106,7 +106,7 @@ const fakeDatabase = {
         },
         firstName: "Erenwen",
         secondName: "Húnë",
-        id: "6hS9BPW8LEC4sxFaJfN6xA",
+        id: "177",
         age: 87,
         sex: "M",
         gender: "undefined",
@@ -119,7 +119,7 @@ const fakeDatabase = {
         treatment: "Bloodletting",
         address: "Rua do Catete 90, Glória, Rio de Janeiro - RJ",
     },
-    "KhR3GJX0WvC4sxFaJfN6xA": {
+    "232": {
         isChronic: true,
         lastWhoVisited: {
                 name: "Miguel",
@@ -130,7 +130,7 @@ const fakeDatabase = {
         },
         firstName: "Antônio Carlos",
         secondName: "Jobim",
-        id: "6hS9BPW8LEC4sxFaJfN6xA",
+        id: "232",
         age: 87,
         sex: "M",
         gender: "undefined",

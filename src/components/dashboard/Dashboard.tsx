@@ -37,6 +37,7 @@ class Dashboard extends React.Component<Props> {
                             </Typography>
                         </Grid>
                     </Grid>
+                    &emsp;
                     <Grid container justify="center" spacing={24} className={classes.ctaGrid}>
                         <Grid item xs={12} sm={4}>
                             <MaterialCardActionAreaRouter
