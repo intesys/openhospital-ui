@@ -1,4 +1,4 @@
-import { Card, Grid, Divider } from "@material-ui/core";
+import { Card, Divider, Grid } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import CardContent from "@material-ui/core/CardContent";
 import FormControl from "@material-ui/core/FormControl";
@@ -17,9 +17,9 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
 import { Link as LinkRouter } from "react-router-dom";
-import {  MaterialLinkRouter } from "../utils/LinkHelper";
-import PaymentIcon from "../utils/icons/svg/PaymentIcon";
 import CashIcon from "../utils/icons/svg/CashIcon";
+import PaymentIcon from "../utils/icons/svg/PaymentIcon";
+import {  MaterialLinkRouter } from "../utils/LinkHelper";
 import styles from "./Billing.style";
 
 // constants

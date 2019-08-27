@@ -36,7 +36,7 @@ class Calendario extends React.Component<Props, State> {
     error: null,
     isLoaded: false,
     labelWidth: 0,
-    value: 0
+    value: 0,
     openOptionalInfo: false
   };
 

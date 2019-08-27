@@ -1,35 +1,35 @@
-import * as React from "react";
-import ReactDOM from "react-dom";
-import { withStyles, WithStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import Breadcrumbs from "@material-ui/lab/Breadcrumbs";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import { Link as LinkRouter } from "react-router-dom";
-import { MaterialLinkRouter } from "../utils/LinkHelper";
-import TextField from "@material-ui/core/TextField";
-import classNames from "classnames";
-import Select from "@material-ui/core/Select";
-import OutlinedInput from "@material-ui/core/OutlinedInput";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import FormControl from "@material-ui/core/FormControl";
+import Grid from "@material-ui/core/Grid";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import OutlinedInput from "@material-ui/core/OutlinedInput";
+import Paper from "@material-ui/core/Paper";
+import Select from "@material-ui/core/Select";
+import { withStyles, WithStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
+import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
+import Breadcrumbs from "@material-ui/lab/Breadcrumbs";
+import classNames from "classnames";
+import * as React from "react";
+import { Link as LinkRouter } from "react-router-dom";
+import { MaterialLinkRouter } from "../utils/LinkHelper";
 import Colleague from "./Colleague";
 
 import styles from "./ColleaguesDatabase.style";
-export interface Props extends WithStyles<typeof styles> {}
+export interface IProps extends WithStyles<typeof styles> {}
 
-interface State {
+interface IState {
   labelWidth: number;
   error: any;
   isLoaded: boolean;
   items: any;
 }
 
-class ColleaguesDatabase extends React.Component<Props, State> {
+class ColleaguesDatabase extends React.Component<IProps, IState> {
+  // tslint:disable-next-line: member-access
   state: State = {
     labelWidth: 0,
     error: null,
@@ -57,9 +57,9 @@ class ColleaguesDatabase extends React.Component<Props, State> {
         }
       );
 
-    this.setState({
+   /* this.setState({
       labelWidth: ReactDOM.findDOMNode(this.InputLabelRef).offsetWidth,
-    });
+    }); */
   }
 
   public render() {
