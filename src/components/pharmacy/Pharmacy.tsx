@@ -21,7 +21,7 @@ import * as React from "react";
 import { Link as LinkRouter } from "react-router-dom";
 import PdfIcon from "../utils/icons/svg/PdfIcon";
 import styles from "./Pharmacy.style";
-export interface IProps extends WithStyles<typeof styles> {}
+export interface IProps extends WithStyles<typeof styles> { }
 
 interface IState {
   value?: number;
@@ -124,10 +124,10 @@ class Pharmacy extends React.Component<IProps, IState> {
                   <Grid item xs={6} className={classes.formatTable}>
                     <Paper className={classes.paperStock}>
                       <TableHead>
-                        <TableRow  className={classes.stockTableTitle}>
+                        <TableRow className={classes.stockTableTitle}>
                           DRUGS OUT OF A STOCK
                         </TableRow>
-                        <TableRow  className={classes.stockTableSubtitle}>
+                        <TableRow className={classes.stockTableSubtitle}>
                           NEXT REFUELING IN:
                         </TableRow>
                       </TableHead>
@@ -356,10 +356,10 @@ class Pharmacy extends React.Component<IProps, IState> {
                   <Grid item xs={12} className={classes.formatTable}>
                     <Paper className={classes.paperMovements}>
                       <TableHead>
-                        <TableRow  className={classes.movementsTableTitle}>
+                        <TableRow className={classes.movementsTableTitle}>
                           MOVEMENTS OF DRUGS
                         </TableRow>
-                        <TableRow  className={classes.movementsTableSubtitle}>
+                        <TableRow className={classes.movementsTableSubtitle}>
                           INBOUND DRUGS TODAY
                         </TableRow>
                       </TableHead>
