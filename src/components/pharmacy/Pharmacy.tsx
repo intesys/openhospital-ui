@@ -1,37 +1,36 @@
-import { Card, Grid, Link, Paper, CardContent, TextField } from "@material-ui/core";
+import { Card, CardContent, Grid, Link, Paper, TextField } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
-import { withStyles, WithStyles } from "@material-ui/core/styles";
-import PropTypes from "prop-types";
 import MenuItem from "@material-ui/core/MenuItem";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import Select from "@material-ui/core/Select";
+import { withStyles, WithStyles } from "@material-ui/core/styles";
 import SvgIcon from "@material-ui/core/SvgIcon";
-import PdfIcon from "../utils/icons/svg/PdfIcon";
-import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import Tabs from "@material-ui/core/Tabs";
 import Typography from "@material-ui/core/Typography";
 import Breadcrumbs from "@material-ui/lab/Breadcrumbs";
+import classNames from "classnames";
+import PropTypes from "prop-types";
 import * as React from "react";
 import { Link as LinkRouter } from "react-router-dom";
+import PdfIcon from "../utils/icons/svg/PdfIcon";
 import styles from "./Pharmacy.style";
-import classNames from "classnames";
-export interface Props extends WithStyles<typeof styles> {}
+export interface IProps extends WithStyles<typeof styles> {}
 
-interface State {
+interface IState {
   value?: number;
   labelWidth: number;
   error: any;
   isLoaded: boolean;
-  items: any;
 }
 
-class Pharmacy extends React.Component<Props, State> {
+class Pharmacy extends React.Component<IProps, IState> {
   state: State = {
     labelWidth: 0,
     value: 0,
@@ -79,6 +78,7 @@ class Pharmacy extends React.Component<Props, State> {
 
     return (
       <div className={classes.root}>
+        // tslint:disable-next-line: jsx-boolean-value
         <Grid container item className={classes.gridContainer} justify="center" spacing={24}>
           <Grid item xs={12}>
             <Breadcrumbs aria-label="Breadcrumb" className={classes.breadCrumb}>
@@ -98,7 +98,6 @@ class Pharmacy extends React.Component<Props, State> {
           <Grid container item className={classes.gridContainer} spacing={24}>
             <Grid item xs={6}>
               <Tabs
-                flexContainer
                 indicatorColor="none"
                 textColor="secondary"
                 value={value}
@@ -125,10 +124,10 @@ class Pharmacy extends React.Component<Props, State> {
                   <Grid item xs={6} className={classes.formatTable}>
                     <Paper className={classes.paperStock}>
                       <TableHead>
-                        <TableRow variant="inherit" className={classes.stockTableTitle}>
+                        <TableRow  className={classes.stockTableTitle}>
                           DRUGS OUT OF A STOCK
                         </TableRow>
-                        <TableRow variant="inherit" className={classes.stockTableSubtitle}>
+                        <TableRow  className={classes.stockTableSubtitle}>
                           NEXT REFUELING IN:
                         </TableRow>
                       </TableHead>
@@ -357,10 +356,10 @@ class Pharmacy extends React.Component<Props, State> {
                   <Grid item xs={12} className={classes.formatTable}>
                     <Paper className={classes.paperMovements}>
                       <TableHead>
-                        <TableRow variant="inherit" className={classes.movementsTableTitle}>
+                        <TableRow  className={classes.movementsTableTitle}>
                           MOVEMENTS OF DRUGS
                         </TableRow>
-                        <TableRow variant="inherit" className={classes.movementsTableSubtitle}>
+                        <TableRow  className={classes.movementsTableSubtitle}>
                           INBOUND DRUGS TODAY
                         </TableRow>
                       </TableHead>
