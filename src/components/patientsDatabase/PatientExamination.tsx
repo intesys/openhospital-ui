@@ -17,7 +17,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 // constants
 import { PATH_NEW_LAB_TEST } from "../../helpers/constants"
 
-export interface Props extends WithStyles <typeof styles> {}
+export interface Props extends WithStyles<typeof styles> { }
 
 interface State {
     labelWidth: number;
@@ -26,7 +26,7 @@ interface State {
     items: any;
 }
 
-class PatientExamination extends Component <Props, State> {
+class PatientExamination extends Component<Props, State> {
     state: State = {
         labelWidth: 0,
         error: null,
@@ -78,7 +78,7 @@ class PatientExamination extends Component <Props, State> {
                     title={"EXAMINATION"}
                     data={data}
                     columns={columns}
-                    options={options}/>
+                    options={options} />
                 &emsp;
             </Grid>
         );

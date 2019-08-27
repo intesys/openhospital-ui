@@ -22,7 +22,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Divider from "@material-ui/core/Divider";
 
-export interface Props extends WithStyles<typeof styles> {}
+export interface Props extends WithStyles<typeof styles> { }
 
 interface State {
     labelWidth: number;
@@ -63,12 +63,12 @@ class PatientTherapy extends Component<Props, State> {
                             COMPLETE THE FORM
                         </Typography>
                     </div>
-                    <Grid style={{marginLeft:400}}>
+                    <Grid style={{ marginLeft: 400 }}>
                         <Typography variant="inherit" className={classes.dateTitle}>
                             DATE
                         </Typography>
-                    </Grid> 
-                    <Grid style={{marginLeft:10}}>   
+                    </Grid>
+                    <Grid style={{ marginLeft: 10 }}>
                         &nbsp;
                         <TextField
                             id="date"
@@ -76,7 +76,7 @@ class PatientTherapy extends Component<Props, State> {
                             defaultValue="2017-05-24"
                             InputLabelProps={{
                                 shrink: true,
-                            }}/>
+                            }} />
                     </Grid>
                 </Grid>
                 &emsp;
@@ -101,7 +101,7 @@ class PatientTherapy extends Component<Props, State> {
                                 },
                             }}
                             margin="normal"
-                            variant="outlined"/>
+                            variant="outlined" />
                     </Grid>
                     &emsp;
                     <Grid container item xs={3}>
@@ -124,7 +124,7 @@ class PatientTherapy extends Component<Props, State> {
                                 },
                             }}
                             margin="normal"
-                            variant="outlined"/>
+                            variant="outlined" />
                     </Grid>
                 </Grid>
                 <Grid container item spacing={24}>
@@ -151,7 +151,7 @@ class PatientTherapy extends Component<Props, State> {
                                         id="Service type"
                                         classes={{
                                             input: classes.formFieldSelectInput,
-                                        }}/>
+                                        }} />
                                 }>
                                 <MenuItem value={10}>item1</MenuItem>
                                 <MenuItem value={20}>Laboratory </MenuItem>
@@ -176,7 +176,7 @@ class PatientTherapy extends Component<Props, State> {
                                 },
                             }}
                             margin="normal"
-                            variant="outlined"/>
+                            variant="outlined" />
                     </Grid>
                 </Grid>
                 <Grid container item spacing={24}>
@@ -187,40 +187,40 @@ class PatientTherapy extends Component<Props, State> {
                     </Grid>
                 </Grid>
                 <Grid container item spacing={24}>
-                    &nbsp; 
+                    &nbsp;
                     <Grid container item xs={6}>
                         <FormControlLabel
                             value="ONE"
                             control={<Radio color="secondary" />}
                             label="ONE"
-                            labelPlacement="ONE"/>
+                            labelPlacement="ONE" />
                         <FormControlLabel
                             value="TWO"
                             control={<Radio color="secondary" />}
                             label="TWO"
-                            labelPlacement="TWO"/>
+                            labelPlacement="TWO" />
                         <FormControlLabel
                             value="THREE"
                             control={<Radio color="secondary" />}
                             label="THREE"
-                            labelPlacement="THREE"/>
+                            labelPlacement="THREE" />
                     </Grid>
                 </Grid>
                 <Grid container item spacing={24}>
                     <Grid container item xs={6}>
                         <Typography color="inherit" className={classes.frequencyDrugs}>
                             FREQUENCY WITHIN PERIOD
-                        </Typography>  
+                        </Typography>
                     </Grid>
                 </Grid>
                 <Grid container item spacing={24}>
                     &nbsp;
-                    <Grid  xs={2}>
-                        <Typography style={{paddingTop:30,marginLeft:5}} color="inherit" className={classes.drugPrescribed}>
+                    <Grid xs={2}>
+                        <Typography style={{ paddingTop: 30, marginLeft: 5 }} color="inherit" className={classes.drugPrescribed}>
                             EVERY
                         </Typography>
                     </Grid>
-                    <Grid container style={{marginLeft:"-70px"}} item xs={2}>
+                    <Grid container style={{ marginLeft: "-70px" }} item xs={2}>
                         <TextField
                             placeholder="N° days"
                             className={classNames(classes.formField, classes.cssOutlinedInput)}
@@ -237,10 +237,10 @@ class PatientTherapy extends Component<Props, State> {
                                 },
                             }}
                             margin="normal"
-                            variant="outlined"/>
+                            variant="outlined" />
                     </Grid>
-                    <Grid  xs={2}>
-                        <Typography style={{paddingTop:30,marginLeft:5}} color="inherit" className={classes.drugPrescribed}>
+                    <Grid xs={2}>
+                        <Typography style={{ paddingTop: 30, marginLeft: 5 }} color="inherit" className={classes.drugPrescribed}>
                             DAYS
                         </Typography>
                     </Grid>
@@ -266,7 +266,7 @@ class PatientTherapy extends Component<Props, State> {
                                 },
                             }}
                             margin="normal"
-                            variant="outlined"/>
+                            variant="outlined" />
                     </Grid>
                 </Grid>
                 <Grid item xs={12} spacing={24} style={{ marginTop: 50, marginBottom: 20 }} className={classes.detailButtonContainer}>

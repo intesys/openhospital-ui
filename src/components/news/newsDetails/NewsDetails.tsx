@@ -12,7 +12,7 @@ import PropTypes from "prop-types";
 import { Link as LinkRouter } from "react-router-dom";
 import styles from "./NewsDetails.style";
 
-export interface Props extends WithStyles<typeof styles> {}
+export interface Props extends WithStyles<typeof styles> { }
 
 interface State {
   labelWidth: number;

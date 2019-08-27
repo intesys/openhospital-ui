@@ -29,7 +29,7 @@ import Grid from "@material-ui/core/Grid";
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 // constants
-import { 
+import {
     PATH_PATIENT_DETAILS,
     PATH_PATIENT_VISIT,
     PATH_PATIENT_ADMISSION,
@@ -44,12 +44,12 @@ import {
 
 class PatientActivityContainer extends Component {
 
-    componentDidMount(){
-        const { 
-            match, 
+    componentDidMount() {
+        const {
+            match,
             putPatientInStore,
             getPatientInServer,
-            location, 
+            location,
         } = this.props
 
         if (location.patient) {
@@ -59,12 +59,12 @@ class PatientActivityContainer extends Component {
         }
     }
 
-    componentWillUnmount(){
+    componentWillUnmount() {
         this.props.clearPatientInDetails();
     }
 
     getActivityTitle = (match) => {
-        switch(match.path){
+        switch (match.path) {
             case PATH_PATIENT_DETAILS:
                 return "Patient Details";
             case PATH_PATIENT_ADMISSION:
@@ -96,13 +96,13 @@ class PatientActivityContainer extends Component {
             <div className={classes.root}>
                 {loading === true ?
                     <Grid container className={classes.gridContainer} justify="center" spacing={24}>
-                        <CircularProgress className={classes.progress} color="secondary" style={{ margin: '20px auto' }}/>
+                        <CircularProgress className={classes.progress} color="secondary" style={{ margin: '20px auto' }} />
                     </Grid>
                     :
                     <Grid container className={classes.gridContainer} justify="center" spacing={24}>
                         <Grid container item spacing={24}>
                             <Grid item xs={12}>
-                                <BreadcrumbTrail match={match}/>
+                                <BreadcrumbTrail match={match} />
                             </Grid>
                             <Grid item xs={12}>
                                 <Typography variant="inherit" className={classes.patientTitle}>
@@ -111,31 +111,31 @@ class PatientActivityContainer extends Component {
                             </Grid>
                         </Grid>
                         <Grid container item justify="center" spacing={24}>
-                            <HealthInfoBar patient={patientInDetails}/>
+                            <HealthInfoBar patient={patientInDetails} />
                             {(() => {
                                 switch (match.path) {
                                     case PATH_PATIENT_DETAILS:
-                                        return(<PatientDetails patient={patientInDetails}/>);
+                                        return (<PatientDetails patient={patientInDetails} />);
                                     case PATH_PATIENT_ADMISSION:
-                                        return(<PatientAdmission patient={patientInDetails}/>);
+                                        return (<PatientAdmission patient={patientInDetails} />);
                                     case PATH_PATIENT_VISIT:
-                                        return(<PatientVisit patient={patientInDetails}/>);
+                                        return (<PatientVisit patient={patientInDetails} />);
                                     case PATH_OPD:
-                                        return(<Opd patient={patientInDetails}/>)
+                                        return (<Opd patient={patientInDetails} />)
                                     case PATH_NEW_OPD:
-                                        return(<NewOpd patient={patientInDetails}/>);
+                                        return (<NewOpd patient={patientInDetails} />);
                                     case PATH_PATIENT_THERAPY:
-                                        return(<PatientTherapy patient={patientInDetails}/>);
+                                        return (<PatientTherapy patient={patientInDetails} />);
                                     case PATH_PATIENT_EXAMINATION:
-                                        return(<PatientExamination patient={patientInDetails}/>);
+                                        return (<PatientExamination patient={patientInDetails} />);
                                     case PATH_PATIENT_VACCINATION:
-                                        return(<PatientVaccination patient={patientInDetails}/>);
+                                        return (<PatientVaccination patient={patientInDetails} />);
                                     case PATH_PATIENT_NEW_VACCINATION:
-                                        return(<NewVaccination patient={patientInDetails}/>);
+                                        return (<NewVaccination patient={patientInDetails} />);
                                     case PATH_NEW_LAB_TEST:
-                                        return(<NewLabTest patient={patientInDetails}/>)
+                                        return (<NewLabTest patient={patientInDetails} />)
                                     default:
-                                        return(<div/>);
+                                        return (<div />);
                                 }
                             })()}
                         </Grid>
@@ -146,7 +146,7 @@ class PatientActivityContainer extends Component {
     }
 }
 
-function mapStateToProps ({ patientInDetails, loading }){
+function mapStateToProps({ patientInDetails, loading }) {
     return {
         patientInDetails,
         loading,

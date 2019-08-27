@@ -17,7 +17,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 // constants
 import { PATH_PATIENT_NEW_VACCINATION } from "../../helpers/constants"
 
-export interface Props extends WithStyles <typeof styles> {}
+export interface Props extends WithStyles<typeof styles> { }
 
 interface State {
     labelWidth: number;
@@ -26,7 +26,7 @@ interface State {
     items: any;
 }
 
-class PatientVaccine extends React.Component <Props, State> {
+class PatientVaccine extends React.Component<Props, State> {
     state: State = {
         labelWidth: 0,
         error: null,
@@ -86,7 +86,7 @@ class PatientVaccine extends React.Component <Props, State> {
                     title={"VACCINE"}
                     data={data}
                     columns={columns}
-                    options={options}/>
+                    options={options} />
             </Grid>
         );
     }

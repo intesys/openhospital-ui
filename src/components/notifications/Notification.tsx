@@ -7,11 +7,11 @@ import Breadcrumbs from "@material-ui/lab/Breadcrumbs";
 import PropTypes from "prop-types";
 import * as React from "react";
 import ReactDOM from "react-dom";
-import { Link as LinkRouter, Link} from "react-router-dom";
+import { Link as LinkRouter, Link } from "react-router-dom";
 import styles from "./Notification.style";
 import { MaterialLinkRouter } from "../utils/LinkHelper";
 
-export interface Props extends WithStyles<typeof styles> {}
+export interface Props extends WithStyles<typeof styles> { }
 
 interface State {
   value?: number;
@@ -37,8 +37,8 @@ class Notification extends React.Component<Props, State> {
         <Grid container item className={classes.gridContainer} justify="center" spacing={24}>
           <Grid item xs={12}>
             <Breadcrumbs aria-label="Breadcrumb" className={classes.breadCrumb}>
-            <MaterialLinkRouter color="secondary" component={LinkRouter} to="/dashboard">
-                  Home
+              <MaterialLinkRouter color="secondary" component={LinkRouter} to="/dashboard">
+                Home
                 </MaterialLinkRouter>
               <Typography color="inherit">Notification</Typography>
             </Breadcrumbs>

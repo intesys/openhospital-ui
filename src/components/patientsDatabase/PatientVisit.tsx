@@ -28,12 +28,12 @@ import Tooltip from '@material-ui/core/Tooltip';
 import { FormControlLabel } from "@material-ui/core";
 
 // constants
-import { 
+import {
     PATH_NEW_LAB_TEST,
     PATH_PATIENT_THERAPY,
 } from "../../helpers/constants"
 
-export interface Props extends WithStyles<typeof styles> {}
+export interface Props extends WithStyles<typeof styles> { }
 
 interface State {
     InputLabelRef: number;
@@ -62,7 +62,7 @@ class PatientVisit extends React.Component<Props, State> {
     render() {
         const { classes, patient } = this.props;
         const { openOptionalInfo } = this.state;
-        {openOptionalInfo ? <ExpandLess /> : <ExpandMore />;}
+        { openOptionalInfo ? <ExpandLess /> : <ExpandMore />; }
 
         return (
             <Grid item xs={12} sm={9} className={classes.colleagueContent}>
@@ -85,12 +85,12 @@ class PatientVisit extends React.Component<Props, State> {
                             COMPLETE THE FORM
                         </Typography>
                     </div>
-                    <Grid style={{marginLeft:400}}>
+                    <Grid style={{ marginLeft: 400 }}>
                         <Typography variant="inherit" className={classes.dateTitle}>
                             DATE
                         </Typography>
-                    </Grid> 
-                    <Grid style={{marginLeft:10}}>   
+                    </Grid>
+                    <Grid style={{ marginLeft: 10 }}>
                         &nbsp;
                         <TextField
                             id="date"
@@ -98,7 +98,7 @@ class PatientVisit extends React.Component<Props, State> {
                             defaultValue="2017-05-24"
                             InputLabelProps={{
                                 shrink: true,
-                            }}/>
+                            }} />
                     </Grid>
                 </Grid>
                 &emsp;
@@ -120,7 +120,7 @@ class PatientVisit extends React.Component<Props, State> {
                             },
                         }}
                         margin="normal"
-                        variant="outlined"/>
+                        variant="outlined" />
                 </Grid>
                 <Button
                     style={{ marginTop: 20 }}
@@ -148,7 +148,7 @@ class PatientVisit extends React.Component<Props, State> {
                             },
                         }}
                         margin="normal"
-                        variant="outlined"/>
+                        variant="outlined" />
                 </Grid>
                 <Grid item style={{ marginTop: 30 }} xs={12} sm={12}>
                     <Grid xs={3} sm={3}>
@@ -178,7 +178,7 @@ class PatientVisit extends React.Component<Props, State> {
                             },
                         }}
                         margin="normal"
-                        variant="outlined"/>
+                        variant="outlined" />
                 </Grid>
                 &emsp;
                 <Grid item style={{ marginTop: 30 }} xs={12} sm={12}>
@@ -201,7 +201,7 @@ class PatientVisit extends React.Component<Props, State> {
                             },
                         }}
                         margin="normal"
-                        variant="outlined"/>
+                        variant="outlined" />
                 </Grid>
                 <Grid item style={{ marginTop: 30 }} xs={12} sm={12}>
                     <Typography color="inherit" className={classes.drugPrescribed}>
@@ -210,7 +210,7 @@ class PatientVisit extends React.Component<Props, State> {
                     &nbsp;
                     <FormControlLabel
                         control={<Checkbox onClick={this.handleClickCollapseOptionalInfo} />}
-                        label="Yes. it's necessary"/>
+                        label="Yes. it's necessary" />
                     <FormControlLabel control={<Checkbox />} label="No, it isn't necessary" />
                     <Collapse in={openOptionalInfo} style={{ width: "100%" }} timeout="auto" unmountOnExit>
                         <Grid item xs={12} sm={8}>
@@ -231,12 +231,12 @@ class PatientVisit extends React.Component<Props, State> {
                                 <Select
                                     className={classes.select}
                                     input={
-                                    <OutlinedInput
-                                        labelWidth={this.state.InputLabelRef}
-                                        id="Service type"
-                                        classes={{
-                                            input: classes.formFieldSelectInput,
-                                        }}/>
+                                        <OutlinedInput
+                                            labelWidth={this.state.InputLabelRef}
+                                            id="Service type"
+                                            classes={{
+                                                input: classes.formFieldSelectInput,
+                                            }} />
                                     }>
                                     <MenuItem value={10}>item1</MenuItem>
                                     <MenuItem value={20}>Laboratory </MenuItem>

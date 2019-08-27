@@ -9,7 +9,7 @@ import React from "react";
 import { ROOT_PATH } from "../../App";
 import OHlogo from "../../assets/images/open-hospital.png";
 import styles from "./login.style";
-export interface Props extends WithStyles<typeof styles> { }
+export interface Props extends WithStyles<typeof styles> {}
 
 class Login extends React.Component {
   constructor(props) {

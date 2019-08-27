@@ -25,7 +25,7 @@ import { PATH_PATIENT_DETAILS } from "../../helpers/constants";
 class PatientsListItem extends Component {
     render() {
         const { classes, patient } = this.props;
-        return(
+        return (
             <Grid item xs={12} sm={4}>
                 <Paper className={classes.paper}>
                     <MaterialCardActionAreaRouter
@@ -82,9 +82,9 @@ class PatientsListItem extends Component {
                             <Grid container item className={classes.patientContainer} justify="center" spacing={24}>
                                 <Grid item xs={12} sm={3} style={{ display: "flex", justifyContent: "flex-end" }}>
                                     <Avatar
-                                    alt="Remy Sharp"
-                                    src={patient.photo}
-                                    className={classNames(classes.avatar, "avatarSmall")}/>
+                                        alt="Remy Sharp"
+                                        src={patient.photo}
+                                        className={classNames(classes.avatar, "avatarSmall")} />
                                     <div style={{ flexDirection: "column" }} />
                                 </Grid>
                                 <Grid item xs={12} sm={9} style={{ textAlign: "left" }}>
@@ -92,7 +92,7 @@ class PatientsListItem extends Component {
                                         Dr. {patient.lastWhoVisited.surname} {patient.lastWhoVisited.name}
                                     </Typography>
                                     <Typography color="inherit">{patient.lastWhoVisited.occupation}</Typography>
-                                    <br/>
+                                    <br />
                                     <Typography color="secondary" className={classes.iconAndText}>
                                         <PhoneIcon style={{ marginRight: "5px" }} />
                                         {patient.lastWhoVisited.phone}

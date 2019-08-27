@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 // local imports
 import styles from "./styles/MaterialPanelItem.style";
@@ -15,37 +15,37 @@ import Button from "@material-ui/core/Button";
 
 export interface Props extends WithStyles<typeof styles> {}
 
-class MaterialPanelItem extends Component<Props>{
-
-	render(){
-		const { classes } = this.props
-		return (
-			<ListItem className={classes.materialsListItem}>
-                <Grid container justify="center" spacing={24}>
-					<Grid item xs={12} className={classes.materialsListItemTitleContainer}>
-						<Typography className={classes.materialsListItemTitle} variant="inherit">
-							Amoxicillina antibiotico
-						</Typography>
-						<Typography className={classes.materialsListItemTitleWarning} variant="inherit">
-							{/* <SvgIcon component={AlertIcon} /> */}
-							The drug is running out
-						</Typography>
-					</Grid>
-					<BigNumberItem/>
-					<BigNumberItem/>
-					<Grid item xs={12} sm={4} classes={{ item: classes.detailButtonContainer }}>
-						<Button
-							variant="outlined"
-							color="inherit"
-							classes={{ root: classes.detailButton, label: classes.detailButtonLabel }}>
-								Go to details
-								<KeyboardArrowRightIcon />
-						</Button>
-					</Grid>
-                </Grid>
-			</ListItem>
-		)
-	}
+class MaterialPanelItem extends Component<Props> {
+  render() {
+    const { classes } = this.props;
+    return (
+      <ListItem className={classes.materialsListItem}>
+        <Grid container justify="center" spacing={24}>
+          <Grid item xs={12} className={classes.materialsListItemTitleContainer}>
+            <Typography className={classes.materialsListItemTitle} variant="inherit">
+              Amoxicillina antibiotico
+            </Typography>
+            <Typography className={classes.materialsListItemTitleWarning} variant="inherit">
+              {/* <SvgIcon component={AlertIcon} /> */}
+              The drug is running out
+            </Typography>
+          </Grid>
+          <BigNumberItem />
+          <BigNumberItem />
+          <Grid item xs={12} sm={4} classes={{ item: classes.detailButtonContainer }}>
+            <Button
+              variant="outlined"
+              color="inherit"
+              classes={{ root: classes.detailButton, label: classes.detailButtonLabel }}
+            >
+              Go to details
+              <KeyboardArrowRightIcon />
+            </Button>
+          </Grid>
+        </Grid>
+      </ListItem>
+    );
+  }
 }
 
 const styledComponent = withStyles(styles, { withTheme: true })(MaterialPanelItem);

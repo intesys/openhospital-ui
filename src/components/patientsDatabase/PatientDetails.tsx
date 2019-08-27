@@ -23,7 +23,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import { Collapse, List } from '@material-ui/core';
 
 // constants
-import { 
+import {
     PATH_PATIENT_VISIT,
     PATH_PATIENT_ADMISSION,
     PATH_PATIENT_THERAPY,
@@ -63,7 +63,7 @@ class PatientDetails extends Component<IProps> {
     render() {
         const { classes, patient } = this.props;
         const { openOptionalInfo } = this.state;
-        {openOptionalInfo ? <ExpandLess /> : <ExpandMore />;}
+        { openOptionalInfo ? <ExpandLess /> : <ExpandMore />; }
         return (
             <Grid item xs={12} sm={9} className={classes.patientContent}>
                 <Grid item xs={12} className={classes.patientProfileHeader}>
@@ -109,15 +109,15 @@ class PatientDetails extends Component<IProps> {
                         orientation={"flex-row"}
                         showHeader={true}
                         onDatePicked={(d: any) => {
-                        { onclick = this.handleClickCollapseOptionalInfo, d }
-                        }}/>
+                            { onclick = this.handleClickCollapseOptionalInfo, d }
+                        }} />
                     <Collapse in={openOptionalInfo} style={{ width: "100%" }} timeout="auto">
                         <Grid item xs={12} justify="center">
                             <List classes={{ root: classes.appointments }}>
-                                <ListHeader/>
-                                <AppoitmentsItem/>
-                                <AppoitmentsItem/>
-                                <AppoitmentsItem/>
+                                <ListHeader />
+                                <AppoitmentsItem />
+                                <AppoitmentsItem />
+                                <AppoitmentsItem />
                             </List>
                         </Grid>
                     </Collapse>
@@ -129,8 +129,8 @@ class PatientDetails extends Component<IProps> {
                         variant="contained"
                         color="secondary"
                         classes={{ root: classes.detailButton, label: classes.detailButtonLabelInverse }}>
-                        <KeyboardArrowRightIcon/>
-                            Pay the bill
+                        <KeyboardArrowRightIcon />
+                        Pay the bill
                     </MaterialButtonRouter>
                     <MaterialButtonRouter
                         component={LinkRouter}
@@ -138,7 +138,7 @@ class PatientDetails extends Component<IProps> {
                         variant="contained"
                         color="secondary"
                         classes={{ root: classes.detailButton, label: classes.detailButtonLabelInverse }}>
-                        <KeyboardArrowRightIcon/>
+                        <KeyboardArrowRightIcon />
                         Examination
                     </MaterialButtonRouter>
                     <MaterialButtonRouter
@@ -147,7 +147,7 @@ class PatientDetails extends Component<IProps> {
                         variant="contained"
                         color="secondary"
                         classes={{ root: classes.detailButton, label: classes.detailButtonLabelInverse }}>
-                        <KeyboardArrowRightIcon/>
+                        <KeyboardArrowRightIcon />
                         Vaccination
                     </MaterialButtonRouter>
                 </Grid>
@@ -159,11 +159,11 @@ class PatientDetails extends Component<IProps> {
                 </Typography>
                 &emsp;
                 <Grid container className={classes.patientSummaryCard} style={{ width: "120%" }}>
-                    <SummaryItem/>
-                    <SummaryItem/>
-                    <SummaryItem/>
-                    <SummaryItem/>
-                    <SummaryItem/>
+                    <SummaryItem />
+                    <SummaryItem />
+                    <SummaryItem />
+                    <SummaryItem />
+                    <SummaryItem />
                 </Grid>
             </Grid>
         );

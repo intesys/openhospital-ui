@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
 import styles from "./News.style";
 import { MaterialLinkRouter } from "../utils/LinkHelper";
 
-export interface Props extends WithStyles<typeof styles> { }
+export interface Props extends WithStyles<typeof styles> {}
 
 interface State {
   labelWidth: number;
