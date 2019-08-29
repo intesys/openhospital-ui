@@ -79,5 +79,21 @@
   "devDependencies": {
     "parcel-plugin-bundle-visualiser": "^1.2.0"
   },
-  "browserslist": "defaults"
+  "browserslist": "defaults",
+  "description": "This boilerplate is generated using [Create React App](https://github.com/facebookincubator/create-react-app) with the [Typescript preset](https://github.com/wmonk/create-react-app-typescript) and contains the libraries and guidelines defined by Intesys.",
+  "main": "dummyAPI.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/intesys/openhospital-ui.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/intesys/openhospital-ui/issues"
+  },
+  "homepage": "https://github.com/intesys/openhospital-ui#readme"
 }

@@ -6,7 +6,7 @@ import _ from "lodash";
 import { MaterialButtonRouter } from "../utils/LinkHelper";
 import styles from "./styles/PatientDetails.style";
 import ListHeader from "../sharedComponents/ListHeader";
-import AppoitmentsItem from "../sharedComponents/AppointmentsItem";
+import AppointmentsItem from "../sharedComponents/AppointmentsItem";
 import SummaryItem from "../sharedComponents/SummaryItem";
 import Calendar from "../../shared/lib/calendar/index";
 import { Patient } from 'generate';
@@ -108,19 +108,17 @@ class PatientDetails extends Component<IProps> {
                         accentColor={"red"}
                         orientation={"flex-row"}
                         showHeader={true}
-                        onDatePicked={(d: any) => {
+                        onDatePicked={(d) => {
                             { onclick = this.handleClickCollapseOptionalInfo, d }
                         }} />
                     <Collapse in={openOptionalInfo} style={{ width: "100%" }} timeout="auto">
-                        <Grid item xs={12} justify="center">
                             <List classes={{ root: classes.appointments }}>
                                 <ListHeader />
-                                <AppoitmentsItem />
-                                <AppoitmentsItem />
-                                <AppoitmentsItem />
+                                <AppointmentsItem />
+                                <AppointmentsItem />
+                                <AppointmentsItem />
                             </List>
-                        </Grid>
-                    </Collapse>
+                     </Collapse>  
                 </Grid>
                 <Grid item xs={12} spacing={24} style={{ marginTop: 50, marginBottom: 20 }} className={classes.detailButtonContainer}>
                     <MaterialButtonRouter

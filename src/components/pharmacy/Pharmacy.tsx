@@ -78,7 +78,7 @@ class Pharmacy extends React.Component<IProps, IState> {
 
     return (
       <div className={classes.root}>
-        // tslint:disable-next-line: jsx-boolean-value
+       
         <Grid container item className={classes.gridContainer} justify="center" spacing={24}>
           <Grid item xs={12}>
             <Breadcrumbs aria-label="Breadcrumb" className={classes.breadCrumb}>

@@ -13,16 +13,34 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
+import TabContainer from "@material-ui/core/Tab";
 import Button from "@material-ui/core/Button";
 import { withStyles, WithStyles } from "@material-ui/core/styles";
 
 export interface Props extends WithStyles<typeof styles> {}
 
-class MaterialPanel extends Component<Props> {
+interface IState {
+  value?: number;
+  labelWidth: number;
+  error: any;
+  isLoaded: boolean;
+}
+
+class MaterialPanel extends Component<Props, IState> {
+  state: State = {
+    labelWidth: 0,
+    value: 0,
+    error: null,
+    isLoaded: false,
+  };
+
+  handleChange = (event: React.MouseEvent<HTMLElement>, value: number) => {
+    this.setState({ value });
+  };
+
   render() {
     const { classes } = this.props;
-    //temp
-    const value = 0;
+    const { value } = this.state;
     return (
       <Grid item xs={12} sm={6}>
         <Typography className={classes.cardTitle} variant="inherit" align="left">
@@ -54,7 +72,16 @@ class MaterialPanel extends Component<Props> {
               </List>
             </div>
           )}
-          {value === 1 && <TabContainer>Item Two</TabContainer>}
+          {value === 1 && (
+            <div>
+              <List classes={{ root: classes.materialsList }}>
+                <MaterialPanelItem />
+                <ListItem button classes={{ button: classes.allMaterialsButton }}>
+                  SEE ALL MATERIALS
+                </ListItem>
+              </List>
+            </div>
+          )}
         </Paper>
       </Grid>
     );

@@ -35,7 +35,7 @@ class AppointmentsItem extends Component<Props>{
 					<Checkbox
 					className={classes.appointmentsListItemCheckbox}
 					// onChange={this.handleToggle(value)}
-					// checked={this.state.checked.indexOf(value) !== -1}
+					//checked={this.state.checked.indexOf(value) !== -1}
 					/>
 				</ListItemSecondaryAction>
 			</ListItem>
