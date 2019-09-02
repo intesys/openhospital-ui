@@ -38,15 +38,17 @@ interface State {
     labelWidth: number;
     error: any;
     isLoaded: boolean;
-    item: Patient;
     openOptionalInfo: boolean;
 }
 
 interface IRouteParams {
     id: string;
+    
 }
 
-interface IProps extends RouteComponentProps<IRouteParams> { }
+interface IProps extends RouteComponentProps<IRouteParams> {
+    info: Patient;
+ }
 
 class PatientDetails extends Component<IProps> {
     state: State = {
@@ -61,24 +63,25 @@ class PatientDetails extends Component<IProps> {
     };
 
     render() {
-        const { classes, patient } = this.props;
+        const { classes } = this.props;
         const { openOptionalInfo } = this.state;
+        let patientInfo = this.props.info;
         { openOptionalInfo ? <ExpandLess /> : <ExpandMore />; }
         return (
             <Grid item xs={12} sm={9} className={classes.patientContent}>
                 <Grid item xs={12} className={classes.patientProfileHeader}>
                     <div style={{ flexDirection: "column", textAlign: "left" }}>
                         <Typography color="inherit" className={classes.patientName}>
-                            {patient.firstName} {patient.secondName}
+                            {patientInfo.firstName} {patientInfo.secondName} 
                         </Typography>
                         <Typography color="inherit" className={classes.patientAddress}>
-                            Address: <b>{patient.address}</b>
+                            Address: <b>{patientInfo.address}</b>
                         </Typography>
                     </div>
-                    <MaterialButtonRouter component={LinkRouter} to={PATH_PATIENT_ADMISSION.replace(':patientId', patient.id)} variant="outlined" color="inherit" classes={{ root: classes.admissionButton }}>
+                    <MaterialButtonRouter component={LinkRouter} to={PATH_PATIENT_ADMISSION.replace(':patientId', patient.code)} variant="outlined" color="inherit" classes={{ root: classes.admissionButton }}>
                         New Admission
                     </MaterialButtonRouter>
-                    <MaterialButtonRouter component={LinkRouter} to={PATH_PATIENT_VISIT.replace(':patientId', patient.id)} variant="outlined" color="inherit" classes={{ root: classes.visitButton }}>
+                    <MaterialButtonRouter component={LinkRouter} to={PATH_PATIENT_VISIT.replace(':patientId', patient.code)} variant="outlined" color="inherit" classes={{ root: classes.visitButton }}>
                         New visit
                     </MaterialButtonRouter>
                 </Grid>
@@ -92,12 +95,12 @@ class PatientDetails extends Component<IProps> {
                         </Typography>
                     </div>
                     <Tooltip title="View Opd patient History" interactive>
-                        <MaterialButtonRouter component={LinkRouter} to={PATH_OPD.replace(':patientId', patient.id)} variant="outlined" color="inherit" classes={{ root: classes.opdButton }}>
+                        <MaterialButtonRouter component={LinkRouter} to={PATH_OPD.replace(':patientId', patientInfo.code)} variant="outlined" color="inherit" classes={{ root: classes.opdButton }}>
                             OPD
                         </MaterialButtonRouter>
                     </Tooltip>
                     <Tooltip title="Add new patient's therapy" interactive>
-                        <MaterialButtonRouter component={LinkRouter} to={PATH_PATIENT_THERAPY.replace(':patientId', patient.id)} variant="outlined" color="inherit" classes={{ root: classes.therapyButton }}>
+                        <MaterialButtonRouter component={LinkRouter} to={PATH_PATIENT_THERAPY.replace(':patientId', patientInfo.code)} variant="outlined" color="inherit" classes={{ root: classes.therapyButton }}>
                             Therapy
                         </MaterialButtonRouter>
                     </Tooltip>
@@ -132,7 +135,7 @@ class PatientDetails extends Component<IProps> {
                     </MaterialButtonRouter>
                     <MaterialButtonRouter
                         component={LinkRouter}
-                        to={PATH_PATIENT_EXAMINATION.replace(':patientId', patient.id)}
+                        to={PATH_PATIENT_EXAMINATION.replace(':patientId', patientInfo.code)}
                         variant="contained"
                         color="secondary"
                         classes={{ root: classes.detailButton, label: classes.detailButtonLabelInverse }}>

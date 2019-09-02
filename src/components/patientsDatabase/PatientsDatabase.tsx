@@ -1,26 +1,11 @@
-import React, { Component } from "react";
-import { Link as LinkRouter } from 'react-router-dom';
-import { connect } from 'react-redux'
-
-// local imports
-import { MaterialButtonRouter, MaterialLinkRouter } from '../utils/LinkHelper';
-import PatientsListItem from "./PatientsListItem";
-import styles from './styles/PatientsDatabase.style';
-import { PatientControllerApi, GetPatientsUsingGETRequest } from '../../generate/apis';
-import { Patient } from 'generate';
-import classNames from 'classnames';
-import DeletePatientDialog from "./DeletePatientDialog";
-import PatientBasicInfoForm from "../sharedComponents/PatientBasicInfoForm"
-import BreadcrumbTrail from "../sharedComponents/BreadcrumbTrail"
-import { objectToArray } from '../../helpers/objectToArray'
-
-// redux imports
-import { getPatientsThunk } from "../../actions/patients";
-
-// material imports
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Divider from '@material-ui/core/Divider';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import FormControl from '@material-ui/core/FormControl';
 import Grid from '@material-ui/core/Grid';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -34,159 +19,289 @@ import MergeIcon from '@material-ui/icons//LibraryBooks';
 import AddIcon from '@material-ui/icons/Add';
 import CancelIcon from '@material-ui/icons/Cancel';
 import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
-
-// constants
-import { PATH_NEW_PATIENT } from "../../helpers/constants";
-
+import classNames from 'classnames';
+import * as React from "react";
+import { Link as LinkRouter } from 'react-router-dom';
+import { MaterialButtonRouter, MaterialLinkRouter } from '../utils/LinkHelper';
+import Patients from "./PatientsListItem";
+import styles from '../patientsDatabase/styles/PatientsDatabase.style';
+import { PatientControllerApi, GetPatientsUsingGETRequest } from '../../generate/apis';
+import { Patient } from 'generate';
 export interface Props extends WithStyles<typeof styles> { }
 
-class PatientsDatabase extends Component<Props> {
-    state = {
-        isDeleteDialogOpen: false,
+interface State {
+  error: any;
+  isLoaded: boolean;
+  items: any[];
+  selectedDate: any;
+  patients: Array<Patient>;
+  visible: Number;
+  searchedValue: String;
+
+}
+
+class PatientsDatabase extends React.Component<Props, State> {
+
+
+  state: State = {
+    error: null,
+    isLoaded: false,
+    items: [],
+    selectedDate: new Date(),
+
+  };
+
+
+  componentDidMount() {
+
+    const patientController: PatientControllerApi = new PatientControllerApi();
+    const requestParams: GetPatientsUsingGETRequest = {
+      page: 1,
+      size: 8,
     }
 
-    componentDidMount() {
-        this.props.getPatients();
-    }
+    patientController.getPatientsUsingGET(requestParams)
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            items: result,
 
-    keywordInput = (classes, classNames) => {
-        // this function defines an extra input for PatientBasicInfoForm, which has three default inputs,
-        // that are responsible for gathering Patient ID, Outpatient number and Inpatient number.
-        return (
-            <Grid item xs={12} sm={3}>
-                <TextField
-                    id="keyword"
-                    label="Keyword"
-                    className={classNames(classes.formField, classes.cssOutlinedInput)}
-                    placeholder="First name, last name, tax number..."
-                    InputLabelProps={{
-                        classes: {
-                            root: classes.formFieldInputLabel,
-                            focused: classes.cssFocused,
-                        },
-                    }}
-                    InputProps={{
-                        classes: {
-                            root: classes.formFieldInput,
-                            notchedOutline: classes.cssOutlinedInput,
-                        },
-                    }}
-                    margin="normal"
-                    variant="outlined" />
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+
+    this.setState({
+      // labelWidth: ReactDOM.findDOMNode(this.InputLabelRef).offsetWidth,
+    });
+  }
+
+
+
+  public render() {
+    const { classes, theme } = this.props;
+    const { items, isLoaded, error } = this.state;
+
+
+    const patients = (
+      items && items.length !== 0 ?
+        (items.map((item) => (
+          <Patients
+            info={item}
+          />
+        ))) :
+        <CircularProgress className={classes.progress} color="secondary" style={{ margin: '20px auto' }} />
+    )
+
+    return (
+      <div className={classes.root}>
+        <Grid container className={classes.gridContainer} justify='center' spacing={24}>
+          <Grid container item justify='center' spacing={24}>
+            <Grid item xs={12}>
+              <Breadcrumbs aria-label="Breadcrumb" className={classes.breadCrumb}>
+                <MaterialLinkRouter color="secondary" component={LinkRouter} to="/dashboard">
+                  Home
+              </MaterialLinkRouter>
+                <Typography color="inherit">Patients</Typography>
+              </Breadcrumbs>
             </Grid>
-        )
-    }
 
-    public render() {
-        const { classes, theme, patients, loading } = this.props;
-        const { items, isDeleteDialogOpen } = this.state;
-        return (
-            <div className={classes.root}>
-                <Grid container className={classes.gridContainer} justify='center' spacing={24}>
-                    <Grid container item justify='center' spacing={24}>
-                        <Grid item xs={12}>
-                            <BreadcrumbTrail match={this.props.match} />
-                        </Grid>
-                        <Grid item xs={12} className={classes.patientActions}>
-                            <Typography variant="inherit" className={classes.patientsTitle}>
-                                PATIENTS
+            <Grid item xs={12} className={classes.patientActions}>
+              <Typography variant="inherit" className={classes.patientsTitle}>
+                PATIENTS
                             </Typography>
-                            <Grid>
-                                <Button color="inherit"
-                                    onClick={() => this.setState({ isDeleteDialogOpen: true })}
-                                    classes={{ root: classes.button, label: classes.buttonLabel }}>
-                                    <CancelIcon className={classes.buttonIcon} />
-                                    Delete a patient
-                                </Button>
-                                <DeletePatientDialog
-                                    isOpen={isDeleteDialogOpen}
-                                    handleClickClose={() => this.setState({ isDeleteDialogOpen: false })} />
-                            </Grid>
-                            <MaterialButtonRouter component={LinkRouter} to={PATH_NEW_PATIENT} color="inherit" classes={{ root: (classNames(classes.button, 'addButton')), label: classes.buttonLabel }}>
-                                <AddIcon className={classes.buttonIcon} />
-                                Record new patient
-                            </MaterialButtonRouter>
-                            <Button color="inherit" classes={{ root: (classNames(classes.button, 'mergeButton')), label: classes.buttonLabel }}>
-                                <MergeIcon className={classes.buttonIcon} />
-                                Merge double patients' registration
+              <Button color="inherit" classes={{ root: classes.button, label: classes.buttonLabel }}>
+                <CancelIcon className={classes.buttonIcon} />
+                Delete a patient
                             </Button>
-                        </Grid>
-                    </Grid>
-                    <Grid container item justify='center' spacing={24}>
-                        <Paper className={classes.paperFlat}>
-                            <Grid container item spacing={24} className={classes.inputContainer}>
-                                <Grid item xs={12} style={{ display: 'flex' }}>
-                                    <Typography variant="inherit" className={classes.findPatients}>
-                                        FIND A PATIENT
-                                    </Typography>
-                                    <Typography variant="inherit" className={classes.insertInfoPatients}>
-                                        Insert the information of the patient
-                                    </Typography>
-                                </Grid>
-                            </Grid>
-                            <PatientBasicInfoForm extraInput={this.keywordInput} />
-                        </Paper>
-                    </Grid>
-                    <Grid container item spacing={24} className={classes.filterContainer}>
-                        <Grid item xs={12} style={{ display: 'flex' }}>
-                            <Typography variant="inherit" className={classes.findPatients}>
-                                Which patient are you searching for?
-                            </Typography>
-                            <Typography variant="inherit" className={classes.insertInfoPatients}>
-                                Use the filter for a faster search
-                            </Typography>
-                        </Grid>
-                        <Divider className={classes.divider} />
-                        <Grid item xs={12} sm={3}>
-                            <FormControl variant="outlined" className={classNames(classes.formField, classes.formFieldSelect)}>
-                                <Select
-                                    className={classes.select}
-                                    input={<OutlinedInput
-                                        placeholder="soma"
-                                        labelWidth={300} //{this.state.InputLabelRef}
-                                        name="filter"
-                                        id="filter"
-                                        enableSearch
-                                        classes={{
-                                            input: classes.formFieldSelectInput
-                                        }} />}>
-                                    <MenuItem value={10}>Chronic Patient</MenuItem>
-                                    <MenuItem value={20}>Properly admission</MenuItem>
-                                    <MenuItem value={30}>Visited this month</MenuItem>
-                                    <MenuItem value={30}>Visited last month</MenuItem>
-                                </Select>
-                            </FormControl>
-                        </Grid>
-                    </Grid>
-                    <Grid container item style={{ padding: '47px 0' }} spacing={24}>
-                        {loading === true ?
-                            <CircularProgress className={classes.progress} color="secondary" style={{ margin: '20px auto' }} />
-                            :
-                            (patients.map((patient) => (<PatientsListItem key={patient.id} patient={patient} />)))}
-                    </Grid>
-                    <Grid item xs={12} sm={2} className={classes.loadMoreContainer}>
-                        <Button type="button" variant="outlined" color="inherit" classes={{ root: classes.button, label: classes.buttonLabel }}>
-                            Load more
-                        </Button>
-                    </Grid>
+                            
+              <MaterialButtonRouter component={LinkRouter} to="/patientsDatabase/newPatient" color="inherit" classes={{ root: (classNames(classes.button, 'addButton')), label: classes.buttonLabel }}>
+                <AddIcon className={classes.buttonIcon} />
+                Record new patient
+                            </MaterialButtonRouter>
+              <Button color="inherit" classes={{ root: (classNames(classes.button, 'mergeButton')), label: classes.buttonLabel }}>
+                <MergeIcon className={classes.buttonIcon} />
+                Merge double patients' registration
+                            </Button>
+            </Grid>
+          </Grid>
+          <Grid container item justify='center' spacing={24}>
+            <Paper className={classes.paperFlat}>
+              <Grid container item spacing={24} className={classes.inputContainer}>
+                <Grid item xs={12} style={{ display: 'flex' }}>
+                  <Typography variant="inherit" className={classes.findPatients}>
+                    FIND A PATIENT
+                </Typography>
+                  <Typography variant="inherit" className={classes.insertInfoPatients}>
+                    Insert the information of the patient
+                </Typography>
                 </Grid>
-            </div>
-        );
-    }
+              </Grid>
+              <form>
+                <Grid container item spacing={24}>
+                  <Grid item xs={12} sm={3}>
+                    <TextField
+                      id="patientID"
+                      label="Patient ID (PID)"
+                      type="text"
+                      className={classNames(classes.formField, classes.cssOutlinedInput)}
+                      InputLabelProps={{
+                        classes: {
+                          root: classes.formFieldInputLabel,
+                          focused: classes.cssFocused,
+                        },
+                      }}
+                      InputProps={{
+                        classes: {
+                          root: classes.formFieldInput,
+                          notchedOutline: classes.cssOutlinedInput,
+                        },
+                      }}
+                      // value="{this.state.name}"
+                      // onChange={this.handleChange('name')}
+                      margin="normal"
+                      variant="outlined"
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={3}>
+                    <TextField
+                      id="outpatientNumber"
+                      label="Outpatient Number (OPD)"
+                      className={classNames(classes.formField, classes.cssOutlinedInput)}
+                      InputLabelProps={{
+                        classes: {
+                          root: classes.formFieldInputLabel,
+                          focused: classes.cssFocused,
+                        },
+                      }}
+                      InputProps={{
+                        classes: {
+                          root: classes.formFieldInput,
+                          notchedOutline: classes.cssOutlinedInput,
+                        },
+                      }}
+                      // value="{this.state.name}"
+                      // onChange={this.handleChange('name')}
+                      margin="normal"
+                      variant="outlined"
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={3}>
+                    <TextField
+                      id="inpatientNumber"
+                      label="Inpatient Number (IPD)"
+                      className={classNames(classes.formField, classes.cssOutlinedInput)}
+                      InputLabelProps={{
+                        classes: {
+                          root: classes.formFieldInputLabel,
+                          focused: classes.cssFocused,
+                        },
+                      }}
+                      InputProps={{
+                        classes: {
+                          root: classes.formFieldInput,
+                          notchedOutline: classes.cssOutlinedInput,
+                        },
+                      }}
+                      // value="{this.state.name}"
+                      // onChange={this.handleChange('name')}
+                      margin="normal"
+                      variant="outlined"
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={3}>
+                    <TextField
+                      id="keyword"
+                      label="Keyword"
+                      className={classNames(classes.formField, classes.cssOutlinedInput)}
+                      placeholder="First name, last name, tax number..."
+                      InputLabelProps={{
+                        classes: {
+                          root: classes.formFieldInputLabel,
+                          focused: classes.cssFocused,
+                        },
+                      }}
+                      InputProps={{
+                        classes: {
+                          root: classes.formFieldInput,
+                          notchedOutline: classes.cssOutlinedInput,
+                        },
+                      }}
+                      // value="{this.state.name}"
+                      // onChange={this.handleChange('name')}
+                      margin="normal"
+                      variant="outlined"
+                    />
+                  </Grid>
+                </Grid>
+                <Grid container justify="flex-end" item spacing={24}>
+                  <Grid item xs={12} sm={9} />
+                </Grid>
+              </form>
+            </Paper>
+          </Grid>
+          <Grid container item spacing={24} className={classes.filterContainer}>
+            <Grid item xs={12} style={{ display: 'flex' }}>
+              <Typography variant="inherit" className={classes.findPatients}>
+                Which patient are you searching for?
+                </Typography>
+              <Typography variant="inherit" className={classes.insertInfoPatients}>
+                Use the filter for a faster search
+                </Typography>
+            </Grid>
+            <Divider className={classes.divider} />
+            <Grid item xs={12} sm={3}>
+              <FormControl variant="outlined"
+                className={classNames(classes.formField, classes.formFieldSelect)}>
+                <Select
+                  className={classes.select}
+                  // value={this.state.age}
+                  // onChange={this.handleChange}
+                  input={
+                    <OutlinedInput
+                      placeholder="soma"
+                      labelWidth={300} //{this.state.InputLabelRef}
+                      name="filter"
+                      id="filter"
+                      enableSearch
+                      // inputProps={{                          
+                      classes={{
+                        // root: classes.formFieldSelectInput,
+                        input: classes.formFieldSelectInput
+                      }}
+                    // }}
+                    />
+                  }
+                >
+                  <MenuItem value={10}>Chronic Patient</MenuItem>
+                  <MenuItem value={20}>Properly admission</MenuItem>
+                  <MenuItem value={30}>Visited this month</MenuItem>
+                  <MenuItem value={30}>Visited last month</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+
+          </Grid>
+          <Grid container item style={{ padding: '47px 0' }} spacing={24}>
+            {patients}
+          </Grid>
+          <Grid item xs={12} sm={2} className={classes.loadMoreContainer}>
+            <Button type="button" variant="outlined" color="inherit" classes={{ root: classes.button, label: classes.buttonLabel }}>
+              Load more
+            </Button>
+          </Grid>
+        </Grid>
+      </div >
+    );
+  }
 }
 
-function mapStateToProps({ patients, loading }) {
-    return {
-        patients: objectToArray(patients),
-        loading,
-    }
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        getPatients: () => dispatch(getPatientsThunk()),
-    }
-}
 
 const styledComponent = withStyles(styles, { withTheme: true })(PatientsDatabase);
-export default connect(mapStateToProps, mapDispatchToProps)(styledComponent);
+export default styledComponent;

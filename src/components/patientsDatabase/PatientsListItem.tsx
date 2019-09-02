@@ -32,13 +32,14 @@ class PatientsListItem extends Component <IProps> {
         const { classes } = this.props;
         let patientInfo  = this.props.info;
         patientInfo.isChronic = _.sample([true, false]);
-        patientInfo.lastDocWhoVisitedHim = {
-          name: "Marcus",
-          surname: "Marcus",
-          occupation: _.sample(["Anesthesiologist", "Cardiologist", "Dermatologist", "Gastroenterologist", "Pneumologist"]),
-           phone: "555 911 118",
-          email: "doc@hospital.org",
-         };
+    patientInfo.lastDocWhoVisitedHim = {
+      name: "Marcus",
+      surname: "Marcus",
+      occupation: _.sample(["Anesthesiologist", "Cardiologist", "Dermatologist", "Gastroenterologist", "Pneumologist"]),
+      phone: "555 911 118",
+      email: "doc@hospital.org",
+    };
+
 
         return (
             <Grid item xs={12} sm={4}>
@@ -46,7 +47,7 @@ class PatientsListItem extends Component <IProps> {
                     <MaterialCardActionAreaRouter
                         className={classes.cardAction}
                         component={LinkRouter}
-                        to={{ pathname: PATH_PATIENT_DETAILS.replace(this.props.info.code) }}>
+                        to={{ pathname: PATH_PATIENT_DETAILS}}>
                         <Grid container className={classes.patientContainer} justify="center" spacing={24}>
                             <Grid item xs={12}>
                                 <Typography color="inherit" className={classes.patientName}>

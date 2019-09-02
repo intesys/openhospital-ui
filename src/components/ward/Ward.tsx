@@ -74,13 +74,15 @@ class Ward extends React.Component {
     //         isLoaded: true,
     //         error
     //       });
-    //     }
+    //     }interface IProps {
+   // info: Patient;
+  }
     //   )
 
     // this.setState({
     //   // labelWidth: ReactDOM.findDOMNode(this.InputLabelRef).offsetWidth,
     // });
-  }
+  
 
   handleChange = (event: React.MouseEvent<HTMLElement>, value: number) => {
     this.setState({ value });
