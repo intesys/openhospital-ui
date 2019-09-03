@@ -23,7 +23,7 @@ import classNames from 'classnames';
 import * as React from "react";
 import { Link as LinkRouter } from 'react-router-dom';
 import { MaterialButtonRouter, MaterialLinkRouter } from '../utils/LinkHelper';
-import Patients from "./PatientsListItem";
+import PatientsListItem from "./PatientsListItem";
 import styles from '../patientsDatabase/styles/PatientsDatabase.style';
 import { PatientControllerApi, GetPatientsUsingGETRequest } from '../../generate/apis';
 import { Patient } from 'generate';
@@ -89,14 +89,14 @@ class PatientsDatabase extends React.Component<Props, State> {
     const { items, isLoaded, error } = this.state;
 
 
-    const patients = (
+    const Patient = (
       items && items.length !== 0 ?
         (items.map((item) => (
-          <Patients
+          <PatientsListItem
             info={item}
           />
         ))) :
-        <CircularProgress className={classes.progress} color="secondary" style={{ margin: '20px auto' }} />
+        <CircularProgress  color="secondary" style={{ margin: '20px auto' }} />
     )
 
     return (
@@ -289,7 +289,7 @@ class PatientsDatabase extends React.Component<Props, State> {
 
           </Grid>
           <Grid container item style={{ padding: '47px 0' }} spacing={24}>
-            {patients}
+            {Patient}
           </Grid>
           <Grid item xs={12} sm={2} className={classes.loadMoreContainer}>
             <Button type="button" variant="outlined" color="inherit" classes={{ root: classes.button, label: classes.buttonLabel }}>

@@ -75,7 +75,7 @@ class ColleaguesDatabase extends React.Component<IProps, IState> {
           />
         ))
       ) : (
-        <CircularProgress className={classes.progress} color="secondary" style={{ margin: "20px auto" }} />
+        <CircularProgress  color="secondary" style={{ margin: "20px auto" }} />
       );
 
     return (

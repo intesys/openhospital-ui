@@ -30,16 +30,16 @@ interface IProps {
 class PatientsListItem extends Component <IProps> {
     render() {
         const { classes } = this.props;
-        let patientInfo  = this.props.info;
-        patientInfo.isChronic = _.sample([true, false]);
-    patientInfo.lastDocWhoVisitedHim = {
-      name: "Marcus",
-      surname: "Marcus",
-      occupation: _.sample(["Anesthesiologist", "Cardiologist", "Dermatologist", "Gastroenterologist", "Pneumologist"]),
-      phone: "555 911 118",
-      email: "doc@hospital.org",
-    };
-
+        const patient = this.props.info;
+        let  chronic = _.sample([true, false]);
+        const lastDocWhoVisitedHim = {
+           name: "Marcus",
+           surname: "Marcus",
+           occupation: _.sample(["Anesthesiologist", "Cardiologist", "Dermatologist", "Gastroenterologist", "Pneumologist"]),
+           phone: "555 911 118",
+           email: "doc@hospital.org",
+        }
+    
 
         return (
             <Grid item xs={12} sm={4}>
@@ -51,17 +51,17 @@ class PatientsListItem extends Component <IProps> {
                         <Grid container className={classes.patientContainer} justify="center" spacing={24}>
                             <Grid item xs={12}>
                                 <Typography color="inherit" className={classes.patientName}>
-                                    {patientInfo.firstName} {patientInfo.secondName}
+                                    {patient.firstName} {patient.secondName}
                                 </Typography>
                                 <Typography color="inherit">
-                                    PatientID: <b>{patientInfo.code}</b>
+                                    PatientID: <b>{patient.code}</b>
                                 </Typography>
                                 <Typography color="inherit">
-                                    Age: <b>{patientInfo.age}</b> &nbsp; Sex:<b>{patientInfo.sex}</b>
+                                    Age: <b>{patient.age}</b> &nbsp; Sex:<b>{patient.sex}</b>
                                 </Typography>
                             </Grid>
                             <Grid item xs={12}>
-                                <Avatar alt="Remy Sharp" src={patientInfo.photo} className={classes.avatar} />
+                                <Avatar alt="Remy Sharp" src={patient.photo} className={classes.avatar} />
                             </Grid>
                             <Grid item xs={12} className={classes.infoContainer}>
                                 <Typography color="inherit">
@@ -75,7 +75,7 @@ class PatientsListItem extends Component <IProps> {
                                 </Typography>
                             </Grid>
                             <Grid item xs={12} className={classes.infoContainer}>
-                                {patientInfo.isChronic && (
+                                {chronic && (
                                     <Typography color="secondary" className={classes.iconAndText}>
                                         <HospitalIcon style={{ marginRight: "5px" }} />
                                         Chronic patient
@@ -98,23 +98,23 @@ class PatientsListItem extends Component <IProps> {
                                 <Grid item xs={12} sm={3} style={{ display: "flex", justifyContent: "flex-end" }}>
                                     <Avatar
                                         alt="Remy Sharp"
-                                        src={patientInfo.photo}
+                                        src={patient.photo}
                                         className={classNames(classes.avatar, "avatarSmall")} />
                                     <div style={{ flexDirection: "column" }} />
                                 </Grid>
                                 <Grid item xs={12} sm={9} style={{ textAlign: "left" }}>
                                     <Typography color="secondary" style={{ fontWeight: "bold" }}>
-                                        Dr. {patientInfo.lastDocWhoVisitedHim.surname} {patientInfo.lastDocWhoVisitedHim.name}
+                                        Dr. {lastDocWhoVisitedHim.surname} {lastDocWhoVisitedHim.name}
                                     </Typography>
-                                    <Typography color="inherit">{patientInfo.lastDocWhoVisitedHim.occupation}</Typography>
+                                    <Typography color="inherit">{lastDocWhoVisitedHim.occupation}</Typography>
                                     <br />
                                     <Typography color="secondary" className={classes.iconAndText}>
                                         <PhoneIcon style={{ marginRight: "5px" }} />
-                                        {patientInfo.lastDocWhoVisitedHim.phone}
+                                        {lastDocWhoVisitedHim.phone}
                                     </Typography>
                                     <Typography color="secondary" className={classes.iconAndText}>
                                         <MailIcon style={{ marginRight: "5px" }} />
-                                        {patientInfo.lastDocWhoVisitedHim.email}
+                                        {lastDocWhoVisitedHim.email}
                                     </Typography>
                                 </Grid>
                             </Grid>
