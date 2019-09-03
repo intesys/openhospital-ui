@@ -14,7 +14,7 @@ import PatientExamination from "./components/patientsDatabase/PatientExamination
 import PatientVaccine from "./components/patientsDatabase/PatientVaccine/PatientVaccine";
 import Vaccine from "./components/patientsDatabase/Vaccine/Vaccine";
 import Opd from "./components/patientsDatabase/Opd";
-import NewPatient from "./components/patientsDatabase/NewPatient";
+import NewPatient from './components/patientsDatabase/newPatient/NewPatient';
 import ColleaguesDatabase from "./components/colleaguesDatabase/ColleaguesDatabase";
 import ColleagueDetails from "./components/colleaguesDatabase/ColleagueDetails/ColleagueDetails";
 import Pharmacy from "./components/pharmacy/Pharmacy";

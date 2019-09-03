@@ -121,7 +121,7 @@ class PatientsDatabase extends React.Component<Props, State> {
                 Delete a patient
                             </Button>
                             
-              <MaterialButtonRouter component={LinkRouter} to="/patientsDatabase/newPatient" color="inherit" classes={{ root: (classNames(classes.button, 'addButton')), label: classes.buttonLabel }}>
+              <MaterialButtonRouter component={LinkRouter} to="/patientsDatabase/NewPatient" color="inherit" classes={{ root: (classNames(classes.button, 'addButton')), label: classes.buttonLabel }}>
                 <AddIcon className={classes.buttonIcon} />
                 Record new patient
                             </MaterialButtonRouter>

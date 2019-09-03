@@ -155,7 +155,7 @@ function mapStateToProps({ patientInDetails, loading }) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        putPatientInStore: (patient) => dispatch(getPatient(patient)),
+        putPatientInStore: (Patient) => dispatch(getPatient(Patient)),
         getPatientInServer: (id) => dispatch(getPatientThunk(id)),
         clearPatientInDetails: () => dispatch(clearPatientInDetails()),
     }
