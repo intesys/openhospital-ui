@@ -61,8 +61,11 @@ class Colleague extends React.Component<Props, State> {
               </Grid>
             </Grid>
           </MaterialCardActionAreaRouter>
+          <MaterialCardActionAreaRouter
+           className={classes.cardAction}
+           component={LinkRouter}
+           to="/patients-database/:patientId">> 
           <Grid container item className={classes.colleagueContainer} justify="center" spacing={24}>
-            <Grid item xs={12} />
             <Grid item xs={12}>
               <Typography color="inherit">LAST PATIENTS VISITED</Typography>
             </Grid>
@@ -113,6 +116,7 @@ class Colleague extends React.Component<Props, State> {
               </Grid>
             </Grid>
           </Grid>
+          </MaterialCardActionAreaRouter>
         </Paper>
       </Grid>
     );

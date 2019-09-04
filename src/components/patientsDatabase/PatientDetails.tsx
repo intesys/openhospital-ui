@@ -30,7 +30,7 @@ import {
     PATH_PATIENT_VACCINATION,
     PATH_PATIENT_VISIT,
 } from "../../helpers/constants"
-import { Patient } from 'generate';
+import { PatientControllerApi, GetPatientUsingGETRequest, Patient } from 'generate';
 
 
 export interface Props extends WithStyles<typeof styles> { }
@@ -40,6 +40,7 @@ interface State {
     error: any;
     isLoaded: boolean;
     openOptionalInfo: boolean;
+    item : Patient;
 }
 
 interface IRouteParams {
@@ -47,13 +48,9 @@ interface IRouteParams {
     
 }
 
-interface IProps extends RouteComponentProps<IRouteParams> {
-    
- }
+interface IProps extends RouteComponentProps<IRouteParams> { }
 
- interface IProps {
-    info: Patient;
-  }
+ 
 
 class PatientDetails extends Component<IProps> {
     state: State = {
@@ -61,16 +58,20 @@ class PatientDetails extends Component<IProps> {
         error: null,
         isLoaded: false,
         openOptionalInfo: false,
+        item: {}
     };
 
     handleClickCollapseOptionalInfo = () => {
         this.setState(state => ({ openOptionalInfo: !state.openOptionalInfo }));
     };
 
+    
+
     render() {
 
-        const { classes , patient } = this.props;
-        
+        const { classes, patient  } = this.props;
+       
+       
         const { openOptionalInfo } = this.state;
         { openOptionalInfo ? <ExpandLess /> : <ExpandMore />; }
 

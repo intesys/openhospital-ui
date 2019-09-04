@@ -64,7 +64,7 @@ const styles = (theme: Theme) =>
 
     buttonInventory: {
       textTransform: "none",
-      margin: 5,
+      margin: 16,
       color: theme.palette.primary.red,
       fontWeight: "bold",
       borderRadius: 20,
@@ -381,7 +381,7 @@ const styles = (theme: Theme) =>
       padding: 10,
       height: 707,
       marginTop: 0,
-      width: 803,
+      width: 810,
       marginRight: -150,
       borderRadius: 10,
       background: theme.palette.primary.main,

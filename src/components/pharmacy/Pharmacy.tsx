@@ -21,6 +21,8 @@ import * as React from "react";
 import { Link as LinkRouter } from "react-router-dom";
 import PdfIcon from "../utils/icons/svg/PdfIcon";
 import styles from "./Pharmacy.style";
+import MovementGraph from "../sharedComponents/MovementGraph";
+import StockGraph from "../sharedComponents/StockGraph";
 export interface IProps extends WithStyles<typeof styles> { }
 
 interface IState {
@@ -132,74 +134,7 @@ class Pharmacy extends React.Component<IProps, IState> {
                         </TableRow>
                       </TableHead>
                       <Grid style={{ display: "flex" }}>
-                        <Card className={classNames(classes.boxItem)}>
-                          <CardContent style={{ width: "25%", padding: "2px" }}>
-                            <Typography className={classes.numberOf}>0</Typography>
-                            <Typography className={classes.subTitle}>WEEKS</Typography>
-                          </CardContent>
-                        </Card>
-                        <Card className={classNames(classes.boxItem)}>
-                          <CardContent style={{ width: "25%", padding: "2px" }}>
-                            <Typography className={classes.numberOf}>1</Typography>
-                            <Typography className={classes.subTitle}>WEEK</Typography>
-                          </CardContent>
-                        </Card>
-                        <Card className={classNames(classes.boxItem)}>
-                          <CardContent style={{ width: "25%", padding: "2px" }}>
-                            <Typography className={classes.numberOf}>2</Typography>
-                            <Typography className={classes.subTitle}>WEEKS</Typography>
-                          </CardContent>
-                        </Card>
-                        <Card className={classNames(classes.boxItem)}>
-                          <CardContent style={{ width: "25%", padding: "2px" }}>
-                            <Typography className={classes.numberOf}>3</Typography>
-                            <Typography className={classes.subTitle}>WEEKS</Typography>
-                          </CardContent>
-                        </Card>
-                        <Card className={classNames(classes.boxItem)}>
-                          <CardContent style={{ width: "25%", padding: "2px" }}>
-                            <Typography className={classes.numberOf}>4</Typography>
-                            <Typography className={classes.subTitle}>WEEKS</Typography>
-                          </CardContent>
-                        </Card>
-                        <Card className={classNames(classes.boxItem)}>
-                          <CardContent style={{ width: "25%", padding: "2px" }}>
-                            <Typography className={classes.numberOf}>5</Typography>
-                            <Typography className={classes.subTitle}>WEEKS</Typography>
-                          </CardContent>
-                        </Card>
-                      </Grid>
-                      <Grid>
-                        <Card className={classNames(classes.boxItemZero)}>
-                          <CardContent style={{ width: "100%", padding: "2px" }}>
-                            <Typography className={classes.cardSubtitle}>Amoxicillin</Typography>
-                          </CardContent>
-                        </Card>
-                        <Card className={classNames(classes.boxItemOne)}>
-                          <CardContent style={{ width: "100%", padding: "2px" }}>
-                            <Typography className={classes.cardSubtitle}>Claritromicina</Typography>
-                          </CardContent>
-                        </Card>
-                        <Card className={classNames(classes.boxItemTwo)}>
-                          <CardContent style={{ width: "100%", padding: "2px" }}>
-                            <Typography className={classes.cardSubtitle}>Omeprazole</Typography>
-                          </CardContent>
-                        </Card>
-                        <Card className={classNames(classes.boxItemThree)}>
-                          <CardContent style={{ width: "100%", padding: "2px" }}>
-                            <Typography className={classes.cardSubtitle}>Naproxen</Typography>
-                          </CardContent>
-                        </Card>
-                        <Card className={classNames(classes.boxItemFour)}>
-                          <CardContent style={{ width: "100%", padding: "2px" }}>
-                            <Typography className={classes.cardSubtitle}>Clonazepam</Typography>
-                          </CardContent>
-                        </Card>
-                        <Card className={classNames(classes.boxItemFive)}>
-                          <CardContent style={{ width: "100%", padding: "2px" }}>
-                            <Typography className={classes.cardSubtitle}>Ibuprofen</Typography>
-                          </CardContent>
-                        </Card>
+                        <StockGraph />
                       </Grid>
                       &nbsp;
                       <Button
@@ -286,10 +221,10 @@ class Pharmacy extends React.Component<IProps, IState> {
                         <TableHead>
                           <TableRow>
                             <TableCell align="center">
-                              <b>Name of Drug</b>
+                              Drug Name
                             </TableCell>
                             <TableCell align="left">
-                              <b>Where is it</b>
+                              <b>Located</b>
                             </TableCell>
                             <TableCell align="left">
                               <b>Date of expiration</b>
@@ -364,74 +299,10 @@ class Pharmacy extends React.Component<IProps, IState> {
                         </TableRow>
                       </TableHead>
                       <Grid style={{ display: "flex" }}>
-                        <Card className={classNames(classes.boxItem)}>
-                          <CardContent style={{ width: "25%", padding: "2px" }}>
-                            <Typography style={{ paddingLeft: 28, fontSize: 23, fontWeight: "bold" }}>0</Typography>
-                            <Typography className={classes.subTitle}>QUANTITY</Typography>
-                          </CardContent>
-                        </Card>
-                        <Card className={classNames(classes.boxItem)}>
-                          <CardContent style={{ width: "25%", padding: "2px" }}>
-                            <Typography className={classes.numberOf}>100</Typography>
-                            <Typography className={classes.subTitle}>QUANTITY</Typography>
-                          </CardContent>
-                        </Card>
-                        <Card className={classNames(classes.boxItem)}>
-                          <CardContent style={{ width: "25%", padding: "2px" }}>
-                            <Typography className={classes.numberOf}>200</Typography>
-                            <Typography className={classes.subTitle}>QUANTITY</Typography>
-                          </CardContent>
-                        </Card>
-                        <Card className={classNames(classes.boxItem)}>
-                          <CardContent style={{ width: "25%", padding: "2px" }}>
-                            <Typography className={classes.numberOf}>250</Typography>
-                            <Typography className={classes.subTitle}>QUANTITY</Typography>
-                          </CardContent>
-                        </Card>
-                        <Card className={classNames(classes.boxItem)}>
-                          <CardContent style={{ width: "25%", padding: "2px" }}>
-                            <Typography className={classes.numberOf}>350</Typography>
-                            <Typography className={classes.subTitle}>QUANTITY</Typography>
-                          </CardContent>
-                        </Card>
-                        <Card className={classNames(classes.boxItem)}>
-                          <CardContent style={{ width: "25%", padding: "2px" }}>
-                            <Typography className={classes.numberOf}>450</Typography>
-                            <Typography className={classes.subTitle}>QUANTITY</Typography>
-                          </CardContent>
-                        </Card>
+                       <MovementGraph />
                       </Grid>
                       <Grid>
-                        <Card className={classNames(classes.boxItemZero)}>
-                          <CardContent style={{ width: "100%", padding: "2px" }}>
-                            <Typography className={classes.cardSubtitle}>Amoxicillin</Typography>
-                          </CardContent>
-                        </Card>
-                        <Card className={classNames(classes.boxItemOne)}>
-                          <CardContent style={{ width: "100%", padding: "2px" }}>
-                            <Typography className={classes.cardSubtitle}>Claritromicina</Typography>
-                          </CardContent>
-                        </Card>
-                        <Card className={classNames(classes.boxItemTwo)}>
-                          <CardContent style={{ width: "100%", padding: "2px" }}>
-                            <Typography className={classes.cardSubtitle}>Omeprazole</Typography>
-                          </CardContent>
-                        </Card>
-                        <Card className={classNames(classes.boxItemThree)}>
-                          <CardContent style={{ width: "100%", padding: "2px" }}>
-                            <Typography className={classes.cardSubtitle}>Naproxen</Typography>
-                          </CardContent>
-                        </Card>
-                        <Card className={classNames(classes.boxItemFour)}>
-                          <CardContent style={{ width: "100%", padding: "2px" }}>
-                            <Typography className={classes.cardSubtitle}>Clonazepam</Typography>
-                          </CardContent>
-                        </Card>
-                        <Card className={classNames(classes.boxItemFive)}>
-                          <CardContent style={{ width: "100%", padding: "2px" }}>
-                            <Typography className={classes.cardSubtitle}>Ibuprofen</Typography>
-                          </CardContent>
-                        </Card>
+                        
                       </Grid>
                       &nbsp;
                     </Paper>
