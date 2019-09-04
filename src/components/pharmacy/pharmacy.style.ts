@@ -101,7 +101,7 @@ const styles = (theme: Theme) =>
 
     paperMovements: {
       padding: 10,
-      width: 403,
+      width: 385,
       marginLeft: -43,
       borderRadius: 10,
       background: theme.palette.primary.main,
