@@ -47,7 +47,7 @@ export default createReactClass({
         data={data}
         width={300}
         height={400} />
-        <p style={{textAlign:"center"}}>DAYS</p>
+        <h5 style={{textAlign:"center"}}>WEEKS</h5>
       </div>
     );
   }

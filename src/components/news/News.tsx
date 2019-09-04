@@ -14,7 +14,7 @@ import PropTypes from "prop-types";
 import * as React from "react";
 import { Link } from "react-router-dom";
 import styles from "./News.style";
-import { MaterialLinkRouter } from "../utils/LinkHelper";
+import { MaterialLinkRouter, MaterialCardActionAreaRouter } from "../utils/LinkHelper";
 
 export interface Props extends WithStyles<typeof styles> {}
 
@@ -89,6 +89,10 @@ class News extends React.Component {
         </Grid>
         <Grid container item className={classes.gridContainer} spacing={24}>
           <Grid className={classes.formatNewsCard}>
+          <MaterialCardActionAreaRouter
+                        className={classes.cardAction}
+                        component={Link}
+                        to="/NewsDetails">
             <Paper className={classNames(classes.paper)}>
               <Grid item xs={12} className={classes.newsContainer}>
                 &emsp;
@@ -115,8 +119,13 @@ class News extends React.Component {
                 </Link>
               </Grid>
             </Paper>
+            </MaterialCardActionAreaRouter>
           </Grid>
           <Grid className={classes.formatNewsCard}>
+          <MaterialCardActionAreaRouter
+                        className={classes.cardAction}
+                        component={Link}
+                        to="/NewsDetails">
             <Paper className={classNames(classes.paper)}>
               <Grid item xs={12} className={classes.newsContainer}>
                 &emsp;
@@ -143,8 +152,13 @@ class News extends React.Component {
                 </Link>
               </Grid>
             </Paper>
+            </MaterialCardActionAreaRouter>
           </Grid>
           <Grid className={classes.formatNewsCard}>
+          <MaterialCardActionAreaRouter
+                        className={classes.cardAction}
+                        component={Link}
+                        to="/NewsDetails">
             <Paper className={classNames(classes.paper)}>
               <Grid item xs={12} className={classes.newsContainer}>
                 &emsp;
@@ -178,8 +192,13 @@ class News extends React.Component {
                 </Link>
               </Grid>
             </Paper>
+            </MaterialCardActionAreaRouter>
           </Grid>
           <Grid className={classes.formatNewsCard}>
+          <MaterialCardActionAreaRouter
+                        className={classes.cardAction}
+                        component={Link}
+                        to="/NewsDetails">
             <Paper className={classNames(classes.paper)}>
               <Grid item xs={12} className={classes.newsContainer}>
                 &emsp;
@@ -206,8 +225,13 @@ class News extends React.Component {
                 </Link>
               </Grid>
             </Paper>
+            </MaterialCardActionAreaRouter>
           </Grid>
           <Grid className={classes.formatNewsCard}>
+          <MaterialCardActionAreaRouter
+                        className={classes.cardAction}
+                        component={Link}
+                        to="/NewsDetails">
             <Paper className={classNames(classes.paper)}>
               <Grid item xs={12} className={classes.newsContainer}>
                 &emsp;
@@ -234,8 +258,13 @@ class News extends React.Component {
                 </Link>
               </Grid>
             </Paper>
+            </MaterialCardActionAreaRouter>
           </Grid>
           <Grid className={classes.formatNewsCard}>
+          <MaterialCardActionAreaRouter
+                        className={classes.cardAction}
+                        component={Link}
+                        to="/NewsDetails">
             <Paper className={classNames(classes.paper)}>
               <Grid item xs={12} className={classes.newsContainer}>
                 &emsp;
@@ -262,9 +291,13 @@ class News extends React.Component {
                 </Link>
               </Grid>
             </Paper>
+            </MaterialCardActionAreaRouter>
           </Grid>
-
           <Grid className={classes.formatNewsCard}>
+          <MaterialCardActionAreaRouter
+                        className={classes.cardAction}
+                        component={Link}
+                        to="/NewsDetails">
             <Paper className={classes.paper}>
               <Grid item xs={12} className={classes.newsContainer}>
                 &emsp;
@@ -291,6 +324,7 @@ class News extends React.Component {
                 </Link>
               </Grid>
             </Paper>
+            </MaterialCardActionAreaRouter>
           </Grid>
         </Grid>
         &nbsp;

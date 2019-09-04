@@ -47,6 +47,7 @@ export default createReactClass({
         data={data}
         width={350}
         height={400} />
+        <h5 style={{textAlign:"center"}}>QUANTITY</h5>
       </div>
     );
   }

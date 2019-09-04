@@ -108,9 +108,10 @@ class NewsDetails extends React.Component {
               </Paper>
             </Grid>
           </Grid>
-
+          
           <Grid className={classes.formatNewsCard}>
             <Grid className={classes.gridContainer} float="left" xs={12}>
+
               <Typography variant="inherit" className={classes.findNews}>
                 OTHER ARTICLES
               </Typography>
