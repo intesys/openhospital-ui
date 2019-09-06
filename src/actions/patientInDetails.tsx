@@ -1,20 +1,23 @@
-import {
-	getPatientAPI,
-} from '../../dummyAPI';
-
+  
+import { AnyAction } from 'redux';
+import { ThunkAction } from 'redux-thunk';
+import { getPatientAPI } from '../../dummyAPI';
 import { loading } from './loading'
+import { AppState } from '../reducers/index';
+import { 
+	GET_PATIENT, 
+	CLEAR_PATIENT_IN_DETAILS, 
+	PatientInDetailsActionTypes, 
+	Patient } from '../types/patients';
 
-export const GET_PATIENT = 'GET_PATIENT';
-export const CLEAR_PATIENT_IN_DETAILS = 'CLEAR_PATIENT_IN_DETAILS';
-
-export function getPatient(patient){
+export function getPatient(patient: Patient): PatientInDetailsActionTypes{
 	return {
 		type: GET_PATIENT,
 		patient,
 	}
 }
 
-export function getPatientThunk(id){
+export function getPatientThunk(id: string): ThunkAction<void, AppState, null, AnyAction>{
 	return (dispatch) => {
 		dispatch(loading(true))
 		return getPatientAPI(id).then((patient) => {
@@ -24,7 +27,7 @@ export function getPatientThunk(id){
 	}
 }
 
-export function clearPatientInDetails(){
+export function clearPatientInDetails(): PatientInDetailsActionTypes{
 	return {
 		type: CLEAR_PATIENT_IN_DETAILS,
 		patient: {},

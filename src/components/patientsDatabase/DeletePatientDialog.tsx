@@ -15,13 +15,13 @@ import TextField from '@material-ui/core/TextField';
 import DialogActions from '@material-ui/core/DialogActions';
 import Button from '@material-ui/core/Button';
 
-export interface Props extends WithStyles<typeof styles> { }
+export interface Props extends WithStyles<typeof styles> {}
 
 class DeletePatientDialog extends Component<Props>{
 
-	render() {
+	render(){
 		const { classes, isOpen, handleClickClose } = this.props;
-		return (
+		return(
 			<div>
 				<Dialog
 					open={isOpen}
@@ -33,8 +33,8 @@ class DeletePatientDialog extends Component<Props>{
 					</DialogTitle>
 					<DialogContent>
 						&nbsp;
-						<DialogContentText style={{ textAlign: 'center' }} id="alert-dialog-description">
-							<b>Attention!</b> This action will completely erase patient data!
+						<DialogContentText style={{textAlign:'center'}} id="alert-dialog-description">
+							<b>Attention!</b> This action will completely erase patient data! 
 						</DialogContentText>
 						&nbsp;
 						<Grid className={classes.deleteInputField}>
@@ -44,15 +44,15 @@ class DeletePatientDialog extends Component<Props>{
 								label="Patient ID"
 								className={classNames(classes.formDeleteField, classes.cssOutlinedInput)}
 								margin="normal"
-								variant="outlined" />
-						</Grid>
+								variant="outlined"/>
+						</Grid>      
 					</DialogContent>
 					<DialogActions>
 						<Button onClick={handleClickClose} color="secondary">
-							<b>EXIT</b>
+							<b>EXIT</b> 
 						</Button>
 						<Button onClick={handleClickClose} color="secondary">
-							<b>DELETE</b>
+							<b>DELETE</b> 
 						</Button>
 					</DialogActions>
 				</Dialog>
