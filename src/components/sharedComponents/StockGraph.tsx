@@ -3,8 +3,11 @@ import {HorizontalBar} from 'react-chartjs-2';
 
 var createReactClass = require('create-react-class');
 const data = {
+
+  
  
   datasets: [
+    
     {
       label: 'amoxicillina',
       backgroundColor: 'rgba(255,99,132,0.2)',
@@ -31,8 +34,9 @@ const data = {
         backgroundColor: 'rgba(247,231,2,0.2)',
         borderColor: 'rgba(247,231,2,1)',
         borderWidth: 1,
-        data: [2.3]
+        data: [2.4]
     },
+    
    
   ]
 };
@@ -41,6 +45,7 @@ export default createReactClass({
   displayName: 'BarExample',
 
   render() {
+    
     return (
       <div>
         <HorizontalBar 
