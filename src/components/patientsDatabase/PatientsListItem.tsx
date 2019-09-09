@@ -22,10 +22,8 @@ import Avatar from "@material-ui/core/Avatar";
 // constants
 import { PATH_PATIENT_DETAILS } from "../../helpers/constants";
 
-interface IProps {
-    patient : Patient;
-}
-class PatientsListItem extends Component <IProps> {
+
+class PatientsListItem extends Component  {
     render() {
         const { classes, patient } = this.props;
         return(
@@ -41,7 +39,7 @@ class PatientsListItem extends Component <IProps> {
                                     {patient.firstName} {patient.secondName}
                                 </Typography>
                                 <Typography color="inherit">
-                                    PatientID: <b>{patient.id}</b>
+                                    PatientID: <b>{patient.code}</b>
                                 </Typography>
                                 <Typography color="inherit">
                                     Age: <b>{patient.age}</b> &nbsp; Sex:<b>{patient.sex}</b>

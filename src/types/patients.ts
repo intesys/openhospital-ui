@@ -18,7 +18,7 @@ export interface Patient {
     lastWhoVisited: lastWhoVisited
     firstName: string
     secondName: string
-    id: string
+    code: string
     age: number
     sex: string
     gender: string
@@ -33,7 +33,7 @@ export interface Patient {
 }
 
 export interface PatientsList {
-    [id: string]: Patient
+    [code: string]: Patient
 }
 
 interface getPatientsAction{

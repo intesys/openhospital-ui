@@ -1,6 +1,6 @@
 import * as React from "react";
 
-class Ward extends React.Component {
+class notFound extends React.Component {
     public render() {
         return (
             <div>
@@ -10,4 +10,4 @@ class Ward extends React.Component {
     }
 }
 
-export default Ward;
+export default notFound;

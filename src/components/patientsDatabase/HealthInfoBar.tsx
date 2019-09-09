@@ -17,13 +17,13 @@ import { Patient } from 'types/patients';
 export interface Props extends WithStyles<typeof styles>{ }
 
 interface IProps {
-    patient: Patient;
+    patient : Patient;
 }
-
-class HealthInfoBar extends Component<IProps>{
+class HealthInfoBar extends Component <IProps> {
 
 	render() {
-		const { classes, patient } = this.props;
+        const { classes , patient } = this.props;
+        
 		return(
 			<Grid item xs={12} sm={3} className={classes.sidebar}>
                 <Avatar alt="Remy Sharp" src={""} className={classes.avatar}>
@@ -36,7 +36,7 @@ class HealthInfoBar extends Component<IProps>{
                     PATIENT ID
                 </Typography>
                 <Typography color="inherit" className={classes.patientIdNumber}>
-                    {patient.id}
+                    {patient.code}
                 </Typography>
                 <Typography color="inherit" className={classes.bloodGroup}>
                     Blood Group
