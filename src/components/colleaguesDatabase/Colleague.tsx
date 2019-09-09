@@ -64,7 +64,7 @@ class Colleague extends React.Component<Props, State> {
           <MaterialCardActionAreaRouter
            className={classes.cardAction}
            component={LinkRouter}
-           to="/patients-database/:patientId">> 
+           to="/patients-database/:patientId">
           <Grid container item className={classes.colleagueContainer} justify="center" spacing={24}>
             <Grid item xs={12}>
               <Typography color="inherit">LAST PATIENTS VISITED</Typography>
