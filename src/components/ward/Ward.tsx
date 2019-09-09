@@ -53,7 +53,7 @@ class Ward extends React.Component {
                     occupation: "Anesthesiologist",
                     phone: "555 911 118",
                     email: "doc@hospital.org",
-            }
+            },
             firstName: "Antônio",
             secondName: "Carlos Jobim",
             code: 123456,

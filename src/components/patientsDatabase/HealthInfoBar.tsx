@@ -12,10 +12,15 @@ import Avatar from "@material-ui/core/Avatar";
 import AddPhotoIcon from "@material-ui/icons/AddAPhoto";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
+import { Patient } from 'types/patients';
 
-export interface Props extends WithStyles<typeof styles> { }
+export interface Props extends WithStyles<typeof styles>{ }
 
-class HealthInfoBar extends Component<Props>{
+interface IProps {
+    patient: Patient;
+}
+
+class HealthInfoBar extends Component<IProps>{
 
 	render() {
 		const { classes, patient } = this.props;
@@ -31,7 +36,7 @@ class HealthInfoBar extends Component<Props>{
                     PATIENT ID
                 </Typography>
                 <Typography color="inherit" className={classes.patientIdNumber}>
-                    
+                    {patient.id}
                 </Typography>
                 <Typography color="inherit" className={classes.bloodGroup}>
                     Blood Group

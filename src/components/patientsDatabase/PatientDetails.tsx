@@ -31,6 +31,7 @@ import {
     PATH_PATIENT_VISIT,
 } from "../../helpers/constants"
 import { PatientControllerApi, GetPatientUsingGETRequest, Patient } from 'generate';
+import patients from 'reducers/patients';
 
 
 export interface Props extends WithStyles<typeof styles> { }
@@ -50,7 +51,9 @@ interface IRouteParams {
 
 interface IProps extends RouteComponentProps<IRouteParams> { }
 
- 
+ interface IProps {
+     patient : Patient;
+ }
 
 class PatientDetails extends Component<IProps> {
     state: State = {
@@ -58,7 +61,8 @@ class PatientDetails extends Component<IProps> {
         error: null,
         isLoaded: false,
         openOptionalInfo: false,
-        item: {}
+        item: {},
+        
     };
 
     handleClickCollapseOptionalInfo = () => {
@@ -86,10 +90,10 @@ class PatientDetails extends Component<IProps> {
                             Address: <b>{patient.address}</b>
                         </Typography>
                     </div>
-                    <MaterialButtonRouter component={LinkRouter} to={PATH_PATIENT_ADMISSION.replace(':patientId', patient.id)} variant="outlined" color="inherit" classes={{ root: classes.admissionButton }}>
+                    <MaterialButtonRouter component={LinkRouter} to={PATH_PATIENT_ADMISSION.replace(patient.code)} variant="outlined" color="inherit" classes={{ root: classes.admissionButton }}>
                         New Admission
                     </MaterialButtonRouter>
-                    <MaterialButtonRouter component={LinkRouter} to={PATH_PATIENT_VISIT.replace(':patientId', patient.id)} variant="outlined" color="inherit" classes={{ root: classes.visitButton }}>
+                    <MaterialButtonRouter component={LinkRouter} to={PATH_PATIENT_VISIT.replace(':patientId', patient.code)} variant="outlined" color="inherit" classes={{ root: classes.visitButton }}>
                         New visit
                     </MaterialButtonRouter>
                 </Grid>
