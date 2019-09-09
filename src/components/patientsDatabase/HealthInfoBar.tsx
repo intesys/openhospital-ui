@@ -17,10 +17,10 @@ export interface Props extends WithStyles<typeof styles> { }
 
 class HealthInfoBar extends Component<Props>{
 
-    render() {
-        const { classes, patient } = this.props;
-        return (
-            <Grid item xs={12} sm={3} className={classes.sidebar}>
+	render() {
+		const { classes, patient } = this.props;
+		return(
+			<Grid item xs={12} sm={3} className={classes.sidebar}>
                 <Avatar alt="Remy Sharp" src={""} className={classes.avatar}>
                     <AddPhotoIcon />
                 </Avatar>
@@ -31,7 +31,7 @@ class HealthInfoBar extends Component<Props>{
                     PATIENT ID
                 </Typography>
                 <Typography color="inherit" className={classes.patientIdNumber}>
-                    {patient.id}
+                    
                 </Typography>
                 <Typography color="inherit" className={classes.bloodGroup}>
                     Blood Group
@@ -80,8 +80,8 @@ class HealthInfoBar extends Component<Props>{
                     Print health information
                 </MaterialButtonRouter>
             </Grid>
-        )
-    }
+		)
+	}
 }
 
 const styledComponent = withStyles(styles, { withTheme: true })(HealthInfoBar);
