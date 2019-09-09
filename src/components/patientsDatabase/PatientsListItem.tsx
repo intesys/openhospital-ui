@@ -22,43 +22,28 @@ import Avatar from "@material-ui/core/Avatar";
 // constants
 import { PATH_PATIENT_DETAILS } from "../../helpers/constants";
 
-interface IProps {
-    info: Patient;
-  }
-  
-
-class PatientsListItem extends Component <IProps> {
+class PatientsListItem extends Component {
     render() {
-        const { classes } = this.props;
-        const patient = this.props.info;
-        let  chronic = _.sample([true, false]);
-        const lastDocWhoVisitedHim = {
-           name: "Marcus",
-           surname: "Marcus",
-           occupation: _.sample(["Anesthesiologist", "Cardiologist", "Dermatologist", "Gastroenterologist", "Pneumologist"]),
-           phone: "555 911 118",
-           email: "doc@hospital.org",
-        }
-    
-
-        return (
+        const { classes, patient } = this.props;
+        return(
             <Grid item xs={12} sm={4}>
                 <Paper className={classes.paper}>
                     <MaterialCardActionAreaRouter
                         className={classes.cardAction}
                         component={LinkRouter}
-                        to={{ pathname: PATH_PATIENT_DETAILS}}>
+                        to={{ pathname: PATH_PATIENT_DETAILS.replace(":patientId", patient.id), patient: patient }}>
                         <Grid container className={classes.patientContainer} justify="center" spacing={24}>
                             <Grid item xs={12}>
                                 <Typography color="inherit" className={classes.patientName}>
                                     {patient.firstName} {patient.secondName}
                                 </Typography>
                                 <Typography color="inherit">
-                                    PatientID: <b>{patient.code}</b>
+                                    PatientID: <b>{patient.id}</b>
                                 </Typography>
                                 <Typography color="inherit">
                                     Age: <b>{patient.age}</b> &nbsp; Sex:<b>{patient.sex}</b>
                                 </Typography>
+                                <Typography color="inherit">{patient.gender}</Typography>
                             </Grid>
                             <Grid item xs={12}>
                                 <Avatar alt="Remy Sharp" src={patient.photo} className={classes.avatar} />
@@ -75,7 +60,7 @@ class PatientsListItem extends Component <IProps> {
                                 </Typography>
                             </Grid>
                             <Grid item xs={12} className={classes.infoContainer}>
-                                {chronic && (
+                                {patient.isChronic && (
                                     <Typography color="secondary" className={classes.iconAndText}>
                                         <HospitalIcon style={{ marginRight: "5px" }} />
                                         Chronic patient
@@ -97,24 +82,24 @@ class PatientsListItem extends Component <IProps> {
                             <Grid container item className={classes.patientContainer} justify="center" spacing={24}>
                                 <Grid item xs={12} sm={3} style={{ display: "flex", justifyContent: "flex-end" }}>
                                     <Avatar
-                                        alt="Remy Sharp"
-                                        src={patient.photo}
-                                        className={classNames(classes.avatar, "avatarSmall")} />
+                                    alt="Remy Sharp"
+                                    src={patient.photo}
+                                    className={classNames(classes.avatar, "avatarSmall")}/>
                                     <div style={{ flexDirection: "column" }} />
                                 </Grid>
                                 <Grid item xs={12} sm={9} style={{ textAlign: "left" }}>
                                     <Typography color="secondary" style={{ fontWeight: "bold" }}>
-                                        Dr. {lastDocWhoVisitedHim.surname} {lastDocWhoVisitedHim.name}
+                                        Dr. {patient.lastWhoVisited.surname} {patient.lastWhoVisited.name}
                                     </Typography>
-                                    <Typography color="inherit">{lastDocWhoVisitedHim.occupation}</Typography>
-                                    <br />
+                                    <Typography color="inherit">{patient.lastWhoVisited.occupation}</Typography>
+                                    <br/>
                                     <Typography color="secondary" className={classes.iconAndText}>
                                         <PhoneIcon style={{ marginRight: "5px" }} />
-                                        {lastDocWhoVisitedHim.phone}
+                                        {patient.lastWhoVisited.phone}
                                     </Typography>
                                     <Typography color="secondary" className={classes.iconAndText}>
                                         <MailIcon style={{ marginRight: "5px" }} />
-                                        {lastDocWhoVisitedHim.email}
+                                        {patient.lastWhoVisited.email}
                                     </Typography>
                                 </Grid>
                             </Grid>

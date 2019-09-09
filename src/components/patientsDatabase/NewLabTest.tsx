@@ -20,7 +20,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Divider from "@material-ui/core/Divider";
 
-export interface Props extends WithStyles<typeof styles> { }
+export interface Props extends WithStyles <typeof styles> {}
 
 interface State {
     labelWidth: number;
@@ -29,7 +29,7 @@ interface State {
     items: any;
 }
 
-class NewLabTest extends React.Component<Props, State> {
+class NewLabTest extends React.Component <Props, State> {
     state: State = {
         labelWidth: 0,
         error: null,
@@ -60,12 +60,12 @@ class NewLabTest extends React.Component<Props, State> {
                             COMPLETE THE FORM
                         </Typography>
                     </div>
-                    <Grid style={{ marginLeft: 400 }}>
+                    <Grid style={{marginLeft:400}}>
                         <Typography variant="inherit" className={classes.dateTitle}>
                             DATE
                         </Typography>
                     </Grid>
-                    <Grid style={{ marginLeft: 10 }}>
+                    <Grid style={{marginLeft:10}}>
                         &nbsp;
                         <TextField
                             id="date"
@@ -73,7 +73,7 @@ class NewLabTest extends React.Component<Props, State> {
                             defaultValue="2017-05-24"
                             InputLabelProps={{
                                 shrink: true,
-                            }} />
+                            }}/>
                     </Grid>
                 </Grid>
                 <Grid container item spacing={24}>
@@ -101,7 +101,7 @@ class NewLabTest extends React.Component<Props, State> {
                                         id="Service type"
                                         classes={{
                                             input: classes.formFieldSelectInput,
-                                        }} />
+                                        }}/>
                                 }>
                                 <MenuItem value={10}>item1</MenuItem>
                                 <MenuItem value={20}>Laboratory </MenuItem>
@@ -129,7 +129,7 @@ class NewLabTest extends React.Component<Props, State> {
                                 },
                             }}
                             margin="normal"
-                            variant="outlined" />
+                            variant="outlined"/>
                     </Grid>
                     <Grid item xs={12} spacing={24} style={{ marginTop: 100 }} className={classes.detailButtonContainer}>
                         <MaterialButtonRouter
@@ -138,7 +138,7 @@ class NewLabTest extends React.Component<Props, State> {
                             variant="contained"
                             color="secondary"
                             classes={{ root: classes.detailButton, label: classes.detailButtonLabelInverse }}>
-                            <KeyboardArrowRightIcon />
+                        <KeyboardArrowRightIcon />
                             Save the lab test
                         </MaterialButtonRouter>
                         <MaterialButtonRouter

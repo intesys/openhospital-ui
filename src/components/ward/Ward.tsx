@@ -19,7 +19,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link as LinkRouter } from 'react-router-dom';
-import PatientsListItem from "../patientsDatabase/PatientsListItem";
+import PatientsListItem from "../PatientsDatabase/PatientsListItem";
 import styles from './Ward.style';
 export interface Props extends WithStyles<typeof styles> { }
 
@@ -46,12 +46,20 @@ class Ward extends React.Component {
     // <test>
     const item = {
         patientInfo: {
-           
+            isChronic: false,
+            lastDocWhoVisitedHim: {
+                    name: "Marcus",
+                    surname: "Marcus",
+                    occupation: "Anesthesiologist",
+                    phone: "555 911 118",
+                    email: "doc@hospital.org",
+            }
             firstName: "Antônio",
             secondName: "Carlos Jobim",
             code: 123456,
             age: 87,
             sex: "M",
+            gender: "undefined",
             photo: null,
         }
     };
@@ -74,15 +82,13 @@ class Ward extends React.Component {
     //         isLoaded: true,
     //         error
     //       });
-    //     }interface IProps {
-   // info: Patient;
-  }
+    //     }
     //   )
 
     // this.setState({
     //   // labelWidth: ReactDOM.findDOMNode(this.InputLabelRef).offsetWidth,
     // });
-  
+  }
 
   handleChange = (event: React.MouseEvent<HTMLElement>, value: number) => {
     this.setState({ value });
@@ -691,7 +697,7 @@ class Ward extends React.Component {
             </FormControl>
           </Grid>
           <Grid container item  spacing={24}>
-            {PatientsListItem}
+            {Patients}
           </Grid>
           <Grid container item style={{padding: 30, justifyContent:"center"}}>
             <Button variant="outlined" color="inherit" justify="center" classes={{ root: classes.loadMoreButton }}>
