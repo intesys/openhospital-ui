@@ -61,12 +61,12 @@ class Setting extends React.Component<Props, State> {
             justify="center"
             spacing={24}
           >
-            <Grid style={{ display: "left", paddingRight: "65px" }} item spacing={16}>
+            <Grid style={{ display: "left", paddingRight: "120px" }} >
               <Avatar alt="Remy Sharp" src={""} className={classes.avatar}>
                 <AddPhotoIcon />
               </Avatar>
             </Grid>
-            <Grid item xs={12} sm={6} style={{ paddingTop: "100px" }}>
+            <Grid item xs={6} sm={6} style={{ paddingTop: "50px" }}>
               <Typography style={{ paddingBottom: "20px" }} color="inherit" className={classes.settingTitle}>
                 GENERAL INFORMATION
               </Typography>
@@ -90,11 +90,10 @@ class Setting extends React.Component<Props, State> {
                 margin="normal"
                 variant="outlined"
               />
-              &nbsp;
               <TextField
                 required
-                id="fullName"
-                label="Full Name"
+                id="FullName"
+                label="Full name"
                 className={classNames(classes.formField, classes.cssOutlinedInput)}
                 InputLabelProps={{
                   classes: {
@@ -111,7 +110,8 @@ class Setting extends React.Component<Props, State> {
                 margin="normal"
                 variant="outlined"
               />
-              &nbsp;
+              &emsp;
+              
               <Typography style={{ paddingBottom: "20px" }} color="inherit" className={classes.settingTitle}>
                 ROLE
               </Typography>
@@ -135,7 +135,7 @@ class Setting extends React.Component<Props, State> {
                 margin="normal"
                 variant="outlined"
               />
-              &nbsp;
+              &emsp;
               <Typography style={{ paddingBottom: "20px" }} color="inherit" className={classes.settingTitle}>
                 DESCRIPTION
               </Typography>

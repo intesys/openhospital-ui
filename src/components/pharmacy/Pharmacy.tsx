@@ -149,11 +149,10 @@ class Pharmacy extends React.Component<IProps, IState> {
                   &nbsp;
                   <Grid item className={classes.formatTable} xs={12}>
                     <Paper className={classes.paperDetailsStock}>
-                      <Grid item xs={6}>
+                      <Grid item style={{paddingLeft:'10px'}} xs={6}>
                         <Typography variant="inherit" className={classes.findStock}>
                           Show
                         </Typography>
-
                         <Link className={classes.findStock} color="secondary" component={LinkRouter} to="/dashboard">
                           All drugs
                         </Link>
@@ -187,7 +186,7 @@ class Pharmacy extends React.Component<IProps, IState> {
                         </Grid>
                       </Grid>
                       <Grid item xs={12}>
-                        <Grid item xs={6}>
+                        <Grid item xs={8}>
                           <TextField
                             placeholder="Search"
                             className={classNames(classes.formField, classes.cssOutlinedInput)}
@@ -207,7 +206,7 @@ class Pharmacy extends React.Component<IProps, IState> {
                             variant="outlined"
                           />
                         </Grid>
-                        <Grid style={{ marginLeft: 426, marginBottom: 20, marginTop: -53 }} item xs={6}>
+                        <Grid style={{ marginLeft: 555, marginBottom: 20, marginTop: -53 }} item xs={6}>
                           <Button
                             variant="outlined"
                             color="inherit"

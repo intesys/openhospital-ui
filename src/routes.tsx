@@ -22,7 +22,7 @@ import Ward from "./components/ward/Ward";
 import Billing from "./components/billing/Billing";
 import News from "./components/news/News";
 import NewsDetails from "./components/news/newsDetails/NewsDetails";
-import setting from "./components/settings/Setting";
+import setting from "./components/OHSettings/Setting";
 import Calendar from "./components/Calendar/Calendario";
 import Notification from "./components/Notifications/Notification";
 import PageNotFound from "./components/pageNotFound/PageNotFound";
