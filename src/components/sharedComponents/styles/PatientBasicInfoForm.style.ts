@@ -11,6 +11,23 @@ const styles = (theme: Theme) =>
 				width: '0 !important'
 			}
 		},
+		button: {
+            textTransform: 'none',
+            color: theme.palette.primary.red,
+            fontWeight: 'bold',
+            borderRadius: 20,
+            '&:hover': {
+                color: theme.palette.primary.white,
+                background: theme.palette.primary.red
+            },
+            '&.mergeButton,&.addButton': {
+                marginLeft: 40
+            }
+        },
+       
+        buttonLabel: {
+            justifyContent: 'flex-end',
+        },
 		formFieldInputLabel: {
 			transform: 'translate(14px, 14px) scale(1)',
 		},

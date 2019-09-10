@@ -6,7 +6,7 @@ import _ from "lodash";
 import styles from "./styles/PatientsListItem.style";
 import { MaterialCardActionAreaRouter } from "../utils/LinkHelper";
 import { number } from 'prop-types';
-import { Patient } from 'generate';
+import { Patient } from 'types/patients';
 
 // material imports
 import { withStyles, WithStyles } from "@material-ui/core/styles";
@@ -22,8 +22,11 @@ import Avatar from "@material-ui/core/Avatar";
 // constants
 import { PATH_PATIENT_DETAILS } from "../../helpers/constants";
 
+interface IProps {
+    patient: Patient;
+}
 
-class PatientsListItem extends Component  {
+class PatientsListItem extends Component <IProps> {
     render() {
         const { classes, patient } = this.props;
         return(

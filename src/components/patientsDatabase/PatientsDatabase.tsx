@@ -142,6 +142,7 @@ class PatientsDatabase extends Component<Props, State> {
                                 </Grid>
                             </Grid>
                             <PatientBasicInfoForm extraInput={this.keywordInput} />
+                           
                         </Paper>
                     </Grid>
                     <Grid container item spacing={24} className={classes.filterContainer}>
