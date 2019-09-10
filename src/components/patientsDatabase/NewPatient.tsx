@@ -30,17 +30,17 @@ import SnackBar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 
-export interface IProps extends WithStyles<typeof styles> { }
+export interface IProps extends WithStyles <typeof styles> {}
 
 interface State {
     labelWidth: number;
     error: any;
     isLoaded: boolean;
     items: Patient;
-    anchorEl?: any;
+    anchorEl ? : any;
 }
 
-class NewPatient extends React.Component<IProps, State> {
+class NewPatient extends React.Component <IProps, State > {
 
     state: State = {
         labelWidth: 0,
@@ -123,17 +123,17 @@ class NewPatient extends React.Component<IProps, State> {
                     anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
                     open={this.state.snackbaropen}
                     autoHideDuration={6000}
-                    TransitionProps={{ direction: "left" }}
+                    TransitionProps={{direction: "left"}}
                     onClose={this.snackbarClose}>
                     <SnackbarContent
                         className={classes.error}
-                        message={<span className={classes.message}>{this.state.snackbarmsg}</span>} />
+                        message={<span className={classes.message}>{this.state.snackbarmsg}</span>}/>
                 </SnackBar>
                 <form>
                     <Grid container className={classes.gridContainer} justify="center" spacing={24}>
                         <Grid container item spacing={24}>
                             <Grid item xs={12}>
-                                <BreadcrumbTrail match={this.props.match} />
+                                <BreadcrumbTrail match={this.props.match}/>
                             </Grid>
                             <Grid item xs={12}>
                                 <Typography variant="inherit" className={classes.colleaguesTitle}>
@@ -180,7 +180,7 @@ class NewPatient extends React.Component<IProps, State> {
                                                     },
                                                 }}
                                                 margin="normal"
-                                                variant="outlined" />
+                                                variant="outlined"/>
                                         </Grid>
                                         <Grid item xs={12} sm={6}>
                                             <TextField
@@ -202,7 +202,7 @@ class NewPatient extends React.Component<IProps, State> {
                                                     },
                                                 }}
                                                 margin="normal"
-                                                variant="outlined" />
+                                                variant="outlined"/>
                                         </Grid>
                                     </Grid>
                                     <Grid container item xs={12} spacing={24}>
@@ -228,31 +228,31 @@ class NewPatient extends React.Component<IProps, State> {
                                                 // value="{this.state.name}"
                                                 // onChange={this.handleChange('name')}
                                                 margin="normal"
-                                                variant="outlined" />
+                                                variant="outlined"/>
                                         </Grid>
                                         <Grid item xs={4} sm={2}>
                                             <TextField
-                                                required={true}
-                                                name='birthDate'
-                                                label="Birthdate"
-                                                onChange={event => this.handleChange(event)}
-                                                className={classNames(classes.formField, classes.cssOutlinedInput)}
-                                                InputLabelProps={{
-                                                    classes: {
-                                                        root: classes.formFieldInputLabel,
-                                                        focused: classes.cssFocused,
-                                                    },
-                                                }}
-                                                InputProps={{
-                                                    classes: {
-                                                        root: classes.formFieldInput,
-                                                        notchedOutline: classes.cssOutlinedInput,
-                                                    },
-                                                }}
-                                                // value="{this.state.name}"
-                                                // onChange={this.handleChange('name')}
-                                                margin="normal"
-                                                variant="outlined"
+                                            required={true}
+                                            name='birthDate'
+                                            label="Birthdate"
+                                            onChange={event => this.handleChange(event)}
+                                            className={classNames(classes.formField, classes.cssOutlinedInput)}
+                                            InputLabelProps={{
+                                                classes: {
+                                                    root: classes.formFieldInputLabel,
+                                                    focused: classes.cssFocused,
+                                                },
+                                            }}
+                                            InputProps={{
+                                                classes: {
+                                                    root: classes.formFieldInput,
+                                                    notchedOutline: classes.cssOutlinedInput,
+                                                },
+                                            }}
+                                            // value="{this.state.name}"
+                                            // onChange={this.handleChange('name')}
+                                            margin="normal"
+                                            variant="outlined"
                                             />
                                         </Grid>
                                         <Grid item xs={2} sm={2}>
@@ -275,13 +275,13 @@ class NewPatient extends React.Component<IProps, State> {
                                                     onChange={event => this.handleChange(event)}
                                                     input={
                                                         <OutlinedInput
-                                                            labelWidth={this.state.InputLabelRef}
-                                                            label="​sex"
-                                                            name='sex'
-                                                            classes={{
-                                                                // root: classes.formFieldSelectInput,
-                                                                input: classes.formFieldSelectInput,
-                                                            }} />
+                                                        labelWidth={this.state.InputLabelRef}
+                                                        label="​sex"
+                                                        name='sex'
+                                                        classes={{
+                                                            // root: classes.formFieldSelectInput,
+                                                            input: classes.formFieldSelectInput,
+                                                        }}/>
                                                     }>
                                                     <MenuItem value={"M"}>M</MenuItem>
                                                     <MenuItem value={"F"}>F</MenuItem>
@@ -310,7 +310,7 @@ class NewPatient extends React.Component<IProps, State> {
                                                 // value="{this.state.name}"
                                                 // onChange={this.handleChange('name')}
                                                 margin="normal"
-                                                variant="outlined" />
+                                                variant="outlined"/>
                                         </Grid>
                                     </Grid>
                                     <Grid container item xs={12} spacing={24}>
@@ -336,7 +336,7 @@ class NewPatient extends React.Component<IProps, State> {
                                                 // value="{this.state.name}"
                                                 // onChange={this.handleChange('name')}
                                                 margin="normal"
-                                                variant="outlined" />
+                                                variant="outlined"/>
                                         </Grid>
                                         <Grid item xs={12} sm={6}>
                                             <TextField
@@ -360,7 +360,7 @@ class NewPatient extends React.Component<IProps, State> {
                                                 // value="{this.state.name}"
                                                 // onChange={this.handleChange('name')}
                                                 margin="normal"
-                                                variant="outlined" />
+                                                variant="outlined"/>
                                         </Grid>
                                     </Grid>
                                     <Grid container item xs={12} spacing={24}>
@@ -385,7 +385,7 @@ class NewPatient extends React.Component<IProps, State> {
                                                 // value="{this.state.name}"
                                                 // onChange={this.handleChange('name')}
                                                 margin="normal"
-                                                variant="outlined" />
+                                                variant="outlined"/>
                                         </Grid>
                                     </Grid>
                                     <Grid container item xs={12} spacing={24}>
@@ -411,7 +411,7 @@ class NewPatient extends React.Component<IProps, State> {
                                                 // value="{this.state.name}"
                                                 // onChange={this.handleChange('name')}
                                                 margin="normal"
-                                                variant="outlined" />
+                                                variant="outlined"/>
                                         </Grid>
                                         <Grid item xs={12} sm={6}>
                                             <TextField
@@ -433,7 +433,7 @@ class NewPatient extends React.Component<IProps, State> {
                                                 // value="{this.state.name}"
                                                 // onChange={this.handleChange('name')}
                                                 margin="normal"
-                                                variant="outlined" />
+                                                variant="outlined"/>
                                         </Grid>
                                     </Grid>
                                     <Grid container item xs={12} spacing={24}>
@@ -473,7 +473,7 @@ class NewPatient extends React.Component<IProps, State> {
                                                             classes={{
                                                                 // root: classes.formFieldSelectInput,
                                                                 input: classes.formFieldSelectInput,
-                                                            }} />
+                                                            }}/>
                                                     }>
                                                     <MenuItem value={"0+"}>0+</MenuItem>
                                                     <MenuItem value={"0-"}>0-</MenuItem>
@@ -506,7 +506,7 @@ class NewPatient extends React.Component<IProps, State> {
                                                 // value="{this.state.name}"
                                                 // onChange={this.handleChange('name')}
                                                 margin="normal"
-                                                variant="outlined" />
+                                                variant="outlined"/>
                                         </Grid>
                                     </Grid>
                                     <Grid container xs={12} spacing={24}>
@@ -530,29 +530,29 @@ class NewPatient extends React.Component<IProps, State> {
                                                 // value="{this.state.name}"
                                                 // onChange={this.handleChange('name')}
                                                 margin="normal"
-                                                variant="outlined" />
+                                                variant="outlined"/>
                                         </Grid>
                                         <Grid item xs={12} sm={6}>
                                             <TextField
-                                                id="hasInsurance"
-                                                label="Insurance"
-                                                className={classNames(classes.formField, classes.cssOutlinedInput)}
-                                                InputLabelProps={{
-                                                    classes: {
-                                                        root: classes.formFieldInputLabel,
-                                                        focused: classes.cssFocused,
-                                                    },
-                                                }}
-                                                InputProps={{
-                                                    classes: {
-                                                        root: classes.formFieldInput,
-                                                        notchedOutline: classes.cssOutlinedInput,
-                                                    },
-                                                }}
-                                                // value="{this.state.name}"
-                                                // onChange={this.handleChange('name')}
-                                                margin="normal"
-                                                variant="outlined" />
+                                            id="hasInsurance"
+                                            label="Insurance"
+                                            className={classNames(classes.formField, classes.cssOutlinedInput)}
+                                            InputLabelProps={{
+                                                classes: {
+                                                    root: classes.formFieldInputLabel,
+                                                    focused: classes.cssFocused,
+                                                },
+                                            }}
+                                            InputProps={{
+                                                classes: {
+                                                    root: classes.formFieldInput,
+                                                    notchedOutline: classes.cssOutlinedInput,
+                                                },
+                                            }}
+                                            // value="{this.state.name}"
+                                            // onChange={this.handleChange('name')}
+                                            margin="normal"
+                                            variant="outlined"/>
                                         </Grid>
                                     </Grid>
                                     <Grid container xs={12} spacing={24}>
@@ -576,7 +576,7 @@ class NewPatient extends React.Component<IProps, State> {
                                                 // value="{this.state.name}"
                                                 // onChange={this.handleChange('name')}
                                                 margin="normal"
-                                                variant="outlined" />
+                                                variant="outlined"/>
                                         </Grid>
                                         <Grid item xs={12} sm={1}>
                                             <TextField
@@ -585,20 +585,20 @@ class NewPatient extends React.Component<IProps, State> {
                                                 className={classNames(classes.formField, classes.cssOutlinedInput)}
                                                 InputLabelProps={{
                                                     classes: {
-                                                        root: classes.formFieldInputLabel,
-                                                        focused: classes.cssFocused,
+                                                    root: classes.formFieldInputLabel,
+                                                    focused: classes.cssFocused,
                                                     },
                                                 }}
                                                 InputProps={{
                                                     classes: {
-                                                        root: classes.formFieldInput,
-                                                        notchedOutline: classes.cssOutlinedInput,
+                                                    root: classes.formFieldInput,
+                                                    notchedOutline: classes.cssOutlinedInput,
                                                     },
                                                 }}
                                                 // value="{this.state.name}"
                                                 // onChange={this.handleChange('name')}
                                                 margin="normal"
-                                                variant="outlined" />
+                                                variant="outlined"/>
                                         </Grid>
                                         <Grid item xs={12} sm={1}>
                                             <TextField
@@ -620,7 +620,7 @@ class NewPatient extends React.Component<IProps, State> {
                                                 // value="{this.state.name}"
                                                 // onChange={this.handleChange('name')}
                                                 margin="normal"
-                                                variant="outlined" />
+                                                variant="outlined"/>
                                         </Grid>
                                         <Grid item xs={12} sm={6}>
                                             <TextField
@@ -642,7 +642,7 @@ class NewPatient extends React.Component<IProps, State> {
                                                 // value="{this.state.name}"
                                                 // onChange={this.handleChange('name')}
                                                 margin="normal"
-                                                variant="outlined" />
+                                                variant="outlined"/>
                                         </Grid>
                                     </Grid>
                                     <Grid item xs={12} spacing={24} className={classes.detailButtonContainer}>

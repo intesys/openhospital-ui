@@ -10,7 +10,7 @@ const fakeDatabase = {
         },
         firstName: "Goteorond",
         secondName: "Iorgwend",
-        code: "12",
+        id: "12",
         age: 95,
         sex: "F",
         gender: "undefined",
@@ -34,7 +34,7 @@ const fakeDatabase = {
         },
         firstName: "Ceuariel",
         secondName: "Galadhhoaien",
-        code: "11",
+        id: "11",
         age: 87,
         sex: "M",
         gender: "undefined",
@@ -58,7 +58,7 @@ const fakeDatabase = {
         },
         firstName: "Manarnon",
         secondName: "Úvaneamo",
-        code: "141",
+        id: "141",
         age: 87,
         sex: "M",
         gender: "undefined",
@@ -82,7 +82,7 @@ const fakeDatabase = {
         },
         firstName: "Lanatwen",
         secondName: "Húnamë",
-        code: "133",
+        id: "133",
         age: 87,
         sex: "M",
         gender: "undefined",
@@ -106,7 +106,7 @@ const fakeDatabase = {
         },
         firstName: "Erenwen",
         secondName: "Húnë",
-        code: "177",
+        id: "177",
         age: 87,
         sex: "M",
         gender: "undefined",
@@ -130,7 +130,7 @@ const fakeDatabase = {
         },
         firstName: "Antônio Carlos",
         secondName: "Jobim",
-        code: "232",
+        id: "232",
         age: 87,
         sex: "M",
         gender: "undefined",
@@ -149,7 +149,7 @@ export async function getPatientsAPI(){
     await new Promise(resolve => setTimeout(resolve, 3000));
     return fakeDatabase;
 }
-export async function getPatientAPI(id){
+export async function getPatientAPI(code){
     await new Promise(resolve => setTimeout(resolve, 2000));
     return fakeDatabase[code];
 }

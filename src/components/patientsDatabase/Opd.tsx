@@ -16,7 +16,7 @@ import Divider from "@material-ui/core/Divider";
 // constants
 import { PATH_NEW_OPD } from "../../helpers/constants"
 
-export interface Props extends WithStyles<typeof styles> { }
+export interface Props extends WithStyles < typeof styles > {}
 
 interface State {
     InputLabelRef: number;
@@ -26,7 +26,7 @@ interface State {
     items: any;
 }
 
-class PatientOpd extends Component<Props, State> {
+class PatientOpd extends Component <Props, State> {
     state: State = {
         labelWidth: 0,
         error: null,
@@ -60,11 +60,11 @@ class PatientOpd extends Component<Props, State> {
                             Address: <b>{patient.address}</b>
                         </Typography>
                     </div>
-                    <MaterialButtonRouter
-                        component={LinkRouter}
-                        to={PATH_NEW_OPD.replace(':patientId', patient.id)}
-                        variant="outlined"
-                        color="inherit"
+                    <MaterialButtonRouter 
+                        component={LinkRouter} 
+                        to={PATH_NEW_OPD.replace(':patientId', patient.id)} 
+                        variant="outlined" 
+                        color="inherit" 
                         classes={{ root: classes.opdButton }}>
                         Create New OPD
                     </MaterialButtonRouter>
@@ -76,7 +76,7 @@ class PatientOpd extends Component<Props, State> {
                     title={"OPD HISTORY"}
                     data={data}
                     columns={columns}
-                    options={options} />
+                    options={options}/>
             </Grid>
         );
     }

@@ -12,18 +12,13 @@ import Avatar from "@material-ui/core/Avatar";
 import AddPhotoIcon from "@material-ui/icons/AddAPhoto";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
-import { Patient } from 'types/patients';
 
-export interface Props extends WithStyles<typeof styles>{ }
+export interface Props extends WithStyles<typeof styles> { }
 
-interface IProps {
-    patient : Patient;
-}
-class HealthInfoBar extends Component <IProps> {
+class HealthInfoBar extends Component<Props>{
 
 	render() {
-        const { classes , patient } = this.props;
-        
+		const { classes, patient } = this.props;
 		return(
 			<Grid item xs={12} sm={3} className={classes.sidebar}>
                 <Avatar alt="Remy Sharp" src={""} className={classes.avatar}>
@@ -36,7 +31,7 @@ class HealthInfoBar extends Component <IProps> {
                     PATIENT ID
                 </Typography>
                 <Typography color="inherit" className={classes.patientIdNumber}>
-                    {patient.code}
+                    {patient.id}
                 </Typography>
                 <Typography color="inherit" className={classes.bloodGroup}>
                     Blood Group

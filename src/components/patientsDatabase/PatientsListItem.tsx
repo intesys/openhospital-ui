@@ -39,7 +39,7 @@ class PatientsListItem extends Component  {
                                     {patient.firstName} {patient.secondName}
                                 </Typography>
                                 <Typography color="inherit">
-                                    PatientID: <b>{patient.code}</b>
+                                    PatientID: <b>{patient.id}</b>
                                 </Typography>
                                 <Typography color="inherit">
                                     Age: <b>{patient.age}</b> &nbsp; Sex:<b>{patient.sex}</b>

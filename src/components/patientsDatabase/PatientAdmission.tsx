@@ -52,11 +52,11 @@ class PatientAdmission extends Component<Props, State>{
 		this.setState(state => ({ openOptionalInfo: !state.openOptionalInfo }));
 	};
 
-	render() {
+	render(){
 		const { classes, patient } = this.props;
 		const { openOptionalInfo } = this.state;
-		{ openOptionalInfo ? <ExpandLess /> : <ExpandMore />; }
-		return (
+		{openOptionalInfo ? <ExpandLess /> : <ExpandMore />;}
+		return(
 			<Grid item xs={12} sm={9} className={classes.colleagueContent}>
 				<Grid item xs={12} className={classes.colleagueProfileHeader}>
 					<div style={{ flexDirection: "column", textAlign: "left" }}>
@@ -88,18 +88,18 @@ class PatientAdmission extends Component<Props, State>{
 							className={classNames(classes.formField, classes.cssOutlinedInput)}
 							InputLabelProps={{
 								classes: {
-									root: classes.formFieldInputLabel,
-									focused: classes.cssFocused,
+								root: classes.formFieldInputLabel,
+								focused: classes.cssFocused,
 								},
 							}}
 							InputProps={{
 								classes: {
-									root: classes.formFieldInput,
-									notchedOutline: classes.cssOutlinedInput,
+								root: classes.formFieldInput,
+								notchedOutline: classes.cssOutlinedInput,
 								},
 							}}
 							margin="normal"
-							variant="outlined" />
+							variant="outlined"/>
 						&emsp;
 						<Typography color="inherit" className={classes.drugPrescribed}>
 							TYPE OF ADMISSION
@@ -109,33 +109,33 @@ class PatientAdmission extends Component<Props, State>{
 							className={classNames(classes.formField, classes.cssOutlinedInput)}
 							InputLabelProps={{
 								classes: {
-									root: classes.formFieldInputLabel,
-									focused: classes.cssFocused,
+								root: classes.formFieldInputLabel,
+								focused: classes.cssFocused,
 								},
 							}}
 							InputProps={{
 								classes: {
-									root: classes.formFieldInput,
-									notchedOutline: classes.cssOutlinedInput,
+								root: classes.formFieldInput,
+								notchedOutline: classes.cssOutlinedInput,
 								},
 							}}
 							margin="normal"
-							variant="outlined" />
+							variant="outlined"/>
 					</Grid>
 
 					<Grid className={classes.formatFormAdmissionDate}>
 						<Typography color="inherit" className={classes.drugPrescribed}>
 							ADMISSION DATE
 						</Typography>
-						<Grid style={{ marginLeft: 10, marginTop: 12 }}>
+						<Grid style={{marginLeft:10 , marginTop:12}}>   
 							&nbsp;
 							<TextField
 								id="date"
 								type="date"
 								defaultValue="2017-05-24"
 								InputLabelProps={{
-									shrink: true,
-								}} />
+								shrink: true,
+								}}/>
 						</Grid>
 						&emsp;
 						<MaterialButtonRouter
@@ -164,20 +164,20 @@ class PatientAdmission extends Component<Props, State>{
 						className={classNames(classes.formField, classes.cssOutlinedInput)}
 						InputLabelProps={{
 							classes: {
-								root: classes.formFieldInputLabel,
-								focused: classes.cssFocused,
+							root: classes.formFieldInputLabel,
+							focused: classes.cssFocused,
 							},
 						}}
 						InputProps={{
 							classes: {
-								root: classes.formFieldInputNotes,
-								notchedOutline: classes.cssOutlinedInput,
+							root: classes.formFieldInputNotes,
+							notchedOutline: classes.cssOutlinedInput,
 							},
 						}}
 						margin="normal"
-						variant="outlined" />
+						variant="outlined"/>
 				</Grid>
-
+				
 
 				<Grid item style={{ marginTop: 30 }} xs={12} sm={12}>
 					<Typography color="inherit" className={classes.drugPrescribed}>
@@ -186,7 +186,7 @@ class PatientAdmission extends Component<Props, State>{
 					&nbsp;
 					<FormControlLabel
 						control={<Checkbox onClick={this.handleClickCollapseOptionalInfo} />}
-						label="Yes. it's necessary" />
+						label="Yes. it's necessary"/>
 					<FormControlLabel control={<Checkbox />} label="No, it isn't necessary" />
 					<Collapse in={openOptionalInfo} style={{ width: "100%" }} timeout="auto" unmountOnExit>
 						<Grid item xs={12} sm={8}>
@@ -212,7 +212,7 @@ class PatientAdmission extends Component<Props, State>{
 											id="Service type"
 											classes={{
 												input: classes.formFieldSelectInput,
-											}} />
+											}}/>
 									}>
 									<MenuItem value={10}>item1</MenuItem>
 									<MenuItem value={20}>Laboratory </MenuItem>
@@ -232,18 +232,18 @@ class PatientAdmission extends Component<Props, State>{
 						className={classNames(classes.formField, classes.cssOutlinedInput)}
 						InputLabelProps={{
 							classes: {
-								root: classes.formFieldInputLabel,
-								focused: classes.cssFocused,
+							root: classes.formFieldInputLabel,
+							focused: classes.cssFocused,
 							},
 						}}
 						InputProps={{
 							classes: {
-								root: classes.formFieldInputNotes,
-								notchedOutline: classes.cssOutlinedInput,
+							root: classes.formFieldInputNotes,
+							notchedOutline: classes.cssOutlinedInput,
 							},
 						}}
 						margin="normal"
-						variant="outlined" />
+						variant="outlined"/>
 				</Grid>
 				<Grid item xs={12} spacing={24} style={{ marginTop: 100 }} className={classes.detailButtonContainer}>
 					<MaterialButtonRouter
@@ -281,8 +281,6 @@ class PatientAdmission extends Component<Props, State>{
 
 const styledComponent = withStyles(styles, { withTheme: true })(PatientAdmission);
 export default styledComponent;
-
-
 
 
 
