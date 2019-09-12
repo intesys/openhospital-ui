@@ -15,9 +15,9 @@ import Divider from "@material-ui/core/Divider";
 import Tooltip from '@material-ui/core/Tooltip';
 
 // constants
-import { PATH_NEW_LAB_TEST } from "../../helpers/constants"
+import { PATH_NEW_LAB_TEST } from "../../config/constants"
 
-export interface Props extends WithStyles<typeof styles> { }
+export interface Props extends WithStyles <typeof styles> {}
 
 interface State {
     labelWidth: number;
@@ -26,7 +26,7 @@ interface State {
     items: any;
 }
 
-class PatientExamination extends Component<Props, State> {
+class PatientExamination extends Component <Props, State> {
     state: State = {
         labelWidth: 0,
         error: null,
@@ -35,7 +35,7 @@ class PatientExamination extends Component<Props, State> {
     };
 
     public render() {
-        const { classes, patient } = this.props;
+        const { classes } = this.props;
         const columns = ["Date", "Examination", "Result", "Notes"];
         const data = [
             ['15/09/2019', "blood exam", "negative", "-"],
@@ -59,14 +59,14 @@ class PatientExamination extends Component<Props, State> {
                 <Grid item xs={12} className={classes.patientProfileHeader}>
                     <div style={{ flexDirection: "column", textAlign: "left" }}>
                         <Typography color="inherit" className={classes.patientName}>
-                            {patient.firstName} {patient.secondName}
+                            Modotoky Tokai
                         </Typography>
                         <Typography color="inherit" className={classes.patientAddress}>
-                            Address: <b>{patient.address}</b>
+                            Provenance: <b>District, Village</b>
                         </Typography>
                     </div>
                     <Tooltip title="Prescribe new Exam" interactive>
-                        <MaterialButtonRouter component={LinkRouter} to={PATH_NEW_LAB_TEST.replace(':patientId', patient.id)} variant="outlined" color="inherit" classes={{ root: classes.detailNewExamButton, label: classes.detailButtonLabel }}>
+                        <MaterialButtonRouter component={LinkRouter} to={PATH_NEW_LAB_TEST} variant="outlined" color="inherit" classes={{ root: classes.detailNewExamButton, label: classes.detailButtonLabel }}>
                             New Exam
                         </MaterialButtonRouter>
                     </Tooltip>
@@ -78,7 +78,7 @@ class PatientExamination extends Component<Props, State> {
                     title={"EXAMINATION"}
                     data={data}
                     columns={columns}
-                    options={options} />
+                    options={options}/>
                 &emsp;
             </Grid>
         );

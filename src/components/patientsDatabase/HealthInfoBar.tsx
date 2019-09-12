@@ -12,18 +12,13 @@ import Avatar from "@material-ui/core/Avatar";
 import AddPhotoIcon from "@material-ui/icons/AddAPhoto";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
-import { Patient } from 'types/patients';
 
-export interface Props extends WithStyles<typeof styles>{ }
+export interface Props extends WithStyles<typeof styles> { }
 
-interface IProps {
-    patient : Patient;
-}
-class HealthInfoBar extends Component <IProps> {
+class HealthInfoBar extends Component<Props>{
 
 	render() {
-        const { classes , patient } = this.props;
-        
+		const { classes, patientInfo } = this.props;
 		return(
 			<Grid item xs={12} sm={3} className={classes.sidebar}>
                 <Avatar alt="Remy Sharp" src={""} className={classes.avatar}>
@@ -36,44 +31,44 @@ class HealthInfoBar extends Component <IProps> {
                     PATIENT ID
                 </Typography>
                 <Typography color="inherit" className={classes.patientIdNumber}>
-                    {patient.code}
+                    {patientInfo.code}
                 </Typography>
                 <Typography color="inherit" className={classes.bloodGroup}>
                     Blood Group
                 </Typography>
                 <Typography color="inherit" className={classes.bloodType}>
-                    {patient.bloodType}
+                    {patientInfo.bloodType}
                 </Typography>
                 <Typography color="inherit" className={classes.notes}>
                     Next Kin:
                 </Typography>
                 <Typography color="inherit" className={classes.notesDetails}>
-                    {patient.nextKin}
+                    {patientInfo.nextKin}
                 </Typography>
                 &emsp;
                 <Typography color="inherit" className={classes.notes}>
                     Notes:
                 </Typography>
                 <Typography color="inherit" className={classes.notesDetails}>
-                    {patient.notes}
+                    {patientInfo.notes}
                 </Typography>
                 &emsp;
                 <Divider className={classes.divider} />
                 &emsp;
                 <Typography color="inherit" className={classes.admissionDate}>
-                    Last Admission:&nbsp;<b>{patient.lastAdmission}</b>
+                    Last Admission:&nbsp;<b>{patientInfo.lastAdmission}</b>
                 </Typography>
                 <Typography color="inherit" className={classes.reasonVisit}>
                     Reason for visit:
                 </Typography>
                 <Typography color="inherit" className={classes.reasonVisitType}>
-                    {patient.reasonOfVisit}
+                    {patientInfo.reasonOfVisit}
                 </Typography>
                 <Typography color="inherit" className={classes.treatment}>
                     Treatment made:
                 </Typography>
                 <Typography color="inherit" className={classes.treatmentType}>
-                    {patient.treatment}
+                    {patientInfo.treatment}
                 </Typography>
                 <MaterialButtonRouter
                     style={{ marginTop: 30 }}

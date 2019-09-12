@@ -38,16 +38,16 @@ class NewLabTest extends React.Component <Props, State> {
     };
 
     public render() {
-        const { classes, patient } = this.props;
+        const { classes } = this.props;
         return (
             <Grid item xs={12} sm={9} className={classes.colleagueContent}>
                 <Grid item xs={12} className={classes.colleagueProfileHeader}>
                     <div style={{ flexDirection: "column", textAlign: "left" }}>
                         <Typography color="inherit" className={classes.patientName}>
-                            {patient.firstName} {patient.secondName}
+                            Modotoky Tokai
                         </Typography>
                         <Typography color="inherit" className={classes.patientAddress}>
-                            Address: <b>{patient.address}</b>
+                            Provenance: <b>District, Village</b>
                         </Typography>
                     </div>
                 </Grid>

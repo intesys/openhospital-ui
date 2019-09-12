@@ -6,9 +6,10 @@ import _ from "lodash";
 import { MaterialButtonRouter } from "../utils/LinkHelper";
 import styles from "./styles/PatientDetails.style";
 import ListHeader from "../sharedComponents/ListHeader";
-import AppointmentsItem from "../sharedComponents/AppointmentsItem";
+import AppoitmentsItem from "../sharedComponents/AppointmentsItem";
 import SummaryItem from "../sharedComponents/SummaryItem";
 import Calendar from "../../shared/lib/calendar/index";
+import { Patient } from 'generate';
 
 // material imports
 import { withStyles, WithStyles } from "@material-ui/core/styles";
@@ -22,17 +23,14 @@ import Tooltip from '@material-ui/core/Tooltip';
 import { Collapse, List } from '@material-ui/core';
 
 // constants
-import {
-    PATH_OPD,
-    PATH_PATIENT_ADMISSION,
-    PATH_PATIENT_EXAMINATION,
-    PATH_PATIENT_THERAPY,
-    PATH_PATIENT_VACCINATION,
+import { 
     PATH_PATIENT_VISIT,
-} from "../../helpers/constants"
-import { PatientControllerApi, GetPatientUsingGETRequest, Patient } from 'generate';
-import patients from 'reducers/patients';
-
+    PATH_PATIENT_ADMISSION,
+    PATH_PATIENT_THERAPY,
+    PATH_PATIENT_EXAMINATION,
+    PATH_PATIENT_VACCINATION,
+    PATH_OPD,
+} from "../../config/constants"
 
 export interface Props extends WithStyles<typeof styles> { }
 
@@ -40,18 +38,15 @@ interface State {
     labelWidth: number;
     error: any;
     isLoaded: boolean;
+    item: Patient;
     openOptionalInfo: boolean;
-    item : Patient;
 }
 
 interface IRouteParams {
     id: string;
-    
 }
 
 interface IProps extends RouteComponentProps<IRouteParams> { }
-
- 
 
 class PatientDetails extends Component<IProps> {
     state: State = {
@@ -59,39 +54,55 @@ class PatientDetails extends Component<IProps> {
         error: null,
         isLoaded: false,
         openOptionalInfo: false,
-        item: {},
-        
     };
 
     handleClickCollapseOptionalInfo = () => {
         this.setState(state => ({ openOptionalInfo: !state.openOptionalInfo }));
     };
 
-    
-
     render() {
-
-        const { classes, patient  } = this.props;
-       
-       
+        const { classes } = this.props;
+        const patientInfo = {
+            isChronic: false,
+            lastDocWhoVisitedHim: {
+                name: "Marcus",
+                surname: "Marcus",
+                occupation: "Anesthesiologist",
+                phone: "555 911 118",
+                email: "doc@hospital.org",
+            }
+            firstName: "Antônio",
+            secondName: "Carlos Jobim",
+            code: 123456,
+            age: 87,
+            sex: "M",
+            gender: "undefined",
+            photo: null,
+            bloodType: "A+",
+            nextKin: "Jorge de Oliveira Jobim",
+            notes: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            lastAdmission: "22.01.2019",
+            reasonOfVisit: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+            treatment: "Bloodletting"
+            address: "Rua do Catete 90, Glória, Rio de Janeiro - RJ"
+        } //TODO this data has to be fetched from store after redux's ready
         const { openOptionalInfo } = this.state;
-        { openOptionalInfo ? <ExpandLess /> : <ExpandMore />; }
-
+        {openOptionalInfo ? <ExpandLess /> : <ExpandMore />;}
         return (
             <Grid item xs={12} sm={9} className={classes.patientContent}>
                 <Grid item xs={12} className={classes.patientProfileHeader}>
                     <div style={{ flexDirection: "column", textAlign: "left" }}>
                         <Typography color="inherit" className={classes.patientName}>
-                            {patient.firstName} {patient.secondName} 
+                            {patientInfo.firstName} {patientInfo.secondName}
                         </Typography>
                         <Typography color="inherit" className={classes.patientAddress}>
-                            Address: <b>{patient.address}</b>
+                            Address: <b>{patientInfo.address}</b>
                         </Typography>
                     </div>
-                    <MaterialButtonRouter component={LinkRouter} to={PATH_PATIENT_ADMISSION.replace(':patientId', patient.code)} variant="outlined" color="inherit" classes={{ root: classes.admissionButton }}>
+                    <MaterialButtonRouter component={LinkRouter} to={PATH_PATIENT_ADMISSION} variant="outlined" color="inherit" classes={{ root: classes.admissionButton }}>
                         New Admission
                     </MaterialButtonRouter>
-                    <MaterialButtonRouter component={LinkRouter} to={PATH_PATIENT_VISIT.replace(':patientId', patient.code)} variant="outlined" color="inherit" classes={{ root: classes.visitButton }}>
+                    <MaterialButtonRouter component={LinkRouter} to={PATH_PATIENT_VISIT} variant="outlined" color="inherit" classes={{ root: classes.visitButton }}>
                         New visit
                     </MaterialButtonRouter>
                 </Grid>
@@ -105,34 +116,35 @@ class PatientDetails extends Component<IProps> {
                         </Typography>
                     </div>
                     <Tooltip title="View Opd patient History" interactive>
-                        <MaterialButtonRouter component={LinkRouter} to={PATH_OPD.replace(patient.code)} variant="outlined" color="inherit" classes={{ root: classes.opdButton }}>
+                        <MaterialButtonRouter component={LinkRouter} to={PATH_OPD} variant="outlined" color="inherit" classes={{ root: classes.opdButton }}>
                             OPD
                         </MaterialButtonRouter>
                     </Tooltip>
                     <Tooltip title="Add new patient's therapy" interactive>
-                        <MaterialButtonRouter component={LinkRouter} to={PATH_PATIENT_THERAPY.replace(patient.code)} variant="outlined" color="inherit" classes={{ root: classes.therapyButton }}>
+                        <MaterialButtonRouter component={LinkRouter} to={PATH_PATIENT_THERAPY} variant="outlined" color="inherit" classes={{ root: classes.therapyButton }}>
                             Therapy
                         </MaterialButtonRouter>
                     </Tooltip>
                 </Grid>
-                
                 &nbsp;
                 <Grid container justify="center" spacing={24}>
                     <Calendar
                         accentColor={"red"}
                         orientation={"flex-row"}
                         showHeader={true}
-                        onDatePicked={(d) => {
-                            { onclick = this.handleClickCollapseOptionalInfo, d }
-                        }} />
+                        onDatePicked={(d: any) => {
+                        { onclick = this.handleClickCollapseOptionalInfo, d }
+                        }}/>
                     <Collapse in={openOptionalInfo} style={{ width: "100%" }} timeout="auto">
+                        <Grid item xs={12} justify="center">
                             <List classes={{ root: classes.appointments }}>
-                                <ListHeader />
-                                <AppointmentsItem />
-                                <AppointmentsItem />
-                                <AppointmentsItem />
+                                <ListHeader/>
+                                <AppoitmentsItem/>
+                                <AppoitmentsItem/>
+                                <AppoitmentsItem/>
                             </List>
-                     </Collapse>  
+                        </Grid>
+                    </Collapse>
                 </Grid>
                 <Grid item xs={12} spacing={24} style={{ marginTop: 50, marginBottom: 20 }} className={classes.detailButtonContainer}>
                     <MaterialButtonRouter
@@ -141,25 +153,25 @@ class PatientDetails extends Component<IProps> {
                         variant="contained"
                         color="secondary"
                         classes={{ root: classes.detailButton, label: classes.detailButtonLabelInverse }}>
-                        <KeyboardArrowRightIcon />
-                        Pay the bill
+                        <KeyboardArrowRightIcon/>
+                            Pay the bill
                     </MaterialButtonRouter>
                     <MaterialButtonRouter
                         component={LinkRouter}
-                        to={PATH_PATIENT_EXAMINATION.replace(':patientId', patient.code)}
+                        to={PATH_PATIENT_EXAMINATION}
                         variant="contained"
                         color="secondary"
                         classes={{ root: classes.detailButton, label: classes.detailButtonLabelInverse }}>
-                        <KeyboardArrowRightIcon />
+                        <KeyboardArrowRightIcon/>
                         Examination
                     </MaterialButtonRouter>
                     <MaterialButtonRouter
                         component={LinkRouter}
-                        to={PATH_PATIENT_VACCINATION.replace(':patientId', patient.id)}
+                        to={PATH_PATIENT_VACCINATION}
                         variant="contained"
                         color="secondary"
                         classes={{ root: classes.detailButton, label: classes.detailButtonLabelInverse }}>
-                        <KeyboardArrowRightIcon />
+                        <KeyboardArrowRightIcon/>
                         Vaccination
                     </MaterialButtonRouter>
                 </Grid>
@@ -171,11 +183,11 @@ class PatientDetails extends Component<IProps> {
                 </Typography>
                 &emsp;
                 <Grid container className={classes.patientSummaryCard} style={{ width: "120%" }}>
-                    <SummaryItem />
-                    <SummaryItem />
-                    <SummaryItem />
-                    <SummaryItem />
-                    <SummaryItem />
+                    <SummaryItem/>
+                    <SummaryItem/>
+                    <SummaryItem/>
+                    <SummaryItem/>
+                    <SummaryItem/>
                 </Grid>
             </Grid>
         );

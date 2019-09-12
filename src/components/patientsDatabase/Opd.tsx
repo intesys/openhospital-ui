@@ -14,9 +14,9 @@ import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
 
 // constants
-import { PATH_NEW_OPD } from "../../helpers/constants"
+import { PATH_NEW_OPD } from "../../config/constants"
 
-export interface Props extends WithStyles<typeof styles> { }
+export interface Props extends WithStyles < typeof styles > {}
 
 interface State {
     InputLabelRef: number;
@@ -26,7 +26,7 @@ interface State {
     items: any;
 }
 
-class PatientOpd extends Component<Props, State> {
+class PatientOpd extends Component <Props, State> {
     state: State = {
         labelWidth: 0,
         error: null,
@@ -36,7 +36,7 @@ class PatientOpd extends Component<Props, State> {
     }
 
     public render() {
-        const { classes, patient } = this.props;
+        const { classes } = this.props;
         const columns = ["Date", "Disease", "Disease Type", "Status"];
         const data = [
             ["15/09/2019", "Meningitis", "Priority infectious deseases", "new"],
@@ -54,17 +54,17 @@ class PatientOpd extends Component<Props, State> {
                 <Grid item xs={12} className={classes.patientProfileHeader}>
                     <div style={{ flexDirection: "column", textAlign: "left" }}>
                         <Typography color="inherit" className={classes.patientName}>
-                            {patient.firstName} {patient.secondName}
+                            Modotoky Tokai
                         </Typography>
                         <Typography color="inherit" className={classes.patientAddress}>
-                            Address: <b>{patient.address}</b>
+                            Provenance: <b>District, Village</b>
                         </Typography>
                     </div>
-                    <MaterialButtonRouter
-                        component={LinkRouter}
-                        to={PATH_NEW_OPD.replace(':patientId', patient.id)}
-                        variant="outlined"
-                        color="inherit"
+                    <MaterialButtonRouter 
+                        component={LinkRouter} 
+                        to={PATH_NEW_OPD} 
+                        variant="outlined" 
+                        color="inherit" 
                         classes={{ root: classes.opdButton }}>
                         Create New OPD
                     </MaterialButtonRouter>
@@ -76,7 +76,7 @@ class PatientOpd extends Component<Props, State> {
                     title={"OPD HISTORY"}
                     data={data}
                     columns={columns}
-                    options={options} />
+                    options={options}/>
             </Grid>
         );
     }

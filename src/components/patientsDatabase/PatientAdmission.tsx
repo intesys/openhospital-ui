@@ -25,7 +25,7 @@ import FormControl from "@material-ui/core/FormControl";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 
 // constants
-import { PATH_PATIENT_THERAPY } from "../../helpers/constants"
+import { PATH_PATIENT_THERAPY } from "../../config/constants"
 
 export interface Props extends WithStyles<typeof styles> { }
 
@@ -52,19 +52,44 @@ class PatientAdmission extends Component<Props, State>{
 		this.setState(state => ({ openOptionalInfo: !state.openOptionalInfo }));
 	};
 
-	render() {
-		const { classes, patient } = this.props;
+	render(){
+		const { classes } = this.props;
 		const { openOptionalInfo } = this.state;
-		{ openOptionalInfo ? <ExpandLess /> : <ExpandMore />; }
-		return (
+		const patientInfo = {
+		    isChronic: false,
+	        lastDocWhoVisitedHim: {
+	            name: "Marcus",
+	            surname: "Marcus",
+	            occupation: "Anesthesiologist",
+	            phone: "555 911 118",
+	            email: "doc@hospital.org",
+	        }
+	        firstName: "Antônio",
+	        secondName: "Carlos Jobim",
+	        code: 123456,
+	        age: 87,
+	        sex: "M",
+	        gender: "undefined",
+	        photo: null,
+	        bloodType: "A+",
+	        nextKin: "Jorge de Oliveira Jobim",
+	        notes: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+	        lastAdmission: "22.01.2019",
+	        reasonOfVisit: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+	        treatment: "Bloodletting"
+	        address: "Rua do Catete 90, Glória, Rio de Janeiro - RJ"
+		} //TODO this data has to be fetched from store after redux's ready
+
+		{openOptionalInfo ? <ExpandLess /> : <ExpandMore />;}
+		return(
 			<Grid item xs={12} sm={9} className={classes.colleagueContent}>
 				<Grid item xs={12} className={classes.colleagueProfileHeader}>
 					<div style={{ flexDirection: "column", textAlign: "left" }}>
 						<Typography color="inherit" className={classes.patientName}>
-							{patient.firstName} {patient.secondName}
+							Modotoky Tokai
 						</Typography>
 						<Typography color="inherit" className={classes.patientAddress}>
-							Provenance: <b>{patient.address}</b>
+							Provenance: <b>District, Village</b>
 						</Typography>
 					</div>
 				</Grid>
@@ -88,18 +113,18 @@ class PatientAdmission extends Component<Props, State>{
 							className={classNames(classes.formField, classes.cssOutlinedInput)}
 							InputLabelProps={{
 								classes: {
-									root: classes.formFieldInputLabel,
-									focused: classes.cssFocused,
+								root: classes.formFieldInputLabel,
+								focused: classes.cssFocused,
 								},
 							}}
 							InputProps={{
 								classes: {
-									root: classes.formFieldInput,
-									notchedOutline: classes.cssOutlinedInput,
+								root: classes.formFieldInput,
+								notchedOutline: classes.cssOutlinedInput,
 								},
 							}}
 							margin="normal"
-							variant="outlined" />
+							variant="outlined"/>
 						&emsp;
 						<Typography color="inherit" className={classes.drugPrescribed}>
 							TYPE OF ADMISSION
@@ -109,33 +134,33 @@ class PatientAdmission extends Component<Props, State>{
 							className={classNames(classes.formField, classes.cssOutlinedInput)}
 							InputLabelProps={{
 								classes: {
-									root: classes.formFieldInputLabel,
-									focused: classes.cssFocused,
+								root: classes.formFieldInputLabel,
+								focused: classes.cssFocused,
 								},
 							}}
 							InputProps={{
 								classes: {
-									root: classes.formFieldInput,
-									notchedOutline: classes.cssOutlinedInput,
+								root: classes.formFieldInput,
+								notchedOutline: classes.cssOutlinedInput,
 								},
 							}}
 							margin="normal"
-							variant="outlined" />
+							variant="outlined"/>
 					</Grid>
 
 					<Grid className={classes.formatFormAdmissionDate}>
 						<Typography color="inherit" className={classes.drugPrescribed}>
 							ADMISSION DATE
 						</Typography>
-						<Grid style={{ marginLeft: 10, marginTop: 12 }}>
+						<Grid style={{marginLeft:10 , marginTop:12}}>   
 							&nbsp;
 							<TextField
 								id="date"
 								type="date"
 								defaultValue="2017-05-24"
 								InputLabelProps={{
-									shrink: true,
-								}} />
+								shrink: true,
+								}}/>
 						</Grid>
 						&emsp;
 						<MaterialButtonRouter
@@ -155,7 +180,7 @@ class PatientAdmission extends Component<Props, State>{
 							DRUGS PRESCRIBED
 						</Typography>
 					</Grid>
-					<MaterialButtonRouter component={LinkRouter} to={PATH_PATIENT_THERAPY.replace(':patientId', patient.id)} variant="outlined" color="secondary" classes={{ root: classes.detailButtonTherapy }}>
+					<MaterialButtonRouter component={LinkRouter} to={PATH_PATIENT_THERAPY} variant="outlined" color="secondary" classes={{ root: classes.detailButtonTherapy }}>
 						Therapy
 					</MaterialButtonRouter>
 					<TextField
@@ -164,20 +189,20 @@ class PatientAdmission extends Component<Props, State>{
 						className={classNames(classes.formField, classes.cssOutlinedInput)}
 						InputLabelProps={{
 							classes: {
-								root: classes.formFieldInputLabel,
-								focused: classes.cssFocused,
+							root: classes.formFieldInputLabel,
+							focused: classes.cssFocused,
 							},
 						}}
 						InputProps={{
 							classes: {
-								root: classes.formFieldInputNotes,
-								notchedOutline: classes.cssOutlinedInput,
+							root: classes.formFieldInputNotes,
+							notchedOutline: classes.cssOutlinedInput,
 							},
 						}}
 						margin="normal"
-						variant="outlined" />
+						variant="outlined"/>
 				</Grid>
-
+				
 
 				<Grid item style={{ marginTop: 30 }} xs={12} sm={12}>
 					<Typography color="inherit" className={classes.drugPrescribed}>
@@ -186,7 +211,7 @@ class PatientAdmission extends Component<Props, State>{
 					&nbsp;
 					<FormControlLabel
 						control={<Checkbox onClick={this.handleClickCollapseOptionalInfo} />}
-						label="Yes. it's necessary" />
+						label="Yes. it's necessary"/>
 					<FormControlLabel control={<Checkbox />} label="No, it isn't necessary" />
 					<Collapse in={openOptionalInfo} style={{ width: "100%" }} timeout="auto" unmountOnExit>
 						<Grid item xs={12} sm={8}>
@@ -212,7 +237,7 @@ class PatientAdmission extends Component<Props, State>{
 											id="Service type"
 											classes={{
 												input: classes.formFieldSelectInput,
-											}} />
+											}}/>
 									}>
 									<MenuItem value={10}>item1</MenuItem>
 									<MenuItem value={20}>Laboratory </MenuItem>
@@ -232,18 +257,18 @@ class PatientAdmission extends Component<Props, State>{
 						className={classNames(classes.formField, classes.cssOutlinedInput)}
 						InputLabelProps={{
 							classes: {
-								root: classes.formFieldInputLabel,
-								focused: classes.cssFocused,
+							root: classes.formFieldInputLabel,
+							focused: classes.cssFocused,
 							},
 						}}
 						InputProps={{
 							classes: {
-								root: classes.formFieldInputNotes,
-								notchedOutline: classes.cssOutlinedInput,
+							root: classes.formFieldInputNotes,
+							notchedOutline: classes.cssOutlinedInput,
 							},
 						}}
 						margin="normal"
-						variant="outlined" />
+						variant="outlined"/>
 				</Grid>
 				<Grid item xs={12} spacing={24} style={{ marginTop: 100 }} className={classes.detailButtonContainer}>
 					<MaterialButtonRouter
@@ -281,8 +306,6 @@ class PatientAdmission extends Component<Props, State>{
 
 const styledComponent = withStyles(styles, { withTheme: true })(PatientAdmission);
 export default styledComponent;
-
-
 
 
 
