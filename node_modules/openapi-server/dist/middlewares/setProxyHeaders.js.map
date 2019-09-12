@@ -1,0 +1,1 @@
+{"version":3,"file":"setProxyHeaders.js","sourceRoot":"","sources":["../../src/middlewares/setProxyHeaders.ts"],"names":[],"mappings":";;AAEA,kBAAe,GAAmB,EAAE,CAAC,CAAC,GAAG,EAAE,GAAG,EAAE,IAAI,EAAE,EAAE;IACtD,GAAG,CAAC,GAAG,CAAC,KAAK,EAAE,yBAAyB,CAAC,CAAC;IAC1C,OAAO,IAAI,EAAE,CAAC;AAChB,CAAC,CAAC"}
