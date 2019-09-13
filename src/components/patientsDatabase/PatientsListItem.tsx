@@ -1,14 +1,5 @@
-import React, { Component } from "react";
-import { Link as LinkRouter } from "react-router-dom";
+import * as React from "react";
 import _ from "lodash";
-
-// local imports
-import styles from "./styles/PatientsListItem.style";
-import { MaterialCardActionAreaRouter } from "../utils/LinkHelper";
-import { number } from 'prop-types';
-import { Patient } from 'generate';
-
-// material imports
 import { withStyles, WithStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
@@ -18,35 +9,53 @@ import MailIcon from "@material-ui/icons/Mail";
 import PhoneIcon from "@material-ui/icons/Phone";
 import HospitalIcon from "@material-ui/icons/LocalHospital";
 import Avatar from "@material-ui/core/Avatar";
-
-// constants
-import { PATH_PATIENT_DETAILS } from "../../config/constants";
-
+import CardActionArea from "@material-ui/core/CardActionArea";
+import { Link as LinkRouter } from "react-router-dom";
+import styles from "./styles/PatientsDatabase.style";
+import { MaterialCardActionAreaRouter } from "../utils/LinkHelper";
+import { number } from 'prop-types';
+import { Patient } from 'generate';
+import { Component } from 'react';
 export interface Props extends WithStyles<typeof styles> { }
 
 interface State {
-    labelWidth: number;
-    error: any;
-    isLoaded: boolean;
-    items: any[];
+  labelWidth: number;
+  error: any;
+  isLoaded: boolean;
+  items: any[];
+
 }
 
 interface IProps {
-    info: Patient;
+  info: Patient;
 }
+
+
 
 class PatientsListItem extends Component<IProps> {
     render() {
         const { classes } = this.props;
-        const { patientInfo } = this.props.info;
-        patientInfo.isChronic = _.sample([true, false]);
+        let patientInfo = this.props.info;
+
+    patientInfo.isChronic = _.sample([true, false]);
+    patientInfo.lastDocWhoVisitedHim = {
+      name: "Marcus",
+      surname: "Marcus",
+      occupation: _.sample(["Anesthesiologist", "Cardiologist", "Dermatologist", "Gastroenterologist", "Pneumologist"]),
+      phone: "555 911 118",
+      email: "doc@hospital.org",
+    };
+
         return(
             <Grid item xs={12} sm={4}>
                 <Paper className={classes.paper}>
-                    <MaterialCardActionAreaRouter
-                        className={classes.cardAction}
-                        component={LinkRouter}
-                        to={{ pathname: PATH_PATIENT_DETAILS }}>
+                <MaterialCardActionAreaRouter
+            className={classes.cardAction}
+            component={LinkRouter}
+            to={"/PatientDatabase/PatientDetails/" + this.props.info.code}
+          >
+
+
                         <Grid container className={classes.patientContainer} justify="center" spacing={24}>
                             <Grid item xs={12}>
                                 <Typography color="inherit" className={classes.patientName}>

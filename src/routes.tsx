@@ -60,7 +60,7 @@ const Routes = () => (
             <Route path={PATH_PATIENT_VACCINATION} component={PatientActivityContainer}/>
             <Route path={PATH_NEW_OPD} component={PatientActivityContainer}/>
             <Route path={PATH_OPD} component={PatientActivityContainer}/>
-            <Route path={PATH_PATIENT_DETAILS} component={PatientActivityContainer}/>
+            <Route path="/PatientDatabase/PatientDetails/:id" component={PatientDetails}/>
             <Route exact={true} path="/colleagues" component={ColleaguesDatabase} />
             <Route path="/colleagues/colleagueDetails" component={ColleagueDetails} />
             <Route path="/pharmacy" component={Pharmacy} />

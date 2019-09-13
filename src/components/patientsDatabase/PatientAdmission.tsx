@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link as LinkRouter } from "react-router-dom";
+import { Link as LinkRouter, RouteComponentProps } from "react-router-dom";
 
 // local imports
 import styles from "./styles/PatientAdmission.style";
@@ -23,9 +23,12 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControl from "@material-ui/core/FormControl";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
+import { PatientControllerApi, GetPatientUsingGETRequest } from '../../generate/apis';
+
 
 // constants
 import { PATH_PATIENT_THERAPY } from "../../config/constants"
+import { Patient } from 'types/patients';
 
 export interface Props extends WithStyles<typeof styles> { }
 
@@ -36,9 +39,16 @@ interface State {
 	patientInfo: any;
 	anchorEl?: any;
 	openOptionalInfo: boolean;
+	item: Patient;
 }
 
-class PatientAdmission extends Component<Props, State>{
+interface IRouteParams {
+	id: string;
+  }
+  
+  interface IProps extends RouteComponentProps<IRouteParams> { }
+
+class PatientAdmission extends Component<IProps, State>{
 	state: State = {
 		labelWidth: 0,
 		error: null,
@@ -46,7 +56,37 @@ class PatientAdmission extends Component<Props, State>{
 		patientInfo: {},
 		openOptionalInfo: false,
 		anchorEl: null,
+		item: {},
 	};
+
+	componentDidMount() {
+
+		const patientController: PatientControllerApi = new PatientControllerApi();
+		const requestParams: GetPatientUsingGETRequest = {
+		  code: Number(this.props.match.params.id)
+		}
+	
+		patientController.getPatientUsingGET(requestParams)
+		  .then(
+			(result) => {
+			  this.setState({
+				isLoaded: true,
+				item: result,
+	
+			  });
+			},
+			(error) => {
+			  this.setState({
+				isLoaded: true,
+				error
+			  });
+			}
+		  )
+	
+		this.setState({
+		  // labelWidth: ReactDOM.findDOMNode(this.InputLabelRef).offsetWidth,
+		});
+	
 
 	handleClickCollapseOptionalInfo = () => {
 		this.setState(state => ({ openOptionalInfo: !state.openOptionalInfo }));
@@ -55,31 +95,7 @@ class PatientAdmission extends Component<Props, State>{
 	render(){
 		const { classes } = this.props;
 		const { openOptionalInfo } = this.state;
-		const patientInfo = {
-		    isChronic: false,
-	        lastDocWhoVisitedHim: {
-	            name: "Marcus",
-	            surname: "Marcus",
-	            occupation: "Anesthesiologist",
-	            phone: "555 911 118",
-	            email: "doc@hospital.org",
-	        }
-	        firstName: "Antônio",
-	        secondName: "Carlos Jobim",
-	        code: 123456,
-	        age: 87,
-	        sex: "M",
-	        gender: "undefined",
-	        photo: null,
-	        bloodType: "A+",
-	        nextKin: "Jorge de Oliveira Jobim",
-	        notes: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-	        lastAdmission: "22.01.2019",
-	        reasonOfVisit: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
-	        treatment: "Bloodletting"
-	        address: "Rua do Catete 90, Glória, Rio de Janeiro - RJ"
-		} //TODO this data has to be fetched from store after redux's ready
-
+	
 		{openOptionalInfo ? <ExpandLess /> : <ExpandMore />;}
 		return(
 			<Grid item xs={12} sm={9} className={classes.colleagueContent}>
