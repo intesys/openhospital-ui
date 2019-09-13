@@ -1,0 +1,163 @@
+{
+    "openapi":"3.0.2",
+    "info": {
+        "title":"Open Hospital API",
+        "version":"1.0"
+    },
+    "servers": [
+        {"url":"https://api.server.test/v1"}
+    ],
+    "components": {
+        "schemas": {
+            "DoctorInfo": {
+                "type": "object",
+                "properties": {
+                    "docBasicInfo": {
+                        "$ref": "#/components/schemas/BasicPersonalInfo"
+                    },
+                    "specialty": {
+                        "example": "Anesthesiology",
+                        "type": "string"
+                    }
+                }
+            },
+            "PatientInfo": {
+                "type": "object",
+                "properties": {
+                    "PatientBasicInfo": {
+                        "$ref": "#/components/schemas/BasicPersonalInfo"
+                    },
+                    "isChronic": {
+                        "example": "true",
+                        "type": "boolean"
+                    },
+                    "bloodType": {
+                        "example": "A+",
+                        "type": "string"
+                    },
+                    "notes": {
+                        "example": "Lorem ipsum dolor sit amet",
+                        "type": "string"
+                    },
+                    "lastAdmission": {
+                        "example": "22.01.2019",
+                        "type": "string"
+                    },
+                    "reasonOfVisit": {
+                        "example": "Sed ut perspiciatis unde omnis iste natus",
+                        "type": "string"
+                    },
+                    "treatment": {
+                        "example": "Bloodletting",
+                        "type": "string"
+                    },
+                    "nextKin": {
+                        "$ref": "#/components/schemas/BasicPersonalInfo"
+                    },
+                    "lastDocToVisit": {
+                        "$ref": "#/components/schemas/DoctorInfo"
+                    }
+                }
+            },
+            "BasicPersonalInfo": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "example": "hfuy8747b7gb4dgy466t46",
+                        "type": "string"
+                    },
+                    "name": {
+                        "example": "Antônio Carlos",
+                        "type": "string"
+                    },
+                    "surname": {
+                        "example": "Jobim",
+                        "type": "string"
+                    },
+                    "age": {
+                        "example": 27,
+                        "type": "integer"
+                    },
+                    "gender": {
+                        "example": "M",
+                        "type": "string"
+                    },
+                    "phone": {
+                        "example": "5522998338785",
+                        "type": "string"
+                    },
+                    "email": {
+                        "example": "jobim@mail.com",
+                        "type": "string"
+                    },
+                    "address": {
+                        "example": "Rua do Catete 90, Glória, Rio de Janeiro - RJ",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "name": {
+                "type": "http",
+                "scheme": "basic"
+            }
+        }
+    },
+    "paths": {
+        "/patient/{patient_id}": {
+            "get": {
+                "tags": [
+                    "patients"
+                ],
+                "summary": "Fetch patient by id",
+                "parameters": [
+                    {
+                        "name": "patient_id",
+                        "in": "path",
+                        "description": "id of patient to return",
+                        "required": true,
+                        "schema": {
+                            "example": "hfuy8747b7gb4dgy466t46",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Patient's info successfully fetched",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PatientInfo"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/patients": {
+            "get": {
+                "tags": ["patients"],
+                "summary": "Fetch all the patients",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Array with patients' info successfully fetched",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/PatientInfo"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
