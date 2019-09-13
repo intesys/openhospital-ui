@@ -27,6 +27,10 @@ import Patients from "./PatientsListItem";
 import styles from './styles/PatientsDatabase.style';
 import { PatientControllerApi, GetPatientsUsingGETRequest } from '../../generate/apis';
 import { Patient } from 'generate';
+
+// constants
+import { PATH_NEW_PATIENT } from "../../config/constants";
+
 export interface Props extends WithStyles<typeof styles> { }
 
 interface State {
@@ -121,7 +125,7 @@ class PatientsDatabase extends React.Component<Props, State> {
                 Delete a patient
                             </Button>
                             
-              <MaterialButtonRouter component={LinkRouter} to="/patientsDatabase/newPatient" color="inherit" classes={{ root: (classNames(classes.button, 'addButton')), label: classes.buttonLabel }}>
+              <MaterialButtonRouter component={LinkRouter} to={PATH_NEW_PATIENT} color="inherit" classes={{ root: (classNames(classes.button, 'addButton')), label: classes.buttonLabel }}>
                 <AddIcon className={classes.buttonIcon} />
                 Record new patient
                             </MaterialButtonRouter>
