@@ -207,11 +207,11 @@ class PatientDetails extends React.Component<IProps> {
                       Provenance: <b>{this.state.item.address}</b>&emsp;<b>{this.state.item.city}</b>
                     </Typography>
                   </div>
-                  <MaterialButtonRouter component={LinkRouter} to={PATH_PATIENT_ADMISSION} variant="outlined" color="inherit" classes={{ root: classes.admissionButton }}
+                  <MaterialButtonRouter component={LinkRouter} to="/PatientDatabase/PatientAdmission"variant="outlined" color="inherit" classes={{ root: classes.admissionButton }}
                   >
                     New Admission
                   </MaterialButtonRouter>
-                  <MaterialButtonRouter component={LinkRouter} to={PATH_PATIENT_VISIT} variant="outlined" color="inherit" classes={{ root: classes.visitButton }}>
+                  <MaterialButtonRouter component={LinkRouter} to="/PatientDatabase/PatientVisit" variant="outlined" color="inherit" classes={{ root: classes.visitButton }}>
                     New visit
                   </MaterialButtonRouter>
                 </Grid>
@@ -225,12 +225,12 @@ class PatientDetails extends React.Component<IProps> {
                     </Typography>
                   </div>
                   <Tooltip title="View Opd patient History" interactive>
-                    <MaterialButtonRouter component={LinkRouter} to={PATH_OPD} variant="outlined" color="inherit" classes={{ root: classes.opdButton }}>
+                    <MaterialButtonRouter component={LinkRouter} to="/PatientDatabase/Opd" variant="outlined" color="inherit" classes={{ root: classes.opdButton }}>
                       OPD
                   </MaterialButtonRouter>
                   </Tooltip>
                   <Tooltip title="Add new patient's therapy" interactive>
-                    <MaterialButtonRouter component={LinkRouter} to={PATH_PATIENT_THERAPY} variant="outlined" color="inherit" classes={{ root: classes.therapyButton }}>
+                    <MaterialButtonRouter component={LinkRouter} to="/PatientDatabase/PatientTherapy" variant="outlined" color="inherit" classes={{ root: classes.therapyButton }}>
                       Therapy
                   </MaterialButtonRouter>
                   </Tooltip>

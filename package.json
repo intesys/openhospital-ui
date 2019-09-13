@@ -85,6 +85,7 @@
     "typesync": "^0.4.1"
   },
   "devDependencies": {
+    "@types/mui-datatables": "^2.10.2",
     "parcel-plugin-bundle-visualiser": "^1.2.0"
   },
   "browserslist": "defaults",

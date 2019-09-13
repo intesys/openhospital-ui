@@ -1,6 +1,5 @@
 import { Button, Icon } from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
-import Collapse from "@material-ui/core/Collapse";
 import FormControl from "@material-ui/core/FormControl";
 import Grid from "@material-ui/core/Grid";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -60,7 +59,7 @@ class NewPatient extends React.Component<IProps, State> {
       firstName: "",
       secondName: "",
       name: "",
-      birthDate: Date("1968-07-17"),
+      birthDate: Date(),
       age: Number(),
       agetype: "",
       sex: "",
@@ -97,7 +96,7 @@ class NewPatient extends React.Component<IProps, State> {
 
     const patientController: PatientControllerApi = new PatientControllerApi();
     const requestParams: NewPatientUsingPOSTRequest = {
-      newPatient: Patient,
+      newPatient: Patient
     };
 
     patientController.newPatientUsingPOST(requestParams)
@@ -121,13 +120,9 @@ class NewPatient extends React.Component<IProps, State> {
 
   };
 
- 
-
-
 
   public render() {
     const { classes } = this.props;
-    
 
     return (
       <div className={classes.root}>
@@ -480,10 +475,8 @@ class NewPatient extends React.Component<IProps, State> {
                       style={{ display: "flex", alignItems: "center" }}
                       color="inherit"
                       className={classes.test}
-                     
                     >
                       Other optional information
-                     
                     </Typography>
                   </Grid>
                   {/* <Grid container item xs={12} spacing={24}> */}
@@ -507,13 +500,11 @@ class NewPatient extends React.Component<IProps, State> {
                           </InputLabel>
                           <Select
                             required={true}
-
                             className={classes.select}
                             onChange={event => this.handleChange(event)}
                             input={
                               <OutlinedInput
                                 labelWidth={this.state.InputLabelRef}
-
                                 name='bloodType'
                                 // inputProps={{
                                 classes={{
@@ -703,7 +694,6 @@ class NewPatient extends React.Component<IProps, State> {
                     </Grid>
                   {/* </Grid> */}
                   <Grid item xs={12} spacing={24} className={classes.detailButtonContainer}>
-                   
                     <Button
                       onClick={this.handleSubmit}
                       variant="contained"

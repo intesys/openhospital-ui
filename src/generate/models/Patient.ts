@@ -27,8 +27,6 @@ import {
  * @interface Patient
  */
 export interface Patient {
-    lastDocWhoVisitedHim: { name: string; surname: string; occupation: string | undefined; phone: string; email: string; };
-    isChronic: boolean | undefined;
    
     /**
      * 

@@ -4,15 +4,14 @@ import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Dashboard from "./components/dashboard/Dashboard";
 import PatientsDatabase from "./components/patientsDatabase/PatientsDatabase";
-import PatientVisit from "./components/patientsDatabase/PatientVisit/PatientVisit";
+import PatientVisit from "./components/patientsDatabase/PatientVisit";
 import PatientDetails from "./components/patientsDatabase/PatientDetails";
-import PatientActivityContainer from "./components/patientsDatabase/PatientActivityContainer";
 import PatientAdmission from "./components/patientsDatabase/PatientAdmission";
-import PatientLabTest from "./components/patientsDatabase/PatientLabTest/PatientLabTest";
-import PatientTherapy from "./components/patientsDatabase/PatientTherapy/PatientTherapy";
-import PatientExamination from "./components/patientsDatabase/PatientExamination/PatientExamination";
-import PatientVaccine from "./components/patientsDatabase/PatientVaccine/PatientVaccine";
-import Vaccine from "./components/patientsDatabase/Vaccine/Vaccine";
+import PatientLabTest from "./components/patientsDatabase/NewLabTest";
+import PatientTherapy from "./components/patientsDatabase/PatientTherapy";
+import PatientExamination from "./components/patientsDatabase/PatientExamination";
+import PatientVaccine from "./components/patientsDatabase/PatientVaccination";
+import Vaccine from "./components/patientsDatabase/NewVaccination";
 import Opd from "./components/patientsDatabase/Opd";
 import NewPatient from "./components/patientsDatabase/NewPatient";
 import ColleaguesDatabase from "./components/colleaguesDatabase/ColleaguesDatabase";
@@ -27,40 +26,27 @@ import Calendar from "./components/Calendar/Calendario";
 import Notification from "./components/Notifications/Notification";
 import PageNotFound from "./components/pageNotFound/PageNotFound";
 
-// constants
-import { 
-    PATH_PATIENTS_DATABASE,
-    PATH_NEW_PATIENT,
-    PATH_PATIENT_DETAILS,
-    PATH_PATIENT_VISIT,
-    PATH_PATIENT_ADMISSION,
-    PATH_NEW_LAB_TEST,
-    PATH_PATIENT_THERAPY,
-    PATH_PATIENT_EXAMINATION,
-    PATH_PATIENT_VACCINATION,
-    PATH_PATIENT_NEW_VACCINATION,
-    PATH_OPD,
-    PATH_NEW_OPD,
-} from "./helpers/constants";
 
 const Routes = () => (
-   <div>
+      
+   <>
+        
         <Header />
-        <Switch>  
+        <Switch>
+            
             <Redirect from="/" exact={true} to="/dashboard" />
             <Route path="/dashboard" component={Dashboard} />
-            <Route exact={true} path={PATH_PATIENTS_DATABASE} component={PatientsDatabase} />
-            <Route path={PATH_NEW_PATIENT} component={NewPatient} />
-            <Route path={PATH_PATIENT_ADMISSION} component={PatientActivityContainer}/>
-            <Route path={PATH_PATIENT_VISIT} component={PatientActivityContainer}/>
-            <Route path={PATH_NEW_LAB_TEST} component={PatientActivityContainer}/>
-            <Route path={PATH_PATIENT_THERAPY} component={PatientActivityContainer}/>
-            <Route path={PATH_PATIENT_EXAMINATION} component={PatientActivityContainer}/>
-            <Route path={PATH_PATIENT_NEW_VACCINATION} component={PatientActivityContainer}/>
-            <Route path={PATH_PATIENT_VACCINATION} component={PatientActivityContainer}/>
-            <Route path={PATH_NEW_OPD} component={PatientActivityContainer}/>
-            <Route path={PATH_OPD} component={PatientActivityContainer}/>
+            <Route exact={true} path="/PatientsDatabase" component={PatientsDatabase} />
+            <Route path="/PatientsDatabase/NewPatient" component={NewPatient} />
+            <Route path="/PatientDatabase/PatientVisit" component={PatientVisit}/>
             <Route path="/PatientDatabase/PatientDetails/:id" component={PatientDetails}/>
+            <Route path="/PatientDatabase/PatientAdmission" component={PatientAdmission}/>
+            <Route path="/PatientDatabase/PatientLabTest" component={PatientLabTest}/>
+            <Route path="/PatientDatabase/PatientTherapy" component={PatientTherapy}/>
+            <Route path="/PatientDatabase/PatientExamination" component={PatientExamination}/>
+            <Route path="/PatientDatabase/PatientVaccine" component={PatientVaccine}/>
+            <Route path="/PatientDatabase/Vaccine" component={Vaccine}/>
+            <Route path="/PatientDatabase/Opd" component={Opd}/>
             <Route exact={true} path="/colleagues" component={ColleaguesDatabase} />
             <Route path="/colleagues/colleagueDetails" component={ColleagueDetails} />
             <Route path="/pharmacy" component={Pharmacy} />
@@ -71,11 +57,21 @@ const Routes = () => (
             <Route exact={true} path="/setting" component={setting} />
             <Route exact={true} path="/Calendar" component={Calendar} />
             <Route exact={true} path="/Notification" component={Notification} />
+
             {/* If no Route matches, show PageNotFound component */}
             <Route component={PageNotFound} />
         </Switch>
         <Footer />
-    </div>
+       
+
+    </>
+
+    
+   
+    
 );
+
+
+
 
 export default Routes;
