@@ -20,13 +20,14 @@ import Avatar from "@material-ui/core/Avatar";
 import Divider from "@material-ui/core/Divider";
 import AddPhotoIcon from "@material-ui/icons/AddAPhoto";
 import styles from "./styles/PatientTherapy.style";
+import { Patient } from 'generate';
 export interface Props extends WithStyles<typeof styles> {}
 
 interface State {
   labelWidth: number;
   error: any;
   isLoaded: boolean;
-  items: any;
+  item: Patient;
   
 }
 
@@ -36,7 +37,7 @@ class PatientTherapy extends React.Component<Props, State> {
     labelWidth: 0,
     error: null,
     isLoaded: false,
-    items: [],
+    item: {},
     
    
   };
@@ -44,6 +45,7 @@ class PatientTherapy extends React.Component<Props, State> {
   
   public render() {
     const { classes } = this.props;
+    const { item } = this.state;
     
     return (
       <div className={classes.root}>
@@ -83,7 +85,7 @@ class PatientTherapy extends React.Component<Props, State> {
                   PATIENT ID
                 </Typography>
                 <Typography color="inherit" className={classes.patientIdNumber}>
-                  32040
+                  {this.state.item.code}
                 </Typography>
                 <Typography color="inherit" className={classes.opdTitle}>
                   OPD
@@ -95,7 +97,7 @@ class PatientTherapy extends React.Component<Props, State> {
                   Blood Group
                 </Typography>
                 <Typography color="inherit" className={classes.bloodType}>
-                  A+
+                  {this.state.item.bloodType}
                 </Typography>
                 <Typography color="inherit" className={classes.notes}>
                   Notes:

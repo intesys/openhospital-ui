@@ -21,6 +21,7 @@ import Calendar from "../../shared/lib/calendar/index";
 import { PatientControllerApi, GetPatientUsingGETRequest } from '../../generate/apis';
 import { Collapse, FormControl, InputLabel, Select, MenuItem, OutlinedInput, List, ListItem, ListItemSecondaryAction } from '@material-ui/core';
 import { Patient } from 'generate';
+import ContentEditable from "../sharedComponents/ContentEditable";
 import SummaryItem from "../sharedComponents/SummaryItem";
 
 // constants
@@ -223,9 +224,11 @@ class PatientDetails extends React.Component<IProps> {
               <Grid item xs={12} sm={9} className={classes.patientContent}>
                 <Grid item xs={12} className={classes.patientProfileHeader}>
                   <div style={{ flexDirection: "column", textAlign: "left" }}>
-                    <Typography contentEditable={true} onChange={this.handleContentEditable} color="inherit" className={classes.patientName}>
+                    <ContentEditable>
+                    <Typography color="inherit" className={classes.patientName}>
                       {this.state.item.firstName} {this.state.item.secondName}
                     </Typography>
+                    </ContentEditable>
                     <Typography color="inherit" className={classes.patientAddress}>
                       Provenance: <b>{this.state.item.address}</b>&emsp;<b>{this.state.item.city}</b>
                     </Typography>
