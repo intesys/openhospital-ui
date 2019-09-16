@@ -54,8 +54,6 @@ class PatientsListItem extends Component<IProps> {
             component={LinkRouter}
             to={"/PatientDatabase/PatientDetails/" + this.props.info.code}
           >
-
-
                         <Grid container className={classes.patientContainer} justify="center" spacing={24}>
                             <Grid item xs={12}>
                                 <Typography  color="inherit" className={classes.patientName}>

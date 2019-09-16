@@ -21,7 +21,6 @@ import Calendar from "../../shared/lib/calendar/index";
 import { PatientControllerApi, GetPatientUsingGETRequest } from '../../generate/apis';
 import { Collapse, FormControl, InputLabel, Select, MenuItem, OutlinedInput, List, ListItem, ListItemSecondaryAction } from '@material-ui/core';
 import { Patient } from 'generate';
-import ContentEditable from "../sharedComponents/ContentEditable";
 import SummaryItem from "../sharedComponents/SummaryItem";
 
 // constants
@@ -43,8 +42,7 @@ interface State {
   isLoaded: boolean;
   item: Patient;
   openOptionalInfo: boolean;
-
-}
+ }
 
 interface IRouteParams {
   id: string;
@@ -61,7 +59,7 @@ class PatientDetails extends React.Component<IProps> {
     isLoaded: false,
     item: {},
     openOptionalInfo: false,
-
+    
   };
 
   componentDidMount() {
@@ -100,22 +98,11 @@ class PatientDetails extends React.Component<IProps> {
     this.setState(state => ({ openOptionalInfo: !state.openOptionalInfo }));
   };
 
-  handleContentEditable = event => {
-    const { item } = this.state
-    const {
-      currentTarget: {
-        dataset: { column },
-      },
-      target: { value },
-    } = event
   
-    this.setState({ item: { ...item, [column]: value } })
-  }
 
   public render() {
     const { classes } = this.props;
     const { openOptionalInfo } = this.state;
-
 
     {
       openOptionalInfo ? <ExpandLess /> : <ExpandMore />;
@@ -224,20 +211,18 @@ class PatientDetails extends React.Component<IProps> {
               <Grid item xs={12} sm={9} className={classes.patientContent}>
                 <Grid item xs={12} className={classes.patientProfileHeader}>
                   <div style={{ flexDirection: "column", textAlign: "left" }}>
-                    <ContentEditable>
                     <Typography color="inherit" className={classes.patientName}>
                       {this.state.item.firstName} {this.state.item.secondName}
                     </Typography>
-                    </ContentEditable>
                     <Typography color="inherit" className={classes.patientAddress}>
                       Provenance: <b>{this.state.item.address}</b>&emsp;<b>{this.state.item.city}</b>
                     </Typography>
                   </div>
-                  <MaterialButtonRouter component={LinkRouter} to="/PatientDatabase/PatientAdmission"variant="outlined" color="inherit" classes={{ root: classes.admissionButton }}
+                  <MaterialButtonRouter component={LinkRouter} to={"/PatientDatabase/PatientAdmission/" +this.props.match.params.id}variant="outlined" color="inherit" classes={{ root: classes.admissionButton }}
                   >
                     New Admission
                   </MaterialButtonRouter>
-                  <MaterialButtonRouter component={LinkRouter} to="/PatientDatabase/PatientVisit" variant="outlined" color="inherit" classes={{ root: classes.visitButton }}>
+                  <MaterialButtonRouter component={LinkRouter} to={"/PatientDatabase/PatientVisit/" +this.props.match.params.id} variant="outlined" color="inherit" classes={{ root: classes.visitButton }}>
                     New visit
                   </MaterialButtonRouter>
                 </Grid>
@@ -251,12 +236,12 @@ class PatientDetails extends React.Component<IProps> {
                     </Typography>
                   </div>
                   <Tooltip title="View Opd patient History" interactive>
-                    <MaterialButtonRouter component={LinkRouter} to="/PatientDatabase/Opd" variant="outlined" color="inherit" classes={{ root: classes.opdButton }}>
+                    <MaterialButtonRouter component={LinkRouter} to={"/PatientDatabase/Opd/"+this.props.match.params.id} variant="outlined" color="inherit" classes={{ root: classes.opdButton }}>
                       OPD
                   </MaterialButtonRouter>
                   </Tooltip>
                   <Tooltip title="Add new patient's therapy" interactive>
-                    <MaterialButtonRouter component={LinkRouter} to="/patientDatabase/PatientTherapy" variant="outlined" color="inherit" classes={{ root: classes.therapyButton }}>
+                    <MaterialButtonRouter component={LinkRouter} to={"/patientDatabase/PatientTherapy/"+this.props.match.params.id} variant="outlined" color="inherit" classes={{ root: classes.therapyButton }}>
                       Therapy
                   </MaterialButtonRouter>
                   </Tooltip>

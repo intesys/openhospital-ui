@@ -1,4 +1,6 @@
-var ContentEditable = React.createClass({
+var createReactClass = require('create-react-class');
+
+var ContentEditable = createReactClass({
     render: function(){
         return (
         	<span onInput={this.handleInput} onBlur={this.handleChange} contentEditable="true" dangerouslySetInnerHTML={{__html: this.props.html}}>
