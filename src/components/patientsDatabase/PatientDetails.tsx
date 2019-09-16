@@ -4,7 +4,7 @@ import { withStyles, WithStyles } from "@material-ui/core/styles";
 import Breadcrumbs from "@material-ui/lab/Breadcrumbs";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import { Link as LinkRouter, RouteProps, RouteComponentProps } from "react-router-dom";
+import { Link as LinkRouter, RouteProps, RouteComponentProps, Link } from "react-router-dom";
 import { MaterialLinkRouter, MaterialButtonRouter } from "../utils/LinkHelper";
 import classNames from "classnames";
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
@@ -47,6 +47,7 @@ interface State {
 
 interface IRouteParams {
   id: string;
+  
 }
 
 interface IProps extends RouteComponentProps<IRouteParams> { }
@@ -195,6 +196,17 @@ class PatientDetails extends React.Component<IProps> {
                   classes={classes.detailButtonLabelPrint}
                 >
                   Print health information
+                </MaterialButtonRouter>
+                <MaterialButtonRouter
+                  style={{ marginTop: 30 }}
+                  justify= "center"
+                  component={LinkRouter}
+                  to={"/editPatient/"+this.props.match.params.id}
+                  variant="outlined"
+                  color="inherit"
+                  classes={classes.detailButtonLabelPrint}
+                >
+                  Update Data
                 </MaterialButtonRouter>
               </Grid>
               <Grid item xs={12} sm={9} className={classes.patientContent}>

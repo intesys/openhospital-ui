@@ -226,10 +226,10 @@ class Pharmacy extends React.Component<IProps, IState> {
                               <b>Located</b>
                             </TableCell>
                             <TableCell align="left">
-                              <b>Date of expiration</b>
+                              <b>Expiration Date</b>
                             </TableCell>
                             <TableCell align="left">
-                              <b>Quantity of vials</b>
+                              <b>N°vials</b>
                             </TableCell>
                             <TableCell align="left">
                               <b>Refueling forecast</b>
