@@ -69,24 +69,49 @@ components:
         address:
           example: Rua do Catete 90, Glória, Rio de Janeiro - RJ
           type: string
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+          example: '404'
+        message:
+          type: string
+          example: Not found
+        link:
+          type: string
+          example: http://open-hospital.com/doc
+          description: Check out the documentation for more info.
+  parameters:
+    patient_id:
+      name: patient_id
+      in: path
+      description: id of patient to return
+      required: true
+      schema:
+        example: hfuy8747b7gb4dgy466t46
+        type: string
   securitySchemes:
     name:
       type: http
       scheme: basic
+  responses:
+    401_unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            "$ref": "#/components/schemas/Error"
 paths:
   "/patient/{patient_id}":
     get:
       tags:
       - patients
       summary: Fetch patient by id
+      security:
+      - BasicAuth: []
       parameters:
-      - name: patient_id
-        in: path
-        description: id of patient to return
-        required: true
-        schema:
-          example: hfuy8747b7gb4dgy466t46
-          type: string
+      - "$ref": "#/components/parameters/patient_id"
       responses:
         '200':
           description: Patient's info successfully fetched
@@ -94,11 +119,27 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/PatientInfo"
+        '400':
+          description: Invalid id supplied
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '401':
+          "$ref": "#/components/responses/401_unauthorized"
+        '404':
+          description: Patient not found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
   "/patients":
     get:
       tags:
       - patients
       summary: Fetch all the patients
+      security:
+      - BasicAuth: []
       parameters: []
       responses:
         '200':
@@ -109,3 +150,6 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/PatientInfo"
+        '401':
+          "$ref": "#/components/responses/401_unauthorized"
+ 

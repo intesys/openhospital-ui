@@ -95,6 +95,36 @@
                         "type": "string"
                     }
                 }
+            },
+            "Error": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "example": "404"
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "Not found"
+                    },
+                    "link": {
+                        "type": "string",
+                        "example": "http://open-hospital.com/doc",
+                        "description": "Check out the documentation for more info."
+                    }
+                }
+            }
+        },
+        "parameters": {
+            "patient_id": {
+                "name": "patient_id",
+                "in": "path",
+                "description": "id of patient to return",
+                "required": true,
+                "schema": {
+                    "example": "hfuy8747b7gb4dgy466t46",
+                    "type": "string"
+                }
             }
         },
         "securitySchemes": {
@@ -102,25 +132,33 @@
                 "type": "http",
                 "scheme": "basic"
             }
+        },
+        "responses": {
+            "401_unauthorized": {
+                "description": "Unauthorized",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Error"
+                        }
+                    }
+                }
+            }
         }
     },
     "paths": {
         "/patient/{patient_id}": {
             "get": {
-                "tags": [
-                    "patients"
-                ],
+                "tags": ["patients"],
                 "summary": "Fetch patient by id",
+                "security": [
+                    {
+                        "BasicAuth": []
+                    }
+                ],
                 "parameters": [
                     {
-                        "name": "patient_id",
-                        "in": "path",
-                        "description": "id of patient to return",
-                        "required": true,
-                        "schema": {
-                            "example": "hfuy8747b7gb4dgy466t46",
-                            "type": "string"
-                        }
+                        "$ref": "#/components/parameters/patient_id"
                     }
                 ],
                 "responses": {
@@ -133,6 +171,29 @@
                                 }
                             }
                         }
+                    },
+                    "400": {
+                        "description": "Invalid id supplied",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Patient not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401_unauthorized"
                     }
                 }
             }
@@ -141,6 +202,11 @@
             "get": {
                 "tags": ["patients"],
                 "summary": "Fetch all the patients",
+                "security": [
+                    {
+                        "BasicAuth": []
+                    }
+                ],
                 "parameters": [],
                 "responses": {
                     "200": {
@@ -155,6 +221,9 @@
                                 }
                             }
                         }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401_unauthorized"
                     }
                 }
             }
