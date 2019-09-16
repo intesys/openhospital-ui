@@ -19,8 +19,9 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link as LinkRouter } from 'react-router-dom';
-import PatientsListItem from "../patientsDatabase/PatientsListItem";
+import Patients from "../patientsDatabase/PatientsListItem";
 import styles from './Ward.style';
+import { PatientControllerApi, GetPatientsUsingGETRequest } from '../../generate/apis';
 export interface Props extends WithStyles<typeof styles> { }
 
 interface State {
@@ -43,52 +44,34 @@ class Ward extends React.Component {
 
   componentDidMount() {
 
-    // <test>
-    const item = {
-        patientInfo: {
-            isChronic: false,
-            lastDocWhoVisitedHim: {
-                    name: "Marcus",
-                    surname: "Marcus",
-                    occupation: "Anesthesiologist",
-                    phone: "555 911 118",
-                    email: "doc@hospital.org",
-            },
-            firstName: "Antônio",
-            secondName: "Carlos Jobim",
-            code: 123456,
-            age: 87,
-            sex: "M",
-            gender: "undefined",
-            photo: null,
+    const patientController: PatientControllerApi = new PatientControllerApi();
+    const requestParams: GetPatientsUsingGETRequest = {
+      page: 1,
+      size: 8,
+    }
+
+    patientController.getPatientsUsingGET(requestParams)
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            items: result,
+
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
         }
-    };
+      )
 
-    const items = [item, item, item, item, item, item, item];
-    this.setState({ isLoaded: true, items, });
-    // </test>
-    
-    // fetch("https://uinames.com/api/?ext&amount=9")
-    //   .then(res => res.json())
-    //   .then(
-    //     (result) => {
-    //         this.setState({
-    //           isLoaded: true,
-    //           items: result
-    //         });
-    //     },
-    //     (error) => {
-    //       this.setState({
-    //         isLoaded: true,
-    //         error
-    //       });
-    //     }
-    //   )
-
-    // this.setState({
-    //   // labelWidth: ReactDOM.findDOMNode(this.InputLabelRef).offsetWidth,
-    // });
+    this.setState({
+      // labelWidth: ReactDOM.findDOMNode(this.InputLabelRef).offsetWidth,
+    });
   }
+
 
   handleChange = (event: React.MouseEvent<HTMLElement>, value: number) => {
     this.setState({ value });
@@ -102,7 +85,7 @@ class Ward extends React.Component {
     const patients = (
       items && items.length !== 0 ?
         (items.map((item: any) => (
-          <PatientsListItem
+          <Patients
             info={item}
           />
         ))) :
@@ -386,7 +369,8 @@ class Ward extends React.Component {
           </Paper>
         </Grid>
         &nbsp;
-        <Grid container  item className={classes.filterContainer} justify="center" spacing={24}>
+        <Grid container  item  justify="center" spacing={24}>
+          <Grid container item className={classes.filterContainer} justify="center" spacing={24}>
           <Grid item xs={12} sm={6} style={{ display: 'flex' }}>
             <Typography variant="inherit">
               &emsp;<b>Which admitted patient are you searching for?</b>
@@ -414,6 +398,7 @@ class Ward extends React.Component {
                 <MenuItem value={30}>Admitted more than 7 days ago</MenuItem>
               </Select>
             </FormControl>
+          </Grid>
           </Grid>
           <Grid container item  spacing={24}>
             {patients}
@@ -667,7 +652,8 @@ class Ward extends React.Component {
           </Paper>
         </Grid>
         &nbsp;
-        <Grid container  item className={classes.filterContainer} justify="center" spacing={24}>
+        <Grid container  item  justify="center" spacing={24}>
+          <Grid container item justify="center" className={classes.filterContainer} spacing={24}>
           <Grid item xs={12} sm={6} style={{ display: 'flex' }}>
             <Typography variant="inherit">
               &emsp;<b>Which admitted patient are you searching for?</b>
@@ -696,8 +682,9 @@ class Ward extends React.Component {
               </Select>
             </FormControl>
           </Grid>
+          </Grid>
           <Grid container item  spacing={24}>
-            {Patient}
+            {patients}
           </Grid>
           <Grid container item style={{padding: 30, justifyContent:"center"}}>
             <Button variant="outlined" color="inherit" justify="center" classes={{ root: classes.loadMoreButton }}>

@@ -568,7 +568,7 @@ const styles = (theme: Theme) =>
 
         admissionTitle: {
             fontWeight: "bold",
-            fontSize: 20,
+            fontSize: 16,
             letterSpacing: 1,
         },
 

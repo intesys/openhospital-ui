@@ -98,9 +98,9 @@ const styles = (theme: Theme) =>
     },
 
     filterContainer: {
-      paddingTop: "40px !important",
-
+      paddingTop: "20px !important",
       margin: "auto",
+      marginBottom: "15px",
     },
 
     wardTitle: {

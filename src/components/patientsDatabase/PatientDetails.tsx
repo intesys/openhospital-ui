@@ -230,7 +230,7 @@ class PatientDetails extends React.Component<IProps> {
                   </MaterialButtonRouter>
                   </Tooltip>
                   <Tooltip title="Add new patient's therapy" interactive>
-                    <MaterialButtonRouter component={LinkRouter} to="/PatientDatabase/PatientTherapy" variant="outlined" color="inherit" classes={{ root: classes.therapyButton }}>
+                    <MaterialButtonRouter component={LinkRouter} to="/patientDatabase/PatientTherapy" variant="outlined" color="inherit" classes={{ root: classes.therapyButton }}>
                       Therapy
                   </MaterialButtonRouter>
                   </Tooltip>
