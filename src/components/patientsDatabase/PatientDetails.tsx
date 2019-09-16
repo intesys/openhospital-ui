@@ -93,12 +93,23 @@ class PatientDetails extends React.Component<IProps> {
 
 
   }
+  
 
   handleClickCollapseOptionalInfo = () => {
     this.setState(state => ({ openOptionalInfo: !state.openOptionalInfo }));
   };
 
-
+  handleContentEditable = event => {
+    const { item } = this.state
+    const {
+      currentTarget: {
+        dataset: { column },
+      },
+      target: { value },
+    } = event
+  
+    this.setState({ item: { ...item, [column]: value } })
+  }
 
   public render() {
     const { classes } = this.props;
@@ -212,7 +223,7 @@ class PatientDetails extends React.Component<IProps> {
               <Grid item xs={12} sm={9} className={classes.patientContent}>
                 <Grid item xs={12} className={classes.patientProfileHeader}>
                   <div style={{ flexDirection: "column", textAlign: "left" }}>
-                    <Typography color="inherit" className={classes.patientName}>
+                    <Typography contentEditable={true} onChange={this.handleContentEditable} color="inherit" className={classes.patientName}>
                       {this.state.item.firstName} {this.state.item.secondName}
                     </Typography>
                     <Typography color="inherit" className={classes.patientAddress}>

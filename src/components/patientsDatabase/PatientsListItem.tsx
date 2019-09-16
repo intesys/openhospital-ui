@@ -58,7 +58,7 @@ class PatientsListItem extends Component<IProps> {
 
                         <Grid container className={classes.patientContainer} justify="center" spacing={24}>
                             <Grid item xs={12}>
-                                <Typography color="inherit" className={classes.patientName}>
+                                <Typography  color="inherit" className={classes.patientName}>
                                     {patientInfo.firstName} {patientInfo.secondName}
                                 </Typography>
                                 <Typography color="inherit">
