@@ -20,7 +20,7 @@ import Avatar from "@material-ui/core/Avatar";
 import Divider from "@material-ui/core/Divider";
 import AddPhotoIcon from "@material-ui/icons/AddAPhoto";
 import styles from "./styles/PatientTherapy.style";
-import { Patient } from 'generate';
+import {Patient, PatientControllerApi, GetPatientUsingGETRequest} from "generate";
 import { Component } from 'react';
 export interface Props extends WithStyles<typeof styles> {}
 
@@ -28,22 +28,32 @@ interface State {
   labelWidth: number;
   error: any;
   isLoaded: boolean;
-  items: any[];
-}
+  item: Patient;
+ }
 
-interface IProps {
-  info: Patient;
+interface IRouteParams {
+  id: string;
   
 }
 
+interface IProps extends RouteComponentProps<IRouteParams> { }
+
 class PatientTherapy extends Component<IProps> {
+
+  state: State = {
+    labelWidth: 0,
+    error: null,
+    isLoaded: false,
+    item: {},
+  };
+
+
   
   InputLabelRef: InputLabel | null;
   
  render() {
     const { classes } = this.props;
-    let patientInfo = this.props.info;
-    
+    const { item } = this.state.item;
     return (
       <div className={classes.root}>
         <Grid container className={classes.gridContainer} justify="center" spacing={24}>
@@ -82,7 +92,7 @@ class PatientTherapy extends Component<IProps> {
                   PATIENT ID
                 </Typography>
                 <Typography color="inherit" className={classes.patientIdNumber}>
-                  {patientInfo.code} 
+                  {this.state.item.code} 
                 </Typography>
                 <Typography color="inherit" className={classes.opdTitle}>
                   OPD

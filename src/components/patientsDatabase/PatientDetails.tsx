@@ -218,7 +218,7 @@ class PatientDetails extends React.Component<IProps> {
                       Provenance: <b>{this.state.item.address}</b>&emsp;<b>{this.state.item.city}</b>
                     </Typography>
                   </div>
-                  <MaterialButtonRouter component={LinkRouter} to={"/PatientDatabase/PatientAdmission/" +this.props.match.params.id}variant="outlined" color="inherit" classes={{ root: classes.admissionButton }}
+                  <MaterialButtonRouter component={LinkRouter} to={"/PatientDatabase/PatientAdmission/"+  this.props.match.params.id}variant="outlined" color="inherit" classes={{ root: classes.admissionButton }}
                   >
                     New Admission
                   </MaterialButtonRouter>
