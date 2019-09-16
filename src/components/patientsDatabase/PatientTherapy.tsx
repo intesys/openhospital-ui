@@ -28,7 +28,7 @@ interface State {
   labelWidth: number;
   error: any;
   isLoaded: boolean;
-  
+  items: any[];
 }
 
 interface IProps {
@@ -36,13 +36,13 @@ interface IProps {
   
 }
 
-class PatientTherapy extends Component<IProps, State> {
+class PatientTherapy extends Component<IProps> {
   
   InputLabelRef: InputLabel | null;
   
-  public render() {
+ render() {
     const { classes } = this.props;
-    const patientInfo = this.props.info;
+    let patientInfo = this.props.info;
     
     return (
       <div className={classes.root}>
