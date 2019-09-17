@@ -23,15 +23,6 @@ import { Collapse, FormControl, InputLabel, Select, MenuItem, OutlinedInput, Lis
 import { Patient } from 'generate';
 import SummaryItem from "../sharedComponents/SummaryItem";
 
-// constants
-import { 
-    PATH_PATIENT_VISIT,
-    PATH_PATIENT_ADMISSION,
-    PATH_PATIENT_THERAPY,
-    PATH_PATIENT_EXAMINATION,
-    PATH_PATIENT_VACCINATION,
-    PATH_OPD,
-} from "../../config/constants"
 
 export interface Props extends WithStyles<typeof styles> { }
 
@@ -196,17 +187,7 @@ class PatientDetails extends React.Component<IProps> {
                 >
                   Print health information
                 </MaterialButtonRouter>
-                <MaterialButtonRouter
-                  style={{ marginTop: 30 }}
-                  justify= "center"
-                  component={LinkRouter}
-                  to={"/editPatient/"+this.props.match.params.id}
-                  variant="outlined"
-                  color="inherit"
-                  classes={classes.detailButtonLabelPrint}
-                >
-                  Update Data
-                </MaterialButtonRouter>
+               
               </Grid>
               <Grid item xs={12} sm={9} className={classes.patientContent}>
                 <Grid item xs={12} className={classes.patientProfileHeader}>
@@ -218,11 +199,11 @@ class PatientDetails extends React.Component<IProps> {
                       Provenance: <b>{this.state.item.address}</b>&emsp;<b>{this.state.item.city}</b>
                     </Typography>
                   </div>
-                  <MaterialButtonRouter component={LinkRouter} to={"/PatientDatabase/PatientAdmission/"+  this.props.match.params.id}variant="outlined" color="inherit" classes={{ root: classes.admissionButton }}
+                  <MaterialButtonRouter component={LinkRouter} to={"/PatientDatabase/PatientAdmission/"+  this.state.item.code} variant="outlined" color="inherit" classes={{ root: classes.admissionButton }}
                   >
                     New Admission
                   </MaterialButtonRouter>
-                  <MaterialButtonRouter component={LinkRouter} to={"/PatientDatabase/PatientVisit/" +this.props.match.params.id} variant="outlined" color="inherit" classes={{ root: classes.visitButton }}>
+                  <MaterialButtonRouter component={LinkRouter} to={"/PatientDatabase/PatientVisit/" +this.state.item.code} variant="outlined" color="inherit" classes={{ root: classes.visitButton }}>
                     New visit
                   </MaterialButtonRouter>
                 </Grid>
@@ -236,12 +217,12 @@ class PatientDetails extends React.Component<IProps> {
                     </Typography>
                   </div>
                   <Tooltip title="View Opd patient History" interactive>
-                    <MaterialButtonRouter component={LinkRouter} to={"/PatientDatabase/Opd/"+this.props.match.params.id} variant="outlined" color="inherit" classes={{ root: classes.opdButton }}>
+                    <MaterialButtonRouter component={LinkRouter} to={"/PatientDatabase/Opd/"+this.state.item.code} variant="outlined" color="inherit" classes={{ root: classes.opdButton }}>
                       OPD
                   </MaterialButtonRouter>
                   </Tooltip>
                   <Tooltip title="Add new patient's therapy" interactive>
-                    <MaterialButtonRouter component={LinkRouter} to={"/patientDatabase/PatientTherapy/"+this.props.match.params.id} variant="outlined" color="inherit" classes={{ root: classes.therapyButton }}>
+                    <MaterialButtonRouter component={LinkRouter} to={"/patientDatabase/PatientTherapy/"+this.state.item.code} variant="outlined" color="inherit" classes={{ root: classes.therapyButton }}>
                       Therapy
                   </MaterialButtonRouter>
                   </Tooltip>
@@ -312,7 +293,7 @@ class PatientDetails extends React.Component<IProps> {
                   </MaterialButtonRouter>
                   <MaterialButtonRouter
                     component={LinkRouter}
-                    to={PATH_PATIENT_EXAMINATION}
+                    to="/PatientDatabase/PatientExamination"
                     variant="contained"
                     color="secondary"
                     classes={{ root: classes.detailButton, label: classes.detailButtonLabelInverse }}
@@ -322,7 +303,7 @@ class PatientDetails extends React.Component<IProps> {
                   </MaterialButtonRouter>
                   <MaterialButtonRouter
                     component={LinkRouter}
-                    to={PATH_PATIENT_VACCINATION}
+                    to= "/PatientDatabase/PatientVaccination"
                     variant="contained"
                     color="secondary"
                     classes={{ root: classes.detailButton, label: classes.detailButtonLabelInverse }}

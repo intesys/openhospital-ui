@@ -44,8 +44,8 @@ const Routes = () => (
             <Route path="/PatientDatabase/PatientLabTest" component={PatientLabTest}/>
             <Route path="/PatientDatabase/PatientTherapy" component={PatientTherapy}/>
             <Route path="/PatientDatabase/PatientExamination" component={PatientExamination}/>
-            <Route path="/PatientDatabase/PatientVaccine" component={PatientVaccine}/>
-            <Route path="/PatientDatabase/Vaccine" component={Vaccine}/>
+            <Route path="/PatientDatabase/PatientVaccination" component={PatientVaccine}/>
+            <Route path="/PatientDatabase/NewVaccination" component={Vaccine}/>
             <Route path="/PatientDatabase/Opd" component={Opd}/>
             <Route exact={true} path="/colleagues" component={ColleaguesDatabase} />
             <Route path="/colleagues/colleagueDetails" component={ColleagueDetails} />

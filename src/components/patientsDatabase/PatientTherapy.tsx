@@ -21,35 +21,39 @@ import Divider from "@material-ui/core/Divider";
 import AddPhotoIcon from "@material-ui/icons/AddAPhoto";
 import styles from "./styles/PatientTherapy.style";
 import {Patient} from "generate";
-import { Component } from 'react';
 export interface Props extends WithStyles<typeof styles> {}
 
 interface State {
   labelWidth: number;
   error: any;
   isLoaded: boolean;
+  item : Patient;
  }
 
-interface IProps {
+interface IRouteParams {
 
-  info: Patient;  
+  id : string;
 }
 
-class PatientTherapy extends Component<IProps> {
+interface IProps extends RouteComponentProps<IRouteParams> { }
+
+class PatientTherapy extends React.Component<IProps> {
 
   state: State = {
     labelWidth: 0,
     error: null,
     isLoaded: false,
+    item: {}
   };
 
-
   
-  InputLabelRef: InputLabel | null;
+  
   
  render() {
+
     const { classes } = this.props;
-    let patientInfo  = this.props.info;
+    
+
     return (
       <div className={classes.root}>
         <Grid container className={classes.gridContainer} justify="center" spacing={24}>
@@ -88,7 +92,7 @@ class PatientTherapy extends Component<IProps> {
                   PATIENT ID
                 </Typography>
                 <Typography color="inherit" className={classes.patientIdNumber}>
-                  {patientInfo.code} 
+                  {this.state.item.code} 
                 </Typography>
                 <Typography color="inherit" className={classes.opdTitle}>
                   OPD
@@ -100,7 +104,7 @@ class PatientTherapy extends Component<IProps> {
                   Blood Group
                 </Typography>
                 <Typography color="inherit" className={classes.bloodType}>
-                  {patientInfo.bloodType}
+                  {this.state.item.bloodType}
                 </Typography>
                 <Typography color="inherit" className={classes.notes}>
                   Notes:
@@ -136,7 +140,7 @@ class PatientTherapy extends Component<IProps> {
                 <Grid item xs={12} className={classes.colleagueProfileHeader}>
                   <div style={{ flexDirection: "column", textAlign: "left" }}>
                     <Typography color="inherit" className={classes.patientName}>
-                     {patientInfo.firstName} {patientInfo.secondName}
+                     {this.state.item.firstName} {this.state.item.secondName}
                     </Typography>
                     <Typography color="inherit" className={classes.patientAddress}>
                       Provenance: <b>District, Village</b>

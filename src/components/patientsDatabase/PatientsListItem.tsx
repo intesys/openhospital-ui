@@ -13,7 +13,6 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import { Link as LinkRouter } from "react-router-dom";
 import styles from "./styles/PatientsDatabase.style";
 import { MaterialCardActionAreaRouter } from "../utils/LinkHelper";
-import { number } from 'prop-types';
 import { Patient } from 'generate';
 import { Component } from 'react';
 export interface Props extends WithStyles<typeof styles> { }
@@ -65,7 +64,6 @@ class PatientsListItem extends Component<IProps> {
                                 <Typography color="inherit">
                                     Age: <b>{patientInfo.age}</b> &nbsp; Sex:<b>{patientInfo.sex}</b>
                                 </Typography>
-                                <Typography color="inherit">{patientInfo.gender}</Typography>
                             </Grid>
                             <Grid item xs={12}>
                                 <Avatar alt="Remy Sharp" src={patientInfo.photo} className={classes.avatar} />
