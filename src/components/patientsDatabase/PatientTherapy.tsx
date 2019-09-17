@@ -49,7 +49,7 @@ class PatientTherapy extends Component<IProps> {
   
  render() {
     const { classes } = this.props;
-    const { item } = this.state.item;
+    let patientInfo  = this.props.info;
     return (
       <div className={classes.root}>
         <Grid container className={classes.gridContainer} justify="center" spacing={24}>
@@ -88,7 +88,7 @@ class PatientTherapy extends Component<IProps> {
                   PATIENT ID
                 </Typography>
                 <Typography color="inherit" className={classes.patientIdNumber}>
-                  {this.state.item.code} 
+                  {patientInfo.code} 
                 </Typography>
                 <Typography color="inherit" className={classes.opdTitle}>
                   OPD
@@ -100,7 +100,7 @@ class PatientTherapy extends Component<IProps> {
                   Blood Group
                 </Typography>
                 <Typography color="inherit" className={classes.bloodType}>
-                  {this.state.item.bloodType}
+                  {patientInfo.bloodType}
                 </Typography>
                 <Typography color="inherit" className={classes.notes}>
                   Notes:
@@ -136,7 +136,7 @@ class PatientTherapy extends Component<IProps> {
                 <Grid item xs={12} className={classes.colleagueProfileHeader}>
                   <div style={{ flexDirection: "column", textAlign: "left" }}>
                     <Typography color="inherit" className={classes.patientName}>
-                     {this.state.item.firstName} {this.state.item.secondName}
+                     {patientInfo.firstName} {patientInfo.secondName}
                     </Typography>
                     <Typography color="inherit" className={classes.patientAddress}>
                       Provenance: <b>District, Village</b>
