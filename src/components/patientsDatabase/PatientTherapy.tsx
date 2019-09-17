@@ -31,7 +31,6 @@ interface State {
  }
 
 interface IRouteParams {
-
   id : string;
 }
 

@@ -36,7 +36,7 @@ class Dashboard extends React.Component<Props> {
           &emsp;
           <Grid container justify="center" spacing={24} className={classes.ctaGrid}>
             <Grid item xs={12} sm={4}>
-              <MaterialCardActionAreaRouter className={classes.ctaPatient} component={LinkRouter} to={PATH_NEW_PATIENT}>
+              <MaterialCardActionAreaRouter className={classes.ctaPatient} component={LinkRouter} to="/patientsDatabase/NewPatient">
                 <SvgIcon component={PlusIcon} />
                 <Typography className={classes.ctaPatientText} color="inherit" align="center">
                   <b>REGISTER NEW PATIENT</b>
