@@ -20,7 +20,7 @@ import Avatar from "@material-ui/core/Avatar";
 import Divider from "@material-ui/core/Divider";
 import AddPhotoIcon from "@material-ui/icons/AddAPhoto";
 import styles from "./styles/PatientTherapy.style";
-import {Patient, PatientControllerApi, GetPatientUsingGETRequest} from "generate";
+import {Patient} from "generate";
 import { Component } from 'react';
 export interface Props extends WithStyles<typeof styles> {}
 
