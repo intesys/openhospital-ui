@@ -19,9 +19,9 @@ export function getPatient(patient: Patient): PatientInDetailsActionTypes{
 
 export function getPatientThunk(id: string): ThunkAction<void, AppState, null, AnyAction>{
 	return (dispatch) => {
-		dispatch(loading(true))
+		dispatch(loading(true));
 		return getPatientAPI(id).then((patient) => {
-			dispatch(loading(false))
+			dispatch(loading(false));
 			dispatch(getPatient(patient))
 		})
 	}

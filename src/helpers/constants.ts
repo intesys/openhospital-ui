@@ -1,7 +1,7 @@
 export const BASE_PATH = `${process.env.BASE_PATH}`;
 export const ENV_NAME = `${process.env.ENV_NAME}`;
 
-export const PATH_PATIENTS_DATABASE = "/PatientsDatabase"
+export const PATH_PATIENTS_DATABASE = "/PatientsDatabase";
 export const PATH_NEW_PATIENT = "/patients-database/new-patient";
 export const PATH_PATIENT_DETAILS = "/patients-database/:patientId";
 export const PATH_PATIENT_VISIT = "/patients-database/:patientId/visit";

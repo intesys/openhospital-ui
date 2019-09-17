@@ -7,6 +7,6 @@ export const rootReducer = combineReducers({
 	patientInDetails,
 	patients,
 	loading,
-})
+});
 
 export type AppState = ReturnType<typeof rootReducer>

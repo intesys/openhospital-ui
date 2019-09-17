@@ -29,4 +29,4 @@ module.exports = {
     "!src/generated/**"
   ],
   "coverageDirectory": "./coverage"
-}
+};

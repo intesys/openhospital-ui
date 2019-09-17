@@ -143,7 +143,7 @@ const fakeDatabase = {
         treatment: "Bloodletting",
         address: "Rua do Catete 90, Glória, Rio de Janeiro - RJ",
     }
-}
+};
 
 export async function getPatientsAPI(){
     await new Promise(resolve => setTimeout(resolve, 3000));

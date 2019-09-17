@@ -12,7 +12,7 @@ const config = {
     today: function() {
       return new Date();
     }
-}
+};
 const TODAY = config.today();
 
 class Calendar extends Component {
@@ -76,7 +76,7 @@ class Calendar extends Component {
       selected = "selected";
       selectedStyle = {
         backgroundColor: this.props.accentColor
-      }
+      };
       containerStyle = {
         color: '#ffffff'
       }
@@ -84,11 +84,11 @@ class Calendar extends Component {
 
     baseClasses += opts.current ? "" : " non-current";
 
-    return (<div className={baseClasses}
+    return (<div; className={baseClasses};
                 style={containerStyle}>
-              <div className={today} style={todayStyle}></div>
-              <div className={selected} style={selectedStyle}></div>
-              <p onClick={ (ev) => {
+              <div; className={today}; style={todayStyle}></div>
+              <div; className={selected}; style={selectedStyle}></div>
+              <p; onClick={ (ev); => {
                 var day = ev.target.innerHTML;
                 this._onDatePicked(opts.month, day);
               }}>{opts.date.getDate()}</p>
@@ -148,7 +148,7 @@ class Calendar extends Component {
     var header = [];
 
     for (var i = 0; i < config.week_subs.length; i++) {
-      header.push(<p className='day-headers noselect'>
+      header.push(<p; className='day-headers noselect'>
                     {config.week_subs[i]}
                   </p>);
     }
@@ -176,37 +176,37 @@ class Calendar extends Component {
      
     var upperDate = null;
     if( this.props.showHeader ) {
-      upperDate = (<div className='header center'>
-        <p className="header-month">Today</p>
-        <p className="header-month">{tMonth} {tDate}</p>
-        <p className="header-month">{tWeekDay}</p>
-        <p className="header-month">{year}</p>
+      upperDate = (<div; className='header center'>
+        <p; className="header-month">Today</p>
+        <p; className="header-month">{tMonth}; {tDate}</p>
+        <p; className="header-month">{tWeekDay}</p>
+        <p; className="header-month">{year}</p>;
         {/* <p className="header-day">{tDate}</p> */}
       </div>);
     
   }
 
    
-    return (<div className="calendar-container">
+    return (<div; className="calendar-container">
     {/* return (<div className={this.props.orientation}> */}
       
-      <div className="calendar">
-        <div className='month'>
-          <img className="month-arrow-left" src={ic_back} alt="back" onClick={this.prev.bind(this)}></img>
-          <p className="month-title">{month}<br/>
-          <span className="month-year">{year}</span>
+      <div; className="calendar">
+        <div; className='month'>
+          <img; className="month-arrow-left"; src={ic_back}; alt="back"; onClick={this.prev.bind(this)}></img>
+          <p; className="month-title">{month}<br/>
+          <span; className="month-year">{year}</span>
           </p>
-          <img className="month-arrow-right" src={ic_forward} alt="forward" onClick={this.next.bind(this)}></img>
+          <img; className="month-arrow-right"; src={ic_forward}; alt="forward"; onClick={this.next.bind(this)}></img>
         </div>
-        <div className='footer'>
-          {header}
+        <div; className='footer'>
+          {header};
           {days}
         </div>
       </div>
     </div>);
   }
 
-};
+}
 
 Calendar.propTypes = {
   accentColor: PropTypes.string,

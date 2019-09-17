@@ -9,19 +9,19 @@ export const MaterialLinkRouter = (props: LinkProps) => {
   return (
     <Link {...props} />
   );
-}
+};
 export const MaterialNavLinkRouter = (props: NavLinkProps) => {
   return (
     <Link {...props} />
   );
-}
+};
 export const MaterialCardActionAreaRouter = (props: LinkProps) => {
   return (
     <CardActionArea {...props} />
   );
-}
+};
 export const MaterialButtonRouter = (props: LinkProps) => {
   return (
     <Button {...props} />
   );
-}
+};

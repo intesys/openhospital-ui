@@ -64,7 +64,7 @@ class PatientActivityContainer extends Component<IProps> {
     };
 
     getActivityTitle = () => {
-        const currentPath = this.props.location.pathname
+        const currentPath = this.props.location.pathname;
         switch(currentPath){
             case PATH_PATIENT_DETAILS:
                 return "Patient Details";
@@ -73,25 +73,25 @@ class PatientActivityContainer extends Component<IProps> {
             case PATH_PATIENT_VISIT:
                 return "Patient Visit";
             case PATH_OPD:
-                return "Outpatient Department History"
+                return "Outpatient Department History";
             case PATH_NEW_OPD:
                 return "New Outpatient Department Registration";
             case PATH_PATIENT_THERAPY:
                 return "Patient Therapy";
             case PATH_PATIENT_EXAMINATION:
-                return "Patient Examination");
-            case PATH_PATIENT_VACCINATION:
-                return "Patient Vaccination");
-            case PATH_PATIENT_NEW_VACCINATION:
-                return "New Vaccionation";
-            case PATH_NEW_LAB_TEST:
-                return "New Laboratory Test"
-            default:
-                return "";
+                return "Patient Examination";);
+            case; PATH_PATIENT_VACCINATION:;
+                return; "Patient Vaccination";);
+            case; PATH_PATIENT_NEW_VACCINATION:;
+                return; "New Vaccionation";
+            case; PATH_NEW_LAB_TEST:;
+                return; "New Laboratory Test";
+            default:;
+                return; "";
         }
     }
 
-    render() {
+    render(); {
         const { classes } = this.props;
         const patientInfo = {
             isChronic: false,
@@ -116,9 +116,9 @@ class PatientActivityContainer extends Component<IProps> {
             reasonOfVisit: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
             treatment: "Bloodletting"
             address: "Rua do Catete 90, Glória, Rio de Janeiro - RJ"
-        } //TODO this data has to be fetched from store after redux's ready
+        }; //TODO this data has to be fetched from store after redux's ready
         const { openOptionalInfo } = this.state;
-        console.log(this.props)
+        console.log(this.props);
         return (
             <div className={classes.root}>
                 <Grid container className={classes.gridContainer} justify="center" spacing={24}>
@@ -144,7 +144,7 @@ class PatientActivityContainer extends Component<IProps> {
                                     case PATH_PATIENT_VISIT:
                                         return(<PatientVisit/>);
                                     case PATH_OPD:
-                                        return(<Opd/>)
+                                        return(<Opd/>);
                                     case PATH_NEW_OPD:
                                         return(<NewOpd/>);
                                     case PATH_PATIENT_THERAPY:
@@ -156,7 +156,7 @@ class PatientActivityContainer extends Component<IProps> {
                                     case PATH_PATIENT_NEW_VACCINATION:
                                         return(<NewVaccination/>);
                                     case PATH_NEW_LAB_TEST:
-                                        return(<NewLabTest/>)
+                                        return(<NewLabTest/>);
                                     default:
                                         return(<div/>);
                                 }

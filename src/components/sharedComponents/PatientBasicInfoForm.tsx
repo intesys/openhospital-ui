@@ -14,7 +14,7 @@ export interface Props extends WithStyles<typeof styles> {}
 class PatientBasicInfoForm extends Component<Props>{
 
 	render() {
-		const { classes, extraInput } = this.props
+		const { classes, extraInput } = this.props;
 		return(
 			<div>
 				<form>

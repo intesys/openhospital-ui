@@ -93,7 +93,7 @@ export class BaseAPI {
             }
         }
         return response;
-    }
+    };
 
     /**
      * Create a shallow clone of `this` by constructing a new instance
@@ -105,7 +105,7 @@ export class BaseAPI {
         next.middleware = this.middleware.slice();
         return next;
     }
-};
+}
 
 export class RequiredError extends Error {
     name: "RequiredError" = "RequiredError";

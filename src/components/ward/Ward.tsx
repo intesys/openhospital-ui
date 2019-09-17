@@ -48,7 +48,7 @@ class Ward extends React.Component {
     const requestParams: GetPatientsUsingGETRequest = {
       page: 1,
       size: 8,
-    }
+    };
 
     patientController.getPatientsUsingGET(requestParams)
       .then(
@@ -65,7 +65,7 @@ class Ward extends React.Component {
             error
           });
         }
-      )
+      );
 
     this.setState({
       // labelWidth: ReactDOM.findDOMNode(this.InputLabelRef).offsetWidth,
@@ -93,7 +93,7 @@ class Ward extends React.Component {
           className={classes.progress}
           color="secondary"
           style={{ margin: '20px auto' }} />
-    )
+    );
     
     
     return (

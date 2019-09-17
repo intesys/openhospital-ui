@@ -86,7 +86,7 @@ class NewPatient extends React.Component <IProps, State > {
         this.setState({
             [event.target.name]: event.target.value
         });
-    }
+    };
 
     handleSubmit(event) {
         event.preventDefault();

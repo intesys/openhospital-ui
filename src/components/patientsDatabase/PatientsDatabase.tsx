@@ -57,7 +57,7 @@ class PatientsDatabase extends React.Component<Props, State> {
     const requestParams: GetPatientsUsingGETRequest = {
       page: 1,
       size: 8,
-    }
+    };
 
     patientController.getPatientsUsingGET(requestParams)
       .then(
@@ -74,7 +74,7 @@ class PatientsDatabase extends React.Component<Props, State> {
             error
           });
         }
-      )
+      );
 
     this.setState({
       // labelWidth: ReactDOM.findDOMNode(this.InputLabelRef).offsetWidth,
@@ -96,7 +96,7 @@ class PatientsDatabase extends React.Component<Props, State> {
           />
         ))) :
         <CircularProgress className={classes.progress} color="secondary" style={{ margin: '20px auto' }} />
-    )
+    );
 
     return (
       <div className={classes.root}>

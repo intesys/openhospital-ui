@@ -58,7 +58,7 @@ class PatientAdmission extends React.Component<IProps, State> {
     const patientController: PatientControllerApi = new PatientControllerApi();
     const requestParams : GetPatientUsingGETRequest = {
       code: Number(this.props.match.params.id)
-    }
+    };
 
     patientController.getPatientUsingGET(requestParams)
       .then(
@@ -75,7 +75,7 @@ class PatientAdmission extends React.Component<IProps, State> {
             error
           });
         }
-      )
+      );
 
     this.setState({
       // labelWidth: ReactDOM.findDOMNode(this.InputLabelRef).offsetWidth,
