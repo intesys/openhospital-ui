@@ -21,26 +21,33 @@ import Breadcrumbs from "@material-ui/lab/Breadcrumbs";
 import classNames from "classnames";
 import _ from "lodash";
 import * as React from "react";
-import { Link as LinkRouter } from "react-router-dom";
+import { Link as LinkRouter, RouteComponentProps } from "react-router-dom";
 import { MaterialButtonRouter, MaterialLinkRouter } from "../utils/LinkHelper";
 import styles from "./styles/PatientAdmission.style";
+import { Patient } from 'generate';
 export interface Props extends WithStyles<typeof styles> {}
 
 interface State {
   labelWidth: number;
   error: any;
   isLoaded: boolean;
-  items: any;
+  item: Patient;
   anchorEl?: any;
   openOptionalInfo: boolean;
 }
 
-class PatientAdmission extends React.Component<Props, State> {
+interface IRouteParams {
+  id: string;
+}
+
+interface IProps extends RouteComponentProps<IRouteParams> { }
+
+class PatientAdmission extends React.Component<IProps, State> {
   state: State = {
     labelWidth: 0,
     error: null,
     isLoaded: false,
-    items: [],
+    item: {},
     openOptionalInfo: false,
     anchorEl: null,
   };
@@ -49,6 +56,8 @@ class PatientAdmission extends React.Component<Props, State> {
   handleClickCollapseOptionalInfo = () => {
     this.setState(state => ({ openOptionalInfo: !state.openOptionalInfo }));
   };
+
+  
 
   public render() {
     const { classes } = this.props;
