@@ -28,15 +28,12 @@ interface State {
   labelWidth: number;
   error: any;
   isLoaded: boolean;
-  item: Patient;
  }
 
-interface IRouteParams {
-  id: string;
-  
-}
+interface IProps {
 
-interface IProps extends RouteComponentProps<IRouteParams> { }
+  info: Patient;  
+}
 
 class PatientTherapy extends Component<IProps> {
 
@@ -44,7 +41,6 @@ class PatientTherapy extends Component<IProps> {
     labelWidth: 0,
     error: null,
     isLoaded: false,
-    item: {},
   };
 
 
