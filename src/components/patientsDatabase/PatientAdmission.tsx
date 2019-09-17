@@ -147,7 +147,7 @@ class PatientAdmission extends React.Component<IProps, State> {
                   Blood Group
                 </Typography>
                 <Typography color="inherit" className={classes.bloodType}>
-                  A+
+                  {this.state.item.bloodType}
                 </Typography>
                 <Typography color="inherit" className={classes.notes}>
                   Notes:
@@ -183,10 +183,10 @@ class PatientAdmission extends React.Component<IProps, State> {
                 <Grid item xs={12} className={classes.colleagueProfileHeader}>
                   <div style={{ flexDirection: "column", textAlign: "left" }}>
                     <Typography color="inherit" className={classes.patientName}>
-                      Modotoky Tokai
+                      {this.state.item.firstName} {this.state.item.secondName}
                     </Typography>
                     <Typography color="inherit" className={classes.patientAddress}>
-                      Provenance: <b>District, Village</b>
+                      Provenance: <b>{this.state.item.address},{this.state.item.city}</b>
                     </Typography>
                   </div>
                 </Grid>
@@ -281,7 +281,7 @@ class PatientAdmission extends React.Component<IProps, State> {
                       DRUGS PRESCRIBED
                     </Typography>
                   </Grid>
-                  <MaterialButtonRouter component={LinkRouter} to="/patientDatabase/PatientTherapy" variant="outlined" color="secondary" classes={{ root: classes.detailButtonTherapy }}>
+                  <MaterialButtonRouter component={LinkRouter} to={"/patientDatabase/PatientTherapy/"+this.state.item.code} variant="outlined" color="secondary" classes={{ root: classes.detailButtonTherapy }}>
                     Therapy
                   </MaterialButtonRouter>
                   <TextField

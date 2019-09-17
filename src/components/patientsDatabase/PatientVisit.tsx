@@ -4,7 +4,7 @@ import { withStyles, WithStyles } from "@material-ui/core/styles";
 import Breadcrumbs from "@material-ui/lab/Breadcrumbs";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import { Link as LinkRouter } from "react-router-dom";
+import { Link as LinkRouter, RouteComponentProps } from "react-router-dom";
 import { MaterialLinkRouter, MaterialButtonRouter } from "../utils/LinkHelper";
 import TextField from "@material-ui/core/TextField";
 import classNames from "classnames";
@@ -22,9 +22,11 @@ import Divider from "@material-ui/core/Divider";
 import Collapse from "@material-ui/core/Collapse";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import AddPhotoIcon from "@material-ui/icons/AddAPhoto";
-import Tooltip from '@material-ui/core/Tooltip';
+import Tooltip from "@material-ui/core/Tooltip";
 import styles from "./styles/PatientVisit.style";
 import { FormControlLabel } from "@material-ui/core";
+import { PatientControllerApi, GetPatientUsingGETRequest } from "../../generate/apis";
+import { Patient } from "generate";
 export interface Props extends WithStyles<typeof styles> {}
 
 interface State {
@@ -32,20 +34,52 @@ interface State {
   labelWidth: number;
   error: any;
   isLoaded: boolean;
-  items: any;
+  item: Patient;
   anchorEl?: any;
   openOptionalInfo: boolean;
 }
 
-class PatientVisit extends React.Component<Props, State> {
+interface IRouteParams {
+  id: string;
+}
+
+interface IProps extends RouteComponentProps<IRouteParams> {}
+
+class PatientVisit extends React.Component<IProps, State> {
   state: State = {
     labelWidth: 0,
     error: null,
     isLoaded: false,
-    items: [],
+    item: {},
     openOptionalInfo: false,
     anchorEl: null,
   };
+
+  componentDidMount() {
+    const patientController: PatientControllerApi = new PatientControllerApi();
+    const requestParams: GetPatientUsingGETRequest = {
+      code: Number(this.props.match.params.id),
+    };
+
+    patientController.getPatientUsingGET(requestParams).then(
+      result => {
+        this.setState({
+          isLoaded: true,
+          item: result,
+        });
+      },
+      error => {
+        this.setState({
+          isLoaded: true,
+          error,
+        });
+      }
+    );
+
+    this.setState({
+      // labelWidth: ReactDOM.findDOMNode(this.InputLabelRef).offsetWidth,
+    });
+  }
 
   handleClickCollapseOptionalInfo = () => {
     this.setState(state => ({ openOptionalInfo: !state.openOptionalInfo }));
@@ -95,7 +129,7 @@ class PatientVisit extends React.Component<Props, State> {
                   PATIENT ID
                 </Typography>
                 <Typography color="inherit" className={classes.patientIdNumber}>
-                  32040
+                  {this.state.item.code}
                 </Typography>
                 <Typography color="inherit" className={classes.opdTitle}>
                   OPD
@@ -107,7 +141,7 @@ class PatientVisit extends React.Component<Props, State> {
                   Blood Group
                 </Typography>
                 <Typography color="inherit" className={classes.bloodType}>
-                  A+
+                  {this.state.item.bloodType}
                 </Typography>
                 <Typography color="inherit" className={classes.notes}>
                   Notes:
@@ -153,10 +187,13 @@ class PatientVisit extends React.Component<Props, State> {
                 <Grid item xs={12} className={classes.colleagueProfileHeader}>
                   <div style={{ flexDirection: "column", textAlign: "left" }}>
                     <Typography color="inherit" className={classes.patientName}>
-                      Modotoky Tokai
+                      {this.state.item.firstName} {this.state.item.secondName}
                     </Typography>
                     <Typography color="inherit" className={classes.patientAddress}>
-                      Provenance: <b>District, Village</b>
+                      Provenance:{" "}
+                      <b>
+                        {this.state.item.address},{this.state.item.city}
+                      </b>
                     </Typography>
                   </div>
                 </Grid>
@@ -169,12 +206,12 @@ class PatientVisit extends React.Component<Props, State> {
                       COMPLETE THE FORM
                     </Typography>
                   </div>
-                  <Grid style={{marginLeft:400}}>
+                  <Grid style={{ marginLeft: 400 }}>
                     <Typography variant="inherit" className={classes.dateTitle}>
-                       DATE
+                      DATE
                     </Typography>
-                </Grid> 
-                <Grid style={{marginLeft:10}}>   
+                  </Grid>
+                  <Grid style={{ marginLeft: 10 }}>
                     &nbsp;
                     <TextField
                       id="date"
@@ -182,7 +219,6 @@ class PatientVisit extends React.Component<Props, State> {
                       defaultValue="2017-05-24"
                       InputLabelProps={{
                         shrink: true,
-                        
                       }}
                     />
                   </Grid>
@@ -246,9 +282,15 @@ class PatientVisit extends React.Component<Props, State> {
                     </Typography>
                   </Grid>
                   <Tooltip title="Add new patient's therapy" interactive placement="top">
-                  <MaterialButtonRouter component={LinkRouter} to="/patientDatabase/PatientTherapy" variant="outlined" color="inherit" classes={{ root: classes.detailButtonTherapy, label: classes.detailButtonLabel }}>
-                    THERAPY
-                  </MaterialButtonRouter>
+                    <MaterialButtonRouter
+                      component={LinkRouter}
+                      to={"/patientDatabase/PatientTherapy/" + this.state.item.code}
+                      variant="outlined"
+                      color="inherit"
+                      classes={{ root: classes.detailButtonTherapy, label: classes.detailButtonLabel }}
+                    >
+                      THERAPY
+                    </MaterialButtonRouter>
                   </Tooltip>
                   <TextField
                     id="Drugs prescribed"
