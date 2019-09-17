@@ -24,6 +24,7 @@ import * as React from "react";
 import { Link as LinkRouter, RouteComponentProps } from "react-router-dom";
 import { MaterialButtonRouter, MaterialLinkRouter } from "../utils/LinkHelper";
 import styles from "./styles/PatientAdmission.style";
+import { PatientControllerApi, GetPatientUsingGETRequest } from '../../generate/apis';
 import { Patient } from 'generate';
 export interface Props extends WithStyles<typeof styles> {}
 
@@ -52,7 +53,36 @@ class PatientAdmission extends React.Component<IProps, State> {
     anchorEl: null,
   };
 
- 
+  componentDidMount() {
+
+    const patientController: PatientControllerApi = new PatientControllerApi();
+    const requestParams : GetPatientUsingGETRequest = {
+      code: Number(this.props.match.params.id)
+    }
+
+    patientController.getPatientUsingGET(requestParams)
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            item: result,
+
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+
+    this.setState({
+      // labelWidth: ReactDOM.findDOMNode(this.InputLabelRef).offsetWidth,
+    });
+
+  }
+
   handleClickCollapseOptionalInfo = () => {
     this.setState(state => ({ openOptionalInfo: !state.openOptionalInfo }));
   };
@@ -105,7 +135,7 @@ class PatientAdmission extends React.Component<IProps, State> {
                   PATIENT ID
                 </Typography>
                 <Typography color="inherit" className={classes.patientIdNumber}>
-                  32040
+                  {this.state.item.code}
                 </Typography>
                 <Typography color="inherit" className={classes.opdTitle}>
                   OPD
