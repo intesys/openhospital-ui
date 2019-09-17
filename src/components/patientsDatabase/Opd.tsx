@@ -4,7 +4,7 @@ import { withStyles, WithStyles } from "@material-ui/core/styles";
 import Breadcrumbs from "@material-ui/lab/Breadcrumbs";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import { Link as LinkRouter } from "react-router-dom";
+import { Link as LinkRouter, RouteComponentProps } from "react-router-dom";
 import { MaterialLinkRouter, MaterialButtonRouter } from "../utils/LinkHelper";
 import classNames from "classnames";
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
@@ -21,6 +21,8 @@ import Select from "@material-ui/core/Select";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import TextField from '@material-ui/core/TextField';
 import MUIDataTable from "mui-datatables";
+import { PatientControllerApi, GetPatientUsingGETRequest } from '../../generate/apis';
+import { Patient } from 'generate';
 export interface Props extends WithStyles<typeof styles> { }
 
 interface State {
@@ -28,18 +30,54 @@ interface State {
   labelWidth: number;
   error: any;
   isLoaded: boolean;
-  items: any;
+  item: Patient;
   
 }
 
-class PatientOpd extends React.Component<Props, State> {
+interface IRouteParams {
+  id: string;
+}
+
+interface IProps extends RouteComponentProps<IRouteParams> { }
+
+class PatientOpd extends React.Component<IProps> {
   state: State = {
     labelWidth: 0,
     error: null,
     isLoaded: false,
-    items: [],
+    item: {},
     InputLabelRef: 0
     
+  };
+
+  componentDidMount() {
+
+    const patientController: PatientControllerApi = new PatientControllerApi();
+    const requestParams : GetPatientUsingGETRequest = {
+      code: Number(this.props.match.params.id)
+    }
+
+    patientController.getPatientUsingGET(requestParams)
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            item: result,
+
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+
+    this.setState({
+      // labelWidth: ReactDOM.findDOMNode(this.InputLabelRef).offsetWidth,
+    });
+
   }
 
   public render() {
@@ -93,7 +131,7 @@ class PatientOpd extends React.Component<Props, State> {
                   PATIENT ID
                 </Typography>
                 <Typography color="inherit" className={classes.patientIdNumber}>
-                  32040
+                  {this.state.item.code}
                 </Typography>
                 <Typography color="inherit" className={classes.opdTitle}>
                   OPD
@@ -105,7 +143,7 @@ class PatientOpd extends React.Component<Props, State> {
                   Blood Group
                 </Typography>
                 <Typography color="inherit" className={classes.bloodType}>
-                  A+
+                 {this.state.item.bloodType}
                 </Typography>
                 <Typography color="inherit" className={classes.notes}>
                   Notes:
@@ -151,10 +189,10 @@ class PatientOpd extends React.Component<Props, State> {
                 <Grid item xs={12} className={classes.patientProfileHeader}>
                   <div style={{ flexDirection: "column", textAlign: "left" }}>
                     <Typography color="inherit" className={classes.patientName}>
-                      Modotoky Tokai
+                      {this.state.item.firstName} {this.state.item.secondName}
                     </Typography>
                     <Typography color="inherit" className={classes.patientAddress}>
-                      Provenance: <b>District, Village</b>
+                      Provenance: <b>{this.state.item.address},{this.state.item.city}</b>
                     </Typography>
                   </div>
                   <MaterialButtonRouter component={LinkRouter} to="/patientDatabase/Opd" variant="outlined" color="inherit" classes={{ root: classes.opdButton }}>

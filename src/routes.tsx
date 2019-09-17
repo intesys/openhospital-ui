@@ -38,15 +38,15 @@ const Routes = () => (
             <Route path="/dashboard" component={Dashboard} />
             <Route exact={true} path="/PatientsDatabase" component={PatientsDatabase} />
             <Route path="/PatientsDatabase/NewPatient" component={NewPatient} />
-            <Route path="/PatientDatabase/PatientVisit" component={PatientVisit}/>
+            <Route path="/PatientDatabase/PatientVisit/:id" component={PatientVisit}/>
             <Route path="/PatientDatabase/PatientDetails/:id" component={PatientDetails}/>
-            <Route path="/PatientDatabase/PatientAdmission" component={PatientAdmission}/>
+            <Route path="/PatientDatabase/PatientAdmission/:id" component={PatientAdmission}/>
             <Route path="/PatientDatabase/PatientLabTest" component={PatientLabTest}/>
-            <Route path="/PatientDatabase/PatientTherapy" component={PatientTherapy}/>
+            <Route path="/PatientDatabase/PatientTherapy/:id" component={PatientTherapy}/>
             <Route path="/PatientDatabase/PatientExamination" component={PatientExamination}/>
-            <Route path="/PatientDatabase/PatientVaccination" component={PatientVaccine}/>
+            <Route path="/PatientDatabase/PatientVaccination/" component={PatientVaccine}/>
             <Route path="/PatientDatabase/NewVaccination" component={Vaccine}/>
-            <Route path="/PatientDatabase/Opd" component={Opd}/>
+            <Route path="/PatientDatabase/Opd/:id" component={Opd}/>
             <Route exact={true} path="/colleagues" component={ColleaguesDatabase} />
             <Route path="/colleagues/colleagueDetails" component={ColleagueDetails} />
             <Route path="/pharmacy" component={Pharmacy} />

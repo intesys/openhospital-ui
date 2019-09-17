@@ -20,18 +20,20 @@ import Avatar from "@material-ui/core/Avatar";
 import Divider from "@material-ui/core/Divider";
 import AddPhotoIcon from "@material-ui/icons/AddAPhoto";
 import styles from "./styles/PatientTherapy.style";
-import {Patient} from "generate";
+import { PatientControllerApi, GetPatientUsingGETRequest } from '../../generate/apis';
+import { Patient } from 'generate';
 export interface Props extends WithStyles<typeof styles> {}
 
 interface State {
   labelWidth: number;
   error: any;
   isLoaded: boolean;
-  item : Patient;
+  item: Patient;
  }
 
-interface IRouteParams {
-  id : string;
+ interface IRouteParams {
+  id: string;
+  
 }
 
 interface IProps extends RouteComponentProps<IRouteParams> { }
@@ -45,9 +47,37 @@ class PatientTherapy extends React.Component<IProps> {
     item: {}
   };
 
-  
-  
-  
+  componentDidMount() {
+
+    const patientController: PatientControllerApi = new PatientControllerApi();
+    const requestParams: GetPatientUsingGETRequest = {
+      code: Number(this.props.match.params.id)
+    }
+
+    patientController.getPatientUsingGET(requestParams)
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            item: result,
+
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+
+    this.setState({
+      // labelWidth: ReactDOM.findDOMNode(this.InputLabelRef).offsetWidth,
+    });
+
+
+  }
+
  render() {
 
     const { classes } = this.props;
@@ -91,7 +121,7 @@ class PatientTherapy extends React.Component<IProps> {
                   PATIENT ID
                 </Typography>
                 <Typography color="inherit" className={classes.patientIdNumber}>
-                  {this.state.item.code} 
+                  {this.state.item.code}
                 </Typography>
                 <Typography color="inherit" className={classes.opdTitle}>
                   OPD
@@ -142,7 +172,7 @@ class PatientTherapy extends React.Component<IProps> {
                      {this.state.item.firstName} {this.state.item.secondName}
                     </Typography>
                     <Typography color="inherit" className={classes.patientAddress}>
-                      Provenance: <b>District, Village</b>
+                    Provenance: <b>{this.state.item.address}</b>,<b>{this.state.item.city}</b>
                     </Typography>
                   </div>
                 </Grid>
