@@ -15,13 +15,13 @@ import AddIcon from '@material-ui/icons/Add';
 import CancelIcon from '@material-ui/icons/Cancel';
 import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
 import classNames from 'classnames';
+import { Patient } from 'generate';
 import * as React from "react";
 import { Link as LinkRouter } from 'react-router-dom';
+import { GetPatientsUsingGETRequest, PatientControllerApi } from '../../generate/apis';
 import { MaterialButtonRouter, MaterialLinkRouter } from '../utils/LinkHelper';
 import Patients from "./PatientsListItem";
 import styles from './styles/PatientsDatabase.style';
-import { PatientControllerApi, GetPatientsUsingGETRequest } from '../../generate/apis';
-import { Patient } from 'generate';
 
 // constants
 import { PATH_NEW_PATIENT } from "../../config/constants";
@@ -33,7 +33,7 @@ interface State {
   isLoaded: boolean;
   items: any[];
   selectedDate: any;
-  patients: Array<Patient>;
+  patients: Patient[];
   visible: Number;
   searchedValue: String;
 
@@ -42,7 +42,7 @@ interface State {
 class PatientsDatabase extends React.Component<Props, State> {
 
 
-  state: State = {
+  public state: State = {
     error: null,
     isLoaded: false,
     items: [],
@@ -51,7 +51,7 @@ class PatientsDatabase extends React.Component<Props, State> {
   };
 
 
-  componentDidMount() {
+  public componentDidMount() {
 
     const patientController: PatientControllerApi = new PatientControllerApi();
     const requestParams: GetPatientsUsingGETRequest = {
@@ -100,9 +100,9 @@ class PatientsDatabase extends React.Component<Props, State> {
 
     return (
       <div className={classes.root}>
-        <Grid container className={classes.gridContainer} justify='center' spacing={24}>
-          <Grid container item justify='center' spacing={24}>
-            <Grid item xs={12}>
+        <Grid container={true} className={classes.gridContainer} justify='center' spacing={24}>
+          <Grid container={true} item={true} justify='center' spacing={24}>
+            <Grid item={true} xs={12}>
               <Breadcrumbs aria-label="Breadcrumb" className={classes.breadCrumb}>
                 <MaterialLinkRouter color="secondary" component={LinkRouter} to="/dashboard">
                   Home
@@ -111,7 +111,7 @@ class PatientsDatabase extends React.Component<Props, State> {
               </Breadcrumbs>
             </Grid>
 
-            <Grid item xs={12} className={classes.patientActions}>
+            <Grid item={true} xs={12} className={classes.patientActions}>
               <Typography variant="inherit" className={classes.patientsTitle}>
                 PATIENTS
                             </Typography>
@@ -130,10 +130,10 @@ class PatientsDatabase extends React.Component<Props, State> {
                             </Button>
             </Grid>
           </Grid>
-          <Grid container item justify='center' spacing={24}>
+          <Grid container={true} item={true} justify='center' spacing={24}>
             <Paper className={classes.paperFlat}>
-              <Grid container item spacing={24} className={classes.inputContainer}>
-                <Grid item xs={12} style={{ display: 'flex' }}>
+              <Grid container={true} item={true} spacing={24} className={classes.inputContainer}>
+                <Grid item={true} xs={12} style={{ display: 'flex' }}>
                   <Typography variant="inherit" className={classes.findPatients}>
                     FIND A PATIENT
                 </Typography>
@@ -143,8 +143,8 @@ class PatientsDatabase extends React.Component<Props, State> {
                 </Grid>
               </Grid>
               <form>
-                <Grid container item spacing={24}>
-                  <Grid item xs={12} sm={3}>
+                <Grid container={true} item={true} spacing={24}>
+                  <Grid item={true} xs={12} sm={3}>
                     <TextField
                       id="patientID"
                       label="Patient ID (PID)"
@@ -168,7 +168,7 @@ class PatientsDatabase extends React.Component<Props, State> {
                       variant="outlined"
                     />
                   </Grid>
-                  <Grid item xs={12} sm={3}>
+                  <Grid item={true} xs={12} sm={3}>
                     <TextField
                       id="outpatientNumber"
                       label="Outpatient Number (OPD)"
@@ -191,7 +191,7 @@ class PatientsDatabase extends React.Component<Props, State> {
                       variant="outlined"
                     />
                   </Grid>
-                  <Grid item xs={12} sm={3}>
+                  <Grid item={true} xs={12} sm={3}>
                     <TextField
                       id="inpatientNumber"
                       label="Inpatient Number (IPD)"
@@ -214,7 +214,7 @@ class PatientsDatabase extends React.Component<Props, State> {
                       variant="outlined"
                     />
                   </Grid>
-                  <Grid item xs={12} sm={3}>
+                  <Grid item={true} xs={12} sm={3}>
                     <TextField
                       id="keyword"
                       label="Keyword"
@@ -239,14 +239,14 @@ class PatientsDatabase extends React.Component<Props, State> {
                     />
                   </Grid>
                 </Grid>
-                <Grid container justify="flex-end" item spacing={24}>
-                  <Grid item xs={12} sm={9} />
+                <Grid container={true} justify="flex-end" item={true} spacing={24}>
+                  <Grid item={true} xs={12} sm={9} />
                 </Grid>
               </form>
             </Paper>
           </Grid>
-          <Grid container item spacing={24} className={classes.filterContainer}>
-            <Grid item xs={12} style={{ display: 'flex' }}>
+          <Grid container={true} item={true} spacing={24} className={classes.filterContainer}>
+            <Grid item={true} xs={12} style={{ display: 'flex' }}>
               <Typography variant="inherit" className={classes.findPatients}>
                 Which patient are you searching for?
                 </Typography>
@@ -255,7 +255,7 @@ class PatientsDatabase extends React.Component<Props, State> {
                 </Typography>
             </Grid>
             <Divider className={classes.divider} />
-            <Grid item xs={12} sm={3}>
+            <Grid item={true} xs={12} sm={3}>
               <FormControl variant="outlined"
                 className={classNames(classes.formField, classes.formFieldSelect)}>
                 <Select
@@ -265,10 +265,10 @@ class PatientsDatabase extends React.Component<Props, State> {
                   input={
                     <OutlinedInput
                       placeholder="soma"
-                      labelWidth={300} //{this.state.InputLabelRef}
+                      labelWidth={300} // {this.state.InputLabelRef}
                       name="filter"
                       id="filter"
-                      enableSearch
+                      enableSearch={true}
                       // inputProps={{                          
                       classes={{
                         // root: classes.formFieldSelectInput,
@@ -287,10 +287,10 @@ class PatientsDatabase extends React.Component<Props, State> {
             </Grid>
 
           </Grid>
-          <Grid container item style={{ padding: '47px 0' }} spacing={24}>
+          <Grid container={true} item={true} style={{ padding: '47px 0' }} spacing={24}>
             {patients}
           </Grid>
-          <Grid item xs={12} sm={2} className={classes.loadMoreContainer}>
+          <Grid item={true} xs={12} sm={2} className={classes.loadMoreContainer}>
             <Button type="button" variant="outlined" color="inherit" classes={{ root: classes.button, label: classes.buttonLabel }}>
               Load more
             </Button>
