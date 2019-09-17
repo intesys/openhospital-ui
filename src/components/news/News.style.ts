@@ -40,8 +40,7 @@ const styles = (theme: Theme) =>
     },
 
     breadCrumb: {
-      fontWeight: "bold",
-      fontSize: 12,
+      fontSize: 14,
       letterSpacing: 0.75,
     },
 
