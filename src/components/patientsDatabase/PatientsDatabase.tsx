@@ -123,14 +123,11 @@ class PatientsDatabase extends React.Component<Props, State> {
               <DeletePatient
                   isOpen={isDeleteDialogOpen}
                   handleClickClose={() => this.setState({ isDeleteDialogOpen: false })} />
-              <MaterialButtonRouter component={LinkRouter} to={PATH_NEW_PATIENT} color="inherit" classes={{ root: (classNames(classes.button, 'addButton')), label: classes.buttonLabel }}>
+              <MaterialButtonRouter component={LinkRouter} to={PATH_NEW_PATIENT} color="inherit"
+                                    classes={{ root: (classNames(classes.button, 'addButton')), label: classes.buttonLabel }}>
                 <AddIcon className={classes.buttonIcon} />
                 Record new patient
               </MaterialButtonRouter>
-              <Button color="inherit" classes={{ root: (classNames(classes.button, 'mergeButton')), label: classes.buttonLabel }}>
-                <MergeIcon className={classes.buttonIcon} />
-                Merge double patients' registration
-              </Button>
             </Grid>
           </Grid>
           <Grid container={true} item={true} justify='center' spacing={24}>
