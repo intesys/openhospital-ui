@@ -13,6 +13,7 @@ import PatientExamination from "./components/patientsDatabase/PatientExamination
 import PatientVaccine from "./components/patientsDatabase/PatientVaccination";
 import Vaccine from "./components/patientsDatabase/NewVaccination";
 import Opd from "./components/patientsDatabase/Opd";
+import NewOpd from "./components/patientsDatabase/NewOpd";
 import NewPatient from "./components/patientsDatabase/NewPatient";
 import ColleaguesDatabase from "./components/colleaguesDatabase/ColleaguesDatabase";
 import ColleagueDetails from "./components/colleaguesDatabase/ColleagueDetails/ColleagueDetails";
@@ -47,6 +48,7 @@ const Routes = () => (
             <Route path="/PatientDatabase/PatientVaccination/" component={PatientVaccine}/>
             <Route path="/PatientDatabase/NewVaccination" component={Vaccine}/>
             <Route path="/PatientDatabase/Opd/:id" component={Opd}/>
+            <Route path="/PatientDatabase/NewOpd/:id" component={NewOpd}/>
             <Route exact={true} path="/colleagues" component={ColleaguesDatabase} />
             <Route path="/colleagues/colleagueDetails" component={ColleagueDetails} />
             <Route path="/pharmacy" component={Pharmacy} />

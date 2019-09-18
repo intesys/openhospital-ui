@@ -16,6 +16,7 @@ import CancelIcon from '@material-ui/icons/Cancel';
 import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
 import classNames from 'classnames';
 import { Patient } from 'generate';
+import DeletePatient from './DeletePatient';
 import * as React from "react";
 import { Link as LinkRouter } from 'react-router-dom';
 import { GetPatientsUsingGETRequest, PatientControllerApi } from '../../generate/apis';
@@ -24,7 +25,7 @@ import Patients from "./PatientsListItem";
 import styles from './styles/PatientsDatabase.style';
 
 // constants
-import { PATH_NEW_PATIENT } from "../../config/constants";
+import {PATH_NEW_PATIENT} from "../../config/constants";
 
 export interface Props extends WithStyles<typeof styles> { }
 
@@ -36,7 +37,7 @@ interface State {
   patients: Patient[];
   visible: Number;
   searchedValue: String;
-
+  isDeleteDialogOpen: boolean;
 }
 
 class PatientsDatabase extends React.Component<Props, State> {
@@ -47,7 +48,7 @@ class PatientsDatabase extends React.Component<Props, State> {
     isLoaded: false,
     items: [],
     selectedDate: new Date(),
-
+    isDeleteDialogOpen: false,
   };
 
 
@@ -86,7 +87,7 @@ class PatientsDatabase extends React.Component<Props, State> {
   public render() {
     const { classes, theme } = this.props;
     const { items, isLoaded, error } = this.state;
-
+    const { isDeleteDialogOpen } = this.state;
 
     const patients = (
       items && items.length !== 0 ?
@@ -110,24 +111,26 @@ class PatientsDatabase extends React.Component<Props, State> {
                 <Typography color="inherit">Patients</Typography>
               </Breadcrumbs>
             </Grid>
-
             <Grid item={true} xs={12} className={classes.patientActions}>
               <Typography variant="inherit" className={classes.patientsTitle}>
                 PATIENTS
-                            </Typography>
-              <Button color="inherit" classes={{ root: classes.button, label: classes.buttonLabel }}>
+              </Typography>
+              <Button color="inherit" onClick={() => this.setState({ isDeleteDialogOpen: true })}
+                      classes={{ root: classes.button, label: classes.buttonLabel }}>
                 <CancelIcon className={classes.buttonIcon} />
                 Delete a patient
-                            </Button>
-                            
+              </Button>
+              <DeletePatient
+                  isOpen={isDeleteDialogOpen}
+                  handleClickClose={() => this.setState({ isDeleteDialogOpen: false })} />
               <MaterialButtonRouter component={LinkRouter} to={PATH_NEW_PATIENT} color="inherit" classes={{ root: (classNames(classes.button, 'addButton')), label: classes.buttonLabel }}>
                 <AddIcon className={classes.buttonIcon} />
                 Record new patient
-                            </MaterialButtonRouter>
+              </MaterialButtonRouter>
               <Button color="inherit" classes={{ root: (classNames(classes.button, 'mergeButton')), label: classes.buttonLabel }}>
                 <MergeIcon className={classes.buttonIcon} />
                 Merge double patients' registration
-                            </Button>
+              </Button>
             </Grid>
           </Grid>
           <Grid container={true} item={true} justify='center' spacing={24}>

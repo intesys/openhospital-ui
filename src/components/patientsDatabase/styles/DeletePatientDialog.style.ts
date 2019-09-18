@@ -11,10 +11,8 @@ const styles = (theme: Theme) =>
 			justifyContent:'center'
 		},
 		cssOutlinedInput: {
-			borderColor: `${theme.palette.primary.inputBorder} !important`,
-			'& legend': {
-				width: '0 !important'
-			}
+			borderColor:`1px solid ${theme.palette.primary.grey} !important`,
+
 		},
 	});
 
