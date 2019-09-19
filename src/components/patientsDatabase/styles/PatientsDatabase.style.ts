@@ -80,6 +80,26 @@ const styles = (theme: Theme) =>
         formField: {
             width: '100%',
         },
+        detailButtonContainer: {
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+        },
+        detailButton: {
+            textTransform: "none",
+            color: theme.palette.primary.red,
+            fontWeight: "bold",
+            borderRadius: 20,
+            marginBottom: "8px",
+            "&:hover": {
+                color: theme.palette.primary.white,
+                background: theme.palette.primary.red,
+            },
+        },
+        detailButtonLabel: {
+            justifyContent: "flex-end",
+        },
+
         formDeleteField: {
             width: '50%',
             justifyContent: 'center'

@@ -51,13 +51,7 @@ class NewsDetails extends React.Component {
             <Grid container item className={classNames(classes.addNewsButton, classes.gridContainer)} xs={6}>
               <Grid item xs={8} />
               <Grid item xs={4}>
-                <Button
-                  variant="outlined"
-                  color="inherit"
-                  classes={{ root: classes.button, label: classes.buttonLabel }}
-                >
-                  WRITE A NEWS
-                </Button>
+
               </Grid>
             </Grid>
           </Grid>

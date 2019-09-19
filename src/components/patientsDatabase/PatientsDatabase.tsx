@@ -10,7 +10,7 @@ import Select from '@material-ui/core/Select';
 import { withStyles, WithStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
-import MergeIcon from '@material-ui/icons//LibraryBooks';
+import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import AddIcon from '@material-ui/icons/Add';
 import CancelIcon from '@material-ui/icons/Cancel';
 import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
@@ -26,7 +26,6 @@ import styles from './styles/PatientsDatabase.style';
 
 // constants
 import {PATH_NEW_PATIENT} from "../../config/constants";
-
 export interface Props extends WithStyles<typeof styles> { }
 
 interface State {
@@ -241,6 +240,17 @@ class PatientsDatabase extends React.Component<Props, State> {
                 </Grid>
                 <Grid container={true} justify="flex-end" item={true} spacing={24}>
                   <Grid item={true} xs={12} sm={9} />
+                </Grid>
+                &emsp;
+                <Grid item xs={12} sm={2} classes={{ item: classes.detailButtonContainer }}>
+                  <Button
+                      variant="outlined"
+                      color="inherit"
+                      classes={{ root: classes.detailButton, label: classes.detailButtonLabel }}
+                  >
+                    Search
+                    <KeyboardArrowRightIcon />
+                  </Button>
                 </Grid>
               </form>
             </Paper>

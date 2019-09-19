@@ -14,7 +14,6 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Grid from '@material-ui/core/Grid';
 import { withStyles, WithStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import {RouteComponentProps} from "react-router";
 import {DeletePatientUsingDELETERequest,PatientControllerApi} from '../../generate/apis';
 import {Patient} from "../../generate/models";
 export interface Props extends WithStyles<typeof styles> {}

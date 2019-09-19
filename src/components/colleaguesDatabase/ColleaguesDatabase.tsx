@@ -37,7 +37,7 @@ class ColleaguesDatabase extends React.Component<IProps, IState> {
     items: [],
   };
 
-  componentDidMount() {
+  public componentDidMount() {
     fetch("https://uinames.com/api/?ext&amount=9")
       .then(res => res.json())
       .then(
@@ -80,9 +80,9 @@ class ColleaguesDatabase extends React.Component<IProps, IState> {
 
     return (
       <div className={classes.root}>
-        <Grid container className={classes.gridContainer} justify="center" spacing={24}>
-          <Grid container item justify="center" spacing={24}>
-            <Grid item xs={12}>
+        <Grid container={true} className={classes.gridContainer} justify="center" spacing={24}>
+          <Grid container={true} item={true} justify="center" spacing={24}>
+            <Grid item={true} xs={12}>
               <Breadcrumbs aria-label="Breadcrumb" className={classes.breadCrumb}>
                 <MaterialLinkRouter color="secondary" component={LinkRouter} to="/dashboard">
                   Home
@@ -91,16 +91,16 @@ class ColleaguesDatabase extends React.Component<IProps, IState> {
               </Breadcrumbs>
             </Grid>
 
-            <Grid item xs={12}>
+            <Grid item={true} xs={12}>
               <Typography variant="inherit" className={classes.colleaguesTitle}>
                 COLLEAGUES
               </Typography>
             </Grid>
           </Grid>
-          <Grid container item justify="center" spacing={24}>
+          <Grid container={true} item={true} justify="center" spacing={24}>
             <Paper className={classes.paperFlat}>
-              <Grid container item spacing={24}>
-                <Grid item xs={12} className={classes.inputContainer}>
+              <Grid container={true} item={true} spacing={24}>
+                <Grid item={true} xs={12} className={classes.inputContainer}>
                   <Typography variant="inherit" className={classes.findColleagues}>
                     FIND A COLLEAGUES
                   </Typography>
@@ -110,8 +110,8 @@ class ColleaguesDatabase extends React.Component<IProps, IState> {
                 </Grid>
               </Grid>
               <form>
-                <Grid container item spacing={24}>
-                  <Grid item xs={12} sm={2}>
+                <Grid container={true} item={true} spacing={24}>
+                  <Grid item={true} xs={12} sm={2}>
                     <TextField
                       id="name"
                       label="Name or Username*"
@@ -134,7 +134,7 @@ class ColleaguesDatabase extends React.Component<IProps, IState> {
                       variant="outlined"
                     />
                   </Grid>
-                  <Grid item xs={12} sm={2}>
+                  <Grid item={true} xs={12} sm={2}>
                     <TextField
                       id="surname"
                       label="Surname"
@@ -157,7 +157,7 @@ class ColleaguesDatabase extends React.Component<IProps, IState> {
                       variant="outlined"
                     />
                   </Grid>
-                  <Grid item xs={12} sm={6}>
+                  <Grid item={true} xs={12} sm={6}>
                     <FormControl variant="outlined" className={classNames(classes.formField, classes.formFieldSelect)}>
                       <InputLabel
                         ref={ref => {
@@ -198,7 +198,7 @@ class ColleaguesDatabase extends React.Component<IProps, IState> {
                       </Select>
                     </FormControl>
                   </Grid>
-                  <Grid item xs={12} sm={2} classes={{ item: classes.detailButtonContainer }}>
+                  <Grid item={true} xs={12} sm={2} classes={{ item: classes.detailButtonContainer }}>
                     <Button
                       variant="outlined"
                       color="inherit"
@@ -212,10 +212,10 @@ class ColleaguesDatabase extends React.Component<IProps, IState> {
               </form>
             </Paper>
           </Grid>
-          <Grid container item style={{ padding: "47px 0" }} spacing={24}>
+          <Grid container={true} item={true} style={{ padding: "47px 0" }} spacing={24}>
             {colleagues}
           </Grid>
-          <Grid item xs={12} sm={2} classes={{ item: classes.detailButtonContainer }}>
+          <Grid item={true} xs={12} sm={2} classes={{ item: classes.detailButtonContainer }}>
             <Button
               variant="outlined"
               color="inherit"
