@@ -23,6 +23,7 @@ import { GetPatientsUsingGETRequest, PatientControllerApi } from '../../generate
 import { MaterialButtonRouter, MaterialLinkRouter } from '../utils/LinkHelper';
 import Patients from "./PatientsListItem";
 import styles from './styles/PatientsDatabase.style';
+import PatientSearch from '../sharedComponents/PatientSearch';
 
 // constants
 import {PATH_NEW_PATIENT} from "../../config/constants";
@@ -129,132 +130,7 @@ class PatientsDatabase extends React.Component<Props, State> {
               </MaterialButtonRouter>
             </Grid>
           </Grid>
-          <Grid container={true} item={true} justify='center' spacing={24}>
-            <Paper className={classes.paperFlat}>
-              <Grid container={true} item={true} spacing={24} className={classes.inputContainer}>
-                <Grid item={true} xs={12} style={{ display: 'flex' }}>
-                  <Typography variant="inherit" className={classes.findPatients}>
-                    FIND A PATIENT
-                </Typography>
-                  <Typography variant="inherit" className={classes.insertInfoPatients}>
-                    Insert the information of the patient
-                </Typography>
-                </Grid>
-              </Grid>
-              <form>
-                <Grid container={true} item={true} spacing={24}>
-                  <Grid item={true} xs={12} sm={3}>
-                    <TextField
-                      id="patientID"
-                      label="Patient ID (PID)"
-                      type="text"
-                      className={classNames(classes.formField, classes.cssOutlinedInput)}
-                      InputLabelProps={{
-                        classes: {
-                          root: classes.formFieldInputLabel,
-                          focused: classes.cssFocused,
-                        },
-                      }}
-                      InputProps={{
-                        classes: {
-                          root: classes.formFieldInput,
-                          notchedOutline: classes.cssOutlinedInput,
-                        },
-                      }}
-                      // value="{this.state.name}"
-                      // onChange={this.handleChange('name')}
-                      margin="normal"
-                      variant="outlined"
-                    />
-                  </Grid>
-                  <Grid item={true} xs={12} sm={3}>
-                    <TextField
-                      id="outpatientNumber"
-                      label="Outpatient Number (OPD)"
-                      className={classNames(classes.formField, classes.cssOutlinedInput)}
-                      InputLabelProps={{
-                        classes: {
-                          root: classes.formFieldInputLabel,
-                          focused: classes.cssFocused,
-                        },
-                      }}
-                      InputProps={{
-                        classes: {
-                          root: classes.formFieldInput,
-                          notchedOutline: classes.cssOutlinedInput,
-                        },
-                      }}
-                      // value="{this.state.name}"
-                      // onChange={this.handleChange('name')}
-                      margin="normal"
-                      variant="outlined"
-                    />
-                  </Grid>
-                  <Grid item={true} xs={12} sm={3}>
-                    <TextField
-                      id="inpatientNumber"
-                      label="Inpatient Number (IPD)"
-                      className={classNames(classes.formField, classes.cssOutlinedInput)}
-                      InputLabelProps={{
-                        classes: {
-                          root: classes.formFieldInputLabel,
-                          focused: classes.cssFocused,
-                        },
-                      }}
-                      InputProps={{
-                        classes: {
-                          root: classes.formFieldInput,
-                          notchedOutline: classes.cssOutlinedInput,
-                        },
-                      }}
-                      // value="{this.state.name}"
-                      // onChange={this.handleChange('name')}
-                      margin="normal"
-                      variant="outlined"
-                    />
-                  </Grid>
-                  <Grid item={true} xs={12} sm={3}>
-                    <TextField
-                      id="keyword"
-                      label="Keyword"
-                      className={classNames(classes.formField, classes.cssOutlinedInput)}
-                      placeholder="First name, last name, tax number..."
-                      InputLabelProps={{
-                        classes: {
-                          root: classes.formFieldInputLabel,
-                          focused: classes.cssFocused,
-                        },
-                      }}
-                      InputProps={{
-                        classes: {
-                          root: classes.formFieldInput,
-                          notchedOutline: classes.cssOutlinedInput,
-                        },
-                      }}
-                      // value="{this.state.name}"
-                      // onChange={this.handleChange('name')}
-                      margin="normal"
-                      variant="outlined"
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container={true} justify="flex-end" item={true} spacing={24}>
-                  <Grid item={true} xs={12} sm={9} />
-                </Grid>
-                &emsp;
-                <Grid item xs={12} sm={2} classes={{ item: classes.detailButtonContainer }}>
-                  <Button
-                      variant="outlined"
-                      color="inherit"
-                      classes={{ root: classes.detailButton, label: classes.detailButtonLabel }}
-                  >
-                    Search
-                    <KeyboardArrowRightIcon />
-                  </Button>
-                </Grid>
-              </form>
-            </Paper>
-          </Grid>
+          <PatientSearch/>
           <Grid container={true} item={true} spacing={24} className={classes.filterContainer}>
             <Grid item={true} xs={12} style={{ display: 'flex' }}>
               <Typography variant="inherit" className={classes.findPatients}>
