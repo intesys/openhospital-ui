@@ -9,39 +9,39 @@ components:
   schemas:
     DoctorInfo:
       type: object
-      properties:
-        docBasicInfo:
-          "$ref": "#/components/schemas/BasicPersonalInfo"
-        specialty:
-          example: Anesthesiology
-          type: string
+      allOf:
+      - "$ref": "#/components/schemas/BasicPersonalInfo"
+      - properties:
+          specialty:
+            example: Anesthesiology
+            type: string
     PatientInfo:
       type: object
-      properties:
-        PatientBasicInfo:
-          "$ref": "#/components/schemas/BasicPersonalInfo"
-        isChronic:
-          example: 'true'
-          type: boolean
-        bloodType:
-          example: A+
-          type: string
-        notes:
-          example: Lorem ipsum dolor sit amet
-          type: string
-        lastAdmission:
-          example: 22.01.2019
-          type: string
-        reasonOfVisit:
-          example: Sed ut perspiciatis unde omnis iste natus
-          type: string
-        treatment:
-          example: Bloodletting
-          type: string
-        nextKin:
-          "$ref": "#/components/schemas/BasicPersonalInfo"
-        lastDocToVisit:
-          "$ref": "#/components/schemas/DoctorInfo"
+      allOf:
+      - "$ref": "#/components/schemas/BasicPersonalInfo"
+      - properties:
+          isChronic:
+            example: 'true'
+            type: boolean
+          bloodType:
+            example: A+
+            type: string
+          notes:
+            example: Lorem ipsum dolor sit amet
+            type: string
+          lastAdmission:
+            example: 22.01.2019
+            type: string
+          reasonOfVisit:
+            example: Sed ut perspiciatis unde omnis iste natus
+            type: string
+          treatment:
+            example: Bloodletting
+            type: string
+          nextKin:
+            "$ref": "#/components/schemas/BasicPersonalInfo"
+          lastDocToVisit:
+            "$ref": "#/components/schemas/DoctorInfo"
     BasicPersonalInfo:
       type: object
       properties:
@@ -152,4 +152,3 @@ paths:
                   "$ref": "#/components/schemas/PatientInfo"
         '401':
           "$ref": "#/components/responses/401_unauthorized"
- 
