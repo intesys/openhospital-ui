@@ -9,7 +9,6 @@ import MailIcon from "@material-ui/icons/Mail";
 import PhoneIcon from "@material-ui/icons/Phone";
 import HospitalIcon from "@material-ui/icons/LocalHospital";
 import Avatar from "@material-ui/core/Avatar";
-import CardActionArea from "@material-ui/core/CardActionArea";
 import { Link as LinkRouter } from "react-router-dom";
 import styles from "./styles/PatientsDatabase.style";
 import { MaterialCardActionAreaRouter } from "../utils/LinkHelper";

@@ -182,6 +182,14 @@ const styles = (theme: Theme) =>
             letterSpacing: 1,
         },
 
+        patientAddressType:{
+            fontSize: "15px",
+            fontWeight: "bold",
+            letterSpacing: 1,
+            marginTop: 42,
+            marginLeft: "-123px"
+        },
+
         calendarTitle: {
             fontSize: "20px",
             fontWeight: "bold",

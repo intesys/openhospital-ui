@@ -199,7 +199,7 @@ class Calendar extends Component {
           <img className="month-arrow-right" src={ic_forward} alt="forward" onClick={this.next.bind(this)}></img>
         </div>
         <div className='footer'>
-          {header};
+          {header}
           {days}
         </div>
       </div>

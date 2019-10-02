@@ -107,7 +107,7 @@ class DeletePatient extends React.Component<Props, State> {
 						</Grid>
 					</DialogContent>
 					<DialogActions >
-						<Button onClick={handleClickClose} color="secondary">
+						<Button  color="secondary">
 							<b>EXIT</b>
 						</Button>
 						<Button onClick={this.handleSubmit} color="secondary">

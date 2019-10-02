@@ -147,6 +147,11 @@ const styles = (theme: Theme) =>
         border: `4px solid ${theme.palette.primary.red}`,
       },
     },
+      cardActionVisited: {
+          "&:hover $avatar": {
+              border: `4px solid ${theme.palette.primary.red}`,
+          },
+      },
   });
 
 export default styles;

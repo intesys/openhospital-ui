@@ -82,19 +82,20 @@ const styles = (theme: Theme) =>
         },
         detailButtonContainer: {
             display: "flex",
-            alignItems: "center",
             justifyContent: "center",
+            float: "right"
         },
         detailButton: {
             textTransform: "none",
             color: theme.palette.primary.red,
             fontWeight: "bold",
             borderRadius: 20,
-            marginBottom: "8px",
+            marginTop: "25px",
             "&:hover": {
                 color: theme.palette.primary.white,
                 background: theme.palette.primary.red,
             },
+            marginRight: "25px"
         },
         detailButtonLabel: {
             justifyContent: "flex-end",

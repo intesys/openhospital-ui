@@ -5,28 +5,25 @@ import FormControl from '@material-ui/core/FormControl';
 import Grid from '@material-ui/core/Grid';
 import MenuItem from '@material-ui/core/MenuItem';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
-import Paper from '@material-ui/core/Paper';
+import Paper from "@material-ui/core/Paper";
 import Select from '@material-ui/core/Select';
 import { withStyles, WithStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
+import KeyboardArrowRightIcon from "@material-ui/core/SvgIcon/SvgIcon";
+import TextField from "@material-ui/core/TextField";
 import Typography from '@material-ui/core/Typography';
-import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import AddIcon from '@material-ui/icons/Add';
 import CancelIcon from '@material-ui/icons/Cancel';
 import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
 import classNames from 'classnames';
-import { Patient } from 'generate';
-import DeletePatient from './DeletePatient';
+import {Patient} from "generate";
 import * as React from "react";
 import { Link as LinkRouter } from 'react-router-dom';
+import {PATH_NEW_PATIENT} from "../../config/constants";
 import { GetPatientsUsingGETRequest, PatientControllerApi } from '../../generate/apis';
 import { MaterialButtonRouter, MaterialLinkRouter } from '../utils/LinkHelper';
+import DeletePatient from './DeletePatient';
 import Patients from "./PatientsListItem";
 import styles from './styles/PatientsDatabase.style';
-import PatientSearch from '../sharedComponents/PatientSearch';
-
-// constants
-import {PATH_NEW_PATIENT} from "../../config/constants";
 export interface Props extends WithStyles<typeof styles> { }
 
 interface State {
@@ -38,10 +35,9 @@ interface State {
   visible: Number;
   searchedValue: String;
   isDeleteDialogOpen: boolean;
-}
+  }
 
 class PatientsDatabase extends React.Component<Props, State> {
-
 
   public state: State = {
     error: null,
@@ -49,8 +45,8 @@ class PatientsDatabase extends React.Component<Props, State> {
     items: [],
     selectedDate: new Date(),
     isDeleteDialogOpen: false,
-  };
 
+  };
 
   public componentDidMount() {
 
@@ -66,7 +62,6 @@ class PatientsDatabase extends React.Component<Props, State> {
           this.setState({
             isLoaded: true,
             items: result,
-
           });
         },
         (error) => {
@@ -81,14 +76,10 @@ class PatientsDatabase extends React.Component<Props, State> {
       // labelWidth: ReactDOM.findDOMNode(this.InputLabelRef).offsetWidth,
     });
   }
-
-
-
   public render() {
     const { classes, theme } = this.props;
-    const { items, isLoaded, error } = this.state;
+    const { items,isLoaded, error } = this.state;
     const { isDeleteDialogOpen } = this.state;
-
     const patients = (
       items && items.length !== 0 ?
         (items.map((item) => (
@@ -98,7 +89,6 @@ class PatientsDatabase extends React.Component<Props, State> {
         ))) :
         <CircularProgress className={classes.progress} color="secondary" style={{ margin: '20px auto' }} />
     );
-
     return (
       <div className={classes.root}>
         <Grid container={true} className={classes.gridContainer} justify='center' spacing={24}>
@@ -130,7 +120,60 @@ class PatientsDatabase extends React.Component<Props, State> {
               </MaterialButtonRouter>
             </Grid>
           </Grid>
-          <PatientSearch/>
+          <Grid container={true} item={true} justify="center" spacing={24}>
+            <Paper className={classes.paperFlat}>
+              <div>
+                <Grid container={true} item={true} spacing={24} className={classes.inputContainer}>
+                  <Grid item={true} xs={12} style={{display: "flex"}}>
+                    <Typography variant="inherit" className={classes.findPatients}>
+                      FIND A PATIENT
+                    </Typography>
+                    <Typography variant="inherit" className={classes.insertInfoPatients}>
+                      Insert the information of the patient
+                    </Typography>
+                  </Grid>
+                </Grid>
+                <form>
+                  <Grid container={true} item={true} spacing={24}>
+                    <Grid item={true} xs={10} style={{marginLeft:100}} >
+                      <TextField
+                          id="patient id"
+                          label="Search for Patient ID, Patient name..."
+                          className={classNames(classes.formField, classes.cssOutlinedInput)}
+                          InputLabelProps={{
+                            classes: {
+                              root: classes.formFieldInputLabel,
+                              focused: classes.cssFocused,
+                            },
+                          }}
+                          InputProps={{
+                            classes: {
+                              root: classes.formFieldInput,
+                              notchedOutline: classes.cssOutlinedInput,
+                            },
+                          }}
+                          margin="normal"
+                          variant="outlined"
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid container={true} justify="flex-end" item={true} spacing={24}>
+                    <Grid item={true} xs={12} sm={9}/>
+                  </Grid>
+                  <Grid item={true} xs={12} sm={2} classes={{item: classes.detailButtonContainer}}>
+                    <Button
+                        variant="outlined"
+                        color="inherit"
+                        classes={{root: classes.detailButton, label: classes.detailButtonLabel}}
+                    >
+                      Search
+                      <KeyboardArrowRightIcon/>
+                    </Button>
+                  </Grid>
+                </form>
+              </div>
+            </Paper>
+          </Grid>
           <Grid container={true} item={true} spacing={24} className={classes.filterContainer}>
             <Grid item={true} xs={12} style={{ display: 'flex' }}>
               <Typography variant="inherit" className={classes.findPatients}>

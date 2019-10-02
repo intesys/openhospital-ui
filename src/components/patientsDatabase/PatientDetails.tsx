@@ -1,29 +1,24 @@
-import * as React from "react";
-import _ from "lodash";
-import { withStyles, WithStyles } from "@material-ui/core/styles";
-import Breadcrumbs from "@material-ui/lab/Breadcrumbs";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import { Link as LinkRouter, RouteProps, RouteComponentProps, Link } from "react-router-dom";
-import { MaterialLinkRouter, MaterialButtonRouter } from "../utils/LinkHelper";
-import classNames from "classnames";
-import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
+import { Collapse, FormControl, InputLabel, List, ListItem, ListItemSecondaryAction, MenuItem, OutlinedInput, Select } from '@material-ui/core';
 import Avatar from "@material-ui/core/Avatar";
 import Divider from "@material-ui/core/Divider";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import AddPhotoIcon from "@material-ui/icons/AddAPhoto";
-import styles from "./styles/PatientDetails.style";
-import ExpandMore from "@material-ui/icons/ExpandMore";
-import ExpandLess from "@material-ui/icons/ExpandLess";
+import Grid from "@material-ui/core/Grid";
+import { withStyles, WithStyles } from "@material-ui/core/styles";
 import Tooltip from '@material-ui/core/Tooltip';
-import Calendar from "../../shared/lib/calendar/index";
-import { PatientControllerApi, GetPatientUsingGETRequest } from '../../generate/apis';
-import { Collapse, FormControl, InputLabel, Select, MenuItem, OutlinedInput, List, ListItem, ListItemSecondaryAction } from '@material-ui/core';
-import { Patient } from 'generate';
-import SummaryItem from "../sharedComponents/SummaryItem";
-
-
+import Typography from "@material-ui/core/Typography";
+import AddPhotoIcon from "@material-ui/icons/AddAPhoto";
+import ExpandLess from "@material-ui/icons/ExpandLess";
+import ExpandMore from "@material-ui/icons/ExpandMore";
+import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
+import Breadcrumbs from "@material-ui/lab/Breadcrumbs";
+import { Patient }                                         from 'generate';
+import _                                                   from "lodash";
+import React                                               from "react";
+import { Link, Link as LinkRouter, RouteComponentProps }   from "react-router-dom";
+import { GetPatientUsingGETRequest, PatientControllerApi } from '../../generate/apis';
+import Calendar                                            from "../../shared/lib/calendar/index";
+import SummaryItem                                         from "../sharedComponents/SummaryItem";
+import { MaterialButtonRouter, MaterialLinkRouter }        from "../utils/LinkHelper";
+import styles                                              from "./styles/PatientDetails.style";
 export interface Props extends WithStyles<typeof styles> { }
 
 
@@ -44,16 +39,18 @@ interface IProps extends RouteComponentProps<IRouteParams> { }
 
 class PatientDetails extends React.Component<IProps> {
 
-  state: State = {
+
+  public state: State = {
     labelWidth: 0,
     error: null,
     isLoaded: false,
     item: {},
     openOptionalInfo: false,
-    
   };
 
-  componentDidMount() {
+
+
+  public componentDidMount() {
 
     const patientController: PatientControllerApi = new PatientControllerApi();
     const requestParams: GetPatientUsingGETRequest = {
@@ -83,13 +80,13 @@ class PatientDetails extends React.Component<IProps> {
 
 
   }
-  
 
-  handleClickCollapseOptionalInfo = () => {
+
+
+
+  public handleClickCollapseOptionalInfo = () => {
     this.setState(state => ({ openOptionalInfo: !state.openOptionalInfo }));
   };
-
-  
 
   public render() {
     const { classes } = this.props;
@@ -101,9 +98,9 @@ class PatientDetails extends React.Component<IProps> {
 
     return (
       <div className={classes.root}>
-        <Grid container className={classes.gridContainer} justify="center" spacing={24}>
-          <Grid container item spacing={24}>
-            <Grid item xs={12}>
+        <Grid container={true} className={classes.gridContainer} justify="center" spacing={24}>
+          <Grid container={true} item={true} spacing={24}>
+            <Grid item={true} xs={12}>
               <Breadcrumbs aria-label="Breadcrumb" className={classes.breadCrumb}>
                 <MaterialLinkRouter color="secondary" component={LinkRouter} to="/dashboard">
                   Home
@@ -114,15 +111,15 @@ class PatientDetails extends React.Component<IProps> {
                 <Typography color="inherit">Patient Details</Typography>
               </Breadcrumbs>
             </Grid>
-            <Grid item xs={12}>
+            <Grid item={true} xs={12}>
               <Typography variant="inherit" className={classes.patientTitle}>
                 PATIENT DETAILS
               </Typography>
             </Grid>
           </Grid>
-          <Grid container item justify="center" spacing={24}>
-            <Grid container item justify="center" spacing={24}>
-              <Grid item xs={12} sm={3} className={classes.sidebar}>
+          <Grid container={true} item={true} justify="center" spacing={24}>
+            <Grid container={true} item={true} justify="center" spacing={24}>
+              <Grid item={true} xs={12} sm={3} className={classes.sidebar}>
                 <Avatar alt="Remy Sharp" src={""} className={classes.avatar}>
                   <AddPhotoIcon />
                 </Avatar>
@@ -138,13 +135,13 @@ class PatientDetails extends React.Component<IProps> {
                 <Typography color="inherit" className={classes.bloodGroup}>
                   Blood Group
                 </Typography>
-                <Typography color="inherit" className={classes.bloodType}>
+                <Typography contentEditable={true}  color="inherit" className={classes.bloodType}>
                   {this.state.item.bloodType}
                 </Typography>
                 <Typography color="inherit" className={classes.notes}>
                   Next Kin:
                 </Typography>
-                <Typography color="inherit" className={classes.notesDetails}>
+                <Typography contentEditable={true} color="inherit" className={classes.notesDetails}>
                   {this.state.item.nextKin}
                 </Typography>
                 &emsp;
@@ -160,7 +157,7 @@ class PatientDetails extends React.Component<IProps> {
                 &emsp;
                 <Divider className={classes.divider} />
                 &emsp;
-                <Typography color="inherit" className={classes.admissionDate}>
+                <Typography contentEditable={true}  color="inherit" className={classes.admissionDate}>
                   Last Admission:&nbsp;<b>22.01.2019</b>
                 </Typography>
                 <Typography color="inherit" className={classes.reasonVisit}>
@@ -175,7 +172,6 @@ class PatientDetails extends React.Component<IProps> {
                 </Typography>
                 <Typography color="inherit" className={classes.treatmentType}>
                   {" "}
-
                 </Typography>
                 <MaterialButtonRouter
                   style={{ marginTop: 30 }}
@@ -189,16 +185,19 @@ class PatientDetails extends React.Component<IProps> {
                 </MaterialButtonRouter>
                
               </Grid>
-              <Grid item xs={12} sm={9} className={classes.patientContent}>
-                <Grid item xs={12} className={classes.patientProfileHeader}>
+              <Grid item={true} xs={12} sm={9} className={classes.patientContent}>
+                <Grid item={true} xs={12} className={classes.patientProfileHeader}>
                   <div style={{ flexDirection: "column", textAlign: "left" }}>
-                    <Typography color="inherit" className={classes.patientName}>
+                    <Typography contentEditable={true}  color="inherit" className={classes.patientName}>
                       {this.state.item.firstName} {this.state.item.secondName}
                     </Typography>
                     <Typography color="inherit" className={classes.patientAddress}>
-                      Provenance: <b>{this.state.item.address}</b>&emsp;<b>{this.state.item.city}</b>
+                      Provenance:
                     </Typography>
                   </div>
+                  <Typography  contentEditable={true}  color="inherit" className={classes.patientAddressType}>
+                    <b>{this.state.item.address}</b>,&nbsp;<b>{this.state.item.city}</b>
+                  </Typography>
                   <MaterialButtonRouter component={LinkRouter} to={"/PatientDatabase/PatientAdmission/"+  this.state.item.code} variant="outlined" color="inherit" classes={{ root: classes.admissionButton }}
                   >
                     New Admission
@@ -210,25 +209,25 @@ class PatientDetails extends React.Component<IProps> {
                 &emsp;
                 <Divider className={classes.divider} />
                 &emsp;
-                <Grid item xs={12} className={classes.patientProfileHeader}>
+                <Grid item={true} xs={12} className={classes.patientProfileHeader}>
                   <div style={{ flexDirection: "column", textAlign: "left" }}>
                     <Typography color="inherit" className={classes.patientRecord}>
                       PATIENT RECORD
                     </Typography>
                   </div>
-                  <Tooltip title="View Opd patient History" interactive>
+                  <Tooltip title="View Opd patient History" interactive={true}>
                     <MaterialButtonRouter component={LinkRouter} to={"/PatientDatabase/Opd/"+this.state.item.code} variant="outlined" color="inherit" classes={{ root: classes.opdButton }}>
                       OPD
                   </MaterialButtonRouter>
                   </Tooltip>
-                  <Tooltip title="Add new patient's therapy" interactive>
+                  <Tooltip title="Add new patient's therapy" interactive={true}>
                     <MaterialButtonRouter component={LinkRouter} to={"/patientDatabase/PatientTherapy/"+this.state.item.code} variant="outlined" color="inherit" classes={{ root: classes.therapyButton }}>
                       Therapy
                   </MaterialButtonRouter>
                   </Tooltip>
                 </Grid>
                 &nbsp;
-                <Grid container justify="center" spacing={24}>
+                <Grid container={true} justify="center" spacing={24}>
                   <Calendar
                     accentColor={"red"}
                     orientation={"flex-row"}
@@ -238,7 +237,7 @@ class PatientDetails extends React.Component<IProps> {
                     }}
                   />
                   <Collapse in={openOptionalInfo} style={{ width: "100%" }} timeout="auto">
-                    <Grid item xs={12} justify="center">
+                    <Grid item={true} xs={12} justify="center">
                       <List classes={{ root: classes.appointments }}>
                         <ListItem disableGutters={true} className={classes.appointmentsTitleContainer}>
                           <Typography className={classes.appointmentsTitle} variant="inherit" align="left">
@@ -248,13 +247,13 @@ class PatientDetails extends React.Component<IProps> {
                         {/* <Collapse in={openAppointments} timeout="auto" unmountOnExit> */}
                         <List disablePadding={true}>
                           <ListItem disableGutters={true} className={classes.appointmentsListItem}>
-                            <Grid container justify="center" spacing={24} className={classes.appointmentsListItemGrid}>
-                              <Grid item xs={3} className={classes.materialsListItemTitleContainer}>
+                            <Grid container={true} justify="center" spacing={24} className={classes.appointmentsListItemGrid}>
+                              <Grid item={true} xs={3} className={classes.materialsListItemTitleContainer}>
                                 <Typography className={classes.appointmentsListItemText} variant="inherit">
                                   <b>07.30 am</b>
                                 </Typography>
                               </Grid>
-                              <Grid item xs={9} className={classes.materialsListItemTitleContainer}>
+                              <Grid item={true} xs={9} className={classes.materialsListItemTitleContainer}>
                                 <Typography className={classes.appointmentsListItemText} variant="inherit">
                                   Blood exam
                           </Typography>
@@ -262,13 +261,13 @@ class PatientDetails extends React.Component<IProps> {
                             </Grid>
                           </ListItem>
                           <ListItem disableGutters={true} className={classes.appointmentsListItem}>
-                            <Grid container justify="center" spacing={24} className={classes.appointmentsListItemGrid}>
-                              <Grid item xs={3} className={classes.materialsListItemTitleContainer}>
+                            <Grid container={true} justify="center" spacing={24} className={classes.appointmentsListItemGrid}>
+                              <Grid item={true} xs={3} className={classes.materialsListItemTitleContainer}>
                                 <Typography className={classes.appointmentsListItemText} variant="inherit">
                                   <b>10.30 am</b>
                                 </Typography>
                               </Grid>
-                              <Grid item xs={9} className={classes.materialsListItemTitleContainer}>
+                              <Grid item={true} xs={9} className={classes.materialsListItemTitleContainer}>
                                 <Typography className={classes.appointmentsListItemText} variant="inherit">
                                   Pneumological visit with Dr.Mason
                           </Typography>
@@ -280,7 +279,7 @@ class PatientDetails extends React.Component<IProps> {
                     </Grid>
                   </Collapse>
                 </Grid>
-                <Grid item xs={12} spacing={24} style={{ marginTop: 50, marginBottom: 20 }} className={classes.detailButtonContainer}>
+                <Grid item={true} xs={12} spacing={24} style={{ marginTop: 50, marginBottom: 20 }} className={classes.detailButtonContainer}>
                   <MaterialButtonRouter
                     component={LinkRouter}
                     to="/Billing"
@@ -319,7 +318,7 @@ class PatientDetails extends React.Component<IProps> {
                   PATIENT SUMMARY
                 </Typography>
                 &emsp;
-                <Grid container className={classes.patientSummaryCard} style={{ width: "120%" }}>
+                <Grid container={true} className={classes.patientSummaryCard} style={{ width: "120%" }}>
                     <SummaryItem/>
                     <SummaryItem/>
                     <SummaryItem/>

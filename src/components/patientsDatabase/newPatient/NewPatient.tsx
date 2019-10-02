@@ -10,8 +10,6 @@ import { withStyles, WithStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import AddPhotoIcon from "@material-ui/icons/AddAPhoto";
-import ExpandLess from "@material-ui/icons/ExpandLess";
-import ExpandMore from "@material-ui/icons/ExpandMore";
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import Breadcrumbs from "@material-ui/lab/Breadcrumbs";
 import classNames from "classnames";

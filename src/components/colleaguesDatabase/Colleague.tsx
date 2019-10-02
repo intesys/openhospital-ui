@@ -7,7 +7,7 @@ import { Link as LinkRouter } from "react-router-dom";
 import { MaterialCardActionAreaRouter } from "../utils/LinkHelper";
 import classNames from "classnames";
 import Avatar from "@material-ui/core/Avatar";
-
+import {Patient} from "../../generate/models";
 import styles from "./ColleaguesDatabase.style";
 export interface Props extends WithStyles<typeof styles> {}
 
@@ -15,7 +15,7 @@ interface State {
   labelWidth: number;
   error: any;
   isLoaded: boolean;
-  items: any;
+  items: Patient;
 }
 
 class Colleague extends React.Component<Props, State> {
@@ -23,9 +23,17 @@ class Colleague extends React.Component<Props, State> {
     super(props);
   }
 
+  state: State = {
+    labelWidth: 0,
+    error: null,
+    isLoaded: false,
+    items: {},
+  };
+
   render() {
     // debugger;
     let classes = this.props.classes;
+    const {items} = this.state;
     let colleagueInfo = this.props.info;
     colleagueInfo.nickname =
       colleagueInfo.name.substring(0, 1).toLowerCase() + "." + colleagueInfo.surname.toLowerCase();
@@ -61,62 +69,77 @@ class Colleague extends React.Component<Props, State> {
               </Grid>
             </Grid>
           </MaterialCardActionAreaRouter>
-          <MaterialCardActionAreaRouter
-           className={classes.cardAction}
-           component={LinkRouter}
-           to="/patients-database/:patientId">
           <Grid container item className={classes.colleagueContainer} justify="center" spacing={24}>
             <Grid item xs={12}>
               <Typography color="inherit">LAST PATIENTS VISITED</Typography>
             </Grid>
             <Grid container item className={classes.colleagueContainer} justify="center" spacing={24}>
               <Grid item xs={6} style={{ display: "flex" }}>
+                <MaterialCardActionAreaRouter
+                    className={classes.cardActionVisited}
+                    component={LinkRouter}
+                    to="/patientsdatabase/:patientID">
                 <Avatar
                   alt="Remy Sharp"
                   src={colleagueInfo.photo}
                   className={classNames(classes.avatar, "avatarSmall")}
                 />
-                <div style={{ flexDirection: "column" }}>
+                <div>
                   <Typography color="inherit">Gross</Typography>
                   <Typography color="inherit">Marcus</Typography>
                 </div>
+                </MaterialCardActionAreaRouter>
               </Grid>
               <Grid item xs={6} style={{ display: "flex" }}>
-                <Avatar
-                  alt="Remy Sharp"
-                  src={colleagueInfo.photo}
-                  className={classNames(classes.avatar, "avatarSmall")}
-                />
-                <div style={{ flexDirection: "column" }}>
-                  <Typography color="inherit">Gross</Typography>
-                  <Typography color="inherit">Marcus</Typography>
-                </div>
+                <MaterialCardActionAreaRouter
+                    className={classes.cardActionVisited}
+                    component={LinkRouter}
+                    to="/patients-database/:patientId">
+                  <Avatar
+                      alt="Remy Sharp"
+                      src={colleagueInfo.photo}
+                      className={classNames(classes.avatar, "avatarSmall")}
+                  />
+                  <div>
+                    <Typography color="inherit">Gross</Typography>
+                    <Typography color="inherit">Marcus</Typography>
+                  </div>
+                </MaterialCardActionAreaRouter>
               </Grid>
               <Grid item xs={6} style={{ display: "flex" }}>
-                <Avatar
-                  alt="Remy Sharp"
-                  src={colleagueInfo.photo}
-                  className={classNames(classes.avatar, "avatarSmall")}
-                />
-                <div style={{ flexDirection: "column" }}>
-                  <Typography color="inherit">Gross</Typography>
-                  <Typography color="inherit">Marcus</Typography>
-                </div>
+                <MaterialCardActionAreaRouter
+                    className={classes.cardActionVisited}
+                    component={LinkRouter}
+                    to="/patients-database/:patientId">
+                  <Avatar
+                      alt="Remy Sharp"
+                      src={colleagueInfo.photo}
+                      className={classNames(classes.avatar, "avatarSmall")}
+                  />
+                  <div >
+                    <Typography color="inherit">Gross</Typography>
+                    <Typography color="inherit">Marcus</Typography>
+                  </div>
+                </MaterialCardActionAreaRouter>
               </Grid>
               <Grid item xs={6} style={{ display: "flex" }}>
-                <Avatar
-                  alt="Remy Sharp"
-                  src={colleagueInfo.photo}
-                  className={classNames(classes.avatar, "avatarSmall")}
-                />
-                <div style={{ flexDirection: "column" }}>
-                  <Typography color="inherit">Gross</Typography>
-                  <Typography color="inherit">Marcus</Typography>
-                </div>
+                <MaterialCardActionAreaRouter
+                    className={classes.cardActionVisited}
+                    component={LinkRouter}
+                    to="/patients-database/:patientId">
+                  <Avatar
+                      alt="Remy Sharp"
+                      src={colleagueInfo.photo}
+                      className={classNames(classes.avatar, "avatarSmall")}
+                  />
+                  <div >
+                    <Typography color="inherit">Gross</Typography>
+                    <Typography color="inherit">Marcus</Typography>
+                  </div>
+                </MaterialCardActionAreaRouter>
               </Grid>
             </Grid>
           </Grid>
-          </MaterialCardActionAreaRouter>
         </Paper>
       </Grid>
     );

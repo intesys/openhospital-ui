@@ -19,10 +19,10 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import * as React from "react";
 import { Link as LinkRouter } from "react-router-dom";
-import PdfIcon from "../utils/icons/svg/PdfIcon";
-import styles from "./Pharmacy.style";
 import MovementGraph from "../sharedComponents/MovementGraph";
 import StockGraph from "../sharedComponents/StockGraph";
+import PdfIcon from "../utils/icons/svg/PdfIcon";
+import styles from "./Pharmacy.style";
 export interface IProps extends WithStyles<typeof styles> { }
 
 interface IState {
@@ -33,14 +33,14 @@ interface IState {
 }
 
 class Pharmacy extends React.Component<IProps, IState> {
-  state: State = {
+  public state: State = {
     labelWidth: 0,
     value: 0,
     error: null,
     isLoaded: false,
   };
 
-  handleChange = (event: React.MouseEvent<HTMLElement>, value: number) => {
+  public handleChange = (event: React.MouseEvent<HTMLElement>, value: number) => {
     this.setState({ value });
   };
 
@@ -81,8 +81,8 @@ class Pharmacy extends React.Component<IProps, IState> {
     return (
       <div className={classes.root}>
        
-        <Grid container item className={classes.gridContainer} justify="center" spacing={24}>
-          <Grid item xs={12}>
+        <Grid container={true} item={true} className={classes.gridContainer} justify="center" spacing={24}>
+          <Grid item={true} xs={12}>
             <Breadcrumbs aria-label="Breadcrumb" className={classes.breadCrumb}>
               <Link color="secondary" component={LinkRouter} to="/dashboard">
                 Home
@@ -90,15 +90,15 @@ class Pharmacy extends React.Component<IProps, IState> {
               <Typography color="inherit">Pharmacy</Typography>
             </Breadcrumbs>
           </Grid>
-          <Grid item xs={12}>
+          <Grid item={true} xs={12}>
             <Typography variant="inherit" className={classes.pharmacyTitle}>
               PHARMACY
             </Typography>
           </Grid>
           &emsp;
           <Divider className={classes.divider} />
-          <Grid container item className={classes.gridContainer} spacing={24}>
-            <Grid item xs={6}>
+          <Grid container={true} item={true} className={classes.gridContainer} spacing={24}>
+            <Grid item={true} xs={6}>
               <Tabs
                 indicatorColor="none"
                 textColor="secondary"
@@ -109,7 +109,7 @@ class Pharmacy extends React.Component<IProps, IState> {
                 <Tab className={classes.pharmacyLink} label="Movements" />
               </Tabs>
             </Grid>
-            <Grid container item className={classes.gridContainer} style={{ paddingLeft: "300px" }} xs={6}>
+            <Grid container={true} item={true} className={classes.gridContainer} style={{ paddingLeft: "300px" }} xs={6}>
               <Button variant="outlined" color="inherit" classes={{ root: classes.button, label: classes.buttonLabel }}>
                 Charge
               </Button>
@@ -119,11 +119,11 @@ class Pharmacy extends React.Component<IProps, IState> {
               </Button>
             </Grid>
             {value === 0 && (
-              //STOCK TABLES//
+              // STOCK TABLES//
 
-              <div container item spacing={48}>
-                <Grid container className={classes.gridContainerTable} justify="center">
-                  <Grid item xs={6} className={classes.formatTable}>
+              <div container={true} item={true} spacing={48}>
+                <Grid container={true} className={classes.gridContainerTable} justify="center">
+                  <Grid item={true} xs={6} className={classes.formatTable}>
                     <Paper className={classes.paperStock}>
                       <TableHead>
                         <TableRow className={classes.stockTableTitle}>
@@ -147,9 +147,9 @@ class Pharmacy extends React.Component<IProps, IState> {
                     </Paper>
                   </Grid>
                   &nbsp;
-                  <Grid item className={classes.formatTable} xs={12}>
+                  <Grid item={true} className={classes.formatTable} xs={12}>
                     <Paper className={classes.paperDetailsStock}>
-                      <Grid item style={{paddingLeft:'10px'}} xs={6}>
+                      <Grid item={true} style={{paddingLeft:'10px'}} xs={6}>
                         <Typography variant="inherit" className={classes.findStock}>
                           Show
                         </Typography>
@@ -161,7 +161,7 @@ class Pharmacy extends React.Component<IProps, IState> {
                         </Link>
                       </Grid>
 
-                      <Grid style={{ marginTop: -27, marginLeft: 500 }} container xs={5}>
+                      <Grid style={{ marginTop: -27, marginLeft: 500 }} container={true} xs={5}>
                         <Typography variant="inherit" className={classes.findStockFilter}>
                           Filter
                         </Typography>
@@ -185,8 +185,8 @@ class Pharmacy extends React.Component<IProps, IState> {
                           </Select>
                         </Grid>
                       </Grid>
-                      <Grid item xs={12}>
-                        <Grid item xs={8}>
+                      <Grid item={true} xs={12}>
+                        <Grid item={true} xs={8}>
                           <TextField
                             placeholder="Search"
                             className={classNames(classes.formField, classes.cssOutlinedInput)}
@@ -206,7 +206,7 @@ class Pharmacy extends React.Component<IProps, IState> {
                             variant="outlined"
                           />
                         </Grid>
-                        <Grid style={{ marginLeft: 555, marginBottom: 20, marginTop: -53 }} item xs={6}>
+                        <Grid style={{ marginLeft: 555, marginBottom: 20, marginTop: -53 }} item={true} xs={6}>
                           <Button
                             variant="outlined"
                             color="inherit"
@@ -239,19 +239,19 @@ class Pharmacy extends React.Component<IProps, IState> {
                         <TableBody style={{ fontSize: "12px" }}>
                           {rowsDataStock.map(row => (
                             <TableRow key={row.name}>
-                              <TableCell align="left" padding="none" font-size="12px">
+                              <TableCell align="center" padding="none" font-size="12px">
                                 {row.name}
                               </TableCell>
-                              <TableCell align="left" padding="8px" font-size="12px">
+                              <TableCell align="center" padding="8px" font-size="12px">
                                 {row.located}
                               </TableCell>
-                              <TableCell align="left" padding="8px" font-size="12px">
+                              <TableCell align="center" padding="8px" font-size="12px">
                                 {row.expiration}
                               </TableCell>
-                              <TableCell align="left" padding="8px" font-size="12px">
+                              <TableCell align="center" padding="8px" font-size="12px">
                                 {row.vials}
                               </TableCell>
-                              <TableCell align="left" padding="8px" font-size="12px">
+                              <TableCell align="center" padding="8px" font-size="12px">
                                 {row.refuelingTime}
                               </TableCell>
                               <TableCell padding="none">
@@ -283,11 +283,11 @@ class Pharmacy extends React.Component<IProps, IState> {
               </div>
             )}
             {value === 1 && (
-              //MOVEMENTS TABLES//
+              // MOVEMENTS TABLES//
 
-              <div container item spacing={48}>
-                <Grid container className={classes.gridContainerTable} justify="center">
-                  <Grid item xs={12} className={classes.formatTable}>
+              <div container={true} item={true} spacing={48}>
+                <Grid container={true} className={classes.gridContainerTable} justify="center">
+                  <Grid item={true} xs={12} className={classes.formatTable}>
                     <Paper className={classes.paperMovements}>
                       <TableHead>
                         <TableRow className={classes.movementsTableTitle}>
@@ -307,9 +307,9 @@ class Pharmacy extends React.Component<IProps, IState> {
                     </Paper>
                   </Grid>
                   &nbsp;
-                  <Grid item className={classes.formatTable} xs={12}>
+                  <Grid item={true} className={classes.formatTable} xs={12}>
                     <Paper className={classes.paperDetailsMovements}>
-                      <Grid item xs={6}>
+                      <Grid item={true} xs={6}>
                         <Typography variant="inherit" className={classes.findStock}>
                           Show
                         </Typography>
@@ -323,11 +323,11 @@ class Pharmacy extends React.Component<IProps, IState> {
                           All
                         </Link>
                       </Grid>
-                      <Grid style={{ marginTop: -27, marginLeft: 500 }} container item xs={5}>
+                      <Grid style={{ marginTop: -27, marginLeft: 500 }} container={true} item={true} xs={5}>
                         <Typography variant="inherit" className={classes.findMovementsFilter}>
                           Filter
                         </Typography>
-                        <Grid item xs={6}>
+                        <Grid item={true} xs={6}>
                           <Select
                             variant="outlined"
                             className={classNames(classes.select, classes.formField)}
@@ -347,8 +347,8 @@ class Pharmacy extends React.Component<IProps, IState> {
                           </Select>
                         </Grid>
                       </Grid>
-                      <Grid item xs={12}>
-                        <Grid item xs={6}>
+                      <Grid item={true} xs={12}>
+                        <Grid item={true} xs={6}>
                           <TextField
                             placeholder="Search"
                             className={classNames(classes.formField, classes.cssOutlinedInput)}
@@ -368,7 +368,7 @@ class Pharmacy extends React.Component<IProps, IState> {
                             variant="outlined"
                           />
                         </Grid>
-                        <Grid style={{ marginLeft: 426, marginBottom: 20, marginTop: -53 }} item xs={6}>
+                        <Grid style={{ marginLeft: 426, marginBottom: 20, marginTop: -53 }} item={true} xs={6}>
                           <Button
                             variant="outlined"
                             color="inherit"
