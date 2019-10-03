@@ -17,12 +17,13 @@ import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
 import classNames from 'classnames';
 import {Patient} from "generate";
 import * as React from "react";
-import { Link as LinkRouter } from 'react-router-dom';
+import {Link as LinkRouter} from 'react-router-dom';
 import {PATH_NEW_PATIENT} from "../../config/constants";
 import { GetPatientsUsingGETRequest, PatientControllerApi } from '../../generate/apis';
 import { MaterialButtonRouter, MaterialLinkRouter } from '../utils/LinkHelper';
 import DeletePatient from './DeletePatient';
 import Patients from "./PatientsListItem";
+import axios from 'axios';
 import styles from './styles/PatientsDatabase.style';
 export interface Props extends WithStyles<typeof styles> { }
 
@@ -35,7 +36,10 @@ interface State {
   visible: Number;
   searchedValue: String;
   isDeleteDialogOpen: boolean;
+
   }
+
+
 
 class PatientsDatabase extends React.Component<Props, State> {
 
@@ -48,12 +52,15 @@ class PatientsDatabase extends React.Component<Props, State> {
 
   };
 
+
+
+
   public componentDidMount() {
 
     const patientController: PatientControllerApi = new PatientControllerApi();
     const requestParams: GetPatientsUsingGETRequest = {
       page: 1,
-      size: 8,
+      size: 8
     };
 
     patientController.getPatientsUsingGET(requestParams)
