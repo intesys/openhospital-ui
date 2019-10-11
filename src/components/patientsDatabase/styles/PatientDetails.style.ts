@@ -187,7 +187,7 @@ const styles = (theme: Theme) =>
             fontWeight: "bold",
             letterSpacing: 1,
             marginTop: 42,
-            marginLeft: "-123px"
+            marginLeft: "-105px"
         },
 
         calendarTitle: {

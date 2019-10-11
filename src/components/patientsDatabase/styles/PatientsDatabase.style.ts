@@ -17,7 +17,7 @@ const styles = (theme: Theme) =>
         },
         paperFlat: {
             // display: 'flex',
-            padding: theme.spacing.unit * 2,
+            padding: 50,
             textAlign: 'center',
             // color: theme.palette.text.secondary,
             borderRadius: 'none',
@@ -81,9 +81,9 @@ const styles = (theme: Theme) =>
             width: '100%',
         },
         detailButtonContainer: {
-            display: "flex",
+            display: "-webkit-inline-box",
             justifyContent: "center",
-            float: "right"
+
         },
         detailButton: {
             textTransform: "none",

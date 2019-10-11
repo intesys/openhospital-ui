@@ -48,19 +48,19 @@ class Pharmacy extends React.Component<IProps, IState> {
     const { classes } = this.props;
     const { value } = this.state;
 
-    function createStock(name: string, located: string, expiration: string, vials: string, refuelingTime: string) {
+    function createStock(name: string, located: string, expiration: string, vials: string, refuelingTime: number) {
       return { name, located, expiration, vials, refuelingTime };
     }
 
     const rowsDataStock = [
-      createStock("amoxicillina", "Room 2", "16.06.19", "79", "2 Weeks"),
-      createStock("Claritromicina", "Room 2", "16.06.19", "79", "2 Weeks"),
-      createStock("Omeprazole", "Room 2", "16.06.19", "79", "2 Weeks"),
-      createStock("Naproxen", "Room 2", "16.06.19", "79", "2 Weeks"),
-      createStock("Clonazepam", "Room 2", "16.06.19", "79", "2 Weeks"),
-      createStock("Ibuprofen", "Room 2", "16.06.19", "79", "2 Weeks"),
-      createStock("Amoxicillina antibiotic", "Room 2", "16.06.19", "79", "2 Weeks"),
-      createStock("Amoxicillina antibiotic", "Room 2", "16.06.19", "79", "2 Weeks"),
+      createStock("amoxicillina", "2", "16.06.19", "79", "3"),
+      createStock("Claritromicina", "2", "16.06.19", "79", "3"),
+      createStock("Omeprazole", "2", "16.06.19", "79", "3"),
+      createStock("Naproxen", "2", "16.06.19", "79", "3"),
+      createStock("Clonazepam", "2", "16.06.19", "79", "3"),
+      createStock("Ibuprofen", "2", "16.06.19", "79", "3"),
+      createStock("Amoxicillina antibiotic", "2", "16.06.19", "79", "3"),
+      createStock("Amoxicillina antibiotic", "2", "16.06.19", "79", "3"),
     ];
 
     function createMovements(name: string, expiration: string, vials: string, costs: string) {
@@ -223,7 +223,7 @@ class Pharmacy extends React.Component<IProps, IState> {
                               Drug Name
                             </TableCell>
                             <TableCell align="left">
-                              <b>Located</b>
+                              <b>Located (Room)</b>
                             </TableCell>
                             <TableCell align="left">
                               <b>Expiration Date</b>
@@ -232,7 +232,7 @@ class Pharmacy extends React.Component<IProps, IState> {
                               <b>N°vials</b>
                             </TableCell>
                             <TableCell align="left">
-                              <b>Refueling forecast</b>
+                              <b>Refueling forecast (weeks)</b>
                             </TableCell>
                           </TableRow>
                         </TableHead>
