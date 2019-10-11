@@ -10,7 +10,7 @@ export interface Props extends WithStyles<typeof styles> { }
 
 class Search  extends React.Component<Props> {
     public state = {
-        query: '',
+        query: "",
         results: []
     }
 
@@ -19,23 +19,23 @@ class Search  extends React.Component<Props> {
             .then(({ data }) => {
                 this.setState({
                     results: data.data
-                })
-
+                });
             })
+            .catch(error => {
+                console.log('Error fetching and parsing data', error);
+            });
     }
 
-    public handleInputChange = () => {
+    handleKeyDown = (e) => {
         this.setState({
             query: this.search.value
-        }, () => {
-            if (this.state.query && this.state.query.length > 0) {
-                if (this.state.query.length > 0) {
-                    this.getPatientSearchDetails()
-                    window.location.pathname = `/PatientDatabase/PatientDetails/`+ this.state.query
-                }
-            }
-        })
+        });
+        if (e.key === 'Enter') {
+            this.getPatientSearchDetails()
+            window.location.pathname = `/PatientDatabase/PatientDetails/`+ this.state.query
+        }
     }
+
 
     public render() {
 
@@ -47,7 +47,7 @@ class Search  extends React.Component<Props> {
                             id="patient ID"
                             placeholder="Search for Patient ID, Patient name..."
                             ref={input => this.search = input}
-                            onChange={this.handleInputChange}
+                            onKeyPress={this.handleKeyDown}
                             margin="normal"
                             type="search"
                             style={{width:"inherit", padding:15,borderRadius:10,borderWidth: 1}}
