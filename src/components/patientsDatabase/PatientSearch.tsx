@@ -28,8 +28,8 @@ class Search  extends React.Component<Props> {
         this.setState({
             query: this.search.value
         }, () => {
-            if (this.state.query && this.state.query.length > 1) {
-                if (this.state.query.length !== 0) {
+            if (this.state.query && this.state.query.length > 0) {
+                if (this.state.query.length > 0) {
                     this.getPatientSearchDetails()
                     window.location.pathname = `/PatientDatabase/PatientDetails/`+ this.state.query
                 }
