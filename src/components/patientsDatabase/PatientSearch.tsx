@@ -12,7 +12,7 @@ interface IProps {
 }
 
 
-class Search  extends React.Component<IProps, state> {
+class Search  extends React.Component<IProps> {
 
     public state = {
         query:"",
@@ -34,11 +34,11 @@ class Search  extends React.Component<IProps, state> {
                     loading: true
                 });
                 window.location.pathname = `/PatientDatabase/PatientDetails/` + this.state.query
-                console.log('patient detected', response);
+               // console.log('patient detected', response);
             })
             .catch(error => {
                 window.location.pathname = `/PageNotFound`
-                console.log('Error fetching and parsing data', error);
+                //console.log('Error fetching and parsing data', error);
             });
     }
 

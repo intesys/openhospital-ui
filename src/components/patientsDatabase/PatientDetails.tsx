@@ -40,6 +40,7 @@ interface IProps extends RouteComponentProps<IRouteParams> { }
 class PatientDetails extends React.Component<IProps> {
 
 
+
   public state: State = {
     labelWidth: 0,
     error: null,

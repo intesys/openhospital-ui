@@ -5,7 +5,6 @@ import MenuItem from "@material-ui/core/MenuItem";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import Select from "@material-ui/core/Select";
 import { withStyles, WithStyles } from "@material-ui/core/styles";
-import SvgIcon from "@material-ui/core/SvgIcon";
 import Tab from "@material-ui/core/Tab";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -21,7 +20,6 @@ import * as React from "react";
 import { Link as LinkRouter } from "react-router-dom";
 import MovementGraph from "../sharedComponents/MovementGraph";
 import StockGraph from "../sharedComponents/StockGraph";
-import PdfIcon from "../utils/icons/svg/PdfIcon";
 import styles from "./Pharmacy.style";
 export interface IProps extends WithStyles<typeof styles> { }
 
@@ -414,7 +412,17 @@ class Pharmacy extends React.Component<IProps, IState> {
                                 {row.costs}
                               </TableCell>
                               <TableCell align="center">
-                                <SvgIcon component={PdfIcon} />
+                                <Button
+                                    variant="outlined"
+                                    color="inherit"
+                                    style={{padding:"4px 18px",
+                                      color: "#fff",
+                                      background: "#FE4641",
+                                      borderRadius: "15px"}}
+
+                                >
+                                  Download
+                                </Button>
                               </TableCell>
                             </TableRow>
                           ))}

@@ -1,34 +1,27 @@
 import React, { Component } from "react";
-import { Link as LinkRouter } from "react-router-dom";
-
 // local imports
 import classNames from "classnames";
 import { Patient } from "generate";
 import { NewPatientUsingPOSTRequest, PatientControllerApi } from "../../generate/apis";
-import { MaterialButtonRouter, MaterialLinkRouter } from "../utils/LinkHelper";
-import styles from "./styles/NewPatient.style";
 import BreadcrumbTrail from "../sharedComponents/BreadcrumbTrail"
+import styles from "./styles/NewPatient.style";
 
 // material imports
-import { withStyles, WithStyles } from "@material-ui/core/styles";
 import { Button, Icon } from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
-import Collapse from "@material-ui/core/Collapse";
 import FormControl from "@material-ui/core/FormControl";
 import Grid from "@material-ui/core/Grid";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import Select from "@material-ui/core/Select";
+import SnackBar from '@material-ui/core/Snackbar';
+import SnackbarContent from '@material-ui/core/SnackbarContent';
+import { withStyles, WithStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import AddPhotoIcon from "@material-ui/icons/AddAPhoto";
-import ExpandLess from "@material-ui/icons/ExpandLess";
-import ExpandMore from "@material-ui/icons/ExpandMore";
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
-import SnackBar from '@material-ui/core/Snackbar';
-import IconButton from '@material-ui/core/IconButton';
-import SnackbarContent from '@material-ui/core/SnackbarContent';
 
 export interface IProps extends WithStyles <typeof styles> {}
 
@@ -42,7 +35,7 @@ interface State {
 
 class NewPatient extends React.Component <IProps, State > {
 
-    state: State = {
+    public state: State = {
         labelWidth: 0,
         error: null,
         isLoaded: false,
@@ -78,17 +71,17 @@ class NewPatient extends React.Component <IProps, State > {
         };
     }
 
-    snackbarClose = (event) => {
+    public snackbarClose = (event) => {
         this.setState({ snackbaropen: false });
     };
 
-    handleChange = (event) => {
+    public handleChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value
         });
     };
 
-    handleSubmit(event) {
+    public handleSubmit(event) {
         event.preventDefault();
         console.log(this.state);
         const Patient = this.state;
@@ -130,20 +123,20 @@ class NewPatient extends React.Component <IProps, State > {
                         message={<span className={classes.message}>{this.state.snackbarmsg}</span>}/>
                 </SnackBar>
                 <form>
-                    <Grid container className={classes.gridContainer} justify="center" spacing={24}>
-                        <Grid container item spacing={24}>
-                            <Grid item xs={12}>
+                    <Grid container={true} className={classes.gridContainer} justify="center" spacing={24}>
+                        <Grid container={true} item={true} spacing={24}>
+                            <Grid item={true} xs={12}>
                                 <BreadcrumbTrail/>
                             </Grid>
-                            <Grid item xs={12}>
+                            <Grid item={true} xs={12}>
                                 <Typography variant="inherit" className={classes.colleaguesTitle}>
                                     NEW PATIENT REGISTRATION
                                 </Typography>
                             </Grid>
                         </Grid>
-                        <Grid container item justify="center" spacing={24}>
-                            <Grid container item justify="center" spacing={24}>
-                                <Grid item xs={12} sm={3} className={classes.sidebar}>
+                        <Grid container={true} item={true} justify="center" spacing={24}>
+                            <Grid container={true} item={true} justify="center" spacing={24}>
+                                <Grid item={true} xs={12} sm={3} className={classes.sidebar}>
                                     {/* <Typography color="inherit" className={classes.contacts}>PATIENT REGISTRATION</Typography>
                                     <Divider className={classes.divider} /> */}
                                     <Avatar alt="Remy Sharp" src={""} className={classes.avatar}>
@@ -153,14 +146,14 @@ class NewPatient extends React.Component <IProps, State > {
                                         Take a photo of the patient or go to gallery
                                     </Typography>
                                 </Grid>
-                                <Grid container item xs={12} sm={9} className={classes.colleagueContent} spacing={24}>
+                                <Grid container={true} item={true} xs={12} sm={9} className={classes.colleagueContent} spacing={24}>
                                     <Typography color="inherit" className={classes.formDescription}>
                                         All fields with * are mandatory. Patient data will be saved within the archive patients. At the end
                                         of
                                         the process you will be able to register a visit.
                                     </Typography>
-                                    <Grid container item xs={12} spacing={24}>
-                                        <Grid item xs={12} sm={6}>
+                                    <Grid container={true} item={true} xs={12} spacing={24}>
+                                        <Grid item={true} xs={12} sm={6}>
                                             <TextField
                                                 required={true}
                                                 name='firstName'
@@ -182,7 +175,7 @@ class NewPatient extends React.Component <IProps, State > {
                                                 margin="normal"
                                                 variant="outlined"/>
                                         </Grid>
-                                        <Grid item xs={12} sm={6}>
+                                        <Grid item={true} xs={12} sm={6}>
                                             <TextField
                                                 required={true}
                                                 name='secondName'
@@ -205,8 +198,8 @@ class NewPatient extends React.Component <IProps, State > {
                                                 variant="outlined"/>
                                         </Grid>
                                     </Grid>
-                                    <Grid container item xs={12} spacing={24}>
-                                        <Grid item xs={12} sm={2}>
+                                    <Grid container={true} item={true} xs={12} spacing={24}>
+                                        <Grid item={true} xs={12} sm={2}>
                                             <TextField
                                                 required={true}
                                                 name="age"
@@ -230,7 +223,7 @@ class NewPatient extends React.Component <IProps, State > {
                                                 margin="normal"
                                                 variant="outlined"/>
                                         </Grid>
-                                        <Grid item xs={4} sm={2}>
+                                        <Grid item={true} xs={4} sm={2}>
                                             <TextField
                                             required={true}
                                             name='birthDate'
@@ -255,7 +248,7 @@ class NewPatient extends React.Component <IProps, State > {
                                             variant="outlined"
                                             />
                                         </Grid>
-                                        <Grid item xs={2} sm={2}>
+                                        <Grid item={true} xs={2} sm={2}>
                                             <FormControl variant="outlined"
                                                 className={classNames(classes.formField, classes.formFieldSelect)}>
                                                 <InputLabel
@@ -288,7 +281,7 @@ class NewPatient extends React.Component <IProps, State > {
                                                 </Select>
                                             </FormControl>
                                         </Grid>
-                                        <Grid item xs={12} sm={6}>
+                                        <Grid item={true} xs={12} sm={6}>
                                             <TextField
                                                 required={true}
                                                 name='taxCode'
@@ -313,8 +306,8 @@ class NewPatient extends React.Component <IProps, State > {
                                                 variant="outlined"/>
                                         </Grid>
                                     </Grid>
-                                    <Grid container item xs={12} spacing={24}>
-                                        <Grid item xs={12} sm={6}>
+                                    <Grid container={true} item={true} xs={12} spacing={24}>
+                                        <Grid item={true} xs={12} sm={6}>
                                             <TextField
                                                 required={true}
                                                 name='city'
@@ -338,7 +331,7 @@ class NewPatient extends React.Component <IProps, State > {
                                                 margin="normal"
                                                 variant="outlined"/>
                                         </Grid>
-                                        <Grid item xs={12} sm={6}>
+                                        <Grid item={true} xs={12} sm={6}>
                                             <TextField
                                                 required={true}
                                                 name='address'
@@ -363,8 +356,8 @@ class NewPatient extends React.Component <IProps, State > {
                                                 variant="outlined"/>
                                         </Grid>
                                     </Grid>
-                                    <Grid container item xs={12} spacing={24}>
-                                        <Grid item xs={12} sm={6}>
+                                    <Grid container={true} item={true} xs={12} spacing={24}>
+                                        <Grid item={true} xs={12} sm={6}>
                                             <TextField
                                                 name='telephone'
                                                 label="Contact"
@@ -388,8 +381,8 @@ class NewPatient extends React.Component <IProps, State > {
                                                 variant="outlined"/>
                                         </Grid>
                                     </Grid>
-                                    <Grid container item xs={12} spacing={24}>
-                                        <Grid item xs={12} sm={6}>
+                                    <Grid container={true} item={true} xs={12} spacing={24}>
+                                        <Grid item={true} xs={12} sm={6}>
                                             <TextField
                                                 required={true}
                                                 name='nextKin'
@@ -413,7 +406,7 @@ class NewPatient extends React.Component <IProps, State > {
                                                 margin="normal"
                                                 variant="outlined"/>
                                         </Grid>
-                                        <Grid item xs={12} sm={6}>
+                                        <Grid item={true} xs={12} sm={6}>
                                             <TextField
                                                 id="nextOfKinContact"
                                                 label="Next of kin contact"
@@ -436,7 +429,7 @@ class NewPatient extends React.Component <IProps, State > {
                                                 variant="outlined"/>
                                         </Grid>
                                     </Grid>
-                                    <Grid container item xs={12} spacing={24}>
+                                    <Grid container={true} item={true} xs={12} spacing={24}>
                                         <Typography
                                             style={{ display: "flex", alignItems: "center" }}
                                             color="inherit"
@@ -445,8 +438,8 @@ class NewPatient extends React.Component <IProps, State > {
                                         </Typography>
                                     </Grid>
                                     {/* <Grid container item xs={12} spacing={24}> */}
-                                    <Grid container xs={12} spacing={24}>
-                                        <Grid item xs={12} sm={3}>
+                                    <Grid container={true} xs={12} spacing={24}>
+                                        <Grid item={true} xs={12} sm={3}>
                                             <FormControl
                                                 variant="outlined"
                                                 className={classNames(classes.formField, classes.formFieldSelect)}>
@@ -486,7 +479,7 @@ class NewPatient extends React.Component <IProps, State > {
                                                 </Select>
                                             </FormControl>
                                         </Grid>
-                                        <Grid item xs={12} sm={6}>
+                                        <Grid item={true} xs={12} sm={6}>
                                             <TextField
                                                 id="relationship"
                                                 label="Relationship"
@@ -509,8 +502,8 @@ class NewPatient extends React.Component <IProps, State > {
                                                 variant="outlined"/>
                                         </Grid>
                                     </Grid>
-                                    <Grid container xs={12} spacing={24}>
-                                        <Grid item xs={12} sm={6}>
+                                    <Grid container={true} xs={12} spacing={24}>
+                                        <Grid item={true} xs={12} sm={6}>
                                             <TextField
                                                 id="educationalLevel"
                                                 label="Educational Level"
@@ -532,7 +525,7 @@ class NewPatient extends React.Component <IProps, State > {
                                                 margin="normal"
                                                 variant="outlined"/>
                                         </Grid>
-                                        <Grid item xs={12} sm={6}>
+                                        <Grid item={true} xs={12} sm={6}>
                                             <TextField
                                             id="hasInsurance"
                                             label="Insurance"
@@ -555,8 +548,8 @@ class NewPatient extends React.Component <IProps, State > {
                                             variant="outlined"/>
                                         </Grid>
                                     </Grid>
-                                    <Grid container xs={12} spacing={24}>
-                                        <Grid item xs={12} sm={1}>
+                                    <Grid container={true} xs={12} spacing={24}>
+                                        <Grid item={true} xs={12} sm={1}>
                                             <TextField
                                                 id="hh"
                                                 label="hh"
@@ -578,7 +571,7 @@ class NewPatient extends React.Component <IProps, State > {
                                                 margin="normal"
                                                 variant="outlined"/>
                                         </Grid>
-                                        <Grid item xs={12} sm={1}>
+                                        <Grid item={true} xs={12} sm={1}>
                                             <TextField
                                                 id="mm"
                                                 label="mm"
@@ -600,7 +593,7 @@ class NewPatient extends React.Component <IProps, State > {
                                                 margin="normal"
                                                 variant="outlined"/>
                                         </Grid>
-                                        <Grid item xs={12} sm={1}>
+                                        <Grid item={true} xs={12} sm={1}>
                                             <TextField
                                                 id="dd"
                                                 label="dd"
@@ -622,7 +615,7 @@ class NewPatient extends React.Component <IProps, State > {
                                                 margin="normal"
                                                 variant="outlined"/>
                                         </Grid>
-                                        <Grid item xs={12} sm={6}>
+                                        <Grid item={true} xs={12} sm={6}>
                                             <TextField
                                                 id="transport"
                                                 label="Transport"
@@ -645,7 +638,7 @@ class NewPatient extends React.Component <IProps, State > {
                                                 variant="outlined"/>
                                         </Grid>
                                     </Grid>
-                                    <Grid item xs={12} spacing={24} className={classes.detailButtonContainer}>
+                                    <Grid item={true} xs={12} spacing={24} className={classes.detailButtonContainer}>
                                         <Button
                                             onClick={this.handleSubmit}
                                             variant="contained"
