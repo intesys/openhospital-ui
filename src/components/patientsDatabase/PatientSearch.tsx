@@ -1,60 +1,75 @@
-import Grid from '@material-ui/core/Grid';
-import { withStyles, WithStyles } from '@material-ui/core/styles';
-import classNames from 'classnames';
-import * as React from "react";
-import Input from "@material-ui/core/Input";
-import styles from './styles/PatientSearch.style';
+import Grid           from '@material-ui/core/Grid';
+import { WithStyles } from '@material-ui/core/styles';
+import { Patient }    from 'generate';
+import * as React     from "react";
+import styles         from "../patientsDatabase/styles/PatientSearch.style";
 export interface Props extends WithStyles<typeof styles> { }
 
 
 
-class Search  extends React.Component<Props> {
+interface IProps {
+    info: Patient;
+}
+
+
+class Search  extends React.Component<IProps, state> {
+
     public state = {
-        query: "",
-        results: []
+        query:"",
+        loading: false
     }
 
-    public getPatientSearchDetails = () => {
-        fetch(`http://javadev.intesys.it:3310/oh-api/patients/`+ this.state.query)
-            .then(({ data }) => {
+    public onSearchChange = e => {
+        this.setState({
+            query: e.target.value
+        });
+    }
+
+   public getPatientSearchDetails = () => {
+        fetch(`http://javadev.intesys.it:3310/oh-api/patients/search?code=`+ this.state.query)
+            .then(response => response.json())
+            .then(response => {
                 this.setState({
-                    results: data.data
+                    results: response.results,
+                    loading: true
                 });
+                window.location.pathname = `/PatientDatabase/PatientDetails/` + this.state.query
+                console.log('patient detected', response);
             })
             .catch(error => {
+                window.location.pathname = `/PageNotFound`
                 console.log('Error fetching and parsing data', error);
             });
     }
 
-    handleKeyDown = (e) => {
-        this.setState({
-            query: this.search.value
-        });
+
+
+    public handleKeyDown = (e) => {
+
         if (e.key === 'Enter') {
-            this.getPatientSearchDetails()
-            window.location.pathname = `/PatientDatabase/PatientDetails/`+ this.state.query
+                this.getPatientSearchDetails()
+             //   window.location.pathname = `/PatientDatabase/PatientDetails/` + e.target.value
         }
     }
 
 
     public render() {
-
+        const {classes} = this.props;
         return (
-
                 <Grid container={true} item={true}  spacing={24}>
                     <Grid item={true} container={true}  >
                         <input
-                            id="patient ID"
-                            placeholder="Search for Patient ID, Patient name..."
-                            ref={input => this.search = input}
+                            onChange={this.onSearchChange}
+                            name="search"
                             onKeyPress={this.handleKeyDown}
+                            placeholder="Search for Patient ID"
                             margin="normal"
                             type="search"
                             style={{width:"inherit", padding:15,borderRadius:10,borderWidth: 1}}
                         />
-
                     </Grid>
                 </Grid>
+
 
 
         )

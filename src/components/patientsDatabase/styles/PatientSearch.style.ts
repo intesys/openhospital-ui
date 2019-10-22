@@ -54,7 +54,6 @@ const styles = (theme: Theme) =>
             textAlign: 'left'
         },
         searchButton: {
-            display: 'flex',
             alignItems: 'center',
             justifyContent: 'flex-end',
         },
