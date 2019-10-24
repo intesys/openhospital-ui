@@ -1,24 +1,24 @@
-import React from "react";
 import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
 import Badge from "@material-ui/core/Badge";
-import MenuItem from "@material-ui/core/MenuItem";
+import IconButton from "@material-ui/core/IconButton";
+import InputBase from "@material-ui/core/InputBase";
 import Menu from "@material-ui/core/Menu";
-import { fade } from "@material-ui/core/styles/colorManipulator";
+import MenuItem from "@material-ui/core/MenuItem";
 import { createStyles, Theme, withStyles, WithStyles } from "@material-ui/core/styles";
+import { fade } from "@material-ui/core/styles/colorManipulator";
 import SvgIcon from "@material-ui/core/SvgIcon";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import { LOGIN_PATH } from "../../App";
+import Toolbar from "@material-ui/core/Toolbar";
 import Tooltip from '@material-ui/core/Tooltip';
+import Typography from "@material-ui/core/Typography";
+import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
-import NotifyIcon from "../../assets/icons/notify.svg";
+import React from "react";
+import { LOGIN_PATH } from "../../App";
 import CalendarIcon from "../../assets/icons/calendar.svg";
 import ChatIcon from "../../assets/icons/chat.svg";
-import SettingsIcon from "../../assets/icons/settings.svg";
 import LogoutIcon from "../../assets/icons/logout.svg";
+import NotifyIcon from "../../assets/icons/notify.svg";
+import SettingsIcon from "../../assets/icons/settings.svg";
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -140,35 +140,35 @@ interface State {
 }
 
 class ApplicationBar extends React.Component<Props, State> {
-  state: State = {
+  public state: State = {
     anchorEl: null,
     mobileMoreAnchorEl: null,
     
   };
 
-  handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+  public handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     this.setState({ anchorEl: event.currentTarget });
   };
 
-  handleMenuClose = () => {
+  public handleMenuClose = () => {
     this.setState({ anchorEl: null });
     this.handleMobileMenuClose();
   };
 
-  handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+  public handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     this.setState({ mobileMoreAnchorEl: event.currentTarget });
   };
 
-  handleMobileMenuClose = () => {
+  public handleMobileMenuClose = () => {
     this.setState({ mobileMoreAnchorEl: null });
   };
 
-  logout () {
+  public logout () {
       localStorage.clear();
       window.location.pathname = `${LOGIN_PATH}`;
 };
 
-  render() {
+  public render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
     const { classes } = this.props;
     const isMenuOpen = Boolean(anchorEl);
@@ -228,7 +228,7 @@ class ApplicationBar extends React.Component<Props, State> {
                             <MenuIcon />
                         </IconButton> */}
             <div className={classes.welcomeTitle}>
-              <Typography className={classes.title_hospital} color="inherit" noWrap>
+              <Typography className={classes.title_hospital} color="inherit" noWrap={true}>
                 Hospital St. Democrito &nbsp; &nbsp;
               </Typography>
               <Typography className={classes.title_welcome}>Welcome back,&nbsp;</Typography>
@@ -256,7 +256,7 @@ class ApplicationBar extends React.Component<Props, State> {
               {/* <div className={classes.grow} /> */}
               <div className={classes.sectionDesktop}>
                 <a href="../Notification">
-                <Tooltip title="Notification" interactive>
+                <Tooltip title="Notification" interactive={true}>
                   <IconButton>
                     <Badge badgeContent={2} color="secondary">
                       <img src={NotifyIcon} />
@@ -264,7 +264,7 @@ class ApplicationBar extends React.Component<Props, State> {
                   </IconButton>
                   </Tooltip>
                 </a>
-                <Tooltip title="Chat" interactive>
+                <Tooltip title="Chat" interactive={true}>
                 <IconButton>
                 <Badge badgeContent={4} color="secondary">
                   <img src={ChatIcon} />
@@ -272,21 +272,21 @@ class ApplicationBar extends React.Component<Props, State> {
                 </IconButton>
                 </Tooltip>
                 <a href="../Calendar">
-                <Tooltip title="Calendar" interactive>
+                <Tooltip title="Calendar" interactive={true}>
                   <IconButton>
                     <img src={CalendarIcon} />
                   </IconButton>
                   </Tooltip>
                 </a>
                 <a href="../setting">
-                <Tooltip title="Settings" interactive>
+                <Tooltip title="Settings" interactive={true}>
                   <IconButton>
                     <img src={SettingsIcon} />
                   </IconButton>
                  </Tooltip> 
                 </a>
                 <a>
-                <Tooltip title="Logout" interactive>
+                <Tooltip title="Logout" interactive={true}>
                   <IconButton onClick={this.logout} >
                     <img src={LogoutIcon} />
                   </IconButton>

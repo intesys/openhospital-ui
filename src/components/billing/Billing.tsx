@@ -35,7 +35,7 @@ interface State {
 }
 
 class Billing extends React.Component {
-  state: State = {
+  public state: State = {
     labelWidth: 0,
     error: null,
     isLoaded: false,
@@ -46,8 +46,8 @@ class Billing extends React.Component {
 
     return (
       <div className={classes.root}>
-        <Grid container item className={classes.gridContainer} justify="center" spacing={24}>
-          <Grid item xs={12}>
+        <Grid container={true} item={true} className={classes.gridContainer} justify="center" spacing={24}>
+          <Grid item={true} xs={12}>
             <Breadcrumbs aria-label="Breadcrumb" className={classes.breadCrumb}>
               <MaterialLinkRouter color="secondary" component={LinkRouter} to="/dashboard">
                 Home
@@ -55,30 +55,30 @@ class Billing extends React.Component {
               <Typography color="inherit">Billing</Typography>
             </Breadcrumbs>
           </Grid>
-          <Grid item xs={12}>
+          <Grid item={true} xs={12}>
             <Typography variant="inherit" className={classes.billingTitle}>
               BILLING
             </Typography>
           </Grid>
         </Grid>
-        <Grid container item className={classes.gridContainer} justify="center" spacing={24}>
+        <Grid container={true} item={true} className={classes.gridContainer} justify="center" spacing={24}>
           <Paper className={classes.paperFlat}>
-            <Grid container item spacing={24}>
+            <Grid container={true} item={true} spacing={24}>
               &emsp;
-              <Grid item xs={12} className={classes.inputContainer}>
+              <Grid item={true} xs={12} className={classes.inputContainer}>
                 <Typography variant="inherit" className={classes.findBilling}>
                   PATIENT INFORMATION
                 </Typography>
               </Grid>
-              <Grid item xs={12}>
+              <Grid item={true} xs={12}>
                 <Typography variant="inherit" className={classes.insertInfoBilling}>
                   Insert the information of the patient here.
                 </Typography>
               </Grid>
             </Grid>
             <form>
-              <Grid container item spacing={24}>
-                <Grid item xs={12} sm={2}>
+              <Grid container={true} item={true} spacing={24}>
+                <Grid item={true} xs={12} sm={2}>
                   <TextField
                     id="Pateint ID (PID)"
                     label="Pateint ID (PID)"
@@ -99,7 +99,7 @@ class Billing extends React.Component {
                     variant="outlined"
                   />
                 </Grid>
-                <Grid item xs={12} sm={3}>
+                <Grid item={true} xs={12} sm={3}>
                   <TextField
                     id="Outpatient Number (ODP)"
                     label="Outpatient Number (ODP)"
@@ -120,7 +120,7 @@ class Billing extends React.Component {
                     variant="outlined"
                   />
                 </Grid>
-                <Grid item xs={12} sm={3}>
+                <Grid item={true} xs={12} sm={3}>
                   <TextField
                     id="Inpatient Number (IDP)"
                     label="Inpatient Number (IDP)"
@@ -141,7 +141,7 @@ class Billing extends React.Component {
                     variant="outlined"
                   />
                 </Grid>
-                <Grid item xs={12} sm={4}>
+                <Grid item={true} xs={12} sm={4}>
                   <FormControl variant="outlined" className={classNames(classes.formField, classes.formFieldSelect)}>
                     <InputLabel
                       ref={ref => {
@@ -187,20 +187,20 @@ class Billing extends React.Component {
             </Typography>
             &emsp;
             <hr className={classes.billingDivider} />
-            <Grid container item spacing={24}>
-              <Grid container item spacing={24}>
+            <Grid container={true} item={true} spacing={24}>
+              <Grid container={true} item={true} spacing={24}>
                 &emsp;{" "}
-                <Grid item xs={12} className={classes.inputContainer}>
+                <Grid item={true} xs={12} className={classes.inputContainer}>
                   <Typography variant="inherit" className={classes.findService}>
                     HEALTH SERVICE INFORMATION
                   </Typography>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item={true} xs={12}>
                   <Typography variant="inherit" className={classes.insertInfoService}>
                     Description of health service
                   </Typography>
                 </Grid>
-                <Grid item xs={12} sm={8}>
+                <Grid item={true} xs={12} sm={8}>
                   <FormControl
                     variant="outlined"
                     className={classNames(classes.formField, classes.formFieldSelectService)}
@@ -236,7 +236,7 @@ class Billing extends React.Component {
                     </Select>
                   </FormControl>
                 </Grid>
-                <Grid item xs={12} sm={10}>
+                <Grid item={true} xs={12} sm={10}>
                   <TextField
                     id="Notes"
                     label="Notes"
@@ -261,17 +261,17 @@ class Billing extends React.Component {
                 <Divider className={classes.divider} />
                 &emsp;
               </Grid>
-              <Grid container item spacing={24}>
+              <Grid container={true} item={true} spacing={24}>
                 &emsp;
                 <Typography variant="inherit" className={classes.findPayment}>
                   PAYMENT INFORMATION
                 </Typography>
               </Grid>
-              <Grid container item spacing={24}>
+              <Grid container={true} item={true} spacing={24}>
                 &emsp;
                
               </Grid>
-              <Grid container item spacing={24}>
+              <Grid container={true} item={true} spacing={24}>
                 <Grid className={classes.formatFormPayment}>
                   <Typography variant="inherit" className={classes.insertStatusPayment}>
                     Status of Payment
@@ -400,13 +400,13 @@ class Billing extends React.Component {
               &emsp;
               <Divider className={classes.divider} />
               &emsp;
-              <Grid container item spacing={24}>
+              <Grid container={true} item={true} spacing={24}>
                 &emsp;
                 <Typography variant="inherit" className={classes.findSummary}>
                   DAILY PAYMENT SUMMARY
                 </Typography>
               </Grid>
-              <Grid item xs={2} className={classes.boxInfo}>
+              <Grid item={true} xs={2} className={classes.boxInfo}>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ width: "100%" }}>
                     <Typography className={classes.numberOf}>8</Typography>
@@ -429,7 +429,7 @@ class Billing extends React.Component {
                   </CardContent>
                 </Card>
               </Grid>
-              <Grid item xs={2} className={classes.boxInfo}>
+              <Grid item={true} xs={2} className={classes.boxInfo}>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ width: "100%" }}>
                     <Typography className={classes.numberOf}>2</Typography>
@@ -452,7 +452,7 @@ class Billing extends React.Component {
                   </CardContent>
                 </Card>
               </Grid>
-              <Grid item xs={2} className={classes.boxInfo}>
+              <Grid item={true} xs={2} className={classes.boxInfo}>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ width: "100%" }}>
                     <Typography className={classes.numberOf}>2</Typography>

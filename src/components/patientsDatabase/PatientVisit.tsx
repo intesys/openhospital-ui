@@ -1,32 +1,32 @@
-import * as React from "react";
-import _ from "lodash";
-import { withStyles, WithStyles } from "@material-ui/core/styles";
-import Breadcrumbs from "@material-ui/lab/Breadcrumbs";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import { Link as LinkRouter, RouteComponentProps } from "react-router-dom";
-import { MaterialLinkRouter, MaterialButtonRouter } from "../utils/LinkHelper";
-import TextField from "@material-ui/core/TextField";
-import classNames from "classnames";
-import Select from "@material-ui/core/Select";
-import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
+import { FormControlLabel } from "@material-ui/core";
+import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import Checkbox from "@material-ui/core/Checkbox";
-import OutlinedInput from "@material-ui/core/OutlinedInput";
-import InputLabel from "@material-ui/core/InputLabel";
-import ExpandMore from "@material-ui/icons/ExpandMore";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Avatar from "@material-ui/core/Avatar";
-import Divider from "@material-ui/core/Divider";
 import Collapse from "@material-ui/core/Collapse";
-import ExpandLess from "@material-ui/icons/ExpandLess";
-import AddPhotoIcon from "@material-ui/icons/AddAPhoto";
+import Divider from "@material-ui/core/Divider";
+import FormControl from "@material-ui/core/FormControl";
+import Grid from "@material-ui/core/Grid";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import OutlinedInput from "@material-ui/core/OutlinedInput";
+import Select from "@material-ui/core/Select";
+import { withStyles, WithStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
 import Tooltip from "@material-ui/core/Tooltip";
-import styles from "./styles/PatientVisit.style";
-import { FormControlLabel } from "@material-ui/core";
-import { PatientControllerApi, GetPatientUsingGETRequest } from "../../generate/apis";
+import Typography from "@material-ui/core/Typography";
+import AddPhotoIcon from "@material-ui/icons/AddAPhoto";
+import ExpandLess from "@material-ui/icons/ExpandLess";
+import ExpandMore from "@material-ui/icons/ExpandMore";
+import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
+import Breadcrumbs from "@material-ui/lab/Breadcrumbs";
+import classNames from "classnames";
 import { Patient } from "generate";
+import _ from "lodash";
+import * as React from "react";
+import { Link as LinkRouter, RouteComponentProps } from "react-router-dom";
+import { GetPatientUsingGETRequest, PatientControllerApi } from "../../generate/apis";
+import { MaterialButtonRouter, MaterialLinkRouter } from "../utils/LinkHelper";
+import styles from "./styles/PatientVisit.style";
 export interface Props extends WithStyles<typeof styles> {}
 
 interface State {
@@ -46,7 +46,7 @@ interface IRouteParams {
 interface IProps extends RouteComponentProps<IRouteParams> {}
 
 class PatientVisit extends React.Component<IProps, State> {
-  state: State = {
+  public state: State = {
     labelWidth: 0,
     error: null,
     isLoaded: false,
@@ -55,7 +55,7 @@ class PatientVisit extends React.Component<IProps, State> {
     anchorEl: null,
   };
 
-  componentDidMount() {
+  public componentDidMount() {
     const patientController: PatientControllerApi = new PatientControllerApi();
     const requestParams: GetPatientUsingGETRequest = {
       code: Number(this.props.match.params.id),
@@ -81,7 +81,7 @@ class PatientVisit extends React.Component<IProps, State> {
     });
   }
 
-  handleClickCollapseOptionalInfo = () => {
+  public handleClickCollapseOptionalInfo = () => {
     this.setState(state => ({ openOptionalInfo: !state.openOptionalInfo }));
   };
 
@@ -95,9 +95,9 @@ class PatientVisit extends React.Component<IProps, State> {
 
     return (
       <div className={classes.root}>
-        <Grid container className={classes.gridContainer} justify="center" spacing={24}>
-          <Grid container item spacing={24}>
-            <Grid item xs={12}>
+        <Grid container={true} className={classes.gridContainer} justify="center" spacing={24}>
+          <Grid container={true} item={true} spacing={24}>
+            <Grid item={true} xs={12}>
               <Breadcrumbs aria-label="Breadcrumb" className={classes.breadCrumb}>
                 <MaterialLinkRouter color="secondary" component={LinkRouter} to="/dashboard">
                   Home
@@ -109,16 +109,16 @@ class PatientVisit extends React.Component<IProps, State> {
               </Breadcrumbs>
             </Grid>
 
-            <Grid item xs={12}>
+            <Grid item={true} xs={12}>
               <Typography variant="inherit" className={classes.patientTitle}>
                 PATIENT VISIT
               </Typography>
             </Grid>
           </Grid>
           &emsp;
-          <Grid container item justify="center" spacing={24}>
-            <Grid container item justify="center" spacing={24}>
-              <Grid item xs={12} sm={3} className={classes.sidebar}>
+          <Grid container={true} item={true} justify="center" spacing={24}>
+            <Grid container={true} item={true} justify="center" spacing={24}>
+              <Grid item={true} xs={12} sm={3} className={classes.sidebar}>
                 <Avatar alt="Remy Sharp" src={""} className={classes.avatar}>
                   <AddPhotoIcon />
                 </Avatar>
@@ -183,8 +183,8 @@ class PatientVisit extends React.Component<IProps, State> {
                   Print health information
                 </MaterialButtonRouter>
               </Grid>
-              <Grid item xs={12} sm={9} className={classes.colleagueContent}>
-                <Grid item xs={12} className={classes.colleagueProfileHeader}>
+              <Grid item={true} xs={12} sm={9} className={classes.colleagueContent}>
+                <Grid item={true} xs={12} className={classes.colleagueProfileHeader}>
                   <div style={{ flexDirection: "column", textAlign: "left" }}>
                     <Typography color="inherit" className={classes.patientName}>
                       {this.state.item.firstName} {this.state.item.secondName}
@@ -200,7 +200,7 @@ class PatientVisit extends React.Component<IProps, State> {
                 &emsp;
                 <Divider className={classes.divider} />
                 &emsp;
-                <Grid item xs={12} className={classes.colleagueProfileHeader}>
+                <Grid item={true} xs={12} className={classes.colleagueProfileHeader}>
                   <div style={{ flexDirection: "column", textAlign: "left" }}>
                     <Typography color="inherit" className={classes.completeForm}>
                       COMPLETE THE FORM
@@ -224,7 +224,7 @@ class PatientVisit extends React.Component<IProps, State> {
                   </Grid>
                 </Grid>
                 &emsp;
-                <Grid item xs={12} sm={12}>
+                <Grid item={true} xs={12} sm={12}>
                   <TextField
                     id="reason for visit"
                     label="Reason for visit"
@@ -254,7 +254,7 @@ class PatientVisit extends React.Component<IProps, State> {
                   BROWSE THE ICD 10
                 </Button>
                 &emsp;
-                <Grid item style={{ marginTop: 30 }} xs={12} sm={12}>
+                <Grid item={true} style={{ marginTop: 30 }} xs={12} sm={12}>
                   <TextField
                     id="Diagnosis"
                     label="Diagnosis"
@@ -275,13 +275,13 @@ class PatientVisit extends React.Component<IProps, State> {
                     variant="outlined"
                   />
                 </Grid>
-                <Grid item style={{ marginTop: 30 }} xs={12} sm={12}>
+                <Grid item={true} style={{ marginTop: 30 }} xs={12} sm={12}>
                   <Grid xs={3} sm={3}>
                     <Typography color="inherit" className={classes.drugPrescribed}>
                       DRUGS PRESCRIBED
                     </Typography>
                   </Grid>
-                  <Tooltip title="Add new patient's therapy" interactive placement="top">
+                  <Tooltip title="Add new patient's therapy" interactive={true} placement="top">
                     <MaterialButtonRouter
                       component={LinkRouter}
                       to={"/patientDatabase/PatientTherapy/" + this.state.item.code}
@@ -313,7 +313,7 @@ class PatientVisit extends React.Component<IProps, State> {
                   />
                 </Grid>
                 &emsp;
-                <Grid item style={{ marginTop: 30 }} xs={12} sm={12}>
+                <Grid item={true} style={{ marginTop: 30 }} xs={12} sm={12}>
                   <Typography color="inherit" className={classes.drugPrescribed}>
                     NOTES
                   </Typography>
@@ -336,7 +336,7 @@ class PatientVisit extends React.Component<IProps, State> {
                     variant="outlined"
                   />
                 </Grid>
-                <Grid item style={{ marginTop: 30 }} xs={12} sm={12}>
+                <Grid item={true} style={{ marginTop: 30 }} xs={12} sm={12}>
                   <Typography color="inherit" className={classes.drugPrescribed}>
                     Prescribe laboratory tests
                   </Typography>
@@ -346,8 +346,8 @@ class PatientVisit extends React.Component<IProps, State> {
                     label="Yes. it's necessary"
                   />
                   <FormControlLabel control={<Checkbox />} label="No, it isn't necessary" />
-                  <Collapse in={openOptionalInfo} style={{ width: "100%" }} timeout="auto" unmountOnExit>
-                    <Grid item xs={12} sm={8}>
+                  <Collapse in={openOptionalInfo} style={{ width: "100%" }} timeout="auto" unmountOnExit={true}>
+                    <Grid item={true} xs={12} sm={8}>
                       <FormControl
                         variant="outlined"
                         className={classNames(classes.formField, classes.formFieldSelectService)}
@@ -385,7 +385,7 @@ class PatientVisit extends React.Component<IProps, State> {
                   </Collapse>
                 </Grid>
                 &emsp;
-                <Grid item xs={12} spacing={24} className={classes.detailButtonContainer}>
+                <Grid item={true} xs={12} spacing={24} className={classes.detailButtonContainer}>
                   <MaterialButtonRouter
                     component={LinkRouter}
                     to="/PatientDatabase/PatientLabTest"

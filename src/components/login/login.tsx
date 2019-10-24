@@ -9,6 +9,7 @@ import React from "react";
 import { ROOT_PATH } from "../../App";
 import OHlogo from "../../assets/images/open-hospital.png";
 import styles from "./login.style";
+import CountUp from 'react-countup';
 export interface Props extends WithStyles<typeof styles> {}
 
 class Login extends React.Component {
@@ -23,19 +24,19 @@ class Login extends React.Component {
     this.submituserRegistrationForm = this.submituserRegistrationForm.bind(this);
   }
 
-  handleChange(e) {
-    let fields = this.state.fields;
+  public handleChange(e) {
+    const fields = this.state.fields;
     fields[e.target.name] = e.target.value;
     this.setState({
       fields,
     });
   }
 
-  submituserRegistrationForm(e) {
+  public submituserRegistrationForm(e) {
     e.preventDefault();
     if (this.validateForm()) {
-      //&& this.controlFormData()
-      //go to homepage
+      // && this.controlFormData()
+      // go to homepage
       window.localStorage.setItem("user", "true");
       window.location.pathname = `${ROOT_PATH}`;
     }
@@ -66,38 +67,38 @@ class Login extends React.Component {
   }
 */
 
-  validateForm() {
-    let fields = this.state.fields;
-    let errors = {};
+  public validateForm() {
+    const fields = this.state.fields;
+    const errors = {};
     let formIsValid = true;
 
-    if (!fields["email"]) {
+    if (!fields.email) {
       formIsValid = false;
-      errors["email"] = "*Please enter your email.";
+      errors.email = "*Please enter your email.";
     }
 
-    if (!fields["password"]) {
+    if (!fields.password) {
       formIsValid = false;
-      errors["password"] = "*Please enter your password.";
+      errors.password = "*Please enter your password.";
     }
 
-    this.setState({ errors: errors });
+    this.setState({ errors });
     return formIsValid;
   }
 
-  render() {
+  public render() {
     const { classes } = this.props;
 
     return (
       <div className={classes.root}>
-        <Grid container className={classes.gridContainer} justify="center" spacing={24}>
+        <Grid container={true} className={classes.gridContainer} justify="center" spacing={24}>
           <Grid className={classes.loginContainer}>
             <Paper className={classNames(classes.paperFlat, classes.paper)}>
-              <Grid container className={classes.gridContainer} justify="center" spacing={24}>
+              <Grid container={true} className={classes.gridContainer} justify="center" spacing={24}>
                 <img src={OHlogo} alt="Open Hospital" className={classes.logo} />
               </Grid>
               &emsp;
-              <Grid container className={classes.gridContainer} justify="center" spacing={24}>
+              <Grid container={true} className={classes.gridContainer} justify="center" spacing={24}>
                 <form
                   style={{ width: 400 }}
                   method="post"
@@ -158,13 +159,13 @@ class Login extends React.Component {
                     <div className={classes.errorMsg}>{this.state.errors.password}</div>
                   </Grid>
                 </form>
-                <Grid container className={classes.forgotContainer} spacing={24}>
+                <Grid container={true} className={classes.forgotContainer} spacing={24}>
                   <Link component="button" className={classes.forgotLink}>
                     FORGOT PASSWORD?
                   </Link>
                 </Grid>
                 &nbsp;
-                <Grid container className={classes.gridButtonContainer} justify="center" spacing={24}>
+                <Grid container={true} className={classes.gridButtonContainer} justify="center" spacing={24}>
                   <Button
                     type="submit"
                     variant="outlined"
@@ -175,11 +176,11 @@ class Login extends React.Component {
                     ENTER
                   </Button>
                 </Grid>
-                <Grid container className={classes.notRegisterContainer} spacing={24}>
+                <Grid container={true} className={classes.notRegisterContainer} spacing={24}>
                   &emsp;
                   <Divider className={classes.divider} />
                 </Grid>
-                <Grid container className={classes.notRegisterContainer} spacing={24}>
+                <Grid container={true} className={classes.notRegisterContainer} spacing={24}>
                   <Typography variant="inherit" className={classes.notRegisterLink}>
                     If you have not registered yet,&nbsp;
                   </Typography>
@@ -190,7 +191,7 @@ class Login extends React.Component {
               </Grid>
             </Paper>
           </Grid>
-          <Grid container className={classes.summaryContainer}>
+          <Grid container={true} className={classes.summaryContainer}>
             <Paper className={classNames(classes.summaryPaperFlat, classes.paper)}>
               &nbsp;
               <Typography variant="inherit" className={classes.inTitle}>
@@ -201,56 +202,96 @@ class Login extends React.Component {
                 SUMMARY DATA
               </Typography>
               &nbsp;
-              <Grid item spacing={24}>
+              <Grid item={true} spacing={24}>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ paddingBottom: 0, padding: 0 }}>
-                    <Typography className={classes.numberOf}>50</Typography>
+                    <CountUp
+                        className={classes.numberOf}
+                        start={0}
+                        end={50}
+                        duration={3.00}
+                        />
                     <Typography className={classes.subTitle}>PATIENTS</Typography>
                   </CardContent>
                 </Card>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ paddingBottom: 0, padding: 0 }}>
-                    <Typography className={classes.numberOf}>25</Typography>
+                    <CountUp
+                        className={classes.numberOf}
+                        start={0}
+                        end={25}
+                        duration={3.00}
+                    />
                     <Typography className={classes.subTitle}>PATIENTS ADMITTED</Typography>
                   </CardContent>
                 </Card>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ paddingBottom: 0, padding: 0 }}>
-                    <Typography className={classes.numberOf}>25</Typography>
+                    <CountUp
+                        className={classes.numberOf}
+                        start={0}
+                        end={25}
+                        duration={3.00}
+                    />
                     <Typography className={classes.subTitle}>PATIENTS ADMITTED</Typography>
                     <Typography className={classes.subTitleSpec}>(this month)</Typography>
                   </CardContent>
                 </Card>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ paddingBottom: 0, padding: 0 }}>
-                    <Typography className={classes.numberOf}>46%</Typography>
+                    <Typography className={classes.numberOf}> <CountUp
+                        className={classes.numberOf}
+                        start={0}
+                        end={50}
+                        duration={3.00}
+                    />%</Typography>
                     <Typography className={classes.subTitle}>BOR</Typography>
                     <Typography className={classes.subTitleSpec}>Bed Occupancy Rate</Typography>
                   </CardContent>
                 </Card>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ paddingBottom: 0, padding: 0 }}>
-                    <Typography className={classes.numberOf}>25</Typography>
+                    <CountUp
+                        className={classes.numberOf}
+                        start={0}
+                        end={25}
+                        duration={3.00}
+                    />
                     <Typography className={classes.subTitle}>PATIENTS ADMITTED</Typography>
                   </CardContent>
                 </Card>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ paddingBottom: 0, padding: 0 }}>
-                    <Typography className={classes.numberOf}>3.5</Typography>
+                    <CountUp
+                        className={classes.numberOf}
+                        start={0.0}
+                        end={3.5}
+                        duration={3.00}
+                    />
                     <Typography className={classes.subTitle}>AVERAGE LOSS</Typography>
                     <Typography className={classes.subTitleSpec}>Length of stay</Typography>
                   </CardContent>
                 </Card>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ paddingBottom: 0, padding: 0 }}>
-                    <Typography className={classes.numberOf}>68%</Typography>
+                    <Typography className={classes.numberOf}> <CountUp
+                        className={classes.numberOf}
+                        start={0}
+                        end={68}
+                        duration={3.00}
+                    />%</Typography>
                     <Typography className={classes.subTitle}> TOTAL BOR</Typography>
                     <Typography className={classes.subTitleSpec}>Bed Occupancy Rate</Typography>
                   </CardContent>
                 </Card>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ paddingBottom: 0, padding: 0 }}>
-                    <Typography className={classes.numberOf}>4.7</Typography>
+                    <CountUp
+                        className={classes.numberOf}
+                        start={0}
+                        end={5}
+                        duration={3.00}
+                    />
                     <Typography className={classes.subTitle}>AVERAGE LOSS</Typography>
                     <Typography className={classes.subTitleSpec}>Length of stay</Typography>
                   </CardContent>
@@ -267,56 +308,96 @@ class Login extends React.Component {
                 SUMMARY DATA
               </Typography>
               &nbsp;
-              <Grid item spacing={24}>
+              <Grid item={true} spacing={24}>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ paddingBottom: 0, padding: 0 }}>
-                    <Typography className={classes.numberOf}>50</Typography>
+                    <CountUp
+                        className={classes.numberOf}
+                        start={0}
+                        end={35}
+                        duration={3.00}
+                    />
                     <Typography className={classes.subTitle}>PATIENTS</Typography>
                   </CardContent>
                 </Card>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ paddingBottom: 0, padding: 0 }}>
-                    <Typography className={classes.numberOf}>25</Typography>
+                    <CountUp
+                        className={classes.numberOf}
+                        start={0}
+                        end={25}
+                        duration={3.00}
+                    />
                     <Typography className={classes.subTitle}>PATIENTS ADMITTED</Typography>
                   </CardContent>
                 </Card>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ paddingBottom: 0, padding: 0 }}>
-                    <Typography className={classes.numberOf}>25</Typography>
+                    <CountUp
+                        className={classes.numberOf}
+                        start={0}
+                        end={25}
+                        duration={3.00}
+                    />
                     <Typography className={classes.subTitle}>PATIENTS ADMITTED</Typography>
                     <Typography className={classes.subTitleSpec}>(this month)</Typography>
                   </CardContent>
                 </Card>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ paddingBottom: 0, padding: 0 }}>
-                    <Typography className={classes.numberOf}>46%</Typography>
+                    <Typography className={classes.numberOf}> <CountUp
+                        className={classes.numberOf}
+                        start={0}
+                        end={46}
+                        duration={3.00}
+                    />%</Typography>
                     <Typography className={classes.subTitle}>BOR</Typography>
                     <Typography className={classes.subTitleSpec}>Bed Occupancy Rate</Typography>
                   </CardContent>
                 </Card>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ paddingBottom: 0, padding: 0 }}>
-                    <Typography className={classes.numberOf}>25</Typography>
+                    <CountUp
+                        className={classes.numberOf}
+                        start={0}
+                        end={25}
+                        duration={3.00}
+                    />
                     <Typography className={classes.subTitle}>PATIENTS ADMITTED</Typography>
                   </CardContent>
                 </Card>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ paddingBottom: 0, padding: 0 }}>
-                    <Typography className={classes.numberOf}>3.5</Typography>
+                    <CountUp
+                        className={classes.numberOf}
+                        start={0}
+                        end={5}
+                        duration={3.00}
+                    />
                     <Typography className={classes.subTitle}>AVERAGE LOSS</Typography>
                     <Typography className={classes.subTitleSpec}>Length of stay</Typography>
                   </CardContent>
                 </Card>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ paddingBottom: 0, padding: 0 }}>
-                    <Typography className={classes.numberOf}>68%</Typography>
+                    <Typography className={classes.numberOf}> <CountUp
+                        className={classes.numberOf}
+                        start={0}
+                        end={68}
+                        duration={3.00}
+                    />%</Typography>
                     <Typography className={classes.subTitle}> TOTAL BOR</Typography>
                     <Typography className={classes.subTitleSpec}>Bed Occupancy Rate</Typography>
                   </CardContent>
                 </Card>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ paddingBottom: 0, padding: 0 }}>
-                    <Typography className={classes.numberOf}>4.7</Typography>
+                    <CountUp
+                        className={classes.numberOf}
+                        start={0}
+                        end={7}
+                        duration={3.00}
+                    />
                     <Typography className={classes.subTitle}>AVERAGE LOSS</Typography>
                     <Typography className={classes.subTitleSpec}>Length of stay</Typography>
                   </CardContent>
@@ -335,5 +416,5 @@ Login.PropTypes = {
 };
 
 const styledComponent = withStyles(styles, { withTheme: true })(Login);
-//const routedComponent = withRouter(styledComponent);
+// const routedComponent = withRouter(styledComponent);
 export default styledComponent;

@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Card, Grid, Link } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -9,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import Breadcrumbs from "@material-ui/lab/Breadcrumbs";
 import classNames from "classnames";
 import PropTypes from "prop-types";
+import * as React from "react";
 import { Link as LinkRouter } from "react-router-dom";
 import styles from "./NewsDetails.style";
 
@@ -22,7 +22,7 @@ interface State {
 }
 
 class NewsDetails extends React.Component {
-  state: State = {
+  public state: State = {
     labelWidth: 0,
     error: null,
     isLoaded: false,
@@ -32,8 +32,8 @@ class NewsDetails extends React.Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <Grid container item className={classes.gridContainer} justify="center" spacing={24}>
-          <Grid item xs={12}>
+        <Grid container={true} item={true} className={classes.gridContainer} justify="center" spacing={24}>
+          <Grid item={true} xs={12}>
             <Breadcrumbs aria-label="Breadcrumb" className={classes.breadCrumb}>
               <Link color="secondary" component={LinkRouter} to="/News">
                 NEWS
@@ -42,22 +42,22 @@ class NewsDetails extends React.Component {
             </Breadcrumbs>
           </Grid>
 
-          <Grid container item className={classes.gridContainer} spacing={24}>
-            <Grid item className={classes.gridContainer} xs={6}>
+          <Grid container={true} item={true} className={classes.gridContainer} spacing={24}>
+            <Grid item={true} className={classes.gridContainer} xs={6}>
               <Typography variant="inherit" className={classes.findNews}>
                 NEWS DETAILS
               </Typography>
             </Grid>
-            <Grid container item className={classNames(classes.addNewsButton, classes.gridContainer)} xs={6}>
-              <Grid item xs={8} />
-              <Grid item xs={4}>
+            <Grid container={true} item={true} className={classNames(classes.addNewsButton, classes.gridContainer)} xs={6}>
+              <Grid item={true} xs={8} />
+              <Grid item={true} xs={4}>
 
               </Grid>
             </Grid>
           </Grid>
           <Divider className={classes.divider} />
         </Grid>
-        <Grid container item className={classes.gridContainerBody} spacing={24}>
+        <Grid container={true} item={true} className={classes.gridContainerBody} spacing={24}>
           <Grid className={classes.formatNewsPost}>
             <Grid className={classes.gridContainer} float="right" xs={16}>
               <Paper className={classNames(classes.paper)}>

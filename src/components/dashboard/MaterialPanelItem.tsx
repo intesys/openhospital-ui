@@ -1,27 +1,27 @@
 import React, { Component } from "react";
 
 // local imports
-import styles from "./styles/MaterialPanelItem.style";
 import classNames from "classnames";
 import BigNumberItem from "./BigNumberItem";
+import styles from "./styles/MaterialPanelItem.style";
 
 // material imports
-import ListItem from "@material-ui/core/ListItem";
+import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
+import ListItem from "@material-ui/core/ListItem";
+import { withStyles, WithStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
-import { withStyles, WithStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
 
 export interface Props extends WithStyles<typeof styles> {}
 
 class MaterialPanelItem extends Component<Props> {
-  render() {
+  public render() {
     const { classes } = this.props;
     return (
       <ListItem className={classes.materialsListItem}>
-        <Grid container justify="center" spacing={24}>
-          <Grid item xs={12} className={classes.materialsListItemTitleContainer}>
+        <Grid container={true} justify="center" spacing={24}>
+          <Grid item={true} xs={12} className={classes.materialsListItemTitleContainer}>
             <Typography className={classes.materialsListItemTitle} variant="inherit">
               Amoxicillina antibiotico
             </Typography>
@@ -32,7 +32,7 @@ class MaterialPanelItem extends Component<Props> {
           </Grid>
           <BigNumberItem />
           <BigNumberItem />
-          <Grid item xs={12} sm={4} classes={{ item: classes.detailButtonContainer }}>
+          <Grid item={true} xs={12} sm={4} classes={{ item: classes.detailButtonContainer }}>
             <Button
               variant="outlined"
               color="inherit"

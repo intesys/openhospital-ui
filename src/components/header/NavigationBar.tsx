@@ -1,10 +1,10 @@
-import React from "react";
-import OHlogo from "../../assets/images/open-hospital.png";
-import Tabs from "@material-ui/core/Tabs";
 import NoSsr from "@material-ui/core/NoSsr";
-import { default as Tab, TabProps } from "@material-ui/core/Tab";
 import { createStyles, Theme, withStyles, WithStyles } from "@material-ui/core/styles";
+import { default as Tab, TabProps } from "@material-ui/core/Tab";
+import Tabs from "@material-ui/core/Tabs";
+import React from "react";
 import { NavLink, NavLinkProps } from "react-router-dom";
+import OHlogo from "../../assets/images/open-hospital.png";
 
 // constants
 import { PATH_PATIENTS_DATABASE } from "../../helpers/constants";
@@ -65,15 +65,15 @@ const LinkTab: React.ComponentType<TabProps & NavLinkProps> = Tab as React.Compo
 // }
 
 class NavigationBar extends React.Component<Props, State> {
-  state: State = {
+  public state: State = {
     value: 0,
   };
 
-  handleChange = (event: React.MouseEvent<HTMLElement>, value: number) => {
+  public handleChange = (event: React.MouseEvent<HTMLElement>, value: number) => {
     this.setState({ value });
   };
 
-  render() {
+  public render() {
     const { classes } = this.props;
     // const { value } = this.state;
 

@@ -38,7 +38,7 @@ class Search  extends React.Component<IProps> {
             })
             .catch(error => {
                 window.location.pathname = `/PageNotFound`
-                //console.log('Error fetching and parsing data', error);
+                // console.log('Error fetching and parsing data', error);
             });
     }
 

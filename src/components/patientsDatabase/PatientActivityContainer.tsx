@@ -1,42 +1,42 @@
+import _ from "lodash";
 import React, { Component } from "react";
 import { Link as LinkRouter, RouteComponentProps } from "react-router-dom";
-import _ from "lodash";
 
 // local imports
-import { MaterialLinkRouter } from "../utils/LinkHelper";
-import styles from "./styles/PatientDetails.style";
-import HealthInfoBar from "./HealthInfoBar";
-import PatientDetails from "./PatientDetails";
-import PatientAdmission from "./PatientAdmission";
-import PatientVisit from "./PatientVisit";
-import Opd from "./Opd";
-import NewOpd from "./NewOpd";
-import PatientTherapy from "./PatientTherapy";
-import PatientExamination from "./PatientExamination";
-import PatientVaccination from "./PatientVaccination";
-import NewVaccination from "./NewVaccination";
-import NewLabTest from "./NewLabTest";
 import { Patient } from 'generate';
 import BreadcrumbTrail from "../sharedComponents/BreadcrumbTrail"
+import { MaterialLinkRouter } from "../utils/LinkHelper";
+import HealthInfoBar from "./HealthInfoBar";
+import NewLabTest from "./NewLabTest";
+import NewOpd from "./NewOpd";
+import NewVaccination from "./NewVaccination";
+import Opd from "./Opd";
+import PatientAdmission from "./PatientAdmission";
+import PatientDetails from "./PatientDetails";
+import PatientExamination from "./PatientExamination";
+import PatientTherapy from "./PatientTherapy";
+import PatientVaccination from "./PatientVaccination";
+import PatientVisit from "./PatientVisit";
+import styles from "./styles/PatientDetails.style";
 
 // material imports
-import { withStyles, WithStyles } from "@material-ui/core/styles";
-import Breadcrumbs from "@material-ui/lab/Breadcrumbs";
-import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import { withStyles, WithStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import Breadcrumbs from "@material-ui/lab/Breadcrumbs";
 
 // constants
 import { 
-    PATH_PATIENT_DETAILS,
-    PATH_PATIENT_VISIT,
-    PATH_PATIENT_ADMISSION,
     PATH_NEW_LAB_TEST,
-    PATH_PATIENT_THERAPY,
-    PATH_PATIENT_EXAMINATION,
-    PATH_PATIENT_VACCINATION,
-    PATH_PATIENT_NEW_VACCINATION,
-    PATH_OPD,
     PATH_NEW_OPD,
+    PATH_OPD,
+    PATH_PATIENT_ADMISSION,
+    PATH_PATIENT_DETAILS,
+    PATH_PATIENT_EXAMINATION,
+    PATH_PATIENT_NEW_VACCINATION,
+    PATH_PATIENT_THERAPY,
+    PATH_PATIENT_VACCINATION,
+    PATH_PATIENT_VISIT,
 } from "../../config/constants"
 
 export interface Props extends WithStyles<typeof styles> { }
@@ -56,14 +56,14 @@ interface IRouteParams {
 interface IProps extends RouteComponentProps<IRouteParams> { }
 
 class PatientActivityContainer extends Component<IProps> {
-    state: State = {
+    public state: State = {
         labelWidth: 0,
         error: null,
         isLoaded: false,
         openOptionalInfo: false,
     };
 
-    getActivityTitle = () => {
+    public getActivityTitle = () => {
         const currentPath = this.props.location.pathname;
         switch(currentPath){
             case PATH_PATIENT_DETAILS:
@@ -91,7 +91,7 @@ class PatientActivityContainer extends Component<IProps> {
         }
     }
 
-    render(); {
+    public render(); {
         const { classes } = this.props;
         const patientInfo = {
             isChronic: false,
@@ -116,24 +116,24 @@ class PatientActivityContainer extends Component<IProps> {
             reasonOfVisit: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
             treatment: "Bloodletting"
             address: "Rua do Catete 90, Glória, Rio de Janeiro - RJ"
-        }; //TODO this data has to be fetched from store after redux's ready
+        }; // TODO this data has to be fetched from store after redux's ready
         const { openOptionalInfo } = this.state;
         console.log(this.props);
         return (
             <div className={classes.root}>
-                <Grid container className={classes.gridContainer} justify="center" spacing={24}>
-                    <Grid container item spacing={24}>
-                        <Grid item xs={12}>
+                <Grid container={true} className={classes.gridContainer} justify="center" spacing={24}>
+                    <Grid container={true} item={true} spacing={24}>
+                        <Grid item={true} xs={12}>
                             <BreadcrumbTrail/>
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item={true} xs={12}>
                             <Typography variant="inherit" className={classes.patientTitle}>
                                 {this.getActivityTitle()}
                             </Typography>
                         </Grid>
                     </Grid>
-                    <Grid container item justify="center" spacing={24}>
-                        <Grid container item justify="center" spacing={24}>
+                    <Grid container={true} item={true} justify="center" spacing={24}>
+                        <Grid container={true} item={true} justify="center" spacing={24}>
                             <HealthInfoBar patientInfo={patientInfo}/>
                             {(() => {
                                 switch (this.props.location.pathname) {

@@ -1,27 +1,27 @@
-import * as React from "react";
-import _ from "lodash";
-import { withStyles, WithStyles } from "@material-ui/core/styles";
-import Breadcrumbs from "@material-ui/lab/Breadcrumbs";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import {Link as LinkRouter, RouteComponentProps} from "react-router-dom";
-import { MaterialLinkRouter, MaterialButtonRouter } from "../utils/LinkHelper";
-import classNames from "classnames";
-import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import Avatar from "@material-ui/core/Avatar";
 import Divider from "@material-ui/core/Divider";
-import Radio from '@material-ui/core/Radio';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import AddPhotoIcon from "@material-ui/icons/AddAPhoto";
-import styles from "./styles/Opd.style";
 import FormControl from "@material-ui/core/FormControl";
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Grid from "@material-ui/core/Grid";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
-import Select from "@material-ui/core/Select";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
+import Radio from '@material-ui/core/Radio';
+import Select from "@material-ui/core/Select";
+import { withStyles, WithStyles } from "@material-ui/core/styles";
 import TextField from '@material-ui/core/TextField';
+import Typography from "@material-ui/core/Typography";
+import AddPhotoIcon from "@material-ui/icons/AddAPhoto";
+import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
+import Breadcrumbs from "@material-ui/lab/Breadcrumbs";
+import classNames from "classnames";
 import {Patient} from 'generate';
-import { PatientControllerApi, GetPatientUsingGETRequest } from '../../generate/apis';
+import _ from "lodash";
+import * as React from "react";
+import {Link as LinkRouter, RouteComponentProps} from "react-router-dom";
+import { GetPatientUsingGETRequest, PatientControllerApi } from '../../generate/apis';
+import { MaterialButtonRouter, MaterialLinkRouter } from "../utils/LinkHelper";
+import styles from "./styles/Opd.style";
 export interface Props extends WithStyles<typeof styles> { }
 
 interface State {
@@ -40,7 +40,7 @@ interface IRouteParams {
 interface IProps extends RouteComponentProps<IRouteParams> { }
 
 class Opd extends React.Component<IProps, State> {
-    state: State = {
+    public state: State = {
         labelWidth: 0,
         error: null,
         isLoaded: false,
@@ -49,7 +49,7 @@ class Opd extends React.Component<IProps, State> {
 
     }
 
-    componentDidMount() {
+    public componentDidMount() {
 
         const patientController: PatientControllerApi = new PatientControllerApi();
         const requestParams : GetPatientUsingGETRequest = {
@@ -84,9 +84,9 @@ class Opd extends React.Component<IProps, State> {
 
         return (
             <div className={classes.root}>
-                <Grid container className={classes.gridContainer} justify="center" spacing={24}>
-                    <Grid container item spacing={24}>
-                        <Grid item xs={12}>
+                <Grid container={true} className={classes.gridContainer} justify="center" spacing={24}>
+                    <Grid container={true} item={true} spacing={24}>
+                        <Grid item={true} xs={12}>
                             <Breadcrumbs aria-label="Breadcrumb" className={classes.breadCrumb}>
                                 <MaterialLinkRouter color="secondary" component={LinkRouter} to="/dashboard">
                                     Home
@@ -97,15 +97,15 @@ class Opd extends React.Component<IProps, State> {
                                 <Typography color="inherit">Patient OPD</Typography>
                             </Breadcrumbs>
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item={true} xs={12}>
                             <Typography variant="inherit" className={classes.patientTitle}>
                                 PATIENT OPD
                             </Typography>
                         </Grid>
                     </Grid>
-                    <Grid container item justify="center" spacing={24}>
-                        <Grid container item justify="center" spacing={24}>
-                            <Grid item xs={12} sm={3} className={classes.sidebar}>
+                    <Grid container={true} item={true} justify="center" spacing={24}>
+                        <Grid container={true} item={true} justify="center" spacing={24}>
+                            <Grid item={true} xs={12} sm={3} className={classes.sidebar}>
                                 <Avatar alt="Remy Sharp" src={""} className={classes.avatar}>
                                     <AddPhotoIcon />
                                 </Avatar>
@@ -170,8 +170,8 @@ class Opd extends React.Component<IProps, State> {
                                     Print health information
                                 </MaterialButtonRouter>
                             </Grid>
-                            <Grid item xs={12} sm={9} className={classes.patientContent}>
-                                <Grid item xs={12} className={classes.patientProfileHeader}>
+                            <Grid item={true} xs={12} sm={9} className={classes.patientContent}>
+                                <Grid item={true} xs={12} className={classes.patientProfileHeader}>
                                     <div style={{ flexDirection: "column", textAlign: "left" }}>
                                         <Typography color="inherit" className={classes.patientName}>
                                             {this.state.item.firstName} {this.state.item.secondName}
@@ -184,7 +184,7 @@ class Opd extends React.Component<IProps, State> {
                                 &emsp;
                                 <Divider className={classes.divider} />
                                 &emsp;
-                                <Grid item xs={24} justify="center" className={classes.patientRadioOpd}>
+                                <Grid item={true} xs={24} justify="center" className={classes.patientRadioOpd}>
                                     <FormControlLabel
                                         value="End"
                                         control={<Radio color="secondary" />}
@@ -210,7 +210,7 @@ class Opd extends React.Component<IProps, State> {
                                         labelPlacement="end"
                                     />
                                 </Grid>
-                                <Grid container item spacing={24} className={classes.opdHeader} >
+                                <Grid container={true} item={true} spacing={24} className={classes.opdHeader} >
                                     <Grid style={{marginLeft:30}}>
                                         <Typography variant="inherit" className={classes.attendanceTitle}>
                                             ATTENDANCE DATE
@@ -241,7 +241,7 @@ class Opd extends React.Component<IProps, State> {
                                         />
                                     </Grid>
                                 </Grid>
-                                <Grid container item spacing={24} justify="center" className={classes.deseaseHeader}>
+                                <Grid container={true} item={true} spacing={24} justify="center" className={classes.deseaseHeader}>
                                     <Grid >
                                         <Typography  variant="inherit" className={classes.opdNumberTitle}>
                                             DESEASE TYPE
@@ -282,7 +282,7 @@ class Opd extends React.Component<IProps, State> {
                                         </FormControl>
                                     </Grid>
                                 </Grid>
-                                <Grid container item spacing={24} justify="center" className={classes.deseaseHeader}>
+                                <Grid container={true} item={true} spacing={24} justify="center" className={classes.deseaseHeader}>
                                     <Grid >
                                         <Typography  variant="inherit" className={classes.opdNumberTitle}>
                                             DIAGNOSIS
@@ -308,7 +308,7 @@ class Opd extends React.Component<IProps, State> {
                                                 input={
                                                     <OutlinedInput
                                                         labelWidth={this.state.InputLabelRef}
-                                                        n
+                                                        n={true}
                                                         id="diagnosis type"
                                                         classes={{
                                                             input: classes.formFieldSelectInput,
@@ -324,7 +324,7 @@ class Opd extends React.Component<IProps, State> {
                                         </FormControl>
                                     </Grid>
                                 </Grid>
-                                <Grid container item spacing={24} justify="center" className={classes.deseaseHeader}>
+                                <Grid container={true} item={true} spacing={24} justify="center" className={classes.deseaseHeader}>
                                     <Grid >
                                         <Typography  variant="inherit" className={classes.opdNumberTitle}>
                                             DIAGNOSIS N°2
@@ -365,7 +365,7 @@ class Opd extends React.Component<IProps, State> {
                                         </FormControl>
                                     </Grid>
                                 </Grid>
-                                <Grid container item spacing={24} justify="center" className={classes.deseaseHeader}>
+                                <Grid container={true} item={true} spacing={24} justify="center" className={classes.deseaseHeader}>
                                     <Grid >
                                         <Typography  variant="inherit" className={classes.opdNumberTitle}>
                                             DIAGNOSIS N°3
@@ -406,7 +406,7 @@ class Opd extends React.Component<IProps, State> {
                                         </FormControl>
                                     </Grid>
                                 </Grid>
-                                <Grid item style={{ marginTop: 50 }} xs={12} sm={12}>
+                                <Grid item={true} style={{ marginTop: 50 }} xs={12} sm={12}>
                                     <Typography color="inherit" className={classes.opdNotes}>
                                         NOTES & SYMPTOM
                                     </Typography>
@@ -429,7 +429,7 @@ class Opd extends React.Component<IProps, State> {
                                         variant="outlined"
                                     />
                                 </Grid>
-                                <Grid item xs={12} spacing={24} style={{ marginTop: 50, marginBottom: 20 }} className={classes.detailButtonContainer}>
+                                <Grid item={true} xs={12} spacing={24} style={{ marginTop: 50, marginBottom: 20 }} className={classes.detailButtonContainer}>
                                     <MaterialButtonRouter
                                         component={LinkRouter}
                                         to="/"

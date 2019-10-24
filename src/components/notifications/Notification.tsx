@@ -7,9 +7,9 @@ import Breadcrumbs from "@material-ui/lab/Breadcrumbs";
 import PropTypes from "prop-types";
 import * as React from "react";
 import ReactDOM from "react-dom";
-import { Link as LinkRouter, Link } from "react-router-dom";
-import styles from "./Notification.style";
+import { Link, Link as LinkRouter } from "react-router-dom";
 import { MaterialLinkRouter } from "../utils/LinkHelper";
+import styles from "./Notification.style";
 
 export interface Props extends WithStyles<typeof styles> { }
 
@@ -22,7 +22,7 @@ interface State {
 }
 
 class Notification extends React.Component<Props, State> {
-  state: State = {
+  public state: State = {
     labelWidth: 0,
     value: 0,
     error: null,
@@ -34,8 +34,8 @@ class Notification extends React.Component<Props, State> {
 
     return (
       <div className={classes.root}>
-        <Grid container item className={classes.gridContainer} justify="center" spacing={24}>
-          <Grid item xs={12}>
+        <Grid container={true} item={true} className={classes.gridContainer} justify="center" spacing={24}>
+          <Grid item={true} xs={12}>
             <Breadcrumbs aria-label="Breadcrumb" className={classes.breadCrumb}>
               <MaterialLinkRouter color="secondary" component={LinkRouter} to="/dashboard">
                 Home
@@ -43,12 +43,12 @@ class Notification extends React.Component<Props, State> {
               <Typography color="inherit">Notification</Typography>
             </Breadcrumbs>
           </Grid>
-          <Grid item xs={12}>
+          <Grid item={true} xs={12}>
             <Typography variant="inherit" className={classes.notificationTitle}>
               NOTIFICATIONS
             </Typography>
           </Grid>
-          <Grid container item className={classes.gridContainer} style={{ flexDirection: "row-reverse" }} xs={12}>
+          <Grid container={true} item={true} className={classes.gridContainer} style={{ flexDirection: "row-reverse" }} xs={12}>
             <Button variant="outlined" color="inherit" classes={{ root: classes.button }}>
               Setting Notification
             </Button>
@@ -58,10 +58,10 @@ class Notification extends React.Component<Props, State> {
           <Divider className={classes.divider} />
           &emsp;
         </Grid>
-        <Grid container item className={classes.gridContainer} justify="center" spacing={24}>
+        <Grid container={true} item={true} className={classes.gridContainer} justify="center" spacing={24}>
           <Paper className={classes.paperFlat}>
-            <Grid item xs={12}>
-              <Grid container item style={{ flexDirection: "row-reverse" }} xs={12}>
+            <Grid item={true} xs={12}>
+              <Grid container={true} item={true} style={{ flexDirection: "row-reverse" }} xs={12}>
                 <Button variant="outlined" color="inherit" classes={{ root: classes.deleteButton }}>
                   X
                 </Button>
@@ -81,8 +81,8 @@ class Notification extends React.Component<Props, State> {
           </Paper>
           &ensp;
           <Paper className={classes.paperFlat}>
-            <Grid item xs={12}>
-              <Grid container item style={{ flexDirection: "row-reverse" }} xs={12}>
+            <Grid item={true} xs={12}>
+              <Grid container={true} item={true} style={{ flexDirection: "row-reverse" }} xs={12}>
                 <Button variant="outlined" color="inherit" classes={{ root: classes.deleteButton }}>
                   X
                 </Button>
@@ -102,8 +102,8 @@ class Notification extends React.Component<Props, State> {
           </Paper>
           &ensp;
           <Paper className={classes.paperFlat}>
-            <Grid item xs={12}>
-              <Grid container item style={{ flexDirection: "row-reverse" }} xs={12}>
+            <Grid item={true} xs={12}>
+              <Grid container={true} item={true} style={{ flexDirection: "row-reverse" }} xs={12}>
                 <Button variant="outlined" color="inherit" classes={{ root: classes.deleteButton }}>
                   X
                 </Button>
@@ -123,8 +123,8 @@ class Notification extends React.Component<Props, State> {
           </Paper>
           &ensp;
           <Paper className={classes.paperFlat}>
-            <Grid item xs={12}>
-              <Grid container item style={{ flexDirection: "row-reverse" }} xs={12}>
+            <Grid item={true} xs={12}>
+              <Grid container={true} item={true} style={{ flexDirection: "row-reverse" }} xs={12}>
                 <Button variant="outlined" color="inherit" classes={{ root: classes.deleteButton }}>
                   X
                 </Button>
@@ -140,8 +140,8 @@ class Notification extends React.Component<Props, State> {
           </Paper>
           &ensp;
           <Paper className={classes.paperFlat}>
-            <Grid item xs={12}>
-              <Grid container item style={{ flexDirection: "row-reverse" }} xs={12}>
+            <Grid item={true} xs={12}>
+              <Grid container={true} item={true} style={{ flexDirection: "row-reverse" }} xs={12}>
                 <Button variant="outlined" color="inherit" classes={{ root: classes.deleteButton }}>
                   X
                 </Button>
@@ -161,8 +161,8 @@ class Notification extends React.Component<Props, State> {
           </Paper>
           &ensp;
           <Paper className={classes.paperFlat}>
-            <Grid item xs={12}>
-              <Grid container item style={{ flexDirection: "row-reverse" }} xs={12}>
+            <Grid item={true} xs={12}>
+              <Grid container={true} item={true} style={{ flexDirection: "row-reverse" }} xs={12}>
                 <Button variant="outlined" color="inherit" classes={{ root: classes.deleteButton }}>
                   X
                 </Button>
@@ -182,8 +182,8 @@ class Notification extends React.Component<Props, State> {
           </Paper>
         </Grid>
         &nbsp;
-        <Grid container item className={classes.gridContainer} justify="center" spacing={24}>
-          <Grid item xs={12} sm={2} className={classes.loadMoreContainer}>
+        <Grid container={true} item={true} className={classes.gridContainer} justify="center" spacing={24}>
+          <Grid item={true} xs={12} sm={2} className={classes.loadMoreContainer}>
             <Button
               variant="outlined"
               color="inherit"

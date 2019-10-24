@@ -378,7 +378,7 @@ const styles = (theme: Theme) =>
       },
     },
 
-    //SNACK BAR ERRORS//
+    // SNACK BAR ERRORS//
 
     error: {
       backgroundColor: theme.palette.primary.red,

@@ -29,7 +29,7 @@ interface State {
 
 class DeletePatient extends React.Component<Props, State> {
 
-	state: State = {
+	public state: State = {
 		labelWidth: 0,
 		error: null,
 		isLoaded: false,
@@ -43,11 +43,11 @@ class DeletePatient extends React.Component<Props, State> {
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
-	handleChange(event) {
+	public handleChange(event) {
 		this.setState({ [event.target.name]: event.target.value });
 	}
 
-	handleSubmit(event) {
+	public handleSubmit(event) {
 		event.preventDefault();
 		console.log(this.state);
 		const { classes } = this.props;

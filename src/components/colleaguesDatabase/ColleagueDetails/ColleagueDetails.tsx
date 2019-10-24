@@ -1,40 +1,40 @@
-import * as React from "react";
-import ReactDOM from "react-dom";
-import { withStyles, WithStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import Breadcrumbs from "@material-ui/lab/Breadcrumbs";
-import Link from "@material-ui/core/Link";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import { Link as LinkRouter, LinkProps } from "react-router-dom";
-import { MaterialNavLinkRouter, MaterialLinkRouter } from "../../utils/LinkHelper";
-import TextField from "@material-ui/core/TextField";
-import classNames from "classnames";
-import Select from "@material-ui/core/Select";
-import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
 import Checkbox from "@material-ui/core/Checkbox";
+import Divider from "@material-ui/core/Divider";
+import FilledInput from "@material-ui/core/FilledInput";
+import FormControl from "@material-ui/core/FormControl";
+import Grid from "@material-ui/core/Grid";
+import InputLabel from "@material-ui/core/InputLabel";
+import Link from "@material-ui/core/Link";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import OutlinedInput from "@material-ui/core/OutlinedInput";
-import FilledInput from "@material-ui/core/FilledInput";
-import InputLabel from "@material-ui/core/InputLabel";
-import ExpandMore from "@material-ui/icons/ExpandMore";
+import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
+import OutlinedInput from "@material-ui/core/OutlinedInput";
+import Paper from "@material-ui/core/Paper";
+import Select from "@material-ui/core/Select";
+import { withStyles, WithStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
+import ExpandMore from "@material-ui/icons/ExpandMore";
 import MailIcon from "@material-ui/icons/Mail";
 import PhoneIcon from "@material-ui/icons/Phone";
 import ChatIcon from "@material-ui/icons/Sms";
-import Avatar from "@material-ui/core/Avatar";
-import Divider from "@material-ui/core/Divider";
-import maleAvatar from "../../../assets/images/male.png";
+import Breadcrumbs from "@material-ui/lab/Breadcrumbs";
+import classNames from "classnames";
+import * as React from "react";
+import ReactDOM from "react-dom";
+import { Link as LinkRouter, LinkProps } from "react-router-dom";
 import femaleAvatar from "../../../assets/images/female.png";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
+import maleAvatar from "../../../assets/images/male.png";
+import { MaterialLinkRouter, MaterialNavLinkRouter } from "../../utils/LinkHelper";
 
-import styles from "./ColleagueDetails.style";
 import _ from 'lodash';
+import styles from "./ColleagueDetails.style";
 export interface Props extends WithStyles<typeof styles> {}
 
 interface State {
@@ -72,9 +72,9 @@ class ColleagueDetails extends React.Component<Props, State> {
 
     return (
       <div className={classes.root}>
-        <Grid container className={classes.gridContainer} justify="center" spacing={24}>
-          <Grid container item spacing={24}>
-            <Grid item xs={12}>
+        <Grid container={true} className={classes.gridContainer} justify="center" spacing={24}>
+          <Grid container={true} item={true} spacing={24}>
+            <Grid item={true} xs={12}>
               <Breadcrumbs aria-label="Breadcrumb" className={classes.breadCrumb}>
                 <MaterialLinkRouter color="secondary" component={LinkRouter} to="/dashboard">
                   Home
@@ -86,15 +86,15 @@ class ColleagueDetails extends React.Component<Props, State> {
               </Breadcrumbs>
             </Grid>
 
-            <Grid item xs={12}>
+            <Grid item={true} xs={12}>
               <Typography variant="inherit" className={classes.colleaguesTitle}>
                 COLLEAGUE DETAILS
               </Typography>
             </Grid>
           </Grid>
-          <Grid container item justify="center" spacing={24}>
+          <Grid container={true} item={true} justify="center" spacing={24}>
             <Paper className={classes.paperHeader}>
-              <Grid item xs={12} className={classes.colleagueProfileHeader}>
+              <Grid item={true} xs={12} className={classes.colleagueProfileHeader}>
                 <Avatar alt="Remy Sharp" src={_.sample([maleAvatar, femaleAvatar])} className={classes.avatar} />
                 <div style={{ flexDirection: "column", textAlign: "left" }}>
                   <Typography color="inherit" className={classes.colleagueName}>
@@ -114,8 +114,8 @@ class ColleagueDetails extends React.Component<Props, State> {
                 </Button>
               </Grid>
             </Paper>
-            <Grid container item justify="center" spacing={24}>
-              <Grid item xs={12} sm={3} className={classes.sidebar}>
+            <Grid container={true} item={true} justify="center" spacing={24}>
+              <Grid item={true} xs={12} sm={3} className={classes.sidebar}>
                 <Typography color="inherit" className={classes.contacts}>
                   CONTACTS
                 </Typography>
@@ -134,7 +134,7 @@ class ColleagueDetails extends React.Component<Props, State> {
                   LAST VISITED PATIENTS
                 </Typography>
                 <Divider className={classes.divider} />
-                <Grid item xs={12} className={classes.sidebarPatients}>
+                <Grid item={true} xs={12} className={classes.sidebarPatients}>
                   <div className={classes.sidebarPatientsItem}>
                     <Avatar
                       alt="Remy Sharp"
@@ -189,12 +189,12 @@ class ColleagueDetails extends React.Component<Props, State> {
                   </div>
                 </Grid>
               </Grid>
-              <Grid item xs={12} sm={9} className={classes.colleagueContent}>
-                <Grid item xs={12} className={classes.rosterActions}>
+              <Grid item={true} xs={12} sm={9} className={classes.colleagueContent}>
+                <Grid item={true} xs={12} className={classes.rosterActions}>
                   <Typography color="inherit" className={classes.rosterTitle}>
                     DUTY ROSTER
                   </Typography>
-                  <Grid item xs={12} sm={3}>
+                  <Grid item={true} xs={12} sm={3}>
                     <FormControl variant="outlined" className={classNames(classes.formField, classes.formFieldSelect)}>
                       <InputLabel
                         ref={ref => {
@@ -245,7 +245,7 @@ class ColleagueDetails extends React.Component<Props, State> {
                 </Grid>
                 {/* <Grid item xs={12} sm={2} classes={{ item: classes.detailButtonContainer }}>
                 </Grid> */}
-                <Grid item xs={12} className={classes.rosterInfo}>
+                <Grid item={true} xs={12} className={classes.rosterInfo}>
                   <Card className={classNames(classes.rosterInfoItem, "itemDay")}>
                     <CardContent style={{ width: "100%" }}>
                       <Typography className="title" color="inherit">
@@ -324,7 +324,7 @@ class ColleagueDetails extends React.Component<Props, State> {
                     </CardContent>
                   </Card>
                 </Grid>
-                <Grid item xs={12} className={classes.rosterInfo}>
+                <Grid item={true} xs={12} className={classes.rosterInfo}>
                   <Card className={classNames(classes.rosterInfoItem, "itemDay")}>
                     <CardContent style={{ width: "100%" }}>
                       <Typography className="title" color="inherit">
@@ -404,10 +404,10 @@ class ColleagueDetails extends React.Component<Props, State> {
                   </Card>
                 </Grid>
 
-                <Grid item xs={12} style={{ marginTop: 55 }}>
+                <Grid item={true} xs={12} style={{ marginTop: 55 }}>
                   <Paper className={classes.paperFlat}>
                     <List classes={{ root: classes.appointments }}>
-                      <ListItem disableGutters className={classes.appointmentsTitleContainer}>
+                      <ListItem disableGutters={true} className={classes.appointmentsTitleContainer}>
                         <Typography className={classes.appointmentsTitle} variant="inherit" align="left">
                           APPOINTMENTS
                         </Typography>
@@ -434,15 +434,15 @@ class ColleagueDetails extends React.Component<Props, State> {
                         </Menu>
                       </ListItem>
                       {/* <Collapse in={openAppointments} timeout="auto" unmountOnExit> */}
-                      <List disablePadding>
-                        <ListItem disableGutters className={classes.appointmentsListItem}>
-                          <Grid container justify="center" spacing={24} className={classes.appointmentsListItemGrid}>
-                            <Grid item xs={3} className={classes.materialsListItemTitleContainer}>
+                      <List disablePadding={true}>
+                        <ListItem disableGutters={true} className={classes.appointmentsListItem}>
+                          <Grid container={true} justify="center" spacing={24} className={classes.appointmentsListItemGrid}>
+                            <Grid item={true} xs={3} className={classes.materialsListItemTitleContainer}>
                               <Typography className={classes.materialsListItemBigNumberDesc} variant="inherit">
                                 <b>7.00 am</b>
                               </Typography>
                             </Grid>
-                            <Grid item xs={9} className={classes.materialsListItemTitleContainer}>
+                            <Grid item={true} xs={9} className={classes.materialsListItemTitleContainer}>
                               <Typography className={classes.materialsListItemBigNumberDesc} variant="inherit">
                                 Daily brief with the staff
                               </Typography>
@@ -456,14 +456,14 @@ class ColleagueDetails extends React.Component<Props, State> {
                             />
                           </ListItemSecondaryAction>
                         </ListItem>
-                        <ListItem disableGutters className={classes.appointmentsListItem}>
-                          <Grid container justify="center" spacing={24} className={classes.appointmentsListItemGrid}>
-                            <Grid item xs={3} className={classes.materialsListItemTitleContainer}>
+                        <ListItem disableGutters={true} className={classes.appointmentsListItem}>
+                          <Grid container={true} justify="center" spacing={24} className={classes.appointmentsListItemGrid}>
+                            <Grid item={true} xs={3} className={classes.materialsListItemTitleContainer}>
                               <Typography className={classes.appointmentsListItemText} variant="inherit">
                                 <b>9.30 am</b>
                               </Typography>
                             </Grid>
-                            <Grid item xs={9} className={classes.materialsListItemTitleContainer}>
+                            <Grid item={true} xs={9} className={classes.materialsListItemTitleContainer}>
                               <Typography className={classes.appointmentsListItemText} variant="inherit">
                                 Meeting with Dr. Ford
                               </Typography>
@@ -477,14 +477,14 @@ class ColleagueDetails extends React.Component<Props, State> {
                             />
                           </ListItemSecondaryAction>
                         </ListItem>
-                        <ListItem disableGutters className={classes.appointmentsListItem}>
-                          <Grid container justify="center" spacing={24} className={classes.appointmentsListItemGrid}>
-                            <Grid item xs={3} className={classes.materialsListItemTitleContainer}>
+                        <ListItem disableGutters={true} className={classes.appointmentsListItem}>
+                          <Grid container={true} justify="center" spacing={24} className={classes.appointmentsListItemGrid}>
+                            <Grid item={true} xs={3} className={classes.materialsListItemTitleContainer}>
                               <Typography className={classes.appointmentsListItemText} variant="inherit">
                                 <b>10.30 am</b>
                               </Typography>
                             </Grid>
-                            <Grid item xs={9} className={classes.materialsListItemTitleContainer}>
+                            <Grid item={true} xs={9} className={classes.materialsListItemTitleContainer}>
                               <Typography className={classes.appointmentsListItemText} variant="inherit">
                                 Meeting team
                               </Typography>
@@ -498,14 +498,14 @@ class ColleagueDetails extends React.Component<Props, State> {
                             />
                           </ListItemSecondaryAction>
                         </ListItem>
-                        <ListItem disableGutters className={classes.appointmentsListItem}>
-                          <Grid container justify="center" spacing={24} className={classes.appointmentsListItemGrid}>
-                            <Grid item xs={3} className={classes.materialsListItemTitleContainer}>
+                        <ListItem disableGutters={true} className={classes.appointmentsListItem}>
+                          <Grid container={true} justify="center" spacing={24} className={classes.appointmentsListItemGrid}>
+                            <Grid item={true} xs={3} className={classes.materialsListItemTitleContainer}>
                               <Typography className={classes.appointmentsListItemText} variant="inherit">
                                 <b>3.00 pm</b>
                               </Typography>
                             </Grid>
-                            <Grid item xs={9} className={classes.materialsListItemTitleContainer}>
+                            <Grid item={true} xs={9} className={classes.materialsListItemTitleContainer}>
                               <Typography className={classes.appointmentsListItemText} variant="inherit">
                                 Daily visits
                               </Typography>

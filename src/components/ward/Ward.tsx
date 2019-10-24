@@ -10,18 +10,18 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 import Paper from '@material-ui/core/Paper';
 import Select from '@material-ui/core/Select';
 import { withStyles, WithStyles } from '@material-ui/core/styles';
+import Tab from "@material-ui/core/Tab";
+import Tabs from "@material-ui/core/Tabs";
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link as LinkRouter } from 'react-router-dom';
+import { GetPatientsUsingGETRequest, PatientControllerApi } from '../../generate/apis';
 import Patients from "../patientsDatabase/PatientsListItem";
 import styles from './Ward.style';
-import { PatientControllerApi, GetPatientsUsingGETRequest } from '../../generate/apis';
 export interface Props extends WithStyles<typeof styles> { }
 
 interface State {
@@ -34,7 +34,7 @@ interface State {
 }
 
 class Ward extends React.Component {
-  state: State = {
+  public state: State = {
     labelWidth: 0,
     error: null,
     isLoaded: false,
@@ -42,7 +42,7 @@ class Ward extends React.Component {
     
   };
 
-  componentDidMount() {
+  public componentDidMount() {
 
     const patientController: PatientControllerApi = new PatientControllerApi();
     const requestParams: GetPatientsUsingGETRequest = {
@@ -73,7 +73,7 @@ class Ward extends React.Component {
   }
 
 
-  handleChange = (event: React.MouseEvent<HTMLElement>, value: number) => {
+  public handleChange = (event: React.MouseEvent<HTMLElement>, value: number) => {
     this.setState({ value });
   };
 
@@ -98,8 +98,8 @@ class Ward extends React.Component {
     
     return (
       <div className={classes.root}>
-        <Grid container item className={classes.gridContainer} justify="center" spacing={24}>
-          <Grid item xs={12}>
+        <Grid container={true} item={true} className={classes.gridContainer} justify="center" spacing={24}>
+          <Grid item={true} xs={12}>
             <Breadcrumbs aria-label="Breadcrumb" className={classes.breadCrumb}>
               <Link color="secondary" component={LinkRouter} to="/dashboard">
                 Home
@@ -107,7 +107,7 @@ class Ward extends React.Component {
               <Typography color="inherit">Ward</Typography>
             </Breadcrumbs>
           </Grid>
-          <Grid item xs={12}>
+          <Grid item={true} xs={12}>
             <Typography variant="inherit" className={classes.wardTitle}>
               WARD
             </Typography>
@@ -115,7 +115,7 @@ class Ward extends React.Component {
           &emsp;
           <Divider className={classes.divider} />
           &emsp;
-          <Grid item xs={12}>
+          <Grid item={true} xs={12}>
           <Tabs
                 indicatorColor="none"
                 textColor="secondary"
@@ -130,20 +130,20 @@ class Ward extends React.Component {
           </Grid>
           </Grid>
           {value === 0 && (
-            //INPATIENT DEPARTMENT//
+            // INPATIENT DEPARTMENT//
             <div>
-          <Grid container item className={classes.gridContainer} justify="center" spacing={24}>
-        <Grid container item className={classes.gridContainer} justify="center" spacing={24}>
+          <Grid container={true} item={true} className={classes.gridContainer} justify="center" spacing={24}>
+        <Grid container={true} item={true} className={classes.gridContainer} justify="center" spacing={24}>
           <Paper className={classes.paperFlat}>
-            <Grid container item spacing={24}>
+            <Grid container={true} item={true} spacing={24}>
               &emsp;
-              <Grid item xs={12} className={classes.inputContainer}>
+              <Grid item={true} xs={12} className={classes.inputContainer}>
                 <Typography variant="inherit" className={classes.findWard}>
                   SUMMARY
                 </Typography>
               </Grid>
-              <Grid container item className={classes.gridContainer} justify="center" spacing={24}>
-              <Grid item className={classes.boxInfo}>
+              <Grid container={true} item={true} className={classes.gridContainer} justify="center" spacing={24}>
+              <Grid item={true} className={classes.boxInfo}>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ width: "100%", padding: "2px" }}>
                     <Typography className={classes.numberOf}>14</Typography>
@@ -151,7 +151,7 @@ class Ward extends React.Component {
                   </CardContent>
                 </Card>
               </Grid>
-              <Grid item className={classes.boxInfo}>
+              <Grid item={true} className={classes.boxInfo}>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ width: "100%", padding: "2px" }}>
                     <Typography className={classes.numberOf}>2</Typography>
@@ -160,7 +160,7 @@ class Ward extends React.Component {
                   </CardContent>
                 </Card>
               </Grid>
-              <Grid item className={classes.boxInfo}>
+              <Grid item={true} className={classes.boxInfo}>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ width: "100%", padding: "2px" }}>
                     <Typography className={classes.numberOf}>12</Typography>
@@ -169,7 +169,7 @@ class Ward extends React.Component {
                   </CardContent>
                 </Card>
               </Grid>
-              <Grid item className={classes.boxInfo}>
+              <Grid item={true} className={classes.boxInfo}>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ width: "100%", padding: "2px" }}>
                     <Typography className={classes.numberOf}>46%</Typography>
@@ -178,7 +178,7 @@ class Ward extends React.Component {
                   </CardContent>
                 </Card>
               </Grid>
-              <Grid item className={classes.boxInfo}>
+              <Grid item={true} className={classes.boxInfo}>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ width: "100%", padding: "2px" }}>
                     <Typography className={classes.numberOf}>3.5</Typography>
@@ -187,7 +187,7 @@ class Ward extends React.Component {
                   </CardContent>
                 </Card>
               </Grid>
-              <Grid item className={classes.boxInfo}>
+              <Grid item={true} className={classes.boxInfo}>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ width: "100%", padding: "2px" }}>
                     <Typography className={classes.numberOf}>68%</Typography>
@@ -196,7 +196,7 @@ class Ward extends React.Component {
                   </CardContent>
                 </Card>
               </Grid>
-              <Grid item className={classes.boxInfo}>
+              <Grid item={true} className={classes.boxInfo}>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ width: "100%", padding: "2px" }}>
                     <Typography className={classes.numberOf}>4.7</Typography>
@@ -212,22 +212,22 @@ class Ward extends React.Component {
             </Grid>
           </Paper>
         </Grid>
-        <Grid item container className={classes.gridContainer} justify='center' spacing={24}>
+        <Grid item={true} container={true} className={classes.gridContainer} justify='center' spacing={24}>
           <Paper className={classes.paperFlat}>
-            <Grid container item spacing={24} className={classes.inputContainer}>
-              <Grid item xs={12} style={{ display: 'flex' }}>
+            <Grid container={true} item={true} spacing={24} className={classes.inputContainer}>
+              <Grid item={true} xs={12} style={{ display: 'flex' }}>
                 <Typography variant="inherit" className={classes.findPatient}>
                   FIND A PATIENT
                 </Typography>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item={true} xs={6}>
                 <Typography variant="inherit" className={classes.findSubtitle}>
                   Find the patient in ward
                 </Typography>
               </Grid>
             </Grid>
-            <Grid container item spacing={24}>
-              <Grid item xs={12} sm={2}>
+            <Grid container={true} item={true} spacing={24}>
+              <Grid item={true} xs={12} sm={2}>
                 <TextField
                   id="patientID"
                   label="Patient ID (PID)"
@@ -251,7 +251,7 @@ class Ward extends React.Component {
                   variant="outlined"
                 />
               </Grid>
-              <Grid item xs={12} sm={3}>
+              <Grid item={true} xs={12} sm={3}>
                 <TextField
                   id="Outpatient Number (ODP)"
                   label="Outpatient Number (ODP)"
@@ -272,7 +272,7 @@ class Ward extends React.Component {
                   variant="outlined"
                 />
               </Grid>
-              <Grid item xs={12} sm={3}>
+              <Grid item={true} xs={12} sm={3}>
                 <TextField
                   id="Inpatient Number (IDP)"
                   label="Inpatient Number (IDP)"
@@ -293,7 +293,7 @@ class Ward extends React.Component {
                   variant="outlined"
                 />
               </Grid>
-              <Grid item xs={12} sm={2} style={{marginTop:16}}>
+              <Grid item={true} xs={12} sm={2} style={{marginTop:16}}>
                 <FormControl variant="outlined"
                   className={classNames(classes.formField, classes.formFieldSelect)}>
                   <InputLabel
@@ -329,7 +329,7 @@ class Ward extends React.Component {
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid item xs={12} sm={2} style={{marginTop:16}}>
+              <Grid item={true} xs={12} sm={2} style={{marginTop:16}}>
                 <FormControl variant="outlined"
                   className={classNames(classes.formField, classes.formFieldSelect)}>
                   <InputLabel
@@ -358,8 +358,8 @@ class Ward extends React.Component {
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid container justify="flex-end" item spacing={24}>
-                <Grid item xs={12} className={classes.searchButton}>
+              <Grid container={true} justify="flex-end" item={true} spacing={24}>
+                <Grid item={true} xs={12} className={classes.searchButton}>
                   <Button variant="outlined" color="inherit" classes={{ root: classes.button, label: classes.buttonLabel }}>
                     Search
                     </Button>
@@ -369,16 +369,16 @@ class Ward extends React.Component {
           </Paper>
         </Grid>
         &nbsp;
-        <Grid container  item  justify="center" spacing={24}>
-          <Grid container item className={classes.filterContainer} justify="center" spacing={24}>
-          <Grid item xs={12} sm={6} style={{ display: 'flex' }}>
+        <Grid container={true}  item={true}  justify="center" spacing={24}>
+          <Grid container={true} item={true} className={classes.filterContainer} justify="center" spacing={24}>
+          <Grid item={true} xs={12} sm={6} style={{ display: 'flex' }}>
             <Typography variant="inherit">
               &emsp;<b>Which admitted patient are you searching for?</b>
               <p style={{ paddingLeft: '17px' }}>Use the filter for a faster search</p>
             </Typography>
           </Grid>
-          <Grid container style={{ paddingTop: '15px', fontWeight: 'bold' }} justify='flex-end' xs={3}>Filter</Grid>
-          <Grid item style={{ paddingTop: 0 }} xs={3} sm={3} >
+          <Grid container={true} style={{ paddingTop: '15px', fontWeight: 'bold' }} justify='flex-end' xs={3}>Filter</Grid>
+          <Grid item={true} style={{ paddingTop: 0 }} xs={3} sm={3} >
             <FormControl variant='outlined' className={classNames(classes.formField, classes.formFieldSelect)}>
               <Select className={classes.select}
                 input={
@@ -400,10 +400,10 @@ class Ward extends React.Component {
             </FormControl>
           </Grid>
           </Grid>
-          <Grid container item  spacing={24}>
+          <Grid container={true} item={true}  spacing={24}>
             {patients}
           </Grid>
-          <Grid container item style={{padding: 30, justifyContent:"center"}}>
+          <Grid container={true} item={true} style={{padding: 30, justifyContent:"center"}}>
             <Button variant="outlined" color="inherit" justify="center" classes={{ root: classes.loadMoreButton }}>
               Load More
             </Button>
@@ -413,20 +413,20 @@ class Ward extends React.Component {
         </div>
         )}
         {value === 1 && (
-          //OUTPATIENT DEPARTMENT//
+          // OUTPATIENT DEPARTMENT//
           <div>
-             <Grid container item className={classes.gridContainer} justify="center" spacing={24}>
-        <Grid container item className={classes.gridContainer} justify="center" spacing={24}>
+             <Grid container={true} item={true} className={classes.gridContainer} justify="center" spacing={24}>
+        <Grid container={true} item={true} className={classes.gridContainer} justify="center" spacing={24}>
           <Paper className={classes.paperFlat}>
-            <Grid container item spacing={24}>
+            <Grid container={true} item={true} spacing={24}>
               &emsp;
-              <Grid item xs={12} className={classes.inputContainer}>
+              <Grid item={true} xs={12} className={classes.inputContainer}>
                 <Typography variant="inherit" className={classes.findWard}>
                   SUMMARY
                 </Typography>
               </Grid>
-              <Grid container item className={classes.gridContainer} justify="center" spacing={24}>
-              <Grid item className={classes.boxInfo}>
+              <Grid container={true} item={true} className={classes.gridContainer} justify="center" spacing={24}>
+              <Grid item={true} className={classes.boxInfo}>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ width: "100%", padding: "2px" }}>
                     <Typography className={classes.numberOf}>10</Typography>
@@ -434,7 +434,7 @@ class Ward extends React.Component {
                   </CardContent>
                 </Card>
               </Grid>
-              <Grid item className={classes.boxInfo}>
+              <Grid item={true} className={classes.boxInfo}>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ width: "100%", padding: "2px" }}>
                     <Typography className={classes.numberOf}>5</Typography>
@@ -443,7 +443,7 @@ class Ward extends React.Component {
                   </CardContent>
                 </Card>
               </Grid>
-              <Grid item className={classes.boxInfo}>
+              <Grid item={true} className={classes.boxInfo}>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ width: "100%", padding: "2px" }}>
                     <Typography className={classes.numberOf}>15</Typography>
@@ -452,7 +452,7 @@ class Ward extends React.Component {
                   </CardContent>
                 </Card>
               </Grid>
-              <Grid item className={classes.boxInfo}>
+              <Grid item={true} className={classes.boxInfo}>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ width: "100%", padding: "2px" }}>
                     <Typography className={classes.numberOf}>50%</Typography>
@@ -461,7 +461,7 @@ class Ward extends React.Component {
                   </CardContent>
                 </Card>
               </Grid>
-              <Grid item className={classes.boxInfo}>
+              <Grid item={true} className={classes.boxInfo}>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ width: "100%", padding: "2px" }}>
                     <Typography className={classes.numberOf}>3.8</Typography>
@@ -470,7 +470,7 @@ class Ward extends React.Component {
                   </CardContent>
                 </Card>
               </Grid>
-              <Grid item className={classes.boxInfo}>
+              <Grid item={true} className={classes.boxInfo}>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ width: "100%", padding: "2px" }}>
                     <Typography className={classes.numberOf}>68%</Typography>
@@ -479,7 +479,7 @@ class Ward extends React.Component {
                   </CardContent>
                 </Card>
               </Grid>
-              <Grid item className={classes.boxInfo}>
+              <Grid item={true} className={classes.boxInfo}>
                 <Card className={classNames(classes.boxItem)}>
                   <CardContent style={{ width: "100%", padding: "2px" }}>
                     <Typography className={classes.numberOf}>4.7</Typography>
@@ -495,22 +495,22 @@ class Ward extends React.Component {
             </Grid>
           </Paper>
         </Grid>
-        <Grid item container className={classes.gridContainer} justify='center' spacing={24}>
+        <Grid item={true} container={true} className={classes.gridContainer} justify='center' spacing={24}>
           <Paper className={classes.paperFlat}>
-            <Grid container item spacing={24} className={classes.inputContainer}>
-              <Grid item xs={12} style={{ display: 'flex' }}>
+            <Grid container={true} item={true} spacing={24} className={classes.inputContainer}>
+              <Grid item={true} xs={12} style={{ display: 'flex' }}>
                 <Typography variant="inherit" className={classes.findPatient}>
                   FIND A PATIENT
                 </Typography>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item={true} xs={6}>
                 <Typography variant="inherit" className={classes.findSubtitle}>
                   Find the patient in ward
                 </Typography>
               </Grid>
             </Grid>
-            <Grid container item spacing={24}>
-              <Grid item xs={12} sm={2}>
+            <Grid container={true} item={true} spacing={24}>
+              <Grid item={true} xs={12} sm={2}>
                 <TextField
                   id="patientID"
                   label="Patient ID (PID)"
@@ -534,7 +534,7 @@ class Ward extends React.Component {
                   variant="outlined"
                 />
               </Grid>
-              <Grid item xs={12} sm={3}>
+              <Grid item={true} xs={12} sm={3}>
                 <TextField
                   id="Outpatient Number (ODP)"
                   label="Outpatient Number (ODP)"
@@ -555,7 +555,7 @@ class Ward extends React.Component {
                   variant="outlined"
                 />
               </Grid>
-              <Grid item xs={12} sm={3}>
+              <Grid item={true} xs={12} sm={3}>
                 <TextField
                   id="Inpatient Number (IDP)"
                   label="Inpatient Number (IDP)"
@@ -576,7 +576,7 @@ class Ward extends React.Component {
                   variant="outlined"
                 />
               </Grid>
-              <Grid item xs={12} sm={2} style={{marginTop:16}}>
+              <Grid item={true} xs={12} sm={2} style={{marginTop:16}}>
                 <FormControl variant="outlined"
                   className={classNames(classes.formField, classes.formFieldSelect)}>
                   <InputLabel
@@ -612,7 +612,7 @@ class Ward extends React.Component {
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid item xs={12} sm={2} style={{marginTop:16}}>
+              <Grid item={true} xs={12} sm={2} style={{marginTop:16}}>
                 <FormControl variant="outlined"
                   className={classNames(classes.formField, classes.formFieldSelect)}>
                   <InputLabel
@@ -641,8 +641,8 @@ class Ward extends React.Component {
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid container justify="flex-end" item spacing={24}>
-                <Grid item xs={12} className={classes.searchButton}>
+              <Grid container={true} justify="flex-end" item={true} spacing={24}>
+                <Grid item={true} xs={12} className={classes.searchButton}>
                   <Button variant="outlined" color="inherit" classes={{ root: classes.button, label: classes.buttonLabel }}>
                     Search
                     </Button>
@@ -652,16 +652,16 @@ class Ward extends React.Component {
           </Paper>
         </Grid>
         &nbsp;
-        <Grid container  item  justify="center" spacing={24}>
-          <Grid container item justify="center" className={classes.filterContainer} spacing={24}>
-          <Grid item xs={12} sm={6} style={{ display: 'flex' }}>
+        <Grid container={true}  item={true}  justify="center" spacing={24}>
+          <Grid container={true} item={true} justify="center" className={classes.filterContainer} spacing={24}>
+          <Grid item={true} xs={12} sm={6} style={{ display: 'flex' }}>
             <Typography variant="inherit">
               &emsp;<b>Which admitted patient are you searching for?</b>
               <p style={{ paddingLeft: '17px' }}>Use the filter for a faster search</p>
             </Typography>
           </Grid>
-          <Grid container style={{ paddingTop: '15px', fontWeight: 'bold' }} justify='flex-end' xs={3}>Filter</Grid>
-          <Grid item style={{ paddingTop: 0 }} xs={3} sm={3} >
+          <Grid container={true} style={{ paddingTop: '15px', fontWeight: 'bold' }} justify='flex-end' xs={3}>Filter</Grid>
+          <Grid item={true} style={{ paddingTop: 0 }} xs={3} sm={3} >
             <FormControl variant='outlined' className={classNames(classes.formField, classes.formFieldSelect)}>
               <Select className={classes.select}
                 input={
@@ -683,10 +683,10 @@ class Ward extends React.Component {
             </FormControl>
           </Grid>
           </Grid>
-          <Grid container item  spacing={24}>
+          <Grid container={true} item={true}  spacing={24}>
             {patients}
           </Grid>
-          <Grid container item style={{padding: 30, justifyContent:"center"}}>
+          <Grid container={true} item={true} style={{padding: 30, justifyContent:"center"}}>
             <Button variant="outlined" color="inherit" justify="center" classes={{ root: classes.loadMoreButton }}>
               Load More
             </Button>

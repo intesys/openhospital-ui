@@ -4,12 +4,12 @@ import React, { Component } from "react";
 import styles from "./styles/ListHeader.style";
 
 // material imports
-import ListItem from "@material-ui/core/ListItem";
-import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+import ListItem from "@material-ui/core/ListItem";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { withStyles, WithStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 
 export interface Props extends WithStyles<typeof styles> {}
 
@@ -18,23 +18,23 @@ interface State {
 }
 
 class ListHeader extends Component<Props, State>{
-	state: State = {
+	public state: State = {
 		anchorEl: null,
 	};
 
-	handleClickCalendarAppointmentsDWM = (event: any) => {
+	public handleClickCalendarAppointmentsDWM = (event: any) => {
 		this.setState({ anchorEl: event.currentTarget });
 	};
 
-	handleCloseCalendarAppointmentsDWM = () => {
+	public handleCloseCalendarAppointmentsDWM = () => {
 		this.setState({ anchorEl: null });
 	};
 
-	render(){
+	public render(){
 		const { classes } = this.props;
 		const { anchorEl } = this.state;
 		return(
-			<ListItem disableGutters className={classes.appointmentsTitleContainer}>
+			<ListItem disableGutters={true} className={classes.appointmentsTitleContainer}>
 				<Typography className={classes.appointmentsTitle} variant="inherit" align="left">
 					SUMMARY
 				</Typography>

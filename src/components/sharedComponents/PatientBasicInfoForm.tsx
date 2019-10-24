@@ -1,25 +1,25 @@
 import React, { Component } from 'react';
 
 // local imports
-import styles from './styles/PatientBasicInfoForm.style';
 import classNames from 'classnames';
+import styles from './styles/PatientBasicInfoForm.style';
 
 // material imports
-import { withStyles, WithStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import { withStyles, WithStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
 export interface Props extends WithStyles<typeof styles> {}
 
 class PatientBasicInfoForm extends Component<Props>{
 
-	render() {
+	public render() {
 		const { classes, extraInput } = this.props;
 		return(
 			<div>
 				<form>
-					<Grid container item spacing={24}>
-						<Grid item xs={12} sm={3}>
+					<Grid container={true} item={true} spacing={24}>
+						<Grid item={true} xs={12} sm={3}>
 							<TextField
 								id="patientID"
 								label="Patient ID (PID)"
@@ -40,7 +40,7 @@ class PatientBasicInfoForm extends Component<Props>{
 								margin="normal"
 								variant="outlined"/>
 						</Grid>
-						<Grid item xs={12} sm={3}>
+						<Grid item={true} xs={12} sm={3}>
 							<TextField
 								id="outpatientNumber"
 								label="Outpatient Number (OPD)"
@@ -60,7 +60,7 @@ class PatientBasicInfoForm extends Component<Props>{
 								margin="normal"
 								variant="outlined"/>
 						</Grid>
-						<Grid item xs={12} sm={3}>
+						<Grid item={true} xs={12} sm={3}>
 							<TextField
 								id="inpatientNumber"
 								label="Inpatient Number (IPD)"

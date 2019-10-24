@@ -1,4 +1,4 @@
-import {CardContent, Grid, Link, Paper, Collapse, List, ListItem } from "@material-ui/core";
+import {CardContent, Collapse, Grid, Link, List, ListItem, Paper } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import { withStyles, WithStyles } from "@material-ui/core/styles";
@@ -10,16 +10,16 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Tabs from "@material-ui/core/Tabs";
 import Typography from "@material-ui/core/Typography";
+import ExpandLess from "@material-ui/icons/ExpandLess";
+import ExpandMore from "@material-ui/icons/ExpandMore";
 import Breadcrumbs from "@material-ui/lab/Breadcrumbs";
 import PropTypes from "prop-types";
 import * as React from "react";
 import DayPicker from "react-day-picker";
 import "react-day-picker/lib/style.css";
 import { Link as LinkRouter } from "react-router-dom";
-import styles from "./Calendario.style";
-import ExpandMore from "@material-ui/icons/ExpandMore";
-import ExpandLess from "@material-ui/icons/ExpandLess";
 import Calendar from "../../shared/lib/calendar/index";
+import styles from "./Calendario.style";
 export interface Props extends WithStyles<typeof styles> {}
 
 interface State {
@@ -44,7 +44,7 @@ class Calendario extends React.Component<Props, State> {
     this.setState({ value });
   };
 
-  handleClickCollapseOptionalInfo = () => {
+  public handleClickCollapseOptionalInfo = () => {
     this.setState(state => ({ openOptionalInfo: !state.openOptionalInfo }));
   };
 
@@ -276,7 +276,7 @@ class Calendario extends React.Component<Props, State> {
                   }}
                 />
                 <Collapse in={openOptionalInfo} style={{ width: "100%" }} timeout="auto">
-                    <Grid item xs={12} justify="center">
+                    <Grid item={true} xs={12} justify="center">
                     <List classes={{ root: classes.appointments }}>
                   <ListItem disableGutters={true} className={classes.appointmentsTitleContainer}>
                     <Typography className={classes.appointmentsTitle} variant="inherit" align="left">
@@ -286,13 +286,13 @@ class Calendario extends React.Component<Props, State> {
                   {/* <Collapse in={openAppointments} timeout="auto" unmountOnExit> */}
                   <List disablePadding={true}>
                   <ListItem disableGutters={true} className={classes.appointmentsListItem}>
-                      <Grid container justify="center" spacing={24} className={classes.appointmentsListItemGrid}>
-                        <Grid item xs={3} className={classes.materialsListItemTitleContainer}>
+                      <Grid container={true} justify="center" spacing={24} className={classes.appointmentsListItemGrid}>
+                        <Grid item={true} xs={3} className={classes.materialsListItemTitleContainer}>
                           <Typography className={classes.appointmentsListItemText} variant="inherit">
                             <b>07.30 am</b>
                           </Typography>
                         </Grid>
-                        <Grid item xs={9} className={classes.materialsListItemTitleContainer}>
+                        <Grid item={true} xs={9} className={classes.materialsListItemTitleContainer}>
                           <Typography className={classes.appointmentsListItemText} variant="inherit">
                              Blood exam
                           </Typography>
@@ -300,13 +300,13 @@ class Calendario extends React.Component<Props, State> {
                       </Grid>
                     </ListItem>
                     <ListItem disableGutters={true} className={classes.appointmentsListItem}>
-                      <Grid container justify="center" spacing={24} className={classes.appointmentsListItemGrid}>
-                        <Grid item xs={3} className={classes.materialsListItemTitleContainer}>
+                      <Grid container={true} justify="center" spacing={24} className={classes.appointmentsListItemGrid}>
+                        <Grid item={true} xs={3} className={classes.materialsListItemTitleContainer}>
                           <Typography className={classes.appointmentsListItemText} variant="inherit">
                             <b>10.30 am</b>
                           </Typography>
                         </Grid>
-                        <Grid item xs={9} className={classes.materialsListItemTitleContainer}>
+                        <Grid item={true} xs={9} className={classes.materialsListItemTitleContainer}>
                           <Typography className={classes.appointmentsListItemText} variant="inherit">
                             Pneumological visit with Dr.Mason
                           </Typography>

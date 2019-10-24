@@ -1,21 +1,21 @@
 import React, { Component } from "react";
 
 // local imports
+import classNames from "classnames";
 import MaterialPanelItem from "./MaterialPanelItem";
 import styles from "./styles/MaterialPanel.style";
-import classNames from "classnames";
 
 // material imports
+import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import Tabs from "@material-ui/core/Tabs";
+import { withStyles, WithStyles } from "@material-ui/core/styles";
 import Tab from "@material-ui/core/Tab";
 import TabContainer from "@material-ui/core/Tab";
-import Button from "@material-ui/core/Button";
-import { withStyles, WithStyles } from "@material-ui/core/styles";
+import Tabs from "@material-ui/core/Tabs";
+import Typography from "@material-ui/core/Typography";
 
 export interface Props extends WithStyles<typeof styles> {}
 
@@ -27,22 +27,22 @@ interface IState {
 }
 
 class MaterialPanel extends Component<Props, IState> {
-  state: State = {
+  public state: State = {
     labelWidth: 0,
     value: 0,
     error: null,
     isLoaded: false,
   };
 
-  handleChange = (event: React.MouseEvent<HTMLElement>, value: number) => {
+  public handleChange = (event: React.MouseEvent<HTMLElement>, value: number) => {
     this.setState({ value });
   };
 
-  render() {
+  public render() {
     const { classes } = this.props;
     const { value } = this.state;
     return (
-      <Grid item xs={12} sm={6}>
+      <Grid item={true} xs={12} sm={6}>
         <Typography className={classes.cardTitle} variant="inherit" align="left">
           MATERIALS
         </Typography>
@@ -66,7 +66,7 @@ class MaterialPanel extends Component<Props, IState> {
                 <MaterialPanelItem />
                 <MaterialPanelItem />
 
-                <ListItem button classes={{ button: classes.allMaterialsButton }}>
+                <ListItem button={true} classes={{ button: classes.allMaterialsButton }}>
                   SEE ALL MATERIALS
                 </ListItem>
               </List>
@@ -76,7 +76,7 @@ class MaterialPanel extends Component<Props, IState> {
             <div>
               <List classes={{ root: classes.materialsList }}>
                 <MaterialPanelItem />
-                <ListItem button classes={{ button: classes.allMaterialsButton }}>
+                <ListItem button={true} classes={{ button: classes.allMaterialsButton }}>
                   SEE ALL MATERIALS
                 </ListItem>
               </List>

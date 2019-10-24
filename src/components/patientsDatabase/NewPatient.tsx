@@ -1,7 +1,7 @@
-import React, { Component } from "react";
 // local imports
 import classNames from "classnames";
 import { Patient } from "generate";
+import React, { Component } from "react";
 import { NewPatientUsingPOSTRequest, PatientControllerApi } from "../../generate/apis";
 import BreadcrumbTrail from "../sharedComponents/BreadcrumbTrail"
 import styles from "./styles/NewPatient.style";

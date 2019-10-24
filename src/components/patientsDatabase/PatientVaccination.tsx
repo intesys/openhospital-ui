@@ -1,19 +1,19 @@
-import * as React from "react";
-import _ from "lodash";
-import { withStyles, WithStyles } from "@material-ui/core/styles";
-import Breadcrumbs from "@material-ui/lab/Breadcrumbs";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import { Link as LinkRouter } from "react-router-dom";
-import { MaterialLinkRouter, MaterialButtonRouter } from "../utils/LinkHelper";
-import classNames from "classnames";
-import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
-import AddPhotoIcon from "@material-ui/icons/AddAPhoto";
+import Grid from "@material-ui/core/Grid";
+import { withStyles, WithStyles } from "@material-ui/core/styles";
 import Tooltip from '@material-ui/core/Tooltip';
-import styles from "./styles/PatientVaccination.style";
+import Typography from "@material-ui/core/Typography";
+import AddPhotoIcon from "@material-ui/icons/AddAPhoto";
+import Breadcrumbs from "@material-ui/lab/Breadcrumbs";
+import classNames from "classnames";
+import _ from "lodash";
 import MUIDataTable from "mui-datatables";
+import * as React from "react";
+import { Link as LinkRouter } from "react-router-dom";
+import { MaterialButtonRouter, MaterialLinkRouter } from "../utils/LinkHelper";
+import styles from "./styles/PatientVaccination.style";
 export interface Props extends WithStyles<typeof styles> {}
 
 interface State {
@@ -24,7 +24,7 @@ interface State {
 }
 
 class PatientVaccine extends React.Component<Props, State> {
-  state: State = {
+  public state: State = {
     labelWidth: 0,
     error: null,
     isLoaded: false,
@@ -65,9 +65,9 @@ class PatientVaccine extends React.Component<Props, State> {
 
     return (
       <div className={classes.root}>
-        <Grid container className={classes.gridContainer} justify="center" spacing={24}>
-          <Grid container item spacing={24}>
-            <Grid item xs={12}>
+        <Grid container={true} className={classes.gridContainer} justify="center" spacing={24}>
+          <Grid container={true} item={true} spacing={24}>
+            <Grid item={true} xs={12}>
               <Breadcrumbs aria-label="Breadcrumb" className={classes.breadCrumb}>
                 <MaterialLinkRouter color="secondary" component={LinkRouter} to="/dashboard">
                   Home
@@ -78,15 +78,15 @@ class PatientVaccine extends React.Component<Props, State> {
                 <Typography color="inherit">Patient Vaccine</Typography>
               </Breadcrumbs>
             </Grid>
-            <Grid item xs={12}>
+            <Grid item={true} xs={12}>
               <Typography variant="inherit" className={classes.patientTitle}>
                 PATIENT VACCINE
               </Typography>
             </Grid>
           </Grid>
-          <Grid container item justify="center" spacing={24}>
-            <Grid container item justify="center" spacing={24}>
-              <Grid item xs={12} sm={3} className={classes.sidebar}>
+          <Grid container={true} item={true} justify="center" spacing={24}>
+            <Grid container={true} item={true} justify="center" spacing={24}>
+              <Grid item={true} xs={12} sm={3} className={classes.sidebar}>
                 <Avatar alt="Remy Sharp" src={""} className={classes.avatar}>
                   <AddPhotoIcon />
                 </Avatar>
@@ -151,8 +151,8 @@ class PatientVaccine extends React.Component<Props, State> {
                   Print health information
                 </MaterialButtonRouter>
               </Grid>
-              <Grid item xs={12} sm={9} className={classes.patientContent}>
-                <Grid item xs={12} className={classes.patientProfileHeader}>
+              <Grid item={true} xs={12} sm={9} className={classes.patientContent}>
+                <Grid item={true} xs={12} className={classes.patientProfileHeader}>
                   <div style={{ flexDirection: "column", textAlign: "left" }}>
                     <Typography color="inherit" className={classes.patientName}>
                       Modotoky Tokai
@@ -161,7 +161,7 @@ class PatientVaccine extends React.Component<Props, State> {
                       Provenance: <b>District, Village</b>
                     </Typography>
                   </div>
-                  <Tooltip title="Prescribe new Vaccine" interactive>
+                  <Tooltip title="Prescribe new Vaccine" interactive={true}>
                   <MaterialButtonRouter component={LinkRouter} to="/patientDatabase/NewVaccination" variant="outlined" color="inherit" classes={{ root: classes.detailNewVaccineButton, label: classes.detailButtonLabel }}>
                    New Vaccine
                   </MaterialButtonRouter>

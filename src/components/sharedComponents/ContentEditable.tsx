@@ -1,17 +1,17 @@
-var createReactClass = require('create-react-class');
+let createReactClass = require('create-react-class');
 
-var ContentEditable = createReactClass({
-    render: function(){
+let ContentEditable = createReactClass({
+    render(){
         return (
         	<span onInput={this.handleInput} onBlur={this.handleChange} contentEditable="true" dangerouslySetInnerHTML={{__html: this.props.html}}>
         	</span>
         );
     },
-    shouldComponentUpdate: function(nextProps){
+    shouldComponentUpdate(nextProps){
         return nextProps.html !== this.getDOMNode().innerHTML;
     },
-    handleChange: function(){
-        var html = this.getDOMNode().innerHTML;
+    handleChange(){
+        let html = this.getDOMNode().innerHTML;
         if (this.props.onChange && html !== this.lastHtml) {
             this.props.onChange({
                 target: {

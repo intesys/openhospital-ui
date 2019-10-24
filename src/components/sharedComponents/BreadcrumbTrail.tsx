@@ -1,7 +1,7 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
-import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Link, Route } from 'react-router-dom';
 import { Link as LinkRouter } from 'react-router-dom';
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
 // local imports
 import { MaterialLinkRouter } from '../utils/LinkHelper';
@@ -12,18 +12,18 @@ import Breadcrumbs from "@material-ui/lab/Breadcrumbs";
 
 // constants
 import { 
-    PATH_PATIENTS_DATABASE,
-    PATH_NEW_PATIENT,
-    PATH_PATIENT_DETAILS,
-    PATH_PATIENT_VISIT,
-    PATH_PATIENT_ADMISSION,
     PATH_NEW_LAB_TEST,
-    PATH_PATIENT_THERAPY,
-    PATH_PATIENT_EXAMINATION,
-    PATH_PATIENT_VACCINATION,
-    PATH_PATIENT_NEW_VACCINATION,
-    PATH_OPD,
     PATH_NEW_OPD,
+    PATH_NEW_PATIENT,
+    PATH_OPD,
+    PATH_PATIENT_ADMISSION,
+    PATH_PATIENT_DETAILS,
+    PATH_PATIENT_EXAMINATION,
+    PATH_PATIENT_NEW_VACCINATION,
+    PATH_PATIENT_THERAPY,
+    PATH_PATIENT_VACCINATION,
+    PATH_PATIENT_VISIT,
+    PATH_PATIENTS_DATABASE,
 } from "../../config/constants"
 
 const routes = {
@@ -47,7 +47,7 @@ const findRouteName = url => routes[url];
 const getPaths = (pathname) => {
     const paths = ['/'];
 
-    if (pathname === '/') return paths;
+    if (pathname === '/') { return paths; }
 
     pathname.split('/').reduce((prev, curr, index) => {
         const currPath = `${prev}/${curr}`;

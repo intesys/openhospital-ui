@@ -13,8 +13,8 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import * as React from "react";
 import { Link } from "react-router-dom";
+import { MaterialCardActionAreaRouter, MaterialLinkRouter } from "../utils/LinkHelper";
 import styles from "./News.style";
-import { MaterialLinkRouter, MaterialCardActionAreaRouter } from "../utils/LinkHelper";
 
 export interface Props extends WithStyles<typeof styles> {}
 
@@ -26,7 +26,7 @@ interface State {
 }
 
 class News extends React.Component {
-  state: State = {
+  public state: State = {
     labelWidth: 0,
     error: null,
     isLoaded: false,
@@ -37,8 +37,8 @@ class News extends React.Component {
 
     return (
       <div className={classes.root}>
-        <Grid container item className={classes.gridContainer} justify="center" spacing={24}>
-          <Grid item xs={12}>
+        <Grid container={true} item={true} className={classes.gridContainer} justify="center" spacing={24}>
+          <Grid item={true} xs={12}>
             <Breadcrumbs aria-label="Breadcrumb" className={classes.breadCrumb}>
               <MaterialLinkRouter color="secondary" component={Link} to="/dashboard">
                 Home
@@ -46,27 +46,27 @@ class News extends React.Component {
               <Typography color="inherit">News</Typography>
             </Breadcrumbs>
           </Grid>
-          <Grid item xs={12}>
+          <Grid item={true} xs={12}>
             <Typography variant="inherit" className={classes.newsTitle}>
               NEWS
             </Typography>
           </Grid>
         </Grid>
-        <Grid container item className={classes.gridContainer} justify="center" spacing={24}>
+        <Grid container={true} item={true} className={classes.gridContainer} justify="center" spacing={24}>
           <Divider className={classes.divider} />
           &emsp;
         </Grid>
-        <Grid container item className={classes.gridContainer} spacing={24}>
-          <Grid item className={classes.gridContainer} xs={6}>
+        <Grid container={true} item={true} className={classes.gridContainer} spacing={24}>
+          <Grid item={true} className={classes.gridContainer} xs={6}>
             <Typography variant="inherit" className={classes.findNews}>
               Filter news by
             </Typography>
           </Grid>
-          <Grid container item className={classes.gridContainer} xs={6}>
+          <Grid container={true} item={true} className={classes.gridContainer} xs={6}>
             <Typography variant="inherit" className={classes.findNewsFilter}>
               Filter
             </Typography>
-            <Grid item xs={6}>
+            <Grid item={true} xs={6}>
               <Select
                 variant="outlined"
                 className={classNames(classes.select, classes.formField)}
@@ -87,14 +87,14 @@ class News extends React.Component {
             </Grid>
           </Grid>
         </Grid>
-        <Grid container item className={classes.gridContainer} spacing={24}>
+        <Grid container={true} item={true} className={classes.gridContainer} spacing={24}>
           <Grid className={classes.formatNewsCard}>
           <MaterialCardActionAreaRouter
                         className={classes.cardAction}
                         component={Link}
                         to="/NewsDetails">
             <Paper className={classNames(classes.paper)}>
-              <Grid item xs={12} className={classes.newsContainer}>
+              <Grid item={true} xs={12} className={classes.newsContainer}>
                 &emsp;
                 <Typography className={classes.newsDate} color="inherit">
                   22.01.2019
@@ -127,7 +127,7 @@ class News extends React.Component {
                         component={Link}
                         to="/NewsDetails">
             <Paper className={classNames(classes.paper)}>
-              <Grid item xs={12} className={classes.newsContainer}>
+              <Grid item={true} xs={12} className={classes.newsContainer}>
                 &emsp;
                 <Typography className={classes.newsDate} color="inherit">
                   22.01.2019
@@ -160,7 +160,7 @@ class News extends React.Component {
                         component={Link}
                         to="/NewsDetails">
             <Paper className={classNames(classes.paper)}>
-              <Grid item xs={12} className={classes.newsContainer}>
+              <Grid item={true} xs={12} className={classes.newsContainer}>
                 &emsp;
                 <Typography className={classes.newsDate} color="inherit">
                   22.01.2019
@@ -200,7 +200,7 @@ class News extends React.Component {
                         component={Link}
                         to="/NewsDetails">
             <Paper className={classNames(classes.paper)}>
-              <Grid item xs={12} className={classes.newsContainer}>
+              <Grid item={true} xs={12} className={classes.newsContainer}>
                 &emsp;
                 <Typography className={classes.newsDate} color="inherit">
                   22.01.2019
@@ -233,7 +233,7 @@ class News extends React.Component {
                         component={Link}
                         to="/NewsDetails">
             <Paper className={classNames(classes.paper)}>
-              <Grid item xs={12} className={classes.newsContainer}>
+              <Grid item={true} xs={12} className={classes.newsContainer}>
                 &emsp;
                 <Typography className={classes.newsDate} color="inherit">
                   22.01.2019
@@ -266,7 +266,7 @@ class News extends React.Component {
                         component={Link}
                         to="/NewsDetails">
             <Paper className={classNames(classes.paper)}>
-              <Grid item xs={12} className={classes.newsContainer}>
+              <Grid item={true} xs={12} className={classes.newsContainer}>
                 &emsp;
                 <Typography className={classes.newsDate} color="inherit">
                   22.01.2019
@@ -299,7 +299,7 @@ class News extends React.Component {
                         component={Link}
                         to="/NewsDetails">
             <Paper className={classes.paper}>
-              <Grid item xs={12} className={classes.newsContainer}>
+              <Grid item={true} xs={12} className={classes.newsContainer}>
                 &emsp;
                 <Typography className={classes.newsDate} color="inherit">
                   22.01.2019
@@ -328,8 +328,8 @@ class News extends React.Component {
           </Grid>
         </Grid>
         &nbsp;
-        <Grid container item className={classes.gridContainer} justify="center" spacing={24}>
-          <Grid item xs={12} sm={2} className={classes.loadMoreContainer}>
+        <Grid container={true} item={true} className={classes.gridContainer} justify="center" spacing={24}>
+          <Grid item={true} xs={12} sm={2} className={classes.loadMoreContainer}>
             <Button variant="outlined" color="inherit" classes={{ root: classes.button, label: classes.buttonLabel }}>
               Load more
             </Button>

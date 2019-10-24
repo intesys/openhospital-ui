@@ -1,5 +1,5 @@
-import * as React from "react";
 import Typography from "@material-ui/core/Typography";
+import * as React from "react";
 
 
 class notFound extends React.Component {
@@ -24,7 +24,7 @@ class notFound extends React.Component {
                     margin: 'auto',
                     position: 'relative',
                     textAlign:'center'}}  >
-                    PAGE NOT FOUND
+                    PAGE NOT FOUND!
                 </Typography>
 
         </div>

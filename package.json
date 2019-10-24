@@ -6,7 +6,7 @@
     "start": "parcel public/index.html --port 3000 --open",
     "api": "openapi-server",
     "start:api": "concurrently \"npm run api\" \"npm run start\"",
-    "build": "parcel build public/index.html --public-url ./",
+    "build": "parcel build public/index.html --no-minify",
     "publish": "parcel build public/index.html --public-url /oh20 -d oh20",
     "test": "jest",
     "tdd": "jest --watch",
@@ -63,9 +63,9 @@
     "prettier": "^1.18.2",
     "react": "^16.10.1",
     "react-chartjs-2": "^2.7.6",
+    "react-countup": "^4.2.2",
     "react-day-picker": "^7.3.2",
     "react-dom": "^16.9.0",
-    "react-edit-inline": "^1.0.8",
     "react-editext": "^3.7.0",
     "react-helmet": "^5.2.1",
     "react-intl": "^2.9.0",
@@ -96,7 +96,8 @@
   },
   "devDependencies": {
     "@types/mui-datatables": "^2.10.2",
-    "parcel-plugin-bundle-visualiser": "^1.2.0"
+    "parcel-plugin-bundle-visualiser": "^1.2.0",
+    "react-edit-inline": "^1.0.8"
   },
   "browserslist": "defaults",
   "description": "This boilerplate is generated using [Create React App](https://github.com/facebookincubator/create-react-app) with the [Typescript preset](https://github.com/wmonk/create-react-app-typescript) and contains the libraries and guidelines defined by Intesys.",

@@ -1,22 +1,22 @@
-import * as React from "react";
-import _ from "lodash";
-import { withStyles, WithStyles } from "@material-ui/core/styles";
-import Breadcrumbs from "@material-ui/lab/Breadcrumbs";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import { Link as LinkRouter } from "react-router-dom";
-import { MaterialLinkRouter, MaterialButtonRouter } from "../utils/LinkHelper";
-import TextField from "@material-ui/core/TextField";
-import classNames from "classnames";
-import Select from "@material-ui/core/Select";
-import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
-import OutlinedInput from "@material-ui/core/OutlinedInput";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
 import Avatar from "@material-ui/core/Avatar";
 import Divider from "@material-ui/core/Divider";
+import FormControl from "@material-ui/core/FormControl";
+import Grid from "@material-ui/core/Grid";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import OutlinedInput from "@material-ui/core/OutlinedInput";
+import Select from "@material-ui/core/Select";
+import { withStyles, WithStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
 import AddPhotoIcon from "@material-ui/icons/AddAPhoto";
+import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
+import Breadcrumbs from "@material-ui/lab/Breadcrumbs";
+import classNames from "classnames";
+import _ from "lodash";
+import * as React from "react";
+import { Link as LinkRouter } from "react-router-dom";
+import { MaterialButtonRouter, MaterialLinkRouter } from "../utils/LinkHelper";
 import styles from "./styles/NewVaccination.style";
 export interface Props extends WithStyles<typeof styles> {}
 
@@ -29,7 +29,7 @@ interface State {
 }
 
 class Vaccine extends React.Component<Props, State> {
-  state: State = {
+  public state: State = {
     labelWidth: 0,
     error: null,
     isLoaded: false,
@@ -43,9 +43,9 @@ class Vaccine extends React.Component<Props, State> {
 
     return (
       <div className={classes.root}>
-        <Grid container className={classes.gridContainer} justify="center" spacing={24}>
-          <Grid container item spacing={24}>
-            <Grid item xs={12}>
+        <Grid container={true} className={classes.gridContainer} justify="center" spacing={24}>
+          <Grid container={true} item={true} spacing={24}>
+            <Grid item={true} xs={12}>
               <Breadcrumbs aria-label="Breadcrumb" className={classes.breadCrumb}>
                 <MaterialLinkRouter color="secondary" component={LinkRouter} to="/dashboard">
                   Home
@@ -62,16 +62,16 @@ class Vaccine extends React.Component<Props, State> {
                 <Typography color="inherit">Vaccine</Typography>
               </Breadcrumbs>
             </Grid>
-            <Grid item xs={12}>
+            <Grid item={true} xs={12}>
               <Typography variant="inherit" className={classes.admissionTitle}>
                 PRESCRIBE VACCINE
               </Typography>
             </Grid>
             &emsp;
           </Grid>
-          <Grid container item justify="center" spacing={24}>
-            <Grid container item justify="center" spacing={24}>
-              <Grid item xs={12} sm={3} className={classes.sidebar}>
+          <Grid container={true} item={true} justify="center" spacing={24}>
+            <Grid container={true} item={true} justify="center" spacing={24}>
+              <Grid item={true} xs={12} sm={3} className={classes.sidebar}>
                 <Avatar alt="Remy Sharp" src={""} className={classes.avatar}>
                   <AddPhotoIcon />
                 </Avatar>
@@ -126,8 +126,8 @@ class Vaccine extends React.Component<Props, State> {
                   Pneumonia and malnutrition
                 </Typography>
               </Grid>
-              <Grid item xs={12} sm={9} className={classes.colleagueContent}>
-                <Grid item xs={12} className={classes.colleagueProfileHeader}>
+              <Grid item={true} xs={12} sm={9} className={classes.colleagueContent}>
+                <Grid item={true} xs={12} className={classes.colleagueProfileHeader}>
                   <div style={{ flexDirection: "column", textAlign: "left" }}>
                     <Typography color="inherit" className={classes.patientName}>
                       Modotoky Tokai
@@ -140,7 +140,7 @@ class Vaccine extends React.Component<Props, State> {
                 &emsp;
                 <Divider className={classes.divider} />
                 &emsp;
-                <Grid item xs={12} className={classes.colleagueProfileHeader}>
+                <Grid item={true} xs={12} className={classes.colleagueProfileHeader}>
                   <div style={{ flexDirection: "column", textAlign: "left" }}>
                     <Typography color="inherit" className={classes.formTitle}>
                       COMPLETE THE FORM
@@ -164,7 +164,7 @@ class Vaccine extends React.Component<Props, State> {
                     />
                   </Grid>
                 </Grid>
-                <Grid container item spacing={24}>
+                <Grid container={true} item={true} spacing={24}>
                   <Grid className={classes.formatFormAdmission}>
                     <Typography color="inherit" className={classes.drugPrescribed}>
                        Vaccine Type
@@ -243,7 +243,7 @@ class Vaccine extends React.Component<Props, State> {
                       </Select>
                     </FormControl>
                   </Grid>
-                  <Grid item style={{ marginTop: 30 }} xs={12} sm={12}>
+                  <Grid item={true} style={{ marginTop: 30 }} xs={12} sm={12}>
                     <Typography color="inherit" className={classes.drugPrescribed}>
                       NOTES
                     </Typography>
@@ -266,7 +266,7 @@ class Vaccine extends React.Component<Props, State> {
                       variant="outlined"
                     />
                   </Grid>
-                  <Grid item xs={12} spacing={24} style={{ marginTop: 100 }} className={classes.detailButtonContainer}>
+                  <Grid item={true} xs={12} spacing={24} style={{ marginTop: 100 }} className={classes.detailButtonContainer}>
                     <MaterialButtonRouter
                       component={LinkRouter}
                       to="/"

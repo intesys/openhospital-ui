@@ -1,29 +1,29 @@
 import React, { Component } from "react";
 
 // local imports
+import Calendar from "../../shared/lib/calendar/index";
 import AppointmentsItem from "../sharedComponents/AppointmentsItem";
 import ListHeader from "../sharedComponents/ListHeader";
 import BigNumberItem from "./BigNumberItem";
 import styles from "./styles/CalendarPanel.style";
-import Calendar from "../../shared/lib/calendar/index";
 
 // material imports
-import { withStyles, WithStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
-import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
+import Grid from "@material-ui/core/Grid";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
+import Paper from "@material-ui/core/Paper";
+import { withStyles, WithStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 
 export interface Props extends WithStyles<typeof styles> {}
 
 class CalendarPanel extends Component<Props> {
-  render() {
+  public render() {
     const { classes } = this.props;
     return (
-      <Grid item xs={12} sm={6}>
+      <Grid item={true} xs={12} sm={6}>
         <Typography className={classes.cardTitle} variant="inherit" align="left">
           CALENDAR
         </Typography>
@@ -38,7 +38,7 @@ class CalendarPanel extends Component<Props> {
               console.log("onDatePicked", d);
             }}
           />
-          <Grid item xs={12} justify="center" classes={{ item: classes.detailButtonContainer }}>
+          <Grid item={true} xs={12} justify="center" classes={{ item: classes.detailButtonContainer }}>
             <Button
               variant="outlined"
               color="inherit"
@@ -51,7 +51,7 @@ class CalendarPanel extends Component<Props> {
           <List classes={{ root: classes.appointments }}>
             <ListHeader />
             {/* <Collapse in={openAppointments} timeout="auto" unmountOnExit> */}
-            <List disablePadding>
+            <List disablePadding={true}>
               <AppointmentsItem />
               <AppointmentsItem />
               <AppointmentsItem />
@@ -61,7 +61,7 @@ class CalendarPanel extends Component<Props> {
           <List classes={{ root: classes.summary }}>
             <ListHeader />
             <ListItem className={classes.summaryItem}>
-              <Grid container justify="center" spacing={24}>
+              <Grid container={true} justify="center" spacing={24}>
                 <BigNumberItem />
                 <BigNumberItem />
                 <BigNumberItem />

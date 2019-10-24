@@ -1,28 +1,28 @@
-import * as React from "react";
-import _ from "lodash";
-import { withStyles, WithStyles } from "@material-ui/core/styles";
-import Breadcrumbs from "@material-ui/lab/Breadcrumbs";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import { Link as LinkRouter, RouteComponentProps } from "react-router-dom";
-import { MaterialLinkRouter, MaterialButtonRouter } from "../utils/LinkHelper";
-import classNames from "classnames";
-import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import Avatar from "@material-ui/core/Avatar";
 import Divider from "@material-ui/core/Divider";
-import Radio from '@material-ui/core/Radio';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import AddPhotoIcon from "@material-ui/icons/AddAPhoto";
-import styles from "./styles/Opd.style";
 import FormControl from "@material-ui/core/FormControl";
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Grid from "@material-ui/core/Grid";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
-import Select from "@material-ui/core/Select";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
+import Radio from '@material-ui/core/Radio';
+import Select from "@material-ui/core/Select";
+import { withStyles, WithStyles } from "@material-ui/core/styles";
 import TextField from '@material-ui/core/TextField';
-import MUIDataTable from "mui-datatables";
-import { PatientControllerApi, GetPatientUsingGETRequest } from '../../generate/apis';
+import Typography from "@material-ui/core/Typography";
+import AddPhotoIcon from "@material-ui/icons/AddAPhoto";
+import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
+import Breadcrumbs from "@material-ui/lab/Breadcrumbs";
+import classNames from "classnames";
 import { Patient } from 'generate';
+import _ from "lodash";
+import MUIDataTable from "mui-datatables";
+import * as React from "react";
+import { Link as LinkRouter, RouteComponentProps } from "react-router-dom";
+import { GetPatientUsingGETRequest, PatientControllerApi } from '../../generate/apis';
+import { MaterialButtonRouter, MaterialLinkRouter } from "../utils/LinkHelper";
+import styles from "./styles/Opd.style";
 export interface Props extends WithStyles<typeof styles> { }
 
 interface State {
@@ -41,7 +41,7 @@ interface IRouteParams {
 interface IProps extends RouteComponentProps<IRouteParams> { }
 
 class PatientOpd extends React.Component<IProps> {
-  state: State = {
+  public state: State = {
     labelWidth: 0,
     error: null,
     isLoaded: false,
@@ -50,7 +50,7 @@ class PatientOpd extends React.Component<IProps> {
     
   };
 
-  componentDidMount() {
+  public componentDidMount() {
 
     const patientController: PatientControllerApi = new PatientControllerApi();
     const requestParams : GetPatientUsingGETRequest = {
@@ -99,9 +99,9 @@ class PatientOpd extends React.Component<IProps> {
 
     return (
       <div className={classes.root}>
-        <Grid container className={classes.gridContainer} justify="center" spacing={24}>
-          <Grid container item spacing={24}>
-            <Grid item xs={12}>
+        <Grid container={true} className={classes.gridContainer} justify="center" spacing={24}>
+          <Grid container={true} item={true} spacing={24}>
+            <Grid item={true} xs={12}>
               <Breadcrumbs aria-label="Breadcrumb" className={classes.breadCrumb}>
                 <MaterialLinkRouter color="secondary" component={LinkRouter} to="/dashboard">
                   Home
@@ -112,15 +112,15 @@ class PatientOpd extends React.Component<IProps> {
                 <Typography color="inherit">Patient OPD</Typography>
               </Breadcrumbs>
             </Grid>
-            <Grid item xs={12}>
+            <Grid item={true} xs={12}>
               <Typography variant="inherit" className={classes.patientTitle}>
                 PATIENT OPD
               </Typography>
             </Grid>
           </Grid>
-          <Grid container item justify="center" spacing={24}>
-            <Grid container item justify="center" spacing={24}>
-              <Grid item xs={12} sm={3} className={classes.sidebar}>
+          <Grid container={true} item={true} justify="center" spacing={24}>
+            <Grid container={true} item={true} justify="center" spacing={24}>
+              <Grid item={true} xs={12} sm={3} className={classes.sidebar}>
                 <Avatar alt="Remy Sharp" src={""} className={classes.avatar}>
                   <AddPhotoIcon />
                 </Avatar>
@@ -185,8 +185,8 @@ class PatientOpd extends React.Component<IProps> {
                   Print health information
                 </MaterialButtonRouter>
               </Grid>
-              <Grid item xs={12} sm={9} className={classes.patientContent}>
-                <Grid item xs={12} className={classes.patientProfileHeader}>
+              <Grid item={true} xs={12} sm={9} className={classes.patientContent}>
+                <Grid item={true} xs={12} className={classes.patientProfileHeader}>
                   <div style={{ flexDirection: "column", textAlign: "left" }}>
                     <Typography color="inherit" className={classes.patientName}>
                       {this.state.item.firstName} {this.state.item.secondName}

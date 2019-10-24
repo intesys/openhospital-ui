@@ -2,25 +2,25 @@ import React, { Component } from "react";
 import { Link as LinkRouter } from "react-router-dom";
 
 // local imports
-import styles from './styles/HealthInfoBar.style';
 import { MaterialButtonRouter } from "../utils/LinkHelper";
+import styles from './styles/HealthInfoBar.style';
 
 // material imports
-import { withStyles, WithStyles } from "@material-ui/core/styles";
-import Grid from '@material-ui/core/Grid';
 import Avatar from "@material-ui/core/Avatar";
-import AddPhotoIcon from "@material-ui/icons/AddAPhoto";
-import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
+import Grid from '@material-ui/core/Grid';
+import { withStyles, WithStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import AddPhotoIcon from "@material-ui/icons/AddAPhoto";
 
 export interface Props extends WithStyles<typeof styles> { }
 
 class HealthInfoBar extends Component<Props>{
 
-	render() {
+	public render() {
 		const { classes, patientInfo } = this.props;
 		return(
-			<Grid item xs={12} sm={3} className={classes.sidebar}>
+			<Grid item={true} xs={12} sm={3} className={classes.sidebar}>
                 <Avatar alt="Remy Sharp" src={""} className={classes.avatar}>
                     <AddPhotoIcon />
                 </Avatar>

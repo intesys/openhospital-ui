@@ -1,24 +1,24 @@
-import React, { Component } from "react";
 import _ from "lodash";
+import React, { Component } from "react";
 import { Link as LinkRouter } from "react-router-dom";
 
 // local imports
-import { MaterialButtonRouter } from "../utils/LinkHelper";
 import classNames from "classnames";
+import { MaterialButtonRouter } from "../utils/LinkHelper";
 import styles from "./styles/NewLabTest.style";
 
 // material imports
-import { withStyles, WithStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
+import Divider from "@material-ui/core/Divider";
+import FormControl from "@material-ui/core/FormControl";
 import Grid from "@material-ui/core/Grid";
-import TextField from "@material-ui/core/TextField";
-import Select from "@material-ui/core/Select";
-import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
-import OutlinedInput from "@material-ui/core/OutlinedInput";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Divider from "@material-ui/core/Divider";
+import OutlinedInput from "@material-ui/core/OutlinedInput";
+import Select from "@material-ui/core/Select";
+import { withStyles, WithStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
+import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 
 export interface Props extends WithStyles <typeof styles> {}
 
@@ -30,7 +30,7 @@ interface State {
 }
 
 class NewLabTest extends React.Component <Props, State> {
-    state: State = {
+    public state: State = {
         labelWidth: 0,
         error: null,
         isLoaded: false,
@@ -40,8 +40,8 @@ class NewLabTest extends React.Component <Props, State> {
     public render() {
         const { classes } = this.props;
         return (
-            <Grid item xs={12} sm={9} className={classes.colleagueContent}>
-                <Grid item xs={12} className={classes.colleagueProfileHeader}>
+            <Grid item={true} xs={12} sm={9} className={classes.colleagueContent}>
+                <Grid item={true} xs={12} className={classes.colleagueProfileHeader}>
                     <div style={{ flexDirection: "column", textAlign: "left" }}>
                         <Typography color="inherit" className={classes.patientName}>
                             Modotoky Tokai
@@ -54,7 +54,7 @@ class NewLabTest extends React.Component <Props, State> {
                 &emsp;
                 <Divider className={classes.divider} />
                 &emsp;
-                <Grid item xs={12} className={classes.colleagueProfileHeader}>
+                <Grid item={true} xs={12} className={classes.colleagueProfileHeader}>
                     <div style={{ flexDirection: "column", textAlign: "left" }}>
                         <Typography color="inherit" className={classes.formTitle}>
                             COMPLETE THE FORM
@@ -76,7 +76,7 @@ class NewLabTest extends React.Component <Props, State> {
                             }}/>
                     </Grid>
                 </Grid>
-                <Grid container item spacing={24}>
+                <Grid container={true} item={true} spacing={24}>
                     <Grid className={classes.formatFormAdmission}>
                         <Typography color="inherit" className={classes.drugPrescribed}>
                             Prescribe laboratory tests
@@ -109,7 +109,7 @@ class NewLabTest extends React.Component <Props, State> {
                             </Select>
                         </FormControl>
                     </Grid>
-                    <Grid item style={{ marginTop: 30 }} xs={12} sm={12}>
+                    <Grid item={true} style={{ marginTop: 30 }} xs={12} sm={12}>
                         <Typography color="inherit" className={classes.drugPrescribed}>
                             NOTES
                         </Typography>
@@ -131,7 +131,7 @@ class NewLabTest extends React.Component <Props, State> {
                             margin="normal"
                             variant="outlined"/>
                     </Grid>
-                    <Grid item xs={12} spacing={24} style={{ marginTop: 100 }} className={classes.detailButtonContainer}>
+                    <Grid item={true} xs={12} spacing={24} style={{ marginTop: 100 }} className={classes.detailButtonContainer}>
                         <MaterialButtonRouter
                             component={LinkRouter}
                             to="/"

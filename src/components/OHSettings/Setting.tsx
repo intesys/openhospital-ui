@@ -1,16 +1,16 @@
 import { Grid, Link, Paper, TextField } from "@material-ui/core";
+import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import { withStyles, WithStyles } from "@material-ui/core/styles";
-import PropTypes from "prop-types";
-import Avatar from "@material-ui/core/Avatar";
-import AddPhotoIcon from "@material-ui/icons/AddAPhoto";
 import Typography from "@material-ui/core/Typography";
+import AddPhotoIcon from "@material-ui/icons/AddAPhoto";
 import Breadcrumbs from "@material-ui/lab/Breadcrumbs";
+import classNames from "classnames";
+import PropTypes from "prop-types";
 import * as React from "react";
 import { Link as LinkRouter } from "react-router-dom";
 import styles from "./Setting.style";
-import classNames from "classnames";
 export interface Props extends WithStyles<typeof styles> {}
 
 interface State {
@@ -22,7 +22,7 @@ interface State {
 }
 
 class Setting extends React.Component<Props, State> {
-  state: State = {
+  public state: State = {
     labelWidth: 0,
     value: 0,
     error: null,
@@ -34,8 +34,8 @@ class Setting extends React.Component<Props, State> {
 
     return (
       <div className={classes.root}>
-        <Grid container item className={classes.gridContainer} justify="center" spacing={24}>
-          <Grid item xs={12}>
+        <Grid container={true} item={true} className={classes.gridContainer} justify="center" spacing={24}>
+          <Grid item={true} xs={12}>
             <Breadcrumbs aria-label="Breadcrumb" className={classes.breadCrumb}>
               <Link color="secondary" component={LinkRouter} to="/dashboard">
                 Home
@@ -43,7 +43,7 @@ class Setting extends React.Component<Props, State> {
               <Typography color="inherit">Settings</Typography>
             </Breadcrumbs>
           </Grid>
-          <Grid item xs={12}>
+          <Grid item={true} xs={12}>
             <Typography variant="inherit" className={classes.settingTitle}>
               SETTINGS
             </Typography>
@@ -52,10 +52,10 @@ class Setting extends React.Component<Props, State> {
           <Divider className={classes.divider} />
           &emsp;
         </Grid>
-        <Paper container item className={classes.paper} xs={12}>
+        <Paper container={true} item={true} className={classes.paper} xs={12}>
           <Grid
-            container
-            item
+            container={true}
+            item={true}
             style={{ padding: "30px" }}
             className={classes.gridContainer}
             justify="center"
@@ -66,12 +66,12 @@ class Setting extends React.Component<Props, State> {
                 <AddPhotoIcon />
               </Avatar>
             </Grid>
-            <Grid item xs={6} sm={6} style={{ paddingTop: "50px" }}>
+            <Grid item={true} xs={6} sm={6} style={{ paddingTop: "50px" }}>
               <Typography style={{ paddingBottom: "20px" }} color="inherit" className={classes.settingTitle}>
                 GENERAL INFORMATION
               </Typography>
               <TextField
-                required
+                required={true}
                 id="userName"
                 label="Username"
                 className={classNames(classes.formField, classes.cssOutlinedInput)}
@@ -91,7 +91,7 @@ class Setting extends React.Component<Props, State> {
                 variant="outlined"
               />
               <TextField
-                required
+                required={true}
                 id="FullName"
                 label="Full name"
                 className={classNames(classes.formField, classes.cssOutlinedInput)}
@@ -116,7 +116,7 @@ class Setting extends React.Component<Props, State> {
                 ROLE
               </Typography>
               <TextField
-                required
+                required={true}
                 id="role"
                 label="Profession"
                 className={classNames(classes.formField, classes.cssOutlinedInput)}
@@ -139,9 +139,9 @@ class Setting extends React.Component<Props, State> {
               <Typography style={{ paddingBottom: "20px" }} color="inherit" className={classes.settingTitle}>
                 DESCRIPTION
               </Typography>
-              <Grid item xs={12} sm={12}>
+              <Grid item={true} xs={12} sm={12}>
                 <TextField
-                  required
+                  required={true}
                   defaultValue="Specific responsibilities vary greatly depending on the area of specialism. However, generic duties of the job include: 
             - undertaking patient consultations and physical 
               examinations.
@@ -155,7 +155,7 @@ class Setting extends React.Component<Props, State> {
               professionals.
             - writing reports and maintaining records.
             - promoting health education."
-                  multiline
+                  multiline={true}
                   rows="12"
                   className={classNames(classes.formField, classes.cssOutlinedInput)}
                   InputLabelProps={{

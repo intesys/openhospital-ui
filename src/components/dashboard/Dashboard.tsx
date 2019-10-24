@@ -2,40 +2,40 @@ import React from "react";
 import { Link as LinkRouter } from "react-router-dom";
 
 // local imports
-import { MaterialCardActionAreaRouter } from "../utils/LinkHelper";
 import BigSearchIcon from "../utils/icons/svg/BigSearchIcon";
 import PlusIcon from "../utils/icons/svg/PlusIcon";
-import styles from "./styles/Dashboard.style";
-import MaterialPanel from "./MaterialPanel";
+import { MaterialCardActionAreaRouter } from "../utils/LinkHelper";
 import CalendarPanel from "./CalendarPanel";
+import MaterialPanel from "./MaterialPanel";
+import styles from "./styles/Dashboard.style";
 
 // material imports
-import Typography from "@material-ui/core/Typography";
-import { withStyles, WithStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import { withStyles, WithStyles } from "@material-ui/core/styles";
 import SvgIcon from "@material-ui/core/SvgIcon";
+import Typography from "@material-ui/core/Typography";
 
 // constants
-import { PATH_PATIENTS_DATABASE, PATH_NEW_PATIENT } from "../../helpers/constants";
+import { PATH_NEW_PATIENT, PATH_PATIENTS_DATABASE } from "../../helpers/constants";
 
 export interface Props extends WithStyles<typeof styles> {}
 
 class Dashboard extends React.Component<Props> {
-  render() {
+  public render() {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <Grid container spacing={24} classes={{ container: classes.gridContainer }}>
-          <Grid container justify="center" centerlassName={classes.gridPaddingBottom}>
-            <Grid item xs={4}>
+        <Grid container={true} spacing={24} classes={{ container: classes.gridContainer }}>
+          <Grid container={true} justify="center" centerlassName={classes.gridPaddingBottom}>
+            <Grid item={true} xs={4}>
               <Typography variant="inherit" align="center" className={classes.welcomeTitle}>
                 Welcome <b>Mario Rossi</b>
               </Typography>
             </Grid>
           </Grid>
           &emsp;
-          <Grid container justify="center" spacing={24} className={classes.ctaGrid}>
-            <Grid item xs={12} sm={4}>
+          <Grid container={true} justify="center" spacing={24} className={classes.ctaGrid}>
+            <Grid item={true} xs={12} sm={4}>
               <MaterialCardActionAreaRouter className={classes.ctaPatient} component={LinkRouter} to="/patientsDatabase/NewPatient">
                 <SvgIcon component={PlusIcon} />
                 <Typography className={classes.ctaPatientText} color="inherit" align="center">
@@ -43,7 +43,7 @@ class Dashboard extends React.Component<Props> {
                 </Typography>
               </MaterialCardActionAreaRouter>
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid item={true} xs={12} sm={4}>
               <MaterialCardActionAreaRouter
                 className={classes.ctaPatient}
                 component={LinkRouter}
@@ -56,7 +56,7 @@ class Dashboard extends React.Component<Props> {
               </MaterialCardActionAreaRouter>
             </Grid>
           </Grid>
-          <Grid container justify="center" spacing={24} className={classes.gridMaterialsCalendar}>
+          <Grid container={true} justify="center" spacing={24} className={classes.gridMaterialsCalendar}>
             <MaterialPanel />
             <CalendarPanel />
           </Grid>
