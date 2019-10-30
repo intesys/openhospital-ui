@@ -111,7 +111,7 @@ class ColleaguesDatabase extends React.Component<IProps, IState> {
               </Grid>
               <form>
                 <Grid container={true} item={true} spacing={24}>
-                  <Grid item={true} xs={12} sm={2}>
+                  <Grid item={true} xs={12} sm={3}>
                     <TextField
                       id="name"
                       label="Name or Username*"
@@ -134,7 +134,7 @@ class ColleaguesDatabase extends React.Component<IProps, IState> {
                       variant="outlined"
                     />
                   </Grid>
-                  <Grid item={true} xs={12} sm={2}>
+                  <Grid item={true} xs={12} sm={3}>
                     <TextField
                       id="surname"
                       label="Surname"
@@ -157,7 +157,7 @@ class ColleaguesDatabase extends React.Component<IProps, IState> {
                       variant="outlined"
                     />
                   </Grid>
-                  <Grid item={true} xs={12} sm={6}>
+                  <Grid item={true} xs={12} sm={4}>
                     <FormControl variant="outlined" className={classNames(classes.formField, classes.formFieldSelect)}>
                       <InputLabel
                         ref={ref => {

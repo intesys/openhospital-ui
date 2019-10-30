@@ -10,6 +10,7 @@ html {
 }
 body {
   margin: 0;
+  margin-right: 0;
   background-color: #F8F4F4;
   color: #444444;
   padding: 0;
