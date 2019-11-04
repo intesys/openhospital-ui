@@ -127,7 +127,7 @@ class PatientsDatabase extends React.Component<Props, State> {
             <Paper className={classes.paperFlat}>
               <div>
                 <Grid container={true} item={true} spacing={24} className={classes.inputContainer}>
-                  <Grid item={true} xs={12} style={{display: "flex",marginBottom:25}}>
+                  <Grid item={true} xs={12} style={{display: "ruby",marginBottom:25}}>
                     <Typography variant="inherit" className={classes.findPatients}>
                       FIND A PATIENT
                     </Typography>

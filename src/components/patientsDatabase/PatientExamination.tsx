@@ -1,5 +1,4 @@
 import Avatar from "@material-ui/core/Avatar";
-import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
 import { withStyles, WithStyles } from "@material-ui/core/styles";
@@ -7,8 +6,6 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Typography from "@material-ui/core/Typography";
 import AddPhotoIcon from "@material-ui/icons/AddAPhoto";
 import Breadcrumbs from "@material-ui/lab/Breadcrumbs";
-import classNames from "classnames";
-import _ from "lodash";
 import MUIDataTable from "mui-datatables";
 import * as React from "react";
 import { Link as LinkRouter } from "react-router-dom";

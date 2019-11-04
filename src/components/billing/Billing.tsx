@@ -186,7 +186,7 @@ class Billing extends React.Component {
               in the database and start the payment process.
             </Typography>
             &emsp;
-            <hr className={classes.billingDivider} />
+            <Divider className={classes.divider} />
             <Grid container={true} item={true} spacing={24}>
               <Grid container={true} item={true} spacing={24}>
                 &emsp;{" "}
