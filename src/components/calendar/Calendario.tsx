@@ -73,7 +73,7 @@ class Calendario extends React.Component<Props, State> {
             <Typography variant="inherit" className={classes.calendarTitle}>
               CALENDARIO
             </Typography>
-            <Grid container={true} item={true} className={classes.gridContainer} style={{ paddingLeft: "570px" }} xs={12}>
+            <Grid container={true} item={true} className={classes.gridContainer} style={{ paddingLeft: "295px", display:"block ruby" }} xs={12}>
               <Button variant="outlined" color="inherit" classes={{ root: classes.button }}>
                 Add your personal calendar
               </Button>
