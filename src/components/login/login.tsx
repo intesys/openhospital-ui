@@ -6,10 +6,10 @@ import TextField from "@material-ui/core/TextField";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
+import CountUp from 'react-countup';
 import { ROOT_PATH } from "../../App";
 import OHlogo from "../../assets/images/open-hospital.png";
 import styles from "./login.style";
-import CountUp from 'react-countup';
 export interface Props extends WithStyles<typeof styles> {}
 
 class Login extends React.Component {

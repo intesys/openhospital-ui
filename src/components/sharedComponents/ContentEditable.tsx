@@ -11,7 +11,7 @@ let ContentEditable = createReactClass({
         return nextProps.html !== this.getDOMNode().innerHTML;
     },
     handleChange(){
-        let html = this.getDOMNode().innerHTML;
+        const html = this.getDOMNode().innerHTML;
         if (this.props.onChange && html !== this.lastHtml) {
             this.props.onChange({
                 target: {

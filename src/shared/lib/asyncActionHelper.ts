@@ -21,7 +21,7 @@
  * }
  */
 
-import { PENDING, FULFILLED, REJECTED } from 'redux-promise-middleware';
+import { FULFILLED, PENDING, REJECTED } from 'redux-promise-middleware';
 
 /**
  * Appends REQUEST async action type

@@ -7,13 +7,13 @@ import {
 } from '../../dummyAPI';
 
 import {
-	PatientsList,
 	GET_PATIENTS,
 	PatientsActionTypes,
+	PatientsList,
 } from '../types/patients';
 
-import { loading } from './loading';
 import { AppState } from '../reducers/index';
+import { loading } from './loading';
 
 function getPatients(patients: PatientsList): PatientsActionTypes{
 	return {

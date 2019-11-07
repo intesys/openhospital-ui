@@ -2,13 +2,13 @@
 import { AnyAction } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import { getPatientAPI } from '../../dummyAPI';
-import { loading } from './loading'
 import { AppState } from '../reducers/index';
 import { 
-	GET_PATIENT, 
 	CLEAR_PATIENT_IN_DETAILS, 
-	PatientInDetailsActionTypes, 
-	Patient } from '../types/patients';
+	GET_PATIENT, 
+	Patient, 
+	PatientInDetailsActionTypes } from '../types/patients';
+import { loading } from './loading'
 
 export function getPatient(patient: Patient): PatientInDetailsActionTypes{
 	return {

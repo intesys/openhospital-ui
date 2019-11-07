@@ -1,12 +1,12 @@
 import produce from 'immer';
 
 import {
-	GET_PATIENTS,
 	ADD_NEW_PATIENT,
 	DELETE_PATIENT,
-	UPDATE_PATIENT_DETAILS,
+	GET_PATIENTS,
 	PatientsActionTypes,
 	PatientsList,
+	UPDATE_PATIENT_DETAILS,
 } from '../types/patients'
 
 export default function patients(state: PatientsList = {}, action: PatientsActionTypes): PatientsList{

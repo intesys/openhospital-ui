@@ -1,7 +1,7 @@
 import * as React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { BASE_PATH } from "./config/constants";
+import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import Login from "./components/login/login";
+import { BASE_PATH } from "./config/constants";
 import AppRoutes from "./routes";
 import withRootTheme from "./withRootTheme";
 

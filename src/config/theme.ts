@@ -1,7 +1,7 @@
-import { CSSProperties } from '@material-ui/core/styles/withStyles';
-import * as React from 'react';
 import { createMuiTheme } from '@material-ui/core';
 import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme';
+import { CSSProperties } from '@material-ui/core/styles/withStyles';
+import * as React from 'react';
 import { ellipsis, fonts, margin, padding } from '../shared/utils/style-utils';
 
 declare module '@material-ui/core/styles/createMuiTheme' {

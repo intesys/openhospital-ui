@@ -1,7 +1,7 @@
 import React from 'react';
 import {HorizontalBar} from 'react-chartjs-2';
 
-let createReactClass = require('create-react-class');
+const createReactClass = require('create-react-class');
 const data = {
  
   datasets: [
