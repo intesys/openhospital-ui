@@ -100,7 +100,7 @@ class PatientVisit extends React.Component<IProps, State> {
             <Grid item={true} xs={12}>
               <Breadcrumbs aria-label="Breadcrumb" className={classes.breadCrumb}>
                 <MaterialLinkRouter color="secondary" component={LinkRouter} to="/dashboard">
-                  Home
+                  <Typography color="inherit">Home</Typography>
                 </MaterialLinkRouter>
                 <MaterialLinkRouter color="secondary" component={LinkRouter} to="/patientsDatabase">
                   <Typography color="inherit">Patient Database</Typography>

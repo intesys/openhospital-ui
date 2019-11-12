@@ -88,7 +88,7 @@ class PatientDetails extends React.Component<IProps> {
             <Grid item={true} xs={12}>
               <Breadcrumbs aria-label="Breadcrumb" className={classes.breadCrumb}>
                 <MaterialLinkRouter color="secondary" component={LinkRouter} to="/dashboard">
-                  Home
+                  <Typography color="inherit">Home</Typography>
                 </MaterialLinkRouter>
                 <MaterialLinkRouter color="secondary" component={LinkRouter} to="/patientsDatabase">
                   <Typography color="inherit">Patient Database</Typography>
@@ -176,12 +176,9 @@ class PatientDetails extends React.Component<IProps> {
                       {this.state.item.firstName} {this.state.item.secondName}
                     </Typography>
                     <Typography color="inherit" className={classes.patientAddress}>
-                      Provenance:
+                      Provenance: <b>{this.state.item.address}</b>,&nbsp;<b>{this.state.item.city}</b>
                     </Typography>
                   </div>
-                  <Typography color="inherit" className={classes.patientAddressType}>
-                    <b>{this.state.item.address}</b>,&nbsp;<b>{this.state.item.city}</b>
-                  </Typography>
                   <MaterialButtonRouter
                     component={LinkRouter}
                     to={"/PatientDatabase/PatientAdmission/" + this.state.item.code}

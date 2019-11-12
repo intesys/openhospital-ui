@@ -6,16 +6,18 @@ import MaterialPanelItem from "./MaterialPanelItem";
 import styles from "./styles/MaterialPanel.style";
 
 // material imports
-import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import Paper from "@material-ui/core/Paper";
+import Button                     from "@material-ui/core/Button";
+import Grid                       from "@material-ui/core/Grid";
+import List                       from "@material-ui/core/List";
+import ListItem                   from "@material-ui/core/ListItem";
+import Paper                      from "@material-ui/core/Paper";
 import { withStyles, WithStyles } from "@material-ui/core/styles";
-import Tab from "@material-ui/core/Tab";
-import TabContainer from "@material-ui/core/Tab";
-import Tabs from "@material-ui/core/Tabs";
-import Typography from "@material-ui/core/Typography";
+import Tab                        from "@material-ui/core/Tab";
+import TabContainer               from "@material-ui/core/Tab";
+import Tabs                       from "@material-ui/core/Tabs";
+import Typography                 from "@material-ui/core/Typography";
+import {Link as LinkRouter}       from "react-router-dom";
+import {MaterialLinkRouter}       from "../utils/LinkHelper";
 
 export interface Props extends WithStyles<typeof styles> {}
 
@@ -37,6 +39,8 @@ class MaterialPanel extends Component<Props, IState> {
   public handleChange = (event: React.MouseEvent<HTMLElement>, value: number) => {
     this.setState({ value });
   };
+
+
 
   public render() {
     const { classes } = this.props;
@@ -66,7 +70,7 @@ class MaterialPanel extends Component<Props, IState> {
                 <MaterialPanelItem />
                 <MaterialPanelItem />
 
-                <ListItem button={true} classes={{ button: classes.allMaterialsButton }}>
+                <ListItem button={true} classes={{ button: classes.allMaterialsButton }} component={LinkRouter} to="/pharmacy">
                   SEE ALL MATERIALS
                 </ListItem>
               </List>
@@ -76,8 +80,8 @@ class MaterialPanel extends Component<Props, IState> {
             <div>
               <List classes={{ root: classes.materialsList }}>
                 <MaterialPanelItem />
-                <ListItem button={true} classes={{ button: classes.allMaterialsButton }}>
-                  SEE ALL MATERIALS
+                <ListItem button={true} classes={{ button: classes.allMaterialsButton }} component={LinkRouter} to="/pharmacy">
+                    SEE ALL MATERIALS
                 </ListItem>
               </List>
             </div>

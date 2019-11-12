@@ -132,7 +132,7 @@ const styles = (theme: Theme) =>
     formatNewsCard: {
       width: "19%",
       padding: "10px",
-      display: "inline-table",
+      display: "table",
     },
 
     cardAction: {

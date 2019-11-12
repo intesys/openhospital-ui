@@ -99,8 +99,8 @@ class PatientsDatabase extends React.Component<Props, State> {
             <Grid item={true} xs={12}>
               <Breadcrumbs aria-label="Breadcrumb" className={classes.breadCrumb}>
                 <MaterialLinkRouter color="secondary" component={LinkRouter} to="/dashboard">
-                  Home
-              </MaterialLinkRouter>
+                  <Typography color="inherit">Home</Typography>
+                </MaterialLinkRouter>
                 <Typography color="inherit">Patients</Typography>
               </Breadcrumbs>
             </Grid>
